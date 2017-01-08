@@ -25,4 +25,4 @@ sensor.yr_wind_direction:
 
 sensor.yr_pressure:
   friendly_name: Luftdruck
-  icon: mdi:arrow-top-right
+  icon: mdi:arrow-down-bold

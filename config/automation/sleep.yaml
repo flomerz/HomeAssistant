@@ -1,0 +1,11 @@
+- alias: Turn All OFF
+  trigger:
+    platform: state
+    entity_id: binary_sensor.sleep
+    to: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: group.licht
+
+    - service: switch.turn_off
+      entity_id: group.sound

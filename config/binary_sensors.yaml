@@ -1,3 +1,7 @@
 - platform: mqtt
+  name: sleep
+  state_topic: "cmd/sleep"
+
+- platform: mqtt
   name: kitchen_motion
   state_topic: "homie/kitchen-light/motion/state"
