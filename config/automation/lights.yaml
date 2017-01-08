@@ -1,0 +1,76 @@
+- alias: Bedroom OFF 5 min
+  trigger:
+    platform: state
+    entity_id: light.bedroom
+    to: 'on'
+    for:
+      minutes: 5
+  action:
+    service: light.turn_off
+    entity_id: light.bedroom
+
+- alias: Livingroom Front OFF 10 min
+  trigger:
+    platform: state
+    entity_id: light.livingroom_front
+    to: 'on'
+    for:
+      minutes: 10
+  action:
+    service: light.turn_off
+    entity_id: light.livingroom_front
+
+- alias: Kitchen Motion ON
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_motion
+    to: 'on'
+  condition:
+    condition: sun
+    after: sunset
+    after_offset: "-0:30:00"
+  action:
+    service: light.turn_on
+    entity_id: light.kitchen
+
+- alias: Kitchen Motion OFF
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_motion
+    to: 'off'
+    for:
+      minutes: 1
+  action:
+    service: light.turn_off
+    entity_id: light.kitchen
+
+- alias: Rainbow Light ON
+  trigger:
+    - platform: state
+      entity_id: device_tracker.flo
+      to: 'home'
+    - platform: sun
+      event: 'sunset'
+      offset: '-00:30:00'
+  condition:
+    condition: and
+    conditions:
+    - condition: sun
+      after: sunset
+      after_offset: "-0:30:00"
+    - condition: state
+      entity_id: device_tracker.flo
+      state: 'home'
+    - condition: time
+      before: '23:00'
+  action:
+    service: light.turn_on
+    entity_id: light.rainbow
+
+- alias: Rainbow Light OFF
+  trigger:
+    - platform: time
+      after: '23:00'
+  action:
+    service: light.turn_off
+    entity_id: light.rainbow

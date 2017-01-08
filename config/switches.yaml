@@ -1,0 +1,9 @@
+- platform: mqtt
+  name: livingroom_bass
+  state_topic: "homie/livingroom-bass/switch/state"
+  command_topic: "homie/livingroom-bass/switch/state/set"
+
+- platform: mqtt
+  name: mill
+  state_topic: "homie/mill/on/state"
+  command_topic: "homie/mill/on/state/set"

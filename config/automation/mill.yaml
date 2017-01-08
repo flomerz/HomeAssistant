@@ -1,0 +1,30 @@
+- alias: Get Mill Millis
+  trigger:
+    platform: state
+    entity_id: sensor.mill_seconds
+  action:
+    service: input_slider.select_value
+    data_template:
+      entity_id: input_slider.mill_seconds
+      value: '{{ states.sensor.mill_seconds.state }}'
+
+- alias: Set Mill Millis
+  trigger:
+    platform: state
+    entity_id: input_slider.mill_seconds
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: "homie/mill/on/millis/set"
+      retain: true
+      payload: '{{ (states.input_slider.mill_seconds.state | float * 1000) | int }}'
+
+- alias: Set Mill Grams
+  trigger:
+    platform: state
+    entity_id: input_slider.mill_g
+  action:
+    service: input_slider.select_value
+    data_template:
+      entity_id: input_slider.mill_seconds
+      value: '{{ states.input_slider.mill_seconds.state | float / states.input_slider.mill_current_g.state | float * states.input_slider.mill_g.state | float }}'

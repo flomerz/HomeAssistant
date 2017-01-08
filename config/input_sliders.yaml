@@ -1,0 +1,14 @@
+mill_seconds:
+  min: 5
+  max: 20
+  step: 0.1
+
+mill_current_g:
+  min: 5
+  max: 20
+  step: 0.1
+
+mill_g:
+  min: 5
+  max: 20
+  step: 0.1

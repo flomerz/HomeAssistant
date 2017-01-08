@@ -1,0 +1,15 @@
+- platform: yr
+  monitored_conditions:
+    - temperature
+    - symbol
+    - windSpeed
+    - windDirection
+    - pressure
+    - humidity
+    - cloudiness
+
+- platform: mqtt
+  name: mill_seconds
+  state_topic: "homie/mill/on/millis/set"
+  value_template: '{{ value | float / 1000 | round(3) }}'
+  unit_of_measurement: s

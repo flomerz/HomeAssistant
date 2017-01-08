@@ -1,0 +1,15 @@
+mill_view:
+  view: yes
+  name: Espresso
+  entities:
+    - group.mill
+    - group.mill_config
+
+mill:
+  name: Mühle
+  entities:
+    - switch.mill
+    - sensor.mill_seconds
+    - input_slider.mill_seconds
+    - input_slider.mill_current_g
+    - input_slider.mill_g

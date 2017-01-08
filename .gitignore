@@ -1,0 +1,8 @@
+.HA_VERSION
+.Trash-1000/
+.uuid
+deps/
+home-assistant.log
+home-assistant_v2.db
+known_devices.yaml
+secrets.yaml

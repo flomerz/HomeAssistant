@@ -1,0 +1,12 @@
+- alias: Flo Home
+  trigger:
+    platform: state
+    entity_id: device_tracker.flo
+    to: 'home'
+  condition:
+    condition: sun
+    after: sunset
+    after_offset: "-0:30:00"
+  action:
+    service: switch.turn_on
+    entity_id: switch.livingroom_light_back

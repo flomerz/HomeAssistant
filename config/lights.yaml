@@ -1,0 +1,28 @@
+- platform: mqtt
+  name: rainbow
+  state_topic: "homie/rainbow-light/light/state"
+  command_topic: "homie/rainbow-light/light/state/set"
+  #brightness_state_topic: "office/rgb1/brightness/status"
+  #brightness_command_topic: "office/rgb1/brightness/set"
+  rgb_state_topic: "homie/rainbow-light/light/rgb"
+  rgb_command_topic: "homie/rainbow-light/light/rgb/set"
+
+- platform: mqtt
+  name: kitchen
+  state_topic: "homie/kitchen-light/switch/state"
+  command_topic: "homie/kitchen-light/switch/state/set"
+
+- platform: mqtt
+  name: livingroom_front
+  state_topic: "homie/livingroom-light-front/switch/state"
+  command_topic: "homie/livingroom-light-front/switch/state/set"
+
+- platform: mqtt
+  name: livingroom_back
+  state_topic: "homie/livingroom-light-back/switch/state"
+  command_topic: "homie/livingroom-light-back/switch/state/set"
+
+- platform: mqtt
+  name: bedroom
+  state_topic: "homie/bedroom-light/switch/state"
+  command_topic: "homie/bedroom-light/switch/state/set"

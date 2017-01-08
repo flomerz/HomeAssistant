@@ -1,0 +1,28 @@
+sun.sun:
+  friendly_name: Sonnenstand
+
+sensor.yr_symbol:
+  friendly_name: Wetter
+
+sensor.yr_temperature:
+  friendly_name: Temperatur
+
+sensor.yr_humidity:
+  friendly_name: Feuchtigkeit
+  icon: mdi:water
+
+sensor.yr_cloudiness:
+  friendly_name: Bewölkt
+  icon: mdi:cloud
+
+sensor.yr_wind_speed:
+  friendly_name: Wind
+  icon: mdi:weather-windy
+
+sensor.yr_wind_direction:
+  friendly_name: Windrichtung
+  icon: mdi:compass
+
+sensor.yr_pressure:
+  friendly_name: Luftdruck
+  icon: mdi:arrow-top-right

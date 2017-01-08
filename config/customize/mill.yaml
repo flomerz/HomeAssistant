@@ -1,0 +1,19 @@
+switch.mill:
+  friendly_name: Mühle
+  icon: mdi:coffee
+
+input_slider.mill_seconds:
+  friendly_name: Dauer setzen
+  icon: mdi:timer
+
+input_slider.mill_current_g:
+  friendly_name: Gramm messen
+  icon: mdi:weight-kilogram
+
+input_slider.mill_g:
+  friendly_name: Gramm setzen
+  icon: mdi:update
+
+sensor.mill_seconds:
+  friendly_name: Dauer
+  icon: mdi:clock

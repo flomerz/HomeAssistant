@@ -1,0 +1,14 @@
+light.kitchen:
+  friendly_name: Küche
+
+light.livingroom_back:
+  friendly_name: Wohnzimmer
+
+light.livingroom_front:
+  friendly_name: Wohnzimmer Bu-Liecht
+
+light.rainbow:
+  friendly_name: Rainbow
+
+light.bedroom:
+  friendly_name: Schlafzimmer
