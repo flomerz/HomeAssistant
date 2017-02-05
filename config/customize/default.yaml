@@ -1,2 +1,13 @@
 switch.livingroom_bass:
   friendly_name: Bass
+
+binary_sensor.sleep:
+  friendly_name: Schlafen
+
+sensor.flat_temperature:
+  friendly_name: Temperatur
+
+sensor.flat_humidity:
+  friendly_name: Feuchtigkeit
+  icon: mdi:water
+  

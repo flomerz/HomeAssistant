@@ -3,6 +3,7 @@
 .uuid
 deps/
 home-assistant.log
-home-assistant_v2.db
+*.db
+*.db-journal
 known_devices.yaml
 secrets.yaml

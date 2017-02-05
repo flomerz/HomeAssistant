@@ -3,13 +3,13 @@
     platform: state
     entity_id: binary_sensor.kitchen_motion
     to: 'on'
-  condition:
-    condition: sun
-    after: sunset
-    after_offset: "-0:30:00"
+
+  condition: !include ../conditions/night_notsleep.yaml
+
   action:
     service: light.turn_on
     entity_id: light.kitchen
+
 
 - alias: Kitchen Motion OFF
   trigger:

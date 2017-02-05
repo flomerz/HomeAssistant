@@ -1,0 +1,29 @@
+- alias: Floor Motion ON
+  trigger:
+    platform: state
+    entity_id: binary_sensor.floor_motion
+    to: 'on'
+
+  condition: !include ../conditions/night.yaml
+
+  action:
+    service: light.turn_on
+    data_template:
+      entity_id: >
+        {% if is_state('binary_sensor.sleep', 'on') %}
+          light.wc
+        {% else %}
+          light.floor
+        {% endif %}
+
+
+- alias: Floor Motion OFF
+  trigger:
+    platform: state
+    entity_id: binary_sensor.floor_motion
+    to: 'off'
+    for:
+      minutes: 3
+  action:
+    service: light.turn_off
+    entity_id: light.floor

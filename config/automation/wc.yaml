@@ -1,0 +1,37 @@
+- alias: WC Motion ON
+  trigger:
+    platform: state
+    entity_id: binary_sensor.wc_motion
+    to: 'on'
+
+  condition: !include ../conditions/night.yaml
+
+  action:
+    service: light.turn_on
+    entity_id: light.wc
+
+
+- alias: WC Motion OFF
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.wc_motion
+      to: 'off'
+      for:
+        seconds: !env_var WC_LIGHT_SECONDS
+
+    - platform: state
+      entity_id: light.wc
+      to: 'on'
+      for:
+        seconds: !env_var WC_LIGHT_SECONDS
+
+  condition:
+    condition: state
+    entity_id: binary_sensor.wc_motion
+    state: 'off'
+    for:
+      seconds: !env_var WC_LIGHT_SECONDS
+
+  action:
+    service: light.turn_off
+    entity_id: light.wc

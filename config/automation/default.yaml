@@ -1,0 +1,38 @@
+- alias: Arrive Home
+  trigger:
+    - platform: state
+      entity_id: group.people
+      to: 'home'
+    - platform: sun
+      event: 'sunset'
+      offset: '-00:30:00'
+
+  condition:
+    condition: and
+    conditions:
+    - condition: sun
+      after: sunset
+      after_offset: "-0:30:00"
+    - condition: state
+      entity_id: group.people
+      state: 'home'
+    - condition: time
+      before: '21:00'
+
+  action:
+    - service: scene.turn_on
+      entity_id: scene.ambient
+
+
+- alias: All OFF
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.sleep
+      to: 'on'
+    - platform: state
+      entity_id: group.people
+      to: 'not_home'
+
+  action:
+    - service: scene.turn_on
+      entity_id: scene.all_off

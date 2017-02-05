@@ -1,0 +1,9 @@
+- name: ambient
+  entities:
+    light.rainbow: on
+    light.livingroom_back: on
+
+- name: all_off
+  entities:
+    group.light: off
+    group.sound: off

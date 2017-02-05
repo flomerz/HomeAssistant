@@ -13,3 +13,15 @@
   state_topic: "homie/mill/on/millis/set"
   value_template: '{{ value | float / 1000 | round(3) }}'
   unit_of_measurement: s
+
+- platform: mqtt
+  name: flat_temperature
+  state_topic: "homie/dev/climate/temperature"
+  qos: 0
+  unit_of_measurement: "°C"
+
+- platform: mqtt
+  name: flat_humidity"
+  state_topic: "homie/dev/climate/humidity"
+  qos: 0
+  unit_of_measurement: "%"

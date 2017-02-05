@@ -1,23 +1,34 @@
 default_viewf:
   view: yes
   entities:
-    - group.wetter
+    - group.weather
     - group.sound
-    - group.licht
-    - group.leute
+    - group.light
+    - group.people
 
-licht:
+light:
   name: Licht
   entities:
+    - light.floor
     - light.kitchen
     - light.rainbow
+    - light.livingroom_led_top
     - light.livingroom_back
     - light.livingroom_front
     - light.bedroom
+    - light.wc
 
-leute:
+motion:
+  name: Bewegungsmelder
   entities:
-    - device_tracker.flo
+    - binary_sensor.floor_motion
+    - binary_sensor.kitchen_motion
+    - binary_sensor.wc_motion
+
+people:
+  name: Leute
+  entities:
+    - device_tracker.f1e84262_flo
     - device_tracker.louisa
     - device_tracker.myrtha
     - device_tracker.ries
@@ -28,7 +39,13 @@ sound:
   entities:
     - switch.livingroom_bass
 
-wetter:
+states:
+  name: Zustände
+  entities:
+    - binary_sensor.sleep
+
+weather:
+  name: Wetter
   entities:
     - sun.sun
     - sensor.yr_symbol
@@ -38,3 +55,9 @@ wetter:
     - sensor.yr_wind_speed
     - sensor.yr_wind_direction
     - sensor.yr_pressure
+
+house:
+  name: Wohnung
+  entities:
+    - sensor.flat_temperature
+    - sensor.flat_humidity

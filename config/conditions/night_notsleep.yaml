@@ -1,0 +1,13 @@
+- condition: and
+  conditions:
+    - condition: or
+      conditions:
+        - condition: sun
+          after: sunset
+          after_offset: "-00:30:00"
+        - condition: sun
+          before: sunrise
+          before_offset: "00:30:00"
+    - condition: state
+      entity_id: binary_sensor.sleep
+      state: 'off'

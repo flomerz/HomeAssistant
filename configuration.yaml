@@ -1,9 +1,9 @@
 homeassistant:
   # Name of the location where Home Assistant is running
   name: Home Assistant
-  # Location required to calculate the time the sun rises and sets
-  latitude: 47.196881
-  longitude: 8.7125481
+  # Location required to calculate the time the sun rises and set
+  latitude: 47.1969578
+  longitude: 8.7148761
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 514
   # metric for Metric, imperial for Imperial
@@ -15,8 +15,7 @@ homeassistant:
 
 frontend:
 
-http:
-  api_password: !secret api_password
+http: !include config/http.yaml
 
 updater:
 
@@ -27,6 +26,13 @@ history:
       - switch
       - device_tracker
       - binary_sensor
+      - sensor
+
+panel_iframe:
+  router:
+    title: 'MQTT'
+    icon: mdi:share-variant
+    url: !secret mqtt_graph_url
 
 sun:
 
@@ -35,12 +41,14 @@ mqtt:
 
 device_tracker:
   - platform: ddwrt
-    host: 192.168.1.2
+    host: !secret ddwrt_ip
     username: !secret ddwrt_username
     password: !secret ddwrt_password
-    interval_seconds: 10
+    interval_seconds: 60
     consider_home: 180
     track_new_devices: yes
+
+  - platform: owntracks
 
 
 sensor: !include config/sensors.yaml
@@ -54,5 +62,7 @@ light: !include config/lights.yaml
 input_slider: !include config/input_sliders.yaml
 
 group: !include_dir_merge_named config/group
+
+scene: !include config/scenes.yaml
 
 automation: !include_dir_merge_list config/automation
