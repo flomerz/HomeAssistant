@@ -23,7 +23,7 @@
     entity_id: binary_sensor.floor_motion
     to: 'off'
     for:
-      minutes: 3
+      minutes: 1
   action:
     service: light.turn_off
     entity_id: light.floor

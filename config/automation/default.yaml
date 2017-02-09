@@ -1,18 +1,18 @@
-- alias: Arrive Home
+- alias: Any Home
   trigger:
     - platform: state
       entity_id: group.people
       to: 'home'
     - platform: sun
       event: 'sunset'
-      offset: '-00:30:00'
+      offset: '-01:00:00'
 
   condition:
     condition: and
     conditions:
     - condition: sun
       after: sunset
-      after_offset: "-0:30:00"
+      after_offset: "-01:00:00"
     - condition: state
       entity_id: group.people
       state: 'home'
@@ -36,3 +36,16 @@
   action:
     - service: scene.turn_on
       entity_id: scene.all_off
+
+
+- alias: Louisa Home
+  trigger:
+    - platform: state
+      entity_id: device_tracker.eefa3116_louisa
+      to: 'home'
+
+  action:
+    service: notify.flo
+    data:
+      title: HA
+      message: Louisa ist Zuhause!

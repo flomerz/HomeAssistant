@@ -10,4 +10,3 @@ sensor.flat_temperature:
 sensor.flat_humidity:
   friendly_name: Feuchtigkeit
   icon: mdi:water
-  

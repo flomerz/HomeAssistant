@@ -16,12 +16,12 @@
 
 - platform: mqtt
   name: flat_temperature
-  state_topic: "homie/dev/climate/temperature"
+  state_topic: "homie/dev/sensor/temperature"
   qos: 0
   unit_of_measurement: "°C"
 
 - platform: mqtt
-  name: flat_humidity"
-  state_topic: "homie/dev/climate/humidity"
+  name: flat_humidity
+  state_topic: "homie/dev/sensor/humidity"
   qos: 0
   unit_of_measurement: "%"

@@ -1,10 +1,17 @@
-default_viewf:
+home:
   view: yes
   entities:
-    - group.weather
-    - group.sound
     - group.light
+    - group.motion
+    - group.sound
     - group.people
+
+climate:
+  view: yes
+  name: Klima
+  entities:
+    - group.flat
+    - group.weather
 
 light:
   name: Licht
@@ -29,7 +36,7 @@ people:
   name: Leute
   entities:
     - device_tracker.f1e84262_flo
-    - device_tracker.louisa
+    - device_tracker.eefa3116_louisa
     - device_tracker.myrtha
     - device_tracker.ries
     - device_tracker.bri
@@ -56,7 +63,7 @@ weather:
     - sensor.yr_wind_direction
     - sensor.yr_pressure
 
-house:
+flat:
   name: Wohnung
   entities:
     - sensor.flat_temperature

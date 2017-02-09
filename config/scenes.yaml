@@ -7,3 +7,9 @@
   entities:
     group.light: off
     group.sound: off
+
+- name: green
+  entities:
+    light.rainbow:
+      state: on
+      rgb_color: [0, 255, 0]

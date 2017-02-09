@@ -50,6 +50,10 @@ device_tracker:
 
   - platform: owntracks
 
+notify:
+  - name: flo
+    platform: pushbullet
+    api_key: !secret pushbullet_flo_api_key
 
 sensor: !include config/sensors.yaml
 
