@@ -19,11 +19,27 @@
 
 - alias: Floor Motion OFF
   trigger:
-    platform: state
-    entity_id: binary_sensor.floor_motion
-    to: 'off'
-    for:
-      minutes: 1
+    - platform: state
+      entity_id: binary_sensor.floor_motion
+      to: 'off'
+      for:
+        seconds: !env_var FLOOR_LIGHT_SECONDS
+    - platform: state
+      entity_id: binary_sensor.wc_motion
+      to: 'off'
+      for:
+        seconds: !env_var WC_LIGHT_SECONDS
+  condition:
+    - condition: state
+      entity_id: binary_sensor.floor_motion
+      state: 'off'
+      for:
+        seconds: !env_var FLOOR_LIGHT_SECONDS
+    - condition: state
+      entity_id: binary_sensor.wc_motion
+      state: 'off'
+      for:
+        seconds: !env_var WC_LIGHT_SECONDS
   action:
     service: light.turn_off
     entity_id: light.floor

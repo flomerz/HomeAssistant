@@ -1,0 +1,73 @@
+media_power_on:
+  sequence:
+
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.media_power
+        option: True
+    
+    - service: script.ir_receiver_power
+
+    - delay:
+        seconds: 1
+
+    - service: script.ir_beamer_power_on
+
+    - delay:
+        seconds: 10
+
+    - service: scene.turn_on
+      entity_id: scene.media
+
+    - service: switch.turn_on
+      entity_id: switch.livingroom_bass
+
+
+media_power_off:
+  sequence:
+    
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.media_power
+        option: False
+
+    - service: switch.turn_off
+      entity_id: switch.livingroom_bass
+    
+    - service: scene.turn_on
+      entity_id: scene.ambient
+
+    - service: script.ir_receiver_power
+
+    - delay:
+        seconds: 1
+
+    - service: script.ir_beamer_power_off
+
+
+media_channel:
+  sequence:
+
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state('input_select.media_channel', 'TV') %}
+            script.ir_receiver_tv
+          {% elif is_state('input_select.media_channel', 'PS3') %}
+            script.ir_receiver_ps3
+          {% else %}
+            script.ir_receiver_mc
+          {% endif %}
+
+
+media_channel_switch:
+  sequence:
+
+    - service: input_select.select_next
+      data:
+        entity_id: input_select.media_channel
+    
+    - service: script.media_channel
+
+    - delay:
+        milliseconds: 500

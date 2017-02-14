@@ -29,12 +29,14 @@ history:
       - sensor
 
 panel_iframe:
-  router:
+  mqtt:
     title: 'MQTT'
     icon: mdi:share-variant
     url: !secret mqtt_graph_url
 
 sun:
+
+lirc:
 
 mqtt:
   broker: localhost
@@ -65,8 +67,12 @@ light: !include config/lights.yaml
 
 input_slider: !include config/input_sliders.yaml
 
+input_select: !include_dir_merge_named config/input_select
+
 group: !include_dir_merge_named config/group
 
 scene: !include config/scenes.yaml
 
 automation: !include_dir_merge_list config/automation
+
+script: !include_dir_merge_named config/script

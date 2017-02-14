@@ -1,3 +1,8 @@
+- name: media
+  entities:
+    light.rainbow: on
+    light.livingroom_back: off
+
 - name: ambient
   entities:
     light.rainbow: on

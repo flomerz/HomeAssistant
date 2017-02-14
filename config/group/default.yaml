@@ -1,9 +1,9 @@
-home:
+default_view:
   view: yes
   entities:
     - group.light
     - group.motion
-    - group.sound
+    - group.media
     - group.people
 
 climate:
@@ -42,8 +42,15 @@ people:
     - device_tracker.bri
     - device_tracker.gubi
 
-sound:
+media:
   entities:
+    - input_select.media_power
+    - input_select.media_channel
+    - script.ir_receiver_power
+    - script.ir_beamer_power_on
+    - script.ir_beamer_power_off
+    - script.ir_receiver_vol_up
+    - script.ir_receiver_vol_down
     - switch.livingroom_bass
 
 states:

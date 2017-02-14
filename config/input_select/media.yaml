@@ -1,0 +1,10 @@
+media_power:
+  options:
+    - False
+    - True
+
+media_channel:
+  options:
+    - "TV"
+    - "PS3"
+    - "Media Center" 

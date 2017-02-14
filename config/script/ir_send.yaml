@@ -1,0 +1,62 @@
+ir_send:
+  sequence:
+    - delay:
+        milliseconds: 100
+    - service: mqtt.publish
+      data_template:
+        topic: "homie/dev/ir/send/set"
+        payload: "{{ payload }}"
+        qos: 2
+
+ir_beamer_power_on:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'nec', 'data': '1286815935', 'nbits': '32'}"
+
+ir_beamer_power_off:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'nec', 'data': '1286829195', 'nbits': '32'}"
+    - delay:
+        seconds: 2
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'nec', 'data': '1286829195', 'nbits': '32'}"
+
+ir_receiver_power:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '21516', 'nbits': '15'}"
+
+ir_receiver_vol_up:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '9228', 'nbits': '15'}"
+
+ir_receiver_vol_down:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '25612', 'nbits': '15'}"
+
+ir_receiver_tv:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '24332', 'nbits': '15'}"
+
+ir_receiver_ps3:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '426260', 'nbits': '20'}"
+
+ir_receiver_mc:
+    sequence:
+      - service: script.ir_send
+        data:
+          payload: "{'type': 'sony', 'data': '24589', 'nbits': '15'}"

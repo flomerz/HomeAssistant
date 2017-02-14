@@ -1,0 +1,94 @@
+- alias: ir_sony_light_livingroom_back
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_1'
+  action:
+    - service: light.toggle
+      entity_id: light.livingroom_back
+
+
+- alias: ir_sony_light_livingroom_front
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_2'
+  action:
+    - service: light.toggle
+      entity_id: light.livingroom_front
+
+
+- alias: ir_sony_light_rainbow
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_3'
+  action:
+    - service: light.toggle
+      entity_id: light.rainbow
+
+
+- alias: ir_sony_light_floor
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_4'
+  action:
+    - service: light.toggle
+      entity_id: light.floor
+
+
+- alias: ir_sony_light_kitchen
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_5'
+  action:
+    - service: light.toggle
+      entity_id: light.kitchen
+
+
+- alias: ir_sony_light_kitchen
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_6'
+  action:
+    - service: switch.toggle
+      entity_id: switch.livingroom_bass
+
+
+- alias: ir_sony_receiver_power
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_7'
+  action:
+    - service: script.ir_receiver_power
+
+
+- alias: ir_sony_beamer_power_on
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_8'
+  action:
+    - service: script.ir_beamer_power_on
+
+
+- alias: ir_sony_receiver_power_off
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_9'
+  action:
+    - service: script.ir_beamer_power_off
