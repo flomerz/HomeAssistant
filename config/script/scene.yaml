@@ -1,0 +1,6 @@
+scene_ambient:
+  sequence:
+    - condition: and
+      conditions: !include ../conditions/night.yaml
+    - service: scene.turn_on
+      entity_id: scene.ambient

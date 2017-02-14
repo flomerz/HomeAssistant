@@ -9,7 +9,7 @@ media_power_on:
     - service: script.ir_receiver_power
 
     - delay:
-        seconds: 1
+        seconds: 2
 
     - service: script.ir_beamer_power_on
 
@@ -34,13 +34,12 @@ media_power_off:
     - service: switch.turn_off
       entity_id: switch.livingroom_bass
     
-    - service: scene.turn_on
-      entity_id: scene.ambient
+    - service: script.scene_ambient
 
     - service: script.ir_receiver_power
 
     - delay:
-        seconds: 1
+        seconds: 2
 
     - service: script.ir_beamer_power_off
 
