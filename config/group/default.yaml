@@ -1,15 +1,11 @@
-default_view:
+default_view2:
   view: yes
   entities:
     - group.light
-    - group.motion
     - group.media
+    - group.motion
     - group.people
-
-climate:
-  view: yes
-  name: Klima
-  entities:
+    - group.states
     - group.flat
     - group.weather
 

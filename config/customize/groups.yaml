@@ -1,15 +1,15 @@
 # default_view
 group.light:
   order: 1
-group.motion:
+group.media:
   order: 2
-group.sound:
-  order: 3
-group.people:
-  order: 4
-
-# climate
 group.flat:
-  order: 1
+  order: 3
+group.motion:
+  order: 4
+group.people:
+  order: 5
 group.weather:
-  order: 2
+  order: 6
+group.states:
+  order: 7

@@ -53,7 +53,7 @@
       entity_id: light.kitchen
 
 
-- alias: ir_sony_light_kitchen
+- alias: ir_sony_livingroom_bass
   trigger:
     - platform: event
       event_type: ir_command_received
