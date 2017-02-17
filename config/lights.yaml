@@ -37,6 +37,11 @@
   command_topic: "homie/livingroom-light-back/switch/state/set"
 
 - platform: mqtt
+  name: livingroom_back_small
+  state_topic: "homie/livingroom-light-back-small/switch/state"
+  command_topic: "homie/livingroom-light-back-small/switch/state/set"
+
+- platform: mqtt
   name: bedroom
   state_topic: "homie/bedroom-light/switch/state"
   command_topic: "homie/bedroom-light/switch/state/set"

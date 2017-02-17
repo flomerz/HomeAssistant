@@ -5,7 +5,10 @@ light.kitchen:
   friendly_name: Küche
 
 light.livingroom_back:
-  friendly_name: Wohnzimmer
+  friendly_name: Wohnzimmer Stehlampe
+
+light.livingroom_back_small:
+  friendly_name: Wohnzimmer Sofatisch
 
 light.livingroom_front:
   friendly_name: Wohnzimmer Vorne

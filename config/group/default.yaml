@@ -17,6 +17,7 @@ light:
     - light.rainbow
     - light.livingroom_led_top
     - light.livingroom_back
+    - light.livingroom_back_small
     - light.livingroom_front
     - light.bedroom
     - light.wc
