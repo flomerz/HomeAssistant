@@ -20,6 +20,28 @@
       entity_id: light.livingroom_front
 
 
+- alias: ir_sony_light_floor
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_1'
+  action:
+    - service: light.toggle
+      entity_id: light.floor
+
+
+- alias: ir_sony_light_kitchen
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_2'
+  action:
+    - service: light.toggle
+      entity_id: light.kitchen
+
+
 - alias: ir_sony_light_rainbow
   trigger:
     - platform: event
@@ -31,47 +53,15 @@
       entity_id: light.rainbow
 
 
-- alias: ir_sony_light_floor
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_4'
-  action:
-    - service: light.toggle
-      entity_id: light.floor
-
-
-- alias: ir_sony_light_kitchen
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_5'
-  action:
-    - service: light.toggle
-      entity_id: light.kitchen
-
-
 - alias: ir_sony_livingroom_bass
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_6'
-  action:
-    - service: switch.toggle
-      entity_id: switch.livingroom_bass
-
-
-- alias: ir_sony_receiver_power
   trigger:
     - platform: event
       event_type: ir_command_received
       event_data:
         button_name: 'KEY_7'
   action:
-    - service: script.ir_receiver_power
+    - service: switch.toggle
+      entity_id: switch.livingroom_bass
 
 
 - alias: ir_sony_beamer_power_on
@@ -79,7 +69,7 @@
     - platform: event
       event_type: ir_command_received
       event_data:
-        button_name: 'KEY_8'
+        button_name: 'KEY_TV'
   action:
     - service: script.ir_beamer_power_on
 
@@ -89,6 +79,6 @@
     - platform: event
       event_type: ir_command_received
       event_data:
-        button_name: 'KEY_9'
+        button_name: 'KEY_TV_HOLD'
   action:
     - service: script.ir_beamer_power_off

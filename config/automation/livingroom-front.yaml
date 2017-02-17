@@ -1,15 +1,3 @@
-- alias: Livingroom Front OFF 10 min
-  trigger:
-    platform: state
-    entity_id: light.livingroom_front
-    to: 'on'
-    for:
-      minutes: 10
-  action:
-    service: light.turn_off
-    entity_id: light.livingroom_front
-
-
 - alias: MQTT Toggle
   trigger:
     platform: mqtt

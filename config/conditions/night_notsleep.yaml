@@ -1,13 +1,7 @@
-- condition: and
-  conditions:
-    - condition: or
-      conditions:
-        - condition: sun
-          after: sunset
-          after_offset: "-01:00:00"
-        - condition: sun
-          before: sunrise
-          before_offset: "01:00:00"
-    - condition: state
-      entity_id: binary_sensor.sleep
-      state: 'off'
+condition: and
+conditions:
+  - condition: and
+    conditions: !include night.yaml
+  - condition: state
+    entity_id: binary_sensor.sleep
+    state: 'off'

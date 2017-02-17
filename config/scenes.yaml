@@ -11,7 +11,7 @@
 - name: all_off
   entities:
     group.light: off
-    group.sound: off
+    group.media: off
 
 - name: green
   entities:

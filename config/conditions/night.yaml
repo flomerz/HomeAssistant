@@ -1,8 +1,8 @@
-- condition: or
-  conditions:
-    - condition: sun
-      after: sunset
-      after_offset: "-01:00:00"
-    - condition: sun
-      before: sunrise
-      before_offset: "01:00:00"
+condition: or
+conditions:
+  - condition: sun
+    after: sunset
+    after_offset: !env_var NIGHT_BEFORE_OFFSET
+  - condition: sun
+    before: sunrise
+    before_offset: !env_var NIGHT_AFTER_OFFSET

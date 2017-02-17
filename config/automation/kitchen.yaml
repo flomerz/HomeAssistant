@@ -17,7 +17,7 @@
     entity_id: binary_sensor.kitchen_motion
     to: 'off'
     for:
-      minutes: 1
+      seconds: !env_var KITCHEN_LIGHT_SECONDS
   action:
     service: light.turn_off
     entity_id: light.kitchen
