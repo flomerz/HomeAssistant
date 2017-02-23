@@ -4,3 +4,42 @@ scene_ambient:
       conditions: !include ../conditions/night.yaml
     - service: scene.turn_on
       entity_id: scene.ambient
+    - service: script.livingroom_led_color_high
+
+scene_pause:
+  sequence:
+    - condition: and
+      conditions: !include ../conditions/night.yaml
+    - service: scene.turn_on
+      entity_id: scene.pause
+    - service: script.livingroom_led_color_high
+    - delay:
+        minutes: 10
+    - service: script.scene_media
+
+scene_media:
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.media
+    - service: script.livingroom_led_color_low
+
+scene_all_off:
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.all_off
+
+scene_all_on:
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.all_on
+    - service: script.livingroom_led_color_high
+
+scene_night:
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.night
+
+scene_floor_ambient:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.floor

@@ -7,3 +7,8 @@
   name: mill
   state_topic: "homie/mill/on/state"
   command_topic: "homie/mill/on/state/set"
+
+- platform: mqtt
+  name: espresso
+  state_topic: "homie/espresso/switch/state"
+  command_topic: "homie/espresso/switch/state/set"

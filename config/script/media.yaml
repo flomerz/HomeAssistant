@@ -1,3 +1,14 @@
+media_power_toggle:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state('input_select.media_power', 'False') %}
+            script.media_power_on
+          {% else %}
+            script.media_power_off
+          {% endif %}
+
 media_power_on:
   sequence:
 
@@ -16,8 +27,7 @@ media_power_on:
     - delay:
         seconds: 10
 
-    - service: scene.turn_on
-      entity_id: scene.media
+    - service: script.scene_media
 
     - service: switch.turn_on
       entity_id: switch.livingroom_bass

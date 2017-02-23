@@ -1,0 +1,101 @@
+livingroom_led_color_high:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        brightness: 255
+    - service: script.livingroom_led_color
+
+livingroom_led_color_medium:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        brightness: 130
+    - service: script.livingroom_led_color
+
+livingroom_led_color_low:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        brightness: 50
+    - service: script.livingroom_led_color
+
+livingroom_led_color:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        rgb_color: [243,255,246]
+        transition: 60
+
+    - delay:
+        minutes: 10
+
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        rgb_color: [239,255,205]
+        transition: 60
+
+    - delay:
+        minutes: 10
+
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        rgb_color: [255,221,131]
+        transition: 60
+
+    - delay:
+        minutes: 10
+
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        rgb_color: [255,193,129]
+        transition: 60
+
+    - delay:
+        minutes: 10
+
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        rgb_color: [255,188,185]
+        transition: 60
+
+    - delay:
+        minutes: 10
+
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        rgb_color: [255,195,203]
+        transition: 60
+
+    - delay:
+        minutes: 10
+
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        rgb_color: [255,193,255]
+        transition: 60
+
+    - delay:
+        minutes: 10
+
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        rgb_color: [248,248,255]
+        transition: 60
+
+    - delay:
+        minutes: 10
+
+    - service: script.loop
+      data:
+        script: livingroom_led_color

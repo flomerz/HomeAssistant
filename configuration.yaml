@@ -28,11 +28,7 @@ history:
       - binary_sensor
       - sensor
 
-panel_iframe:
-  mqtt:
-    title: 'MQTT'
-    icon: mdi:share-variant
-    url: !secret mqtt_graph_url
+panel_iframe: !include config/panel.yaml
 
 sun:
 
@@ -71,7 +67,7 @@ input_select: !include_dir_merge_named config/input_select
 
 group: !include_dir_merge_named config/group
 
-scene: !include config/scenes.yaml
+scene: !include_dir_merge_list config/scene
 
 automation: !include_dir_merge_list config/automation
 

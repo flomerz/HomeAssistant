@@ -1,26 +1,44 @@
-- alias: ir_sony_light_livingroom_back
+- alias: ir_sony_tv
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_TV'
+  action:
+      - service: script.media_power_toggle
+
+
+- alias: ir_sony_play
   trigger:
     - platform: event
       event_type: ir_command_received
       event_data:
         button_name: 'KEY_PLAY'
   action:
-    - service: light.toggle
-      entity_id: light.livingroom_back
+    - service: script.scene_media
 
 
-- alias: ir_sony_light_livingroom_front
+- alias: ir_sony_pause
   trigger:
     - platform: event
       event_type: ir_command_received
       event_data:
         button_name: 'KEY_PAUSE'
   action:
-    - service: light.toggle
-      entity_id: light.livingroom_front
+    - service: script.scene_pause
 
 
-- alias: ir_sony_light_floor
+- alias: ir_sony_stop
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_STOP'
+  action:
+    - service: script.scene_ambient
+
+
+- alias: ir_sony_1
   trigger:
     - platform: event
       event_type: ir_command_received
@@ -28,10 +46,10 @@
         button_name: 'KEY_1'
   action:
     - service: light.toggle
-      entity_id: light.floor
+      entity_id: light.livingroom_front
 
 
-- alias: ir_sony_light_kitchen
+- alias: ir_sony_2
   trigger:
     - platform: event
       event_type: ir_command_received
@@ -39,10 +57,10 @@
         button_name: 'KEY_2'
   action:
     - service: light.toggle
-      entity_id: light.kitchen
+      entity_id: light.rainbow
 
 
-- alias: ir_sony_light_rainbow
+- alias: ir_sony_3
   trigger:
     - platform: event
       event_type: ir_command_received
@@ -50,35 +68,68 @@
         button_name: 'KEY_3'
   action:
     - service: light.toggle
-      entity_id: light.rainbow
+      entity_id: light.floor
 
 
-- alias: ir_sony_livingroom_bass
+- alias: ir_sony_4
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_4'
+  action:
+    - service: light.toggle
+      entity_id: light.livingroom_back
+
+
+- alias: ir_sony_5
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_5'
+  action:
+    - service: light.toggle
+      entity_id: light.livingroom_back_small
+
+
+- alias: ir_sony_6
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_6'
+  action:
+    - service: light.toggle
+      entity_id: light.kitchen
+
+
+- alias: ir_sony_7
   trigger:
     - platform: event
       event_type: ir_command_received
       event_data:
         button_name: 'KEY_7'
   action:
-    - service: switch.toggle
-      entity_id: switch.livingroom_bass
+    - service: script.scene_all_on
 
 
-- alias: ir_sony_beamer_power_on
+- alias: ir_sony_8
   trigger:
     - platform: event
       event_type: ir_command_received
       event_data:
-        button_name: 'KEY_TV'
+        button_name: 'KEY_8'
   action:
-    - service: script.ir_beamer_power_on
+    - service: script.scene_all_off
 
 
-- alias: ir_sony_receiver_power_off
+- alias: ir_sony_9
   trigger:
     - platform: event
       event_type: ir_command_received
       event_data:
-        button_name: 'KEY_TV_HOLD'
+        button_name: 'KEY_9'
   action:
-    - service: script.ir_beamer_power_off
+    - service: light.toggle
+      entity_id: light.bedroom

@@ -1,0 +1,58 @@
+- alias: Louisa Home
+  trigger:
+    - platform: state
+      entity_id: device_tracker.eefa3116_louisa
+      to: 'home'
+  action:
+    service: notify.flo
+    data:
+      title: HA
+      message: "Louisa ist Zuhause!"
+
+
+- alias: Myrtha Home
+  trigger:
+    - platform: state
+      entity_id: device_tracker.myrtha
+      to: 'home'
+  action:
+    service: notify.flo
+    data:
+      title: HA
+      message: "Myrtha ist Zuhause!"
+
+
+- alias: Ries Home
+  trigger:
+    - platform: state
+      entity_id: device_tracker.ries
+      to: 'home'
+  action:
+    service: notify.flo
+    data:
+      title: HA
+      message: "Ries ist Zuhause!"
+
+
+- alias: Bri Home
+  trigger:
+    - platform: state
+      entity_id: device_tracker.bri
+      to: 'home'
+  action:
+    service: notify.flo
+    data:
+      title: HA
+      message: "Bri ist Zuhause!"
+
+
+- alias: Gubi Home
+  trigger:
+    - platform: state
+      entity_id: device_tracker.gubi
+      to: 'home'
+  action:
+    service: notify.flo
+    data:
+      title: HA
+      message: "Gubi ist Zuhause!"

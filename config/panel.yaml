@@ -1,0 +1,9 @@
+mqtt_graph:
+  title: 'MQTT Graph'
+  icon: mdi:share-variant
+  url: !secret mqtt_graph_url
+
+homie_ota:
+  title: 'Homie OTA'
+  icon: mdi:cloud-download
+  url: !secret homie-ota_url

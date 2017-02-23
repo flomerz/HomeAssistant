@@ -5,14 +5,7 @@
       event_data:
         button_name: KEY_POWER
   action:
-    - service: script.turn_on
-      data_template:
-        entity_id: >
-          {% if is_state('input_select.media_power', 'False') %}
-            script.media_power_on
-          {% else %}
-            script.media_power_off
-          {% endif %}
+    - service: script.media_power_toggle
 
 
 - alias: media_power_selected

@@ -8,15 +8,6 @@
   rgb_command_topic: "homie/rainbow-light/light/rgb/set"
 
 - platform: mqtt
-  name: livingroom_led_top
-  state_topic: "homie/livingroom-led-top/light/state"
-  command_topic: "homie/livingroom-led-top/light/state/set"
-  brightness_state_topic: "homie/livingroom-led-top/light/brightness"
-  brightness_command_topic: "homie/livingroom-led-top/light/brightness/set"
-  rgb_state_topic: "homie/livingroom-led-top/light/rgb"
-  rgb_command_topic: "homie/livingroom-led-top/light/rgb/set"
-
-- platform: mqtt
   name: floor
   state_topic: "homie/floor-light/switch/state"
   command_topic: "homie/floor-light/switch/state/set"
@@ -50,3 +41,39 @@
   name: wc
   state_topic: "homie/wc-light/switch/state"
   command_topic: "homie/wc-light/switch/state/set"
+
+- platform: mqtt_template
+  name: livingroom_led_top
+  effect_list:
+    - none
+    - rainbow
+  command_topic: "homie/livingroom-led-top/light/rgb/set"
+  state_topic: "homie/livingroom-led-top/light/rgb"
+  command_on_template: >
+    {
+      "state": "on"
+
+      {%- if red is defined and green is defined and blue is defined -%}
+      , "color": ["{{ red }}", "{{ green }}", "{{ blue }}"]
+      {%- endif -%}
+      
+      {%- if brightness is defined -%}
+      , "brightness": {{ brightness }}
+      {%- endif -%}
+      
+      
+      {%- if effect is defined -%}
+      , "effect": "{{ effect }}"
+      {%- endif -%}
+      
+      {%- if transition is defined -%}
+      , "transition": {{ transition }}
+      {%- endif -%}
+    }
+  command_off_template: '{"state": "off"}'
+  state_template: '{{ value_json.state }}'
+  brightness_template: '{{ value_json.brightness }}'
+  red_template: '{{ value_json.color[0] }}'
+  green_template: '{{ value_json.color[1] }}'
+  blue_template: '{{ value_json.color[2] }}'
+  effect_template: '{{ value_json.effect }}'

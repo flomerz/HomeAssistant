@@ -1,0 +1,28 @@
+- name: media
+  entities:
+    light.rainbow: on
+    light.livingroom_back: off
+    light.livingroom_front: off
+    light.livingroom_back_small: off
+
+- name: pause
+  entities:
+    light.rainbow: on
+    light.livingroom_front: on
+    light.livingroom_back_small: on
+
+- name: ambient
+  entities:
+    light.rainbow: on
+
+- name: all_on
+  entities:
+    group.light: on
+
+- name: all_off
+  entities:
+    group.light: off
+
+- name: night
+  entities:
+    light.wc: on

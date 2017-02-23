@@ -16,8 +16,12 @@ light.livingroom_front:
 light.livingroom_led_top:
   friendly_name: Wohnzimmer LED
 
+script.livingroom_led_color:
+  friendly_name: Wohnzimmer LED Auto Color
+  icon: mdi:sync
+
 light.rainbow:
-  friendly_name: Rainbow
+  friendly_name: Wohnzimmer Rainbow
 
 light.bedroom:
   friendly_name: Schlafzimmer

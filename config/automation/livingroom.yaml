@@ -1,0 +1,18 @@
+- alias: Front MQTT Toggle
+  trigger:
+    platform: mqtt
+    topic: cmd/livingroom/light/front
+
+  action:
+    - service: light.toggle
+      entity_id: light.livingroom_front
+
+- alias: LED OFF
+  trigger:
+    platform: state
+    entity_id: light.livingroom_led_top
+    to: 'off'
+
+  action:
+    - service: script.turn_off
+      entity_id: script.livingroom_led_color

@@ -7,13 +7,13 @@
   condition: !include ../conditions/night.yaml
 
   action:
-    service: light.turn_on
+    service: script.turn_on
     data_template:
       entity_id: >
         {% if is_state('binary_sensor.sleep', 'on') %}
-          light.wc
+          script.scene_night
         {% else %}
-          light.floor
+          script.scene_floor_ambient
         {% endif %}
 
 

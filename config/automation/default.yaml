@@ -5,7 +5,7 @@
       to: 'home'
     - platform: sun
       event: 'sunset'
-      offset: '-01:00:00'
+      offset: !env_var NIGHT_BEFORE_OFFSET
 
   condition:
     condition: and
@@ -16,11 +16,10 @@
       entity_id: group.people
       state: 'home'
     - condition: time
-      before: '21:00'
+      before: '00:00'
 
   action:
-    - service: scene.turn_on
-      entity_id: scene.ambient
+    - service: script.scene_ambient
 
 
 - alias: All OFF
@@ -33,18 +32,4 @@
       to: 'not_home'
 
   action:
-    - service: scene.turn_on
-      entity_id: scene.all_off
-
-
-- alias: Louisa Home
-  trigger:
-    - platform: state
-      entity_id: group.people
-      to: 'home'
-
-  action:
-    service_template: notify.flo
-    data_template:
-      title: HA
-      message: "{{ trigger.entity_id }} ist Zuhause!"
+    - service: script.scene_all_off
