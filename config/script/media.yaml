@@ -25,7 +25,7 @@ media_power_on:
     - service: script.ir_beamer_power_on
 
     - delay:
-        seconds: 10
+        seconds: 30
 
     - service: script.scene_media
 
@@ -52,6 +52,11 @@ media_power_off:
         seconds: 2
 
     - service: script.ir_beamer_power_off
+
+    - delay:
+        minutes: 2
+
+    - service: script.scene_livingroom_off
 
 
 media_channel:

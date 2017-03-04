@@ -1,25 +1,25 @@
-- alias: Any Home
-  trigger:
-    - platform: state
-      entity_id: group.people
-      to: 'home'
-    - platform: sun
-      event: 'sunset'
-      offset: !env_var NIGHT_BEFORE_OFFSET
+# - alias: Any Home
+#   trigger:
+#     - platform: state
+#       entity_id: group.people
+#       to: 'home'
+#     - platform: sun
+#       event: 'sunset'
+#       offset: !env_var NIGHT_BEFORE_OFFSET
 
-  condition:
-    condition: and
-    conditions:
-    - condition: and
-      conditions: !include ../conditions/night_notsleep.yaml
-    - condition: state
-      entity_id: group.people
-      state: 'home'
-    - condition: time
-      before: '00:00'
+#   condition:
+#     condition: and
+#     conditions:
+#     - condition: and
+#       conditions: !include ../conditions/night_notsleep.yaml
+#     - condition: state
+#       entity_id: group.people
+#       state: 'home'
+#     - condition: time
+#       before: '00:00'
 
-  action:
-    - service: script.scene_ambient
+#   action:
+#     - service: script.scene_ambient
 
 
 - alias: All OFF

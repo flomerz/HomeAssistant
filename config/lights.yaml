@@ -47,11 +47,11 @@
   effect_list:
     - none
     - rainbow
+    - rainbow-light
   command_topic: "homie/livingroom-led-top/light/rgb/set"
   state_topic: "homie/livingroom-led-top/light/rgb"
   command_on_template: >
-    {
-      "state": "on"
+    {"state": "on"
 
       {%- if red is defined and green is defined and blue is defined -%}
       , "color": ["{{ red }}", "{{ green }}", "{{ blue }}"]

@@ -5,6 +5,14 @@
     light.livingroom_front: off
     light.livingroom_back_small: off
 
+- name: livingroom_off
+  entities:
+    light.rainbow: off
+    light.livingroom_back: off
+    light.livingroom_front: off
+    light.livingroom_back_small: off
+    light.livingroom_led_top: off
+
 - name: pause
   entities:
     light.rainbow: on
@@ -14,6 +22,7 @@
 - name: ambient
   entities:
     light.rainbow: on
+    light.livingroom_back_small: on
 
 - name: all_on
   entities:

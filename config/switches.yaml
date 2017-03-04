@@ -12,3 +12,8 @@
   name: espresso
   state_topic: "homie/espresso/switch/state"
   command_topic: "homie/espresso/switch/state/set"
+
+- platform: mqtt
+  name: livingroom_humidifier
+  state_topic: "homie/livingroom-steamer/switch/state"
+  command_topic: "homie/livingroom-steamer/switch/state/set"

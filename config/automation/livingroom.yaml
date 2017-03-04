@@ -7,12 +7,31 @@
     - service: light.toggle
       entity_id: light.livingroom_front
 
-- alias: LED OFF
+
+- alias: Livingroom Motion OFF
   trigger:
     platform: state
-    entity_id: light.livingroom_led_top
+    entity_id: binary_sensor.livingroom_motion
     to: 'off'
+    for:
+      minutes: 5
 
   action:
-    - service: script.turn_off
-      entity_id: script.livingroom_led_color
+    - service: script.scene_livingroom_off
+
+
+- alias: Livingroom Motion ON
+  trigger:
+    platform: state
+    entity_id: binary_sensor.livingroom_motion
+    to: 'on'
+
+  action:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state('input_select.media_power', 'True') %}
+            script.scene_media
+          {% else %}
+            script.scene_ambient
+          {% endif %}

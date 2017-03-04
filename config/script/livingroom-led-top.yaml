@@ -1,0 +1,33 @@
+livingroom_led_top_rainbow:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        effect: "rainbow"
+        transition: 300
+
+livingroom_led_top_rainbow_light:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        brightness: 255
+        transition: 5
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        effect: "rainbow-light"
+        transition: 300
+
+livingroom_led_top_rainbow_light_low:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        brightness: 50
+        transition: 5
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        effect: "rainbow-light"
+        transition: 300

@@ -4,7 +4,7 @@ scene_ambient:
       conditions: !include ../conditions/night.yaml
     - service: scene.turn_on
       entity_id: scene.ambient
-    - service: script.livingroom_led_color_high
+    - service: script.livingroom_led_top_rainbow_light
 
 scene_pause:
   sequence:
@@ -12,16 +12,20 @@ scene_pause:
       conditions: !include ../conditions/night.yaml
     - service: scene.turn_on
       entity_id: scene.pause
-    - service: script.livingroom_led_color_high
-    - delay:
-        minutes: 10
-    - service: script.scene_media
+    - service: script.livingroom_led_top_rainbow_light
 
 scene_media:
   sequence:
+    - condition: and
+      conditions: !include ../conditions/night.yaml
     - service: scene.turn_on
       entity_id: scene.media
-    - service: script.livingroom_led_color_low
+    - service: script.livingroom_led_top_rainbow_light_low
+
+scene_livingroom_off:
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.livingroom_off
 
 scene_all_off:
   sequence:
@@ -32,7 +36,7 @@ scene_all_on:
   sequence:
     - service: scene.turn_on
       entity_id: scene.all_on
-    - service: script.livingroom_led_color_high
+    - service: script.livingroom_led_top_rainbow
 
 scene_night:
   sequence:

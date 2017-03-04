@@ -16,7 +16,6 @@ light:
     - light.kitchen
     - light.livingroom_back
     - light.livingroom_led_top
-    - script.livingroom_led_color
     - light.livingroom_back_small
     - light.livingroom_front
     - light.rainbow
@@ -28,6 +27,7 @@ motion:
   entities:
     - binary_sensor.floor_motion
     - binary_sensor.kitchen_motion
+    - binary_sensor.livingroom_motion
     - binary_sensor.wc_motion
 
 people:

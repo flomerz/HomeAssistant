@@ -4,7 +4,7 @@ ir_send:
         milliseconds: 100
     - service: mqtt.publish
       data_template:
-        topic: "homie/dev/ir/send/set"
+        topic: "homie/livingroom-ir-sender/ir/send/set"
         payload: "{{ payload }}"
         qos: 2
 

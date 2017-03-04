@@ -14,3 +14,6 @@
   name: wc_motion
   state_topic: "homie/wc-light/motion/state"
 
+- platform: mqtt
+  name: livingroom_motion
+  state_topic: "homie/livingroom-motion/motion/state"

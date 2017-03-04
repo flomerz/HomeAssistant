@@ -6,3 +6,6 @@ conditions:
   - condition: sun
     before: sunrise
     before_offset: !env_var NIGHT_AFTER_OFFSET
+  - condition: state
+    entity_id: group.people
+    state: 'home'

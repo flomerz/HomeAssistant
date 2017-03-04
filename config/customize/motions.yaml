@@ -4,5 +4,8 @@ binary_sensor.floor_motion:
 binary_sensor.kitchen_motion:
   friendly_name: Küche
 
+binary_sensor.livingroom_motion:
+  friendly_name: Wohnzimmer
+
 binary_sensor.wc_motion:
   friendly_name: WC

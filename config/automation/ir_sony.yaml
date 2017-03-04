@@ -111,7 +111,10 @@
       event_data:
         button_name: 'KEY_7'
   action:
-    - service: script.scene_all_on
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        brightness: 255
 
 
 - alias: ir_sony_8
@@ -121,7 +124,44 @@
       event_data:
         button_name: 'KEY_8'
   action:
-    - service: script.scene_all_off
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        brightness: 125
+
+
+- alias: ir_sony_clear
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_CLEAR'
+  action:
+    - service: light.turn_on
+      entity_id: light.livingroom_led_top
+      data:
+        brightness: 50
+
+
+- alias: ir_sony_enter
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_ENTER'
+  action:
+    - service: script.livingroom_led_top_rainbow
+
+
+- alias: ir_sony_0
+  trigger:
+    - platform: event
+      event_type: ir_command_received
+      event_data:
+        button_name: 'KEY_0'
+  action:
+    - service: light.turn_off
+      entity_id: light.livingroom_led_top
 
 
 - alias: ir_sony_9
