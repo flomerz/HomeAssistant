@@ -1,11 +1,24 @@
-condition: or
-conditions:
-  - condition: sun
-    after: sunset
-    after_offset: !env_var NIGHT_BEFORE_OFFSET
-  - condition: sun
-    before: sunrise
-    before_offset: !env_var NIGHT_AFTER_OFFSET
-  - condition: state
-    entity_id: group.people
-    state: 'home'
+- condition: state
+  entity_id: group.people
+  state: 'home'
+- condition: or
+  conditions:
+    - condition: and
+      conditions:
+      - condition: numeric_state
+        entity_id: sensor.yr_symbol
+        above: 3
+      - condition: or
+        conditions:
+        - condition: sun
+          after: sunset
+          after_offset: !env_var NIGHT_BEFORE_OFFSET_DARK
+        - condition: sun
+          before: sunrise
+          before_offset: !env_var NIGHT_AFTER_OFFSET_DARK
+    - condition: sun
+      after: sunset
+      after_offset: !env_var NIGHT_BEFORE_OFFSET
+    - condition: sun
+      before: sunrise
+      before_offset: !env_var NIGHT_AFTER_OFFSET

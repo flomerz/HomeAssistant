@@ -9,3 +9,6 @@ binary_sensor.livingroom_motion:
 
 binary_sensor.wc_motion:
   friendly_name: WC
+
+binary_sensor.badroom_motion:
+  friendly_name: Bad

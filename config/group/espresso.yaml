@@ -1,17 +1,7 @@
-espresso_view:
-  view: yes
+espresso:
   name: Espresso
   entities:
-    - group.machine
-    - group.mill
-    - group.mill_config
-
-machine:
-  name: Maschine
-  entities:
     - switch.espresso
-    - sensor.espresso_temperature
-    - sensor.espresso_humidity
 
 mill:
   name: Mühle

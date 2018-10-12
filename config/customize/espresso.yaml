@@ -2,13 +2,6 @@ switch.espresso:
   friendly_name: Power
   icon: mdi:coffee
 
-sensor.espresso_temperature:
-  friendly_name: Temperatur
-
-sensor.espresso_humidity:
-  friendly_name: Feuchtigkeit
-  icon: mdi:water
-
 switch.mill:
   friendly_name: Power
   icon: mdi:coffee

@@ -17,3 +17,13 @@
   name: livingroom_humidifier
   state_topic: "homie/livingroom-steamer/switch/state"
   command_topic: "homie/livingroom-steamer/switch/state/set"
+
+- platform: mqtt
+  name: resin
+  state_topic: "homie/resin/switch/state"
+  command_topic: "homie/resin/switch/state/set"
+
+- platform: xiaomi_vacuum
+  name: "Staubi"
+  host: "rockrobo"
+  token: "3249544c437648434d32433441345454"

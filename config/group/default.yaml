@@ -1,26 +1,23 @@
-default_view2:
-  view: yes
-  entities:
-    - group.light
-    - group.media
-    - group.motion
-    - group.people
-    - group.states
-    - group.flat
-    - group.weather
-
 light:
-  name: Licht
+  name: Wohnung
   entities:
     - light.floor
     - light.kitchen
+    - group.light_livingroom
+    - light.bedroom
+    - light.wc
+    - light.badroom
+
+light_livingroom:
+  name: Wohnzimmer
+  entities:
     - light.livingroom_back
     - light.livingroom_led_top
+    - light.livingroom_led_top_front
+    - light.livingroom_led_top_back
     - light.livingroom_back_small
     - light.livingroom_front
     - light.rainbow
-    - light.bedroom
-    - light.wc
 
 motion:
   name: Bewegungsmelder
@@ -29,12 +26,13 @@ motion:
     - binary_sensor.kitchen_motion
     - binary_sensor.livingroom_motion
     - binary_sensor.wc_motion
+    - binary_sensor.badroom_motion
 
 people:
   name: Leute
   entities:
     - device_tracker.f1e84262_flo
-    - device_tracker.eefa3116_louisa
+    - device_tracker.louisa
     - device_tracker.myrtha
     - device_tracker.ries
     - device_tracker.bri
@@ -55,8 +53,9 @@ media:
 
 states:
   name: Zustände
-  entities:
+  entities:    
     - binary_sensor.sleep
+    - input_boolean.sleep
 
 weather:
   name: Wetter
@@ -73,5 +72,17 @@ weather:
 flat:
   name: Wohnung
   entities:
-    - sensor.flat_temperature
-    - sensor.flat_humidity
+    - sensor.livingroom_temperature
+    - sensor.livingroom_humidity
+    - sensor.kitchen_temperature
+    - sensor.kitchen_humidity
+    - sensor.mold_indicator
+    - switch.livingroom_humidifier
+    - switch.resin
+
+scenes:
+  name: Scenes
+  entities:
+    - script.scene_ambient
+    - script.scene_media
+    - script.scene_pause

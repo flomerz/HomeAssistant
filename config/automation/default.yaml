@@ -33,3 +33,26 @@
 
   action:
     - service: script.scene_all_off
+
+# - alias: Near Home
+#   trigger:
+#     platform: zone
+#     entity_id: device_tracker.f1e84262_flo
+#     zone: zone.near_home
+#     event: enter
+#   action:
+#     service: notify.flo
+#     data:
+#       title: HA
+#       message: "Espresso ON!"
+
+
+- alias: sleep_switch
+  trigger:
+    - platform: state
+      entity_id: input_boolean.sleep
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "cmd/sleep"
+        payload_template: '{{states.input_boolean.sleep.state}}'

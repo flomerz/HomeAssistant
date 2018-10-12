@@ -4,25 +4,49 @@
     light.livingroom_back: off
     light.livingroom_front: off
     light.livingroom_back_small: off
+    light.livingroom_led_top_front: off
+    light.livingroom_led_top_back:
+      state: on
+      brightness: 50
 
-- name: livingroom_off
+- name: media_eat
   entities:
-    light.rainbow: off
+    light.rainbow: on
     light.livingroom_back: off
     light.livingroom_front: off
     light.livingroom_back_small: off
-    light.livingroom_led_top: off
+    light.livingroom_led_top_front: off
+    light.livingroom_led_top_back:
+      state: on
+      brightness: 100
+
+- name: livingroom_off
+  entities:
+    switch.resin: off
+    group.light_livingroom: off
 
 - name: pause
   entities:
     light.rainbow: on
     light.livingroom_front: on
     light.livingroom_back_small: on
+    light.livingroom_led_top: off
+    light.livingroom_led_top_front:
+      state: on
+      brightness: 50
+    light.livingroom_led_top_back: on
 
 - name: ambient
   entities:
     light.rainbow: on
-    light.livingroom_back_small: on
+    light.livingroom_front: on
+    light.livingroom_back_small: off
+    light.livingroom_led_top_front:
+      state: on
+      brightness: 80
+    light.livingroom_led_top_back:
+      state: on
+      brightness: 80
 
 - name: all_on
   entities:
@@ -30,7 +54,9 @@
 
 - name: all_off
   entities:
-    group.light: off
+    switch.resin: off
+    group.all_lights: off
+    group.all_switches: off
 
 - name: night
   entities:

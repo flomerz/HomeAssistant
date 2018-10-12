@@ -2,10 +2,10 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home Assistant
   # Location required to calculate the time the sun rises and set
-  latitude: 47.1969578
-  longitude: 8.7148761
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 514
+  elevation: !secret home_elevation
   # metric for Metric, imperial for Imperial
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -19,7 +19,7 @@ http: !include config/http.yaml
 
 updater:
 
-history:
+recorder:
   include:
     domains:
       - light
@@ -27,6 +27,12 @@ history:
       - device_tracker
       - binary_sensor
       - sensor
+
+history:
+
+logbook:
+
+config:
 
 panel_iframe: !include config/panel.yaml
 
@@ -36,6 +42,8 @@ lirc:
 
 mqtt:
   broker: localhost
+
+zone: !include config/zones.yaml
 
 device_tracker:
   - platform: ddwrt
@@ -65,10 +73,13 @@ input_slider: !include config/input_sliders.yaml
 
 input_select: !include_dir_merge_named config/input_select
 
+input_boolean: !include config/input_boolean.yaml
+
 group: !include_dir_merge_named config/group
 
 scene: !include_dir_merge_list config/scene
 
 automation: !include_dir_merge_list config/automation
+# automation: !include automations.yaml
 
 script: !include_dir_merge_named config/script

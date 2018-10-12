@@ -1,0 +1,43 @@
+- alias: Espresso ON
+  trigger:
+    # - platform: state
+    #   entity_id: binary_sensor.sleep
+    #   to: 'off'
+    - platform: mqtt
+      topic: cmd/espresso
+
+  action:
+    service: switch.turn_on
+    entity_id: switch.espresso
+
+
+- alias: Espresso OFF
+  trigger:
+    - platform: state
+      entity_id: sensor.kitchen_motion
+      to: 'off'
+      for:
+        minutes: 5
+
+    - platform: state
+      entity_id: switch.espresso
+      to: 'on'
+      for:
+        minutes: 30
+
+  condition:
+    - condition: state
+      entity_id: sensor.kitchen_motion
+      state: 'off'
+      for:
+        minutes: 5
+
+    - condition: state
+      entity_id: switch.espresso
+      state: 'on'
+      for:
+        minutes: 30
+
+  action:
+    service: switch.turn_off
+    entity_id: switch.espresso

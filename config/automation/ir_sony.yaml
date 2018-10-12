@@ -15,7 +15,8 @@
       event_data:
         button_name: 'KEY_PLAY'
   action:
-    - service: script.scene_media
+    - service: scene.turn_on
+      entity_id: scene.media
 
 
 - alias: ir_sony_pause
@@ -25,7 +26,8 @@
       event_data:
         button_name: 'KEY_PAUSE'
   action:
-    - service: script.scene_pause
+    - service: scene.turn_on
+      entity_id: scene.pause
 
 
 - alias: ir_sony_stop
@@ -35,7 +37,8 @@
       event_data:
         button_name: 'KEY_STOP'
   action:
-    - service: script.scene_ambient
+    - service: scene.turn_on
+      entity_id: scene.ambient
 
 
 - alias: ir_sony_1
@@ -45,8 +48,8 @@
       event_data:
         button_name: 'KEY_1'
   action:
-    - service: light.toggle
-      entity_id: light.livingroom_front
+    - service: scene.turn_on
+      entity_id: scene.media_eat
 
 
 - alias: ir_sony_2
@@ -56,78 +59,83 @@
       event_data:
         button_name: 'KEY_2'
   action:
-    - service: light.toggle
-      entity_id: light.rainbow
+    - service: switch.toggle
+      entity_id: switch.livingroom_bass
 
 
-- alias: ir_sony_3
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_3'
-  action:
-    - service: light.toggle
-      entity_id: light.floor
+# - alias: ir_sony_3
+#   trigger:
+#     - platform: event
+#       event_type: ir_command_received
+#       event_data:
+#         button_name: 'KEY_3'
+#   action:
+#     - service: switch.toggle
+#       entity_id: switch.espresso
 
 
-- alias: ir_sony_4
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_4'
-  action:
-    - service: light.toggle
-      entity_id: light.livingroom_back
+# - alias: ir_sony_4
+#   trigger:
+#     - platform: event
+#       event_type: ir_command_received
+#       event_data:
+#         button_name: 'KEY_4'
+#   action:
+#     - service: switch.toggle
+#       entity_id: switch.resin
 
 
-- alias: ir_sony_5
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_5'
-  action:
-    - service: light.toggle
-      entity_id: light.livingroom_back_small
+# - alias: ir_sony_5
+#   trigger:
+#     - platform: event
+#       event_type: ir_command_received
+#       event_data:
+#         button_name: 'KEY_5'
+#   action:
+#     - service: light.toggle
+#       entity_id: light.livingroom_back_small
 
 
-- alias: ir_sony_6
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_6'
-  action:
-    - service: light.toggle
-      entity_id: light.kitchen
+# - alias: ir_sony_6
+#   trigger:
+#     - platform: event
+#       event_type: ir_command_received
+#       event_data:
+#         button_name: 'KEY_6'
+#   action:
+#     - service: light.toggle
+#       entity_id: light.kitchen
 
 
-- alias: ir_sony_7
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_7'
-  action:
-    - service: light.turn_on
-      entity_id: light.livingroom_led_top
-      data:
-        brightness: 255
+# - alias: ir_sony_7
+#   trigger:
+#     - platform: event
+#       event_type: ir_command_received
+#       event_data:
+#         button_name: 'KEY_7'
+#   action:
+#     - service: script.livingroom_led_top_brightness_max
 
 
-- alias: ir_sony_8
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_8'
-  action:
-    - service: light.turn_on
-      entity_id: light.livingroom_led_top
-      data:
-        brightness: 125
+# - alias: ir_sony_8
+#   trigger:
+#     - platform: event
+#       event_type: ir_command_received
+#       event_data:
+#         button_name: 'KEY_8'
+#   action:
+#     - service: script.livingroom_led_top_brightness_medium
+
+
+# - alias: ir_sony_9
+#   trigger:
+#     - platform: event
+#       event_type: ir_command_received
+#       event_data:
+#         button_name: 'KEY_9'
+#   action:
+#     - service: switch.toggle
+#       entity_id: switch.staubi
 
 
 - alias: ir_sony_clear
@@ -137,10 +145,8 @@
       event_data:
         button_name: 'KEY_CLEAR'
   action:
-    - service: light.turn_on
-      entity_id: light.livingroom_led_top
-      data:
-        brightness: 50
+    - service: switch.toggle
+      entity_id: switch.resin
 
 
 - alias: ir_sony_enter
@@ -150,7 +156,8 @@
       event_data:
         button_name: 'KEY_ENTER'
   action:
-    - service: script.livingroom_led_top_rainbow
+    - service: switch.toggle
+      entity_id: switch.espresso
 
 
 - alias: ir_sony_0
@@ -160,16 +167,5 @@
       event_data:
         button_name: 'KEY_0'
   action:
-    - service: light.turn_off
-      entity_id: light.livingroom_led_top
-
-
-- alias: ir_sony_9
-  trigger:
-    - platform: event
-      event_type: ir_command_received
-      event_data:
-        button_name: 'KEY_9'
-  action:
-    - service: light.toggle
-      entity_id: light.bedroom
+    - service: switch.toggle
+      entity_id: switch.staubi

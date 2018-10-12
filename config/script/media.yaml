@@ -12,12 +12,20 @@ media_power_toggle:
 media_power_on:
   sequence:
 
+    - service: script.turn_off
+      entity_id: script.media_power_off
+
     - service: input_select.select_option
       data:
         entity_id: input_select.media_power
         option: True
     
-    - service: script.ir_receiver_power
+    - service: script.ir_receiver_tv
+
+    - delay:
+        seconds: 2
+
+    - service: script.ir_beamer_power_on
 
     - delay:
         seconds: 2
@@ -26,15 +34,21 @@ media_power_on:
 
     - delay:
         seconds: 30
-
-    - service: script.scene_media
-
+    
     - service: switch.turn_on
       entity_id: switch.livingroom_bass
+
+    - condition: and
+      conditions: !include ../conditions/night_notsleep.yaml
+    
+    - service: script.scene_media
 
 
 media_power_off:
   sequence:
+
+    - service: script.turn_off
+      entity_id: script.media_power_on
     
     - service: input_select.select_option
       data:
@@ -57,6 +71,9 @@ media_power_off:
         minutes: 2
 
     - service: script.scene_livingroom_off
+
+    - service: switch.turn_off
+      entity_id: switch.livingroom_bass
 
 
 media_channel:

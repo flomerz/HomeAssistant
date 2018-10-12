@@ -26,6 +26,11 @@
     entity_id: binary_sensor.livingroom_motion
     to: 'on'
 
+  condition:
+    - condition: state
+      entity_id: group.light_livingroom
+      state: 'off'
+
   action:
     - service: script.turn_on
       data_template:

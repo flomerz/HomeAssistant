@@ -42,14 +42,19 @@
   state_topic: "homie/wc-light/switch/state"
   command_topic: "homie/wc-light/switch/state/set"
 
+- platform: mqtt
+  name: badroom
+  state_topic: "homie/badroom-light/switch/state"
+  command_topic: "homie/badroom-light/switch/state/set"
+
 - platform: mqtt_template
   name: livingroom_led_top
   effect_list:
     - none
     - rainbow
     - rainbow-light
-  command_topic: "homie/livingroom-led-top/light/rgb/set"
-  state_topic: "homie/livingroom-led-top/light/rgb"
+  command_topic: "homie/livingroom-led-top/rgb/value/set"
+  state_topic: "homie/livingroom-led-top/rgb/value"
   command_on_template: >
     {"state": "on"
 
@@ -77,3 +82,17 @@
   green_template: '{{ value_json.color[1] }}'
   blue_template: '{{ value_json.color[2] }}'
   effect_template: '{{ value_json.effect }}'
+
+- platform: mqtt
+  name: livingroom_led_top_front
+  state_topic: "homie/livingroom-led-top/w1/state"
+  command_topic: "homie/livingroom-led-top/w1/state/set"
+  brightness_state_topic: "homie/livingroom-led-top/w1/value"
+  brightness_command_topic: "homie/livingroom-led-top/w1/value/set"
+
+- platform: mqtt
+  name: livingroom_led_top_back
+  state_topic: "homie/livingroom-led-top/w2/state"
+  command_topic: "homie/livingroom-led-top/w2/state/set"
+  brightness_state_topic: "homie/livingroom-led-top/w2/value"
+  brightness_command_topic: "homie/livingroom-led-top/w2/value/set"

@@ -2,24 +2,37 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.espresso_humidity
-    below: 49
+    below: 45
   action:
     - service: switch.turn_on
       entity_id: switch.livingroom_humidifier
     - service: notify.flo
       data_template:
         title: HA
-        message: "Luftbefeuchter ON ({{ states.sensor.espresso_humidity.state }}%)"
+        message: "Luftbefeuchter ON {{ states.sensor.espresso_humidity.state }}%"
+
 
 - alias: Humidifier OFF
   trigger:
     platform: numeric_state
     entity_id: sensor.espresso_humidity
-    above: 50
+    above: 55
   action:
     - service: switch.turn_off
       entity_id: switch.livingroom_humidifier
     - service: notify.flo
       data_template:
         title: HA
-        message: "Luftbefeuchter OFF ({{ states.sensor.espresso_humidity.state }}%)"
+        message: "Luftbefeuchter OFF {{ states.sensor.espresso_humidity.state }}%"
+
+
+- alias: Mold Notifier
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.mold_indicator
+    above: 70
+  action:
+    - service: notify.flo
+      data_template:
+        title: HA
+        message: "Lüften!"

@@ -1,26 +1,33 @@
 scene_ambient:
   sequence:
     - condition: and
-      conditions: !include ../conditions/night.yaml
+      conditions: !include ../conditions/night_notsleep.yaml
     - service: scene.turn_on
       entity_id: scene.ambient
-    - service: script.livingroom_led_top_rainbow_light
+    - service: script.livingroom_led_top_rainbow_low
 
 scene_pause:
   sequence:
     - condition: and
-      conditions: !include ../conditions/night.yaml
+      conditions: !include ../conditions/night_notsleep.yaml
     - service: scene.turn_on
       entity_id: scene.pause
-    - service: script.livingroom_led_top_rainbow_light
 
 scene_media:
   sequence:
     - condition: and
-      conditions: !include ../conditions/night.yaml
+      conditions: !include ../conditions/night_notsleep.yaml
     - service: scene.turn_on
       entity_id: scene.media
-    - service: script.livingroom_led_top_rainbow_light_low
+    - service: script.livingroom_led_top_rainbow_low
+
+scene_media_eat:
+  sequence:
+    - condition: and
+      conditions: !include ../conditions/night_notsleep.yaml
+    - service: scene.turn_on
+      entity_id: scene.media_eat
+    - service: script.livingroom_led_top_rainbow_low
 
 scene_livingroom_off:
   sequence:
@@ -36,7 +43,7 @@ scene_all_on:
   sequence:
     - service: scene.turn_on
       entity_id: scene.all_on
-    - service: script.livingroom_led_top_rainbow
+    - service: script.livingroom_led_top_rainbow_max
 
 scene_night:
   sequence:

@@ -1,0 +1,41 @@
+default_view:
+  view: yes
+  name: HA
+  entities:
+    - group.flat
+    - group.weather
+    - group.states
+    - group.people
+
+light_view:
+  view: yes
+  name: Licht
+  entities:
+    - group.scenes
+    - group.light
+    - group.light_livingroom
+    - group.motion
+
+media_view:
+  view: yes
+  name: Media
+  entities:
+    - group.media
+
+espresso_view:
+  view: yes
+  name: Espresso
+  entities:
+    - group.espresso
+    - group.mill
+    - group.mill_config
+
+settings_view:
+  view: yes
+  name: Einstellungen
+  entities:
+    - group.all_scripts
+    - group.all_automations
+    - group.all_devices
+    - group.all_lights
+    - group.all_switches
