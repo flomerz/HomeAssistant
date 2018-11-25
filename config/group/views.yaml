@@ -1,11 +1,11 @@
-default_view:
-  view: yes
-  name: HA
-  entities:
-    - group.flat
-    - group.weather
-    - group.states
-    - group.people
+# default_view:
+#   view: yes
+#   name: HA
+#   entities:
+#     - group.flat
+#     - group.weather
+#     - group.states
+#     - group.people
 
 light_view:
   view: yes

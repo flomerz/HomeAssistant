@@ -56,6 +56,16 @@ device_tracker:
 
   - platform: owntracks
 
+# media_player:
+#   - platform: horizon
+#     host: 192.168.0.3
+
+# vacuum:
+#   - platform: xiaomi_miio
+#     name: "Staubi"
+#     host: 192.168.0.133
+#     token: "3249544c437648434d32433441345454"
+
 notify:
   - name: flo
     platform: pushbullet
@@ -69,7 +79,7 @@ switch: !include config/switches.yaml
 
 light: !include config/lights.yaml
 
-input_slider: !include config/input_sliders.yaml
+input_number: !include config/input_sliders.yaml
 
 input_select: !include_dir_merge_named config/input_select
 
@@ -79,7 +89,7 @@ group: !include_dir_merge_named config/group
 
 scene: !include_dir_merge_list config/scene
 
-automation: !include_dir_merge_list config/automation
-# automation: !include automations.yaml
+automation: !include automations.yaml
+automation old: !include_dir_merge_list config/automation
 
 script: !include_dir_merge_named config/script

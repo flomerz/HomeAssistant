@@ -48,8 +48,8 @@
       event_data:
         button_name: 'KEY_1'
   action:
-    - service: scene.turn_on
-      entity_id: scene.media_eat
+    - service: light.turn_on
+      entity_id: light.livingroom_back
 
 
 - alias: ir_sony_2

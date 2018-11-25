@@ -1,10 +1,8 @@
 - alias: Espresso ON
   trigger:
-    # - platform: state
-    #   entity_id: binary_sensor.sleep
-    #   to: 'off'
     - platform: mqtt
       topic: cmd/espresso
+      payload: 'on'
 
   action:
     service: switch.turn_on

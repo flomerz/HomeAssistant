@@ -8,17 +8,9 @@
     light.livingroom_led_top_back:
       state: on
       brightness: 50
-
-- name: media_eat
-  entities:
-    light.rainbow: on
-    light.livingroom_back: off
-    light.livingroom_front: off
-    light.livingroom_back_small: off
-    light.livingroom_led_top_front: off
-    light.livingroom_led_top_back:
+    light.livingroom_led_top:
       state: on
-      brightness: 100
+      brightness: 20
 
 - name: livingroom_off
   entities:
@@ -30,11 +22,13 @@
     light.rainbow: on
     light.livingroom_front: on
     light.livingroom_back_small: on
-    light.livingroom_led_top: off
-    light.livingroom_led_top_front:
+    light.livingroom_led_top:
       state: on
       brightness: 50
-    light.livingroom_led_top_back: on
+    light.livingroom_led_top_front: off
+    light.livingroom_led_top_back:
+      state: on
+      brightness: 100
 
 - name: ambient
   entities:

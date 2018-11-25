@@ -1,6 +1,7 @@
 .HA_VERSION
 .Trash-1000/
 .uuid
+.storage
 deps/
 home-assistant.log
 *.db

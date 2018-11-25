@@ -4,7 +4,7 @@ scene_ambient:
       conditions: !include ../conditions/night_notsleep.yaml
     - service: scene.turn_on
       entity_id: scene.ambient
-    - service: script.livingroom_led_top_rainbow_low
+    - service: script.livingroom_led_top_rainbow_max
 
 scene_pause:
   sequence:
@@ -19,15 +19,7 @@ scene_media:
       conditions: !include ../conditions/night_notsleep.yaml
     - service: scene.turn_on
       entity_id: scene.media
-    - service: script.livingroom_led_top_rainbow_low
-
-scene_media_eat:
-  sequence:
-    - condition: and
-      conditions: !include ../conditions/night_notsleep.yaml
-    - service: scene.turn_on
-      entity_id: scene.media_eat
-    - service: script.livingroom_led_top_rainbow_low
+    - service: script.livingroom_led_top_rainbow_max
 
 scene_livingroom_off:
   sequence:

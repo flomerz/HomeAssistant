@@ -51,7 +51,7 @@
     - service: script.ir_receiver_vol_up
 
 
-- alias: key_volumeup_pressed
+- alias: key_volumedown_pressed
   trigger:
     platform: event
     event_type: ir_command_received
