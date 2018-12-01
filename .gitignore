@@ -6,5 +6,6 @@ deps/
 home-assistant.log
 *.db
 *.db-journal
+home-assistant_v2.db*
 known_devices.yaml
 secrets.yaml

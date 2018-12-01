@@ -56,9 +56,11 @@ device_tracker:
 
   - platform: owntracks
 
-# media_player:
-#   - platform: horizon
-#     host: 192.168.0.3
+media_player:
+  - platform: horizon
+    host: 192.168.0.50
+  # - platform: ps4
+  #   host: 192.168.0.51
 
 # vacuum:
 #   - platform: xiaomi_miio

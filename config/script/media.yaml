@@ -11,7 +11,6 @@ media_power_toggle:
 
 media_power_on:
   sequence:
-
     - service: script.turn_off
       entity_id: script.media_power_off
 
@@ -19,21 +18,36 @@ media_power_on:
       data:
         entity_id: input_select.media_power
         option: True
-    
+
     - service: script.ir_receiver_tv
 
     - delay:
-        seconds: 2
+        seconds: 1
+
+    - service: script.ir_beamer_power_on
+    
+    - delay:
+        seconds: 3
+
+    - service: script.ir_receiver_tv
+
+    - delay:
+        seconds: 1
 
     - service: script.ir_beamer_power_on
 
     - delay:
-        seconds: 2
+        seconds: 3
+
+    - service: script.ir_receiver_tv
+
+    - delay:
+        seconds: 1
 
     - service: script.ir_beamer_power_on
 
     - delay:
-        seconds: 30
+        seconds: 20
     
     - service: switch.turn_on
       entity_id: switch.livingroom_bass
@@ -46,7 +60,6 @@ media_power_on:
 
 media_power_off:
   sequence:
-
     - service: script.turn_off
       entity_id: script.media_power_on
     
@@ -54,6 +67,9 @@ media_power_off:
       data:
         entity_id: input_select.media_power
         option: False
+
+    - service: media_player.turn_off
+      entity_id: media_player.horizon
 
     - service: switch.turn_off
       entity_id: switch.livingroom_bass
@@ -63,22 +79,33 @@ media_power_off:
     - service: script.ir_receiver_power
 
     - delay:
-        seconds: 2
+        seconds: 1
 
     - service: script.ir_beamer_power_off
 
     - delay:
-        minutes: 2
+        seconds: 3
 
-    - service: script.scene_livingroom_off
+    - service: script.ir_receiver_power
 
-    - service: switch.turn_off
-      entity_id: switch.livingroom_bass
+    - delay:
+        seconds: 1
+
+    - service: script.ir_beamer_power_off
+
+    - delay:
+        minutes: 3
+
+    - service: script.ir_receiver_power
+
+    - delay:
+        seconds: 1
+
+    - service: script.ir_beamer_power_off
 
 
 media_channel:
   sequence:
-
     - service: script.turn_on
       data_template:
         entity_id: >
