@@ -1,0 +1,15 @@
+- alias: Media OFF
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_media
+      to: 'off'
+  action:
+    - service: script.media_power_off
+
+- alias: Media ON
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_media
+      to: 'on'
+  action:
+    - service: script.media_power_on

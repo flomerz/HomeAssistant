@@ -1,0 +1,4 @@
+state_home:
+  initial: on
+state_sleep:
+state_media:

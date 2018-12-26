@@ -1,0 +1,132 @@
+light.floor:
+  friendly_name: Gang
+light.kitchen:
+  friendly_name: Küche
+light.livingroom_big:
+  friendly_name: Stehlampe
+light.livingroom_sofatable:
+  friendly_name: Sofatisch
+light.livingroom_front:
+  friendly_name: Vorne
+light.livingroom_led_rgb:
+  friendly_name: LED RGB
+light.livingroom_led_white_front:
+  friendly_name: LED Weiss Vorne
+light.livingroom_led_white_back:
+  friendly_name: LED Weiss Hinten
+light.livingroom_rainbow:
+  friendly_name: Rainbow
+light.bedroom:
+  friendly_name: Schlafzimmer
+light.wc:
+  friendly_name: WC
+light.bathroom_led:
+  friendly_name: Bad LED
+script.scene_ambient:
+  friendly_name: Ambient
+script.scene_bright:
+  friendly_name: Hell
+script.scene_beamer:
+  friendly_name: Beamer
+script.scene_beamer_bright:
+  friendly_name: Beamer Hell
+sensor.temperature_livingroom:
+  friendly_name: Wohnzimmer Temperatur
+sensor.humidity_livingroom:
+  friendly_name: Wohnzimmer Feuchtigkeit
+  icon: mdi:water
+sensor.temperature_kitchen:
+  friendly_name: Espresso Temperatur
+sensor.humidity_kitchen:
+  friendly_name: Espresso Feuchtigkeit
+  icon: mdi:water
+switch.espresso:
+  friendly_name: Espresso
+  icon: mdi:coffee
+switch.livingroom_bass:
+  friendly_name: Bass
+  icon: mdi:speaker
+switch.resin:
+  friendly_name: Brunnen
+  icon: mdi:water
+switch.humidifier:
+  friendly_name: Luftbefeuchter
+  icon: mdi:water
+input_boolean.state_sleep:
+  friendly_name: Schlafen
+input_boolean.state_home:
+  friendly_name: Dihei
+input_boolean.state_media:
+  friendly_name: Media
+script.media_power_on:
+  friendly_name: Media Ein
+  icon: mdi:monitor
+script.media_power_off:
+  friendly_name: Media Aus
+  icon: mdi:monitor
+script.ir_receiver_vol_up:
+  friendly_name: Lautstärke - Lauter
+  icon: mdi:volume-high
+script.ir_receiver_vol_down:
+  friendly_name: Lautstärke - Leiser
+  icon: mdi:volume-low
+sun.sun:
+  friendly_name: Sonnenstand
+sensor.yr_symbol:
+  friendly_name: Wetter
+sensor.yr_temperature:
+  friendly_name: Temperatur
+sensor.yr_humidity:
+  friendly_name: Feuchtigkeit
+  icon: mdi:water
+sensor.yr_cloudiness:
+  friendly_name: Bewölkt
+  icon: mdi:cloud
+sensor.yr_wind_speed:
+  friendly_name: Wind
+  icon: mdi:weather-windy
+sensor.yr_wind_direction:
+  friendly_name: Windrichtung
+  icon: mdi:compass
+sensor.yr_pressure:
+  friendly_name: Luftdruck
+  icon: mdi:arrow-down-bold
+switch.ps4:
+  friendly_name: PS4
+scene.livingroom_ambient:
+  friendly_name: Licht Normal
+  icon: mdi:ceiling-light
+scene.livingroom_bright:
+  friendly_name: Licht Hell
+  icon: mdi:track-light
+scene.livingroom_beamer:
+  friendly_name: Licht Beamer
+  icon: mdi:projector
+scene.livingroom_beamer_bright:
+  friendly_name: Licht Beamer Hell
+  icon: mdi:projector
+light.bathroom_left:
+  friendly_name: Bad (Links)
+light.bathroom_right:
+  friendly_name: Bad (Rechts)
+binary_sensor.motion_floor:
+  friendly_name: Gang Bewegung
+binary_sensor.motion_kitchen:
+  friendly_name: Küche Bewegung
+binary_sensor.motion_wc:
+  friendly_name: WC Bewegung
+switch.0x00158d0002c5140f_switch_left:
+  friendly_name: Bad Links
+  hidden: true
+sensor.0x00158d000273269a_battery:
+  friendly_name: Bad Bewegung Batterie
+sensor.0x00158d000273269a_illuminance:
+  friendly_name: Bad Helligkeit
+binary_sensor.0x00158d000273269a_occupancy:
+  friendly_name: Bad Bewegung
+switch.0x00158d0002c5140f_switch_right:
+  friendly_name: Bad Rechts
+  hidden: true
+scene.all_off:
+  friendly_name: Alles Ausschalten
+  icon: mdi:power-plug-off

@@ -1,0 +1,3 @@
+# - platform: mqtt
+#   name: cmd_sleep
+#   state_topic: "cmd/sleep"

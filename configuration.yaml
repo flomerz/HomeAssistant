@@ -11,11 +11,14 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Zurich
 
-  customize: !include_dir_merge_named config/customize
+  customize: !include customize.yaml
 
 frontend:
 
-http: !include config/http.yaml
+http: 
+  server_port: 443
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
 
 updater:
 
@@ -34,16 +37,13 @@ logbook:
 
 config:
 
-panel_iframe: !include config/panel.yaml
-
 sun:
 
 lirc:
 
 mqtt:
+  discovery: true
   broker: localhost
-
-zone: !include config/zones.yaml
 
 device_tracker:
   - platform: ddwrt
@@ -56,42 +56,45 @@ device_tracker:
 
   - platform: owntracks
 
+google_assistant:
+  project_id: !secret google_project_id
+  api_key: !secret google_api_key
+  exposed_domains:
+    - light
+  entity_config:
+    switch.resin:
+      expose: true
+    switch.livingroom_bass:
+      expose: true
+    switch.espresso:
+      expose: true
+    switch.humidifier:
+      expose: true
+    input_boolean.state_sleep:
+      expose: true
+    input_boolean.state_media:
+      expose: true
+      name: Media
+      aliases:
+        - Beamer
+
 media_player:
   - platform: horizon
-    host: 192.168.0.50
-  # - platform: ps4
-  #   host: 192.168.0.51
-
-# vacuum:
-#   - platform: xiaomi_miio
-#     name: "Staubi"
-#     host: 192.168.0.133
-#     token: "3249544c437648434d32433441345454"
+    host: !secret horizon_ip
 
 notify:
   - name: flo
     platform: pushbullet
-    api_key: !secret pushbullet_flo_api_key
-
-sensor: !include config/sensors.yaml
-
-binary_sensor: !include config/binary_sensors.yaml
-
-switch: !include config/switches.yaml
-
-light: !include config/lights.yaml
-
-input_number: !include config/input_sliders.yaml
-
-input_select: !include_dir_merge_named config/input_select
-
-input_boolean: !include config/input_boolean.yaml
-
-group: !include_dir_merge_named config/group
-
-scene: !include_dir_merge_list config/scene
+    api_key: !secret pushbullet_api_key
 
 automation: !include automations.yaml
 automation old: !include_dir_merge_list config/automation
-
+sensor: !include_dir_merge_list config/entity/sensor/sensor
+binary_sensor: !include_dir_merge_list config/entity/sensor/binary_sensor
+switch: !include_dir_merge_list config/entity/switch
+light: !include_dir_merge_list config/entity/light
+input_boolean: !include_dir_merge_named config/entity/input/boolean
+input_select: !include_dir_merge_named config/entity/input/select
+scene: !include_dir_merge_list config/scene
+group: !include_dir_merge_named config/group
 script: !include_dir_merge_named config/script

@@ -1,0 +1,71 @@
+- platform: mqtt
+  name: livingroom_rainbow
+  state_topic: "homie/rainbow-light/light/state"
+  command_topic: "homie/rainbow-light/light/state/set"
+  rgb_state_topic: "homie/rainbow-light/light/rgb"
+  rgb_command_topic: "homie/rainbow-light/light/rgb/set"
+
+- platform: mqtt
+  name: livingroom_front
+  state_topic: "homie/livingroom-light-front/switch/state"
+  command_topic: "homie/livingroom-light-front/switch/state/set"
+
+- platform: mqtt
+  name: livingroom_big
+  state_topic: "homie/livingroom-light-back/switch/state"
+  command_topic: "homie/livingroom-light-back/switch/state/set"
+
+- platform: mqtt
+  name: livingroom_sofatable
+  state_topic: "homie/livingroom-light-back-small/switch/state"
+  command_topic: "homie/livingroom-light-back-small/switch/state/set"
+
+- platform: mqtt_template
+  name: livingroom_led_rgb
+  effect_list:
+    - none
+    - rainbow
+    - rainbow-light
+  command_topic: "homie/livingroom-led-top/rgb/value/set"
+  state_topic: "homie/livingroom-led-top/rgb/value"
+  command_on_template: >
+    {"state": "on"
+
+      {%- if red is defined and green is defined and blue is defined -%}
+      , "color": ["{{ red }}", "{{ green }}", "{{ blue }}"]
+      {%- endif -%}
+      
+      {%- if brightness is defined -%}
+      , "brightness": {{ brightness }}
+      {%- endif -%}
+      
+      
+      {%- if effect is defined -%}
+      , "effect": "{{ effect }}"
+      {%- endif -%}
+      
+      {%- if transition is defined -%}
+      , "transition": {{ transition }}
+      {%- endif -%}
+    }
+  command_off_template: '{"state": "off"}'
+  state_template: '{{ value_json.state }}'
+  brightness_template: '{{ value_json.brightness }}'
+  red_template: '{{ value_json.color[0] }}'
+  green_template: '{{ value_json.color[1] }}'
+  blue_template: '{{ value_json.color[2] }}'
+  effect_template: '{{ value_json.effect }}'
+
+- platform: mqtt
+  name: livingroom_led_white_front
+  state_topic: "homie/livingroom-led-top/w1/state"
+  command_topic: "homie/livingroom-led-top/w1/state/set"
+  brightness_state_topic: "homie/livingroom-led-top/w1/value"
+  brightness_command_topic: "homie/livingroom-led-top/w1/value/set"
+
+- platform: mqtt
+  name: livingroom_led_white_back
+  state_topic: "homie/livingroom-led-top/w2/state"
+  command_topic: "homie/livingroom-led-top/w2/state/set"
+  brightness_state_topic: "homie/livingroom-led-top/w2/value"
+  brightness_command_topic: "homie/livingroom-led-top/w2/value/set"

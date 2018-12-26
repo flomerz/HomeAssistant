@@ -1,0 +1,15 @@
+- condition: state
+  entity_id: input_boolean.state_home
+  state: 'on'
+- condition: or
+  conditions:
+    - condition: sun
+      after: sunset
+    - condition: sun
+      before: sunrise
+    - condition: numeric_state
+      entity_id: sensor.0x00158d0002b95ccb_illuminance
+      below: 40
+    - condition: numeric_state
+      entity_id: sensor.0x00158d0002b92fc8_illuminance
+      below: 40

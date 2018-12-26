@@ -1,0 +1,19 @@
+- alias: Bathroom Switch Right ON
+  trigger:
+    platform: state
+    entity_id: light.bathroom_right
+    to: 'on'
+  condition: !include ../../../condition/light.nosleep.yaml
+  action:
+    service: light.turn_on
+    entity_id: light.bathroom_led
+
+
+- alias: Bathroom Switch Right OFF
+  trigger:
+    platform: state
+    entity_id: light.bathroom_right
+    to: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.bathroom_led

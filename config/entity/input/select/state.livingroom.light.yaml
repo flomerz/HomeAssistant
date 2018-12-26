@@ -1,0 +1,17 @@
+state_livingroom_light:
+  name: Wohnzimmer Licht
+  options:
+    - Aus
+    - Beamer
+    - Beamer Hell
+    - Normal
+    - Hell
+
+mode_livingroom_light:
+  name: Wohnzimmer Licht Mode
+  options:
+    - Beamer
+    - Beamer Hell
+    - Normal
+    - Hell
+  initial: Normal

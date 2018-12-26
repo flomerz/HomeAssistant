@@ -1,0 +1,42 @@
+- platform: mqtt
+  name: floor
+  state_topic: "homie/floor-light/switch/state"
+  command_topic: "homie/floor-light/switch/state/set"
+
+- platform: mqtt
+  name: kitchen
+  state_topic: "homie/kitchen-light/switch/state"
+  command_topic: "homie/kitchen-light/switch/state/set"
+
+- platform: mqtt
+  name: bedroom
+  state_topic: "homie/bedroom-light/switch/state"
+  command_topic: "homie/bedroom-light/switch/state/set"
+
+- platform: mqtt
+  name: wc
+  state_topic: "homie/wc-light/switch/state"
+  command_topic: "homie/wc-light/switch/state/set"
+
+- platform: "mqtt"
+  name: bathroom_left
+  state_topic: "zigbee2mqtt/0x00158d0002c5140f"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  payload_off: "OFF"
+  payload_on: "ON"
+  value_template: "{{ value_json.state_left }}"
+  command_topic: "zigbee2mqtt/0x00158d0002c5140f/left/set"
+
+- platform: "mqtt"
+  name: bathroom_right
+  state_topic: "zigbee2mqtt/0x00158d0002c5140f"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  payload_off: "OFF"
+  payload_on: "ON"
+  value_template: "{{ value_json.state_right }}"
+  command_topic: "zigbee2mqtt/0x00158d0002c5140f/right/set"
+
+- platform: mqtt
+  name: bathroom_led
+  state_topic: "homie/badroom-light/switch/state"
+  command_topic: "homie/badroom-light/switch/state/set"

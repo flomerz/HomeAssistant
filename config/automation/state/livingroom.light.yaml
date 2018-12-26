@@ -1,0 +1,60 @@
+- alias: Light Aus
+  trigger:
+    - platform: state
+      entity_id: input_select.state_livingroom_light
+      to: 'Aus'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.livingroom
+
+- alias: Light Beamer
+  trigger:
+    - platform: state
+      entity_id: input_select.state_livingroom_light
+      to: 'Beamer'
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.mode_livingroom_light
+        option: "{{ states('input_select.state_livingroom_light') }}"
+    - service: scene.turn_on
+      entity_id: scene.livingroom_beamer
+
+- alias: Light Beamer Bright
+  trigger:
+    - platform: state
+      entity_id: input_select.state_livingroom_light
+      to: 'Beamer Hell'
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.mode_livingroom_light
+        option: "{{ states('input_select.state_livingroom_light') }}"
+    - service: scene.turn_on
+      entity_id: scene.livingroom_beamer_bright
+
+- alias: Light Ambient
+  trigger:
+    - platform: state
+      entity_id: input_select.state_livingroom_light
+      to: 'Normal'
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.mode_livingroom_light
+        option: "{{ states('input_select.state_livingroom_light') }}"
+    - service: scene.turn_on
+      entity_id: scene.livingroom_ambient
+
+- alias: Light Hell
+  trigger:
+    - platform: state
+      entity_id: input_select.state_livingroom_light
+      to: 'Hell'
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.mode_livingroom_light
+        option: "{{ states('input_select.state_livingroom_light') }}"
+    - service: scene.turn_on
+      entity_id: scene.livingroom_bright

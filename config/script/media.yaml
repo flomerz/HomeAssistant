@@ -1,131 +1,74 @@
-media_power_toggle:
-  sequence:
-    - service: script.turn_on
-      data_template:
-        entity_id: >
-          {% if is_state('input_select.media_power', 'False') %}
-            script.media_power_on
-          {% else %}
-            script.media_power_off
-          {% endif %}
-
 media_power_on:
   sequence:
+    # disable off script
     - service: script.turn_off
       entity_id: script.media_power_off
-
+    
+    # scene beamer bright
     - service: input_select.select_option
       data:
-        entity_id: input_select.media_power
-        option: True
-
-    - service: script.ir_receiver_tv
-
-    - delay:
-        seconds: 1
-
-    - service: script.ir_beamer_power_on
+        entity_id: input_select.state_livingroom_light
+        option: Beamer Hell
     
-    - delay:
-        seconds: 3
-
+    # turn on devices
     - service: script.ir_receiver_tv
-
     - delay:
         seconds: 1
-
     - service: script.ir_beamer_power_on
-
     - delay:
         seconds: 3
-
     - service: script.ir_receiver_tv
-
     - delay:
         seconds: 1
-
     - service: script.ir_beamer_power_on
-
+    - delay:
+        seconds: 3
+    - service: script.ir_receiver_tv
+    - delay:
+        seconds: 1
+    - service: script.ir_beamer_power_on
     - delay:
         seconds: 20
     
     - service: switch.turn_on
       entity_id: switch.livingroom_bass
-
-    - condition: and
-      conditions: !include ../conditions/night_notsleep.yaml
     
-    - service: script.scene_media
+    # scene beamer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.state_livingroom_light
+        option: Beamer
 
 
 media_power_off:
   sequence:
+    # disable off script
     - service: script.turn_off
       entity_id: script.media_power_on
-    
+
+    # scene
     - service: input_select.select_option
       data:
-        entity_id: input_select.media_power
-        option: False
+        entity_id: input_select.state_livingroom_light
+        option: Normal
 
+    # turn off devices
     - service: media_player.turn_off
       entity_id: media_player.horizon
 
     - service: switch.turn_off
       entity_id: switch.livingroom_bass
-    
-    - service: script.scene_ambient
-
-    - service: script.ir_receiver_power
-
+      
+    - service: script.ir_receiver_tv
     - delay:
         seconds: 1
-
-    - service: script.ir_beamer_power_off
-
-    - delay:
-        seconds: 3
-
     - service: script.ir_receiver_power
-
     - delay:
         seconds: 1
-
     - service: script.ir_beamer_power_off
-
     - delay:
-        minutes: 3
-
-    - service: script.ir_receiver_power
-
-    - delay:
-        seconds: 1
-
+        seconds: 10
     - service: script.ir_beamer_power_off
-
-
-media_channel:
-  sequence:
-    - service: script.turn_on
-      data_template:
-        entity_id: >
-          {% if is_state('input_select.media_channel', 'TV') %}
-            script.ir_receiver_tv
-          {% elif is_state('input_select.media_channel', 'PS3') %}
-            script.ir_receiver_ps3
-          {% else %}
-            script.ir_receiver_mc
-          {% endif %}
-
-
-media_channel_switch:
-  sequence:
-
-    - service: input_select.select_next
-      data:
-        entity_id: input_select.media_channel
-    
-    - service: script.media_channel
-
     - delay:
-        milliseconds: 500
+        minutes: 1
+    - service: script.ir_beamer_power_off

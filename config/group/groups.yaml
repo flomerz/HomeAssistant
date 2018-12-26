@@ -1,0 +1,96 @@
+states:
+  name: Zustände
+  control: hidden
+  entities:
+    - input_boolean.state_home
+    - input_boolean.state_sleep
+    - input_boolean.state_media
+
+flat:
+  name: Wohnung
+  control: hidden
+  entities:
+    - scene.all_off
+    - light.floor
+    - light.kitchen
+    - input_select.state_livingroom_light
+    - light.bedroom
+    - light.wc
+    - sensor.temperature_livingroom
+    - sensor.humidity_livingroom
+    - switch.espresso
+    - sensor.temperature_kitchen
+    - sensor.humidity_kitchen
+    - switch.resin
+    - switch.humidifier
+    - switch.ps4
+
+livingroom:
+  name: Wohnzimmer
+  entities:
+    - light.livingroom_rainbow
+    - light.livingroom_front
+    - light.livingroom_big
+    - light.livingroom_sofatable
+    - light.livingroom_led_rgb
+    - light.livingroom_led_white_front
+    - light.livingroom_led_white_back
+
+bathroom:
+  name: Bad
+  entities:
+    - light.bathroom_left
+    - light.bathroom_right
+    - light.bathroom_led
+
+media:
+  name: Media
+  control: hidden
+  entities:
+    - script.media_power_on
+    - script.media_power_off
+    - switch.livingroom_bass
+    - script.ir_receiver_vol_up
+    - script.ir_receiver_vol_down
+
+motion_switch:
+  name: Bewegungsmelder & Schalter
+  entities:
+    - binary_sensor.motion_floor
+    - binary_sensor.motion_kitchen
+    - binary_sensor.motion_wc
+    # livingroom motion
+    - binary_sensor.0x00158d0002b95ccb_occupancy
+    - sensor.0x00158d0002b95ccb_illuminance
+    - sensor.0x00158d0002b95ccb_battery
+    - binary_sensor.0x00158d0002b92fc8_occupancy
+    - sensor.0x00158d0002b92fc8_illuminance
+    - sensor.0x00158d0002b92fc8_battery
+    - binary_sensor.0x00158d000273269a_occupancy
+    - sensor.0x00158d000273269a_illuminance
+    - sensor.0x00158d000273269a_battery
+    # livingroom switch
+    - sensor.0x00158d000254cc4f
+    # floor switch
+    - sensor.0x00158d00026eb5c7
+
+weather:
+  name: Wetter
+  entities:
+    - sun.sun
+    - sensor.yr_symbol
+    - sensor.yr_temperature
+    - sensor.yr_humidity
+    - sensor.yr_cloudiness
+    - sensor.yr_wind_speed
+    - sensor.yr_wind_direction
+    - sensor.yr_pressure
+
+scenes:
+  name: Scenes
+  entities:
+    - input_select.mode_livingroom_light
+    - scene.livingroom_ambient
+    - scene.livingroom_bright
+    - scene.livingroom_beamer
+    - scene.livingroom_beamer_bright

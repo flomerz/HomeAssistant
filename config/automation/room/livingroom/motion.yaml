@@ -1,0 +1,39 @@
+- alias: Livingroom Motion ON
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x00158d0002b95ccb_occupancy
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.0x00158d0002b92fc8_occupancy
+      to: 'on'
+  condition: !include ../../../condition/light.nosleep.yaml
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.state_livingroom_light
+        option: "{{ states('input_select.mode_livingroom_light') }}"
+
+- alias: Livingroom Motion OFF
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x00158d0002b95ccb_occupancy
+      to: 'off'
+      for:
+        minutes: 5
+    - platform: state
+      entity_id: binary_sensor.0x00158d0002b92fc8_occupancy
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: binary_sensor.0x00158d0002b95ccb_occupancy
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.0x00158d0002b92fc8_occupancy
+      state: 'off'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.state_livingroom_light
+        option: Aus

@@ -1,0 +1,35 @@
+ir_receiver_power:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '21516', 'nbits': '15'}"
+
+ir_receiver_vol_up:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '9228', 'nbits': '15'}"
+
+ir_receiver_vol_down:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '25612', 'nbits': '15'}"
+
+ir_receiver_tv:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '24332', 'nbits': '15'}"
+
+ir_receiver_ps3:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'sony', 'data': '426260', 'nbits': '20'}"
+
+ir_receiver_mc:
+    sequence:
+      - service: script.ir_send
+        data:
+          payload: "{'type': 'sony', 'data': '24589', 'nbits': '15'}"

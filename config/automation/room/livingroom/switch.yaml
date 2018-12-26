@@ -1,0 +1,32 @@
+- alias: Livingroom Switch LEFT
+  trigger:
+    - platform: state
+      entity_id: sensor.0x00158d000254cc4f
+  condition:
+    - condition: state
+      entity_id: sensor.0x00158d000254cc4f
+      state: 'left'
+  action:
+    - service: input_select.select_previous
+      entity_id: input_select.state_livingroom_light
+
+- alias: Livingroom Switch RIGHT
+  trigger:
+    - platform: state
+      entity_id: sensor.0x00158d000254cc4f
+  condition:
+    - condition: state
+      entity_id: sensor.0x00158d000254cc4f
+      state: 'right'
+  action:
+    - service: input_select.select_next
+      entity_id: input_select.state_livingroom_light
+
+# - alias: Livingroom Switch BOTH
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.0x00158d000254cc4f
+#       to: 'both'
+#   action:
+#     - service: input_boolean.toggle
+#       entity_id: input_boolean.state_sleep

@@ -1,0 +1,15 @@
+- platform: mqtt
+  name: motion_floor
+  state_topic: "homie/floor-light/motion/state"
+
+- platform: mqtt
+  name: motion_kitchen
+  state_topic: "homie/kitchen-light/motion/state"
+
+- platform: mqtt
+  name: motion_wc
+  state_topic: "homie/wc-light/motion/state"
+
+# - platform: mqtt
+#   name: motion_livingroom
+#   state_topic: "homie/livingroom-motion/motion/state"

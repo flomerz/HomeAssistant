@@ -1,8 +1,0 @@
-- alias: Bass Toggle
-  trigger:
-    platform: mqtt
-    topic: cmd/livingroom/bass
-
-  action:
-    - service: switch.toggle
-      entity_id: switch.livingroom_bass

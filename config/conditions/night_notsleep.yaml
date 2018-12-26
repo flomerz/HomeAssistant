@@ -1,7 +1,0 @@
-condition: and
-conditions:
-  - condition: and
-    conditions: !include night.yaml
-  - condition: state
-    entity_id: binary_sensor.sleep
-    state: 'off'

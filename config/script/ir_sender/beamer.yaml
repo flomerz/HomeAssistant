@@ -1,0 +1,16 @@
+ir_beamer_power_on:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'nec', 'data': '1286815935', 'nbits': '32'}"
+
+ir_beamer_power_off:
+  sequence:
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'nec', 'data': '1286829195', 'nbits': '32'}"
+    - delay:
+        seconds: 1
+    - service: script.ir_send
+      data:
+        payload: "{'type': 'nec', 'data': '1286829195', 'nbits': '32'}"

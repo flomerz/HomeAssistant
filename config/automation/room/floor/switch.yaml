@@ -1,0 +1,37 @@
+- alias: Floor Switch LEFT
+  trigger:
+    - platform: state
+      entity_id: sensor.0x00158d00026eb5c7
+  condition:
+    - condition: state
+      entity_id: sensor.0x00158d00026eb5c7
+      state: 'left'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.state_home
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_sleep
+
+- alias: Floor Switch RIGHT
+  trigger:
+    - platform: state
+      entity_id: sensor.0x00158d00026eb5c7
+  condition:
+    - condition: state
+      entity_id: sensor.0x00158d00026eb5c7
+      state: 'right'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_home
+
+- alias: Floor Switch BOTH
+  trigger:
+    - platform: state
+      entity_id: sensor.0x00158d00026eb5c7
+  condition:
+    - condition: state
+      entity_id: sensor.0x00158d00026eb5c7
+      state: 'both'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.state_sleep

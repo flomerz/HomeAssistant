@@ -1,0 +1,20 @@
+- alias: Kitchen Motion ON
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_kitchen
+    to: 'on'
+  condition: !include ../../../condition/light.nosleep.yaml
+  action:
+    service: light.turn_on
+    entity_id: light.kitchen
+
+- alias: Kitchen Motion OFF
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_kitchen
+    to: 'off'
+    for:
+      seconds: 60
+  action:
+    service: light.turn_off
+    entity_id: light.kitchen
