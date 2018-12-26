@@ -15,7 +15,8 @@ homeassistant:
 
 frontend:
 
-http: 
+http:
+  base_url: !secret base_url
   server_port: 443
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
@@ -77,6 +78,9 @@ google_assistant:
       name: Media
       aliases:
         - Beamer
+
+tts:
+  - platform: google
 
 media_player:
   - platform: horizon
