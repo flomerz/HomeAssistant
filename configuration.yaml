@@ -81,6 +81,9 @@ google_assistant:
 
 tts:
   - platform: google
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
 
 media_player:
   - platform: horizon

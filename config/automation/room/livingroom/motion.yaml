@@ -19,12 +19,12 @@
       entity_id: binary_sensor.0x00158d0002b95ccb_occupancy
       to: 'off'
       for:
-        minutes: 5
+        minutes: 10
     - platform: state
       entity_id: binary_sensor.0x00158d0002b92fc8_occupancy
       to: 'off'
       for:
-        minutes: 5
+        minutes: 10
   condition:
     - condition: state
       entity_id: binary_sensor.0x00158d0002b95ccb_occupancy

@@ -1,0 +1,38 @@
+- alias: 'network new device'
+  trigger:
+    platform: event
+    event_type: device_tracker_new_device
+  action:
+    - service: notify.flo
+      data_template:
+        title: Netzwerkzugriff
+        message: >
+          New device:
+          {{ trigger.event.data.host_name }}
+          ({{ trigger.event.data.entity_id }})
+    - service: tts.google_say
+      entity_id: media_player.home_group
+      data_template:
+        language: de
+        message: 'Neuer Netzwerkzugriff von {{ trigger.event.data.host_name }}'
+
+
+- alias: Louisa Home
+  trigger:
+    - platform: state
+      entity_id: device_tracker.louisa
+    - platform: state
+      entity_id: device_tracker.myrtha
+    - platform: state
+      entity_id: device_tracker.ries
+    - platform: state
+      entity_id: device_tracker.bri
+    - platform: state
+      entity_id: device_tracker.gubi
+    - platform: state
+      entity_id: device_tracker.peti
+  action:
+    service: notify.flo
+    data_template:
+      title: Netzwerkzugriff
+      message: "{{ trigger.entity_id }} ist {{ trigger.to_state.state }}"

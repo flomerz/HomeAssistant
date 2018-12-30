@@ -11,6 +11,11 @@
       entity_id: input_boolean.state_home
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
+    - condition: and
+      conditions: !include ../../../condition/light.nosleep.yaml
+    - service: light.turn_on
+      entity_id: light.floor
+
 
 - alias: Floor Switch RIGHT
   trigger:
@@ -23,6 +28,7 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_home
+
 
 - alias: Floor Switch BOTH
   trigger:

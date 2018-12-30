@@ -22,11 +22,13 @@
     - service: input_select.select_next
       entity_id: input_select.state_livingroom_light
 
-# - alias: Livingroom Switch BOTH
-#   trigger:
-#     - platform: state
-#       entity_id: sensor.0x00158d000254cc4f
-#       to: 'both'
-#   action:
-#     - service: input_boolean.toggle
-#       entity_id: input_boolean.state_sleep
+- alias: Livingroom Switch BOTH
+  trigger:
+    - platform: state
+      entity_id: sensor.0x00158d000254cc4f
+      to: 'both'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.state_livingroom_light
+        option: Aus

@@ -20,8 +20,9 @@
   state_topic: "homie/livingroom-light-back-small/switch/state"
   command_topic: "homie/livingroom-light-back-small/switch/state/set"
 
-- platform: mqtt_template
+- platform: mqtt
   name: livingroom_led_rgb
+  schema: template
   effect_list:
     - none
     - rainbow
