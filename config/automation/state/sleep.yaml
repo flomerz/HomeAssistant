@@ -6,3 +6,6 @@
   action:
     - service: scene.turn_on
       entity_id: scene.all_off
+    - service: notify.flo
+      data:
+        message: 'state.sleep.on'
