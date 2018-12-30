@@ -63,6 +63,8 @@ google_assistant:
   exposed_domains:
     - light
   entity_config:
+    media_player.horizon:
+      expose: true
     switch.resin:
       expose: true
     switch.livingroom_bass:
