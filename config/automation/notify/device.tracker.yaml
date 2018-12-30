@@ -5,16 +5,15 @@
   action:
     - service: notify.flo
       data_template:
-        title: Netzwerkzugriff
         message: >
-          New device:
+          new device in network:
           {{ trigger.event.data.host_name }}
           ({{ trigger.event.data.entity_id }})
     - service: tts.google_say
       entity_id: media_player.home_group
       data_template:
         language: de
-        message: 'Neuer Netzwerkzugriff von {{ trigger.event.data.host_name }}'
+        message: "Neuer Netzwerkzugriff von {{ trigger.event.data.host_name }}"
 
 
 - alias: Louisa Home
@@ -34,5 +33,4 @@
   action:
     service: notify.flo
     data_template:
-      title: Netzwerkzugriff
-      message: "{{ trigger.entity_id }} ist {{ trigger.to_state.state }}"
+      message: "{{ trigger.entity_id }} is {{ trigger.to_state.state }}"

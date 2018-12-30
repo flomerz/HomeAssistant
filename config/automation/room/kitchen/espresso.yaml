@@ -28,8 +28,7 @@
   action:
     - service: notify.flo
       data:
-        title: Espresso
-        message: 'Espresso ist heiss'
+        message: 'Espresso ist aufgewärmt'
     - service: tts.google_say
       entity_id: media_player.home_group
       data:
