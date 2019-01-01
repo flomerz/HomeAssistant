@@ -1,0 +1,15 @@
+- alias: Humidity Notify
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.humidity_livingroom
+      below: 40
+  condition:
+    - condition: state
+      entity_id: input_boolean.state_sleep
+      state: 'off'
+  action:
+    - service: tts.google_say
+      entity_id: media_player.home_group
+      data:
+        language: de
+        message: 'so trochni luft da inä'

@@ -15,7 +15,7 @@
   unit_of_measurement: "°C"
 
 - platform: mqtt
-  name: humidity_livingroom.
+  name: humidity_livingroom
   state_topic: "homie/livingroom-climate/sensor/humidity"
   qos: 0
   unit_of_measurement: "%"

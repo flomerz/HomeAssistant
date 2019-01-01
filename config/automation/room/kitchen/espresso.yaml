@@ -18,19 +18,3 @@
   action:
     service: switch.turn_off
     entity_id: switch.espresso
-
-
-- alias: Espresso Notify
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.temperature_kitchen
-      above: 45
-  action:
-    - service: notify.flo
-      data:
-        message: 'Espresso ist aufgewärmt'
-    - service: tts.google_say
-      entity_id: media_player.home_group
-      data:
-        language: de
-        message: 'kafi isch ufgwärmt'
