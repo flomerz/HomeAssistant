@@ -5,6 +5,9 @@ notify_google:
       data:
         volume_level: 0.6
 
+    - delay:
+        seconds: 1
+
     - service: tts.google_say
       entity_id: media_player.home_group
       data_template:
