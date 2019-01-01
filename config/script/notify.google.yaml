@@ -1,13 +1,9 @@
 notify_google:
   sequence:
-    - service: media_player.volume_up
+    - service: media_player.volume_set
       entity_id: media_player.home_group
-    - service: media_player.volume_up
-      entity_id: media_player.home_group
-    - service: media_player.volume_up
-      entity_id: media_player.home_group
-    - service: media_player.volume_up
-      entity_id: media_player.home_group
+      data:
+        volume_level: 0.6
 
     - service: tts.google_say
       entity_id: media_player.home_group
@@ -18,11 +14,7 @@ notify_google:
     - delay:
         seconds: 5
 
-    - service: media_player.volume_down
+    - service: media_player.volume_set
       entity_id: media_player.home_group
-    - service: media_player.volume_down
-      entity_id: media_player.home_group
-    - service: media_player.volume_down
-      entity_id: media_player.home_group
-    - service: media_player.volume_down
-      entity_id: media_player.home_group
+      data:
+        volume_level: 0.2
