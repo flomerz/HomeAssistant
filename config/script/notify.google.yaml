@@ -8,8 +8,6 @@ notify_google:
       entity_id: media_player.home_group
     - service: media_player.volume_up
       entity_id: media_player.home_group
-    - service: media_player.volume_up
-      entity_id: media_player.home_group
 
     - service: tts.google_say
       entity_id: media_player.home_group
@@ -20,8 +18,6 @@ notify_google:
     - delay:
         seconds: 5
 
-    - service: media_player.volume_down
-      entity_id: media_player.home_group
     - service: media_player.volume_down
       entity_id: media_player.home_group
     - service: media_player.volume_down
