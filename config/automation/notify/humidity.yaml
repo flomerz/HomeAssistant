@@ -8,8 +8,7 @@
       entity_id: input_boolean.state_sleep
       state: 'off'
   action:
-    - service: tts.google_say
-      entity_id: media_player.home_group
+    - service: script.notify_google
       data:
         language: de
         message: 'so trochni luft da inä'

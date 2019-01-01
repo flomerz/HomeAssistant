@@ -9,8 +9,7 @@
           new device in network:
           {{ trigger.event.data.host_name }}
           ({{ trigger.event.data.entity_id }})
-    - service: tts.google_say
-      entity_id: media_player.home_group
+    - service: script.notify_google
       data_template:
         language: de
         message: "Neuer Netzwerkzugriff von {{ trigger.event.data.host_name }}"
