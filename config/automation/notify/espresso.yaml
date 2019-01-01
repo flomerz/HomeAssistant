@@ -19,4 +19,4 @@
     - service: script.notify_google
       data:
         language: it
-        message: 'hey hey, kafi isch fertig'
+        message: 'hey hey, käfi isch fertig'

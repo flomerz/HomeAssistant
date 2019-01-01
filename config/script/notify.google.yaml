@@ -1,9 +1,11 @@
 notify_google:
   sequence:
-    - service: media_player.volume_set
+    - service: media_player.volume_up
       entity_id: media_player.home_group
-      data:
-        volume_level: 0.6
+    - service: media_player.volume_up
+      entity_id: media_player.home_group
+    - service: media_player.volume_up
+      entity_id: media_player.home_group
     - service: tts.google_say
       entity_id: media_player.home_group
       data_template:
@@ -11,7 +13,9 @@ notify_google:
         message: '{{ message }}'
     - delay:
         seconds: 5
-    - service: media_player.volume_set
+    - service: media_player.volume_down
       entity_id: media_player.home_group
-      data:
-        volume_level: 0.3
+    - service: media_player.volume_down
+      entity_id: media_player.home_group
+    - service: media_player.volume_down
+      entity_id: media_player.home_group
