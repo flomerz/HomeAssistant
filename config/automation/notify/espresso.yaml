@@ -7,11 +7,16 @@
       entity_id: switch.espresso
       to: 'on'
       for:
-        minutes: 5
+        minutes: 6
   condition:
     - condition: numeric_state
       entity_id: sensor.temperature_kitchen
       above: 40
+    - condition: state
+      entity_id: switch.espresso
+      state: 'on'
+      for:
+        minutes: 6
   action:
     - service: notify.flo
       data:
