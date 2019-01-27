@@ -1,10 +1,10 @@
-- alias: Bathroom OFF
+- alias: Bedroom OFF
   trigger:
     - platform: state
-      entity_id: group.bathroom
+      entity_id: light.0x000b57fffe48f4c4_light
       to: 'on'
       for:
         minutes: 30
   action:
-    service: homeassistant.turn_off
-    entity_id: group.bathroom
+    service: light.turn_off
+    entity_id: light.0x000b57fffe48f4c4_light

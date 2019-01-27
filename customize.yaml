@@ -16,7 +16,7 @@ light.livingroom_led_white_back:
   friendly_name: LED Weiss Hinten
 light.livingroom_rainbow:
   friendly_name: Rainbow
-light.bedroom:
+light.0x000b57fffe48f4c4_light:
   friendly_name: Schlafzimmer
 light.wc:
   friendly_name: WC

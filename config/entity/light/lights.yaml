@@ -9,11 +9,6 @@
   command_topic: "homie/kitchen-light/switch/state/set"
 
 - platform: mqtt
-  name: bedroom
-  state_topic: "homie/bedroom-light/switch/state"
-  command_topic: "homie/bedroom-light/switch/state/set"
-
-- platform: mqtt
   name: wc
   state_topic: "homie/wc-light/switch/state"
   command_topic: "homie/wc-light/switch/state/set"

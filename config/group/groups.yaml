@@ -14,7 +14,7 @@ flat:
     - light.floor
     - light.kitchen
     - input_select.state_livingroom_light
-    - light.bedroom
+    - light.0x000b57fffe48f4c4_light
     - light.wc
     - sensor.temperature_livingroom
     - sensor.humidity_livingroom
