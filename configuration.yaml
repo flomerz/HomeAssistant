@@ -95,6 +95,9 @@ notify:
   - name: flo
     platform: pushbullet
     api_key: !secret pushbullet_api_key
+  - name: google
+    platform: rest
+    resource: http://localhost:5000/broadcast_message
 
 automation: !include automations.yaml
 automation old: !include_dir_merge_list config/automation

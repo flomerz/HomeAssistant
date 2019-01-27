@@ -2,7 +2,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.humidity_livingroom
-      below: 40
+      below: 30
   condition:
     - condition: state
       entity_id: input_boolean.state_sleep

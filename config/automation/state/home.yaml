@@ -6,6 +6,12 @@
   action:
     - service: scene.turn_on
       entity_id: scene.all_off
+    - service: media_player.media_stop
+      entity_id: media_player.googlehome7490
+    - service: media_player.media_stop
+      entity_id: media_player.googlehome4508
+    - service: media_player.media_stop
+      entity_id: media_player.home_group
 
 - alias: Home ON Livingroom Light Mode Normal
   trigger:

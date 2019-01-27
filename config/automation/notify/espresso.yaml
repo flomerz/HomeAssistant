@@ -24,4 +24,5 @@
     - service: script.notify_google
       data:
         language: it
-        message: 'hey hey bueb käfi isch fertig'
+        message: 'espresso isch fertig'
+        # message: 'hey hey bueb käfi isch fertig'
