@@ -1,9 +1,6 @@
 - alias: Livingroom Media ON
   trigger:
     - platform: state
-      entity_id: media_player.horizon
-      to: 'playing'
-    - platform: state
       entity_id: switch.ps4
       to: 'on'
   action:

@@ -63,8 +63,6 @@ google_assistant:
   exposed_domains:
     - light
   entity_config:
-    media_player.horizon:
-      expose: true
     switch.resin:
       expose: true
     switch.livingroom_bass:
@@ -86,10 +84,6 @@ tts:
     cache: true
     cache_dir: /tmp/tts
     time_memory: 300
-
-media_player:
-  - platform: horizon
-    host: !secret horizon_ip
 
 notify:
   - name: flo

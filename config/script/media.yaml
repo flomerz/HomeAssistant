@@ -53,9 +53,6 @@ media_power_off:
         option: Normal
 
     # turn off devices
-    - service: media_player.turn_off
-      entity_id: media_player.horizon
-
     - service: switch.turn_off
       entity_id: switch.livingroom_bass
       
