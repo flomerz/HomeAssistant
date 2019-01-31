@@ -78,6 +78,9 @@ google_assistant:
       name: Media
       aliases:
         - Beamer
+    script.bedroom_light_wakeup:
+      expose: true
+      name: Licht WakeUp
 
 tts:
   - platform: google

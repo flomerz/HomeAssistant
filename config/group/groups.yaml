@@ -42,6 +42,7 @@ bathroom:
     - light.bathroom_left
     - light.bathroom_right
     - light.bathroom_led
+    - light.0x90fd9ffffee5f479_light
 
 media:
   name: Media

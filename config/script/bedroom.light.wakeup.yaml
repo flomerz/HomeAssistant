@@ -1,0 +1,12 @@
+bedroom_light_wakeup:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.0x000b57fffe48f4c4_light
+      data:
+        brightness: 0
+
+    - service: light.turn_on
+      entity_id: light.0x000b57fffe48f4c4_light
+      data:
+        brightness: 255
+        transition: 900
