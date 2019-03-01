@@ -6,7 +6,12 @@
     - platform: state
       entity_id: binary_sensor.0x00158d0002b92fc8_occupancy
       to: 'on'
-  condition: !include ../../../condition/light.nosleep.yaml
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/light.nosleep.yaml
+    - condition: state
+      entity_id: input_boolean.state_media
+      state: 'off'
   action:
     - service: input_select.select_option
       data_template:
@@ -31,6 +36,9 @@
       state: 'off'
     - condition: state
       entity_id: binary_sensor.0x00158d0002b92fc8_occupancy
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.state_media
       state: 'off'
   action:
     - service: input_select.select_option
