@@ -13,6 +13,7 @@
       data_template:
         language: de
         message: "Neuer Netzwerkzugriff von {{ trigger.event.data.host_name }}"
+        message_say: "Neuer Netzwerkzugriff von {{ trigger.event.data.host_name }}"
 
 
 - alias: Louisa Home

@@ -25,4 +25,4 @@
       data:
         language: it
         message: 'espresso isch fertig'
-        # message: 'hey hey bueb käfi isch fertig'
+        message_say: 'hey hey bueb käfi isch fertig'

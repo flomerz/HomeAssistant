@@ -1,5 +1,12 @@
 notify_google:
   sequence:
+    - service: script.notify_google_broadcast
+      data_template:
+        message: '{{ message }}'
+    - service: script.notify_google_say
+      data_template:
+        language: '{{ language }}'
+        message: '{{ message_say }}'
     # - service: media_player.media_stop
     #   entity_id: media_player.home_group
 
@@ -15,15 +22,7 @@ notify_google:
     #   data:
     #     volume_level: 0.7
 
-    # - service: tts.google_say
-    #   entity_id: media_player.home_group
-    #   data_template:
-    #     language: '{{ language }}'
-    #     message: '{{ message }}'
 
-    - service: notify.google
-      data_template:
-        message: '{{ message }}'
 
     # - delay:
     #     seconds: 5
@@ -39,3 +38,33 @@ notify_google:
     #   entity_id: media_player.googlehome7490
     #   data:
     #     volume_level: 0.2
+
+notify_google_broadcast:
+  sequence:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: "{{ is_state('media_player.home_group', 'playing') }}"
+        - condition: template
+          value_template: "{{ is_state('media_player.googlehome4508', 'playing') }}"
+        - condition: template
+          value_template: "{{ is_state('media_player.googlehome7490', 'playing') }}"
+    - service: notify.google
+      data_template:
+        message: '{{ message }}'
+
+notify_google_say:
+  sequence:
+    - condition: and
+      conditions:
+        - condition: template
+          value_template: "{{ not is_state('media_player.home_group', 'playing') }}"
+        - condition: template
+          value_template: "{{ not is_state('media_player.googlehome4508', 'playing') }}"
+        - condition: template
+          value_template: "{{ not is_state('media_player.googlehome7490', 'playing') }}"
+    - service: tts.google_say
+      entity_id: media_player.home_group
+      data_template:
+        language: '{{ language }}'
+        message: '{{ message }}'
