@@ -1,4 +1,4 @@
-- alias: Bathroom Motion ON
+- alias: Bedroom Motion ON
   trigger:
     platform: state
     entity_id: binary_sensor.0x00158d000273269a_occupancy
@@ -6,16 +6,18 @@
   condition: !include ../../../condition/light.nosleep.yaml
   action:
     service: light.turn_on
-    entity_id: light.bathroom_right
+    data:
+      entity_id: light.0x000b57fffe48f4c4_light
+      brightness: 100
 
 
-- alias: Bathroom Motion OFF
+- alias: Bedroom Motion OFF
   trigger:
     platform: state
     entity_id: binary_sensor.0x00158d000273269a_occupancy
     to: 'off'
     for:
-      minutes: 3
+      minutes: 5
   action:
     service: light.turn_off
-    entity_id: light.bathroom_right
+    entity_id: light.0x000b57fffe48f4c4_light
