@@ -130,3 +130,33 @@ switch.0x00158d0002c5140f_switch_right:
 scene.all_off:
   friendly_name: Alles Ausschalten
   icon: mdi:power-plug-off
+sensor.0x000b57fffe30e00d_linkquality:
+  hidden: true
+sensor.0x000b57fffe48f4c4_linkquality:
+  hidden: true
+sensor.0x00158d000254cc4f_linkquality:
+  hidden: true
+sensor.0x00158d00026eb5c7_linkquality:
+  hidden: true
+sensor.0x00158d000273269a_linkquality:
+  hidden: true
+sensor.0x00158d0002b92fc8_linkquality:
+  hidden: true
+sensor.0x00158d0002b95ccb_linkquality:
+  hidden: true
+sensor.0x00158d0002c5140f_linkquality:
+  hidden: true
+sensor.0x90fd9ffffee5f479_linkquality:
+  hidden: true
+sensor.0x00158d000254cc4f_battery:
+  hidden: true
+sensor.0x00158d00026eb5c7_battery:
+  hidden: true
+sensor.0x000b57fffe30e00d_brightness:
+  hidden: true
+sensor.0x000b57fffe30e00d_action:
+  hidden: true
+sensor.0x000b57fffe30e00d_battery:
+  hidden: true
+device_tracker.flo:
+  hidden: true
