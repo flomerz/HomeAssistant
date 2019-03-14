@@ -7,41 +7,10 @@ notify_google:
       data_template:
         language: '{{ language }}'
         message: '{{ message_say }}'
-    # - service: media_player.media_stop
-    #   entity_id: media_player.home_group
-
-    # # livingroom
-    # - service: media_player.volume_set
-    #   entity_id: media_player.googlehome4508
-    #   data:
-    #     volume_level: 0.7
-
-    # # bedroom
-    # - service: media_player.volume_set
-    #   entity_id: media_player.googlehome7490
-    #   data:
-    #     volume_level: 0.7
-
-
-
-    # - delay:
-    #     seconds: 5
-
-    # # livingroom
-    # - service: media_player.volume_set
-    #   entity_id: media_player.googlehome4508
-    #   data:
-    #     volume_level: 0.4
-
-    # # bedroom
-    # - service: media_player.volume_set
-    #   entity_id: media_player.googlehome7490
-    #   data:
-    #     volume_level: 0.2
 
 notify_google_broadcast:
   sequence:
-    - condition: and
+    - condition: or
       conditions:
         - condition: template
           value_template: "{{ is_state('media_player.home_group', 'playing') }}"
@@ -63,6 +32,12 @@ notify_google_say:
           value_template: "{{ not is_state('media_player.googlehome4508', 'playing') }}"
         - condition: template
           value_template: "{{ not is_state('media_player.googlehome7490', 'playing') }}"
+    - service: media_player.media_stop
+      entity_id: media_player.home_group
+    - service: media_player.media_stop
+      entity_id: media_player.googlehome4508
+    - service: media_player.media_stop
+      entity_id: media_player.googlehome7490
     - service: tts.google_say
       entity_id: media_player.home_group
       data_template:
