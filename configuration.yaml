@@ -23,18 +23,18 @@ http:
 
 updater:
 
-recorder:
-  include:
-    domains:
-      - light
-      - switch
-      - device_tracker
-      - binary_sensor
-      - sensor
+# recorder:
+#   include:
+#     domains:
+#       - light
+#       - switch
+#       - device_tracker
+#       - binary_sensor
+#       - sensor
 
-history:
+# history:
 
-logbook:
+# logbook:
 
 config:
 
