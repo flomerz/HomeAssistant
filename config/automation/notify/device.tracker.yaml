@@ -33,9 +33,9 @@
   action:
     - service: notify.flo
       data_template:
-        message: "{{ trigger.entity_id }} is {{ trigger.to_state.state }}"
+        message: "{{ str(trigger.entity_id).replace('device_tracker.','') }} ist {{ str(trigger.to_state.state).replace('not_home','weg').replace('home','da') }}"
     - service: script.notify_google
       data_template:
         language: de
-        message: "{{ trigger.entity_id }} ist {{ trigger.to_state.state }}"
-        message_say: "{{ trigger.entity_id }} ist {{ trigger.to_state.state }}"
+        message: "{{ str(trigger.entity_id).replace('device_tracker.','') }} ist {{ str(trigger.to_state.state).replace('not_home','weg').replace('home','da') }}"
+        message_say: "{{ str(trigger.entity_id).replace('device_tracker.','') }} ist {{ str(trigger.to_state.state).replace('not_home','weg').replace('home','da') }}"
