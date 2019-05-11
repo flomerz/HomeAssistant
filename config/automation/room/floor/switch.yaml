@@ -7,14 +7,7 @@
       entity_id: sensor.0x00158d00026eb5c7
       state: 'left'
   action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.state_home
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_sleep
-    - condition: and
-      conditions: !include ../../../condition/light.nosleep.yaml
-    - service: light.turn_on
-      entity_id: light.floor
+    - service: script.home
 
 
 - alias: Floor Switch RIGHT
@@ -28,6 +21,8 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_home
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_sleep
 
 
 - alias: Floor Switch BOTH

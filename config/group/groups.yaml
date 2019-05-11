@@ -11,6 +11,7 @@ flat:
   control: hidden
   entities:
     - scene.all_off
+    - binary_sensor.0x00158d00032b6a0a_contact
     - light.floor
     - light.kitchen
     - input_select.state_livingroom_light
@@ -24,6 +25,17 @@ flat:
     - switch.resin
     - switch.humidifier
     - switch.ps4
+
+people:
+  name: Personen
+  control: hidden
+  entities:
+    - device_tracker.flo
+    - device_tracker.louisa
+    - device_tracker.myrtha
+    - device_tracker.ries
+    - device_tracker.bri
+    - device_tracker.gubi
 
 livingroom:
   name: Wohnzimmer
@@ -63,17 +75,23 @@ motion_switch:
     # livingroom motion
     - binary_sensor.0x00158d0002b95ccb_occupancy
     - sensor.0x00158d0002b95ccb_illuminance
-    - sensor.0x00158d0002b95ccb_battery
     - binary_sensor.0x00158d0002b92fc8_occupancy
     - sensor.0x00158d0002b92fc8_illuminance
-    - sensor.0x00158d0002b92fc8_battery
     - binary_sensor.0x00158d000273269a_occupancy
     - sensor.0x00158d000273269a_illuminance
-    - sensor.0x00158d000273269a_battery
     # livingroom switch
     - sensor.0x00158d000254cc4f
     # floor switch
     - sensor.0x00158d00026eb5c7
+
+zigbee_battdery:
+  name: Zigbee Batterie
+  control: hidden
+  entities:
+    - sensor.0x00158d00032b6a0a_battery
+    - sensor.0x00158d0002b95ccb_battery
+    - sensor.0x00158d0002b92fc8_battery
+    - sensor.0x00158d000273269a_battery
 
 weather:
   name: Wetter
