@@ -32,14 +32,39 @@ notify_google_say:
           value_template: "{{ not is_state('media_player.googlehome4508', 'playing') }}"
         - condition: template
           value_template: "{{ not is_state('media_player.googlehome7490', 'playing') }}"
+    # media stop
     - service: media_player.media_stop
       entity_id: media_player.home_group
     - service: media_player.media_stop
       entity_id: media_player.googlehome4508
     - service: media_player.media_stop
       entity_id: media_player.googlehome7490
+    # livingroom volume
+    - service: media_player.volume_set
+      entity_id: media_player.googlehome4508
+      data:
+        volume_level: 0.7
+    # bedroom volume
+    - service: media_player.volume_set
+      entity_id: media_player.googlehome7490
+      data:
+        volume_level: 0.7
+    # delay
+    - delay:
+        seconds: 5
+    # notify
     - service: tts.google_say
       entity_id: media_player.home_group
       data_template:
         language: '{{ language }}'
         message: '{{ message }}'
+    # livingroom volume
+    - service: media_player.volume_set
+      entity_id: media_player.googlehome4508
+      data:
+        volume_level: 0.4
+    # bedroom volume
+    - service: media_player.volume_set
+      entity_id: media_player.googlehome7490
+      data:
+        volume_level: 0.2
