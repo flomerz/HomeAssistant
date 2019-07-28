@@ -2,10 +2,7 @@
   trigger:
     - platform: state
       entity_id: sensor.0x00158d00026eb5c7
-  condition:
-    - condition: state
-      entity_id: sensor.0x00158d00026eb5c7
-      state: 'left'
+      to: 'left'
   action:
     - service: script.home
 
@@ -14,10 +11,7 @@
   trigger:
     - platform: state
       entity_id: sensor.0x00158d00026eb5c7
-  condition:
-    - condition: state
-      entity_id: sensor.0x00158d00026eb5c7
-      state: 'right'
+      to: 'right'
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_home
@@ -29,10 +23,7 @@
   trigger:
     - platform: state
       entity_id: sensor.0x00158d00026eb5c7
-  condition:
-    - condition: state
-      entity_id: sensor.0x00158d00026eb5c7
-      state: 'both'
+      to: 'both'
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep

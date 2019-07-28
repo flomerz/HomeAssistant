@@ -67,8 +67,18 @@ media:
     - script.ir_receiver_vol_up
     - script.ir_receiver_vol_down
 
+vacuum:
+  name: Staubsauger
+  control: hidden
+  entities:
+    - vacuum.xiaomi_vacuum
+    - script.vacuum_livingroom
+    - script.vacuum_kitchen
+
+
 motion_switch:
   name: Bewegungsmelder & Schalter
+  control: hidden
   entities:
     - binary_sensor.motion_floor
     - binary_sensor.motion_kitchen
@@ -81,11 +91,13 @@ motion_switch:
     - binary_sensor.0x00158d000273269a_occupancy
     - sensor.0x00158d000273269a_illuminance
     # livingroom switch
-    - sensor.0x00158d000254cc4f
+    - sensor.0x00158d000254cc4f_click
     # floor switch
-    - sensor.0x00158d00026eb5c7
+    - sensor.0x00158d00026eb5c7_click
+    # Dimmer
+    - sensor.0x000b57fffe30e00d_brightness
 
-zigbee_battdery:
+zigbee_battery:
   name: Zigbee Batterie
   control: hidden
   entities:
@@ -93,6 +105,9 @@ zigbee_battdery:
     - sensor.0x00158d0002b95ccb_battery
     - sensor.0x00158d0002b92fc8_battery
     - sensor.0x00158d000273269a_battery
+    - sensor.0x00158d000254cc4f_battery
+    - sensor.0x00158d00026eb5c7_battery
+    - sensor.0x000b57fffe30e00d_battery
 
 weather:
   name: Wetter

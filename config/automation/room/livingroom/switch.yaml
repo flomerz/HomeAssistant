@@ -2,10 +2,7 @@
   trigger:
     - platform: state
       entity_id: sensor.0x00158d000254cc4f
-  condition:
-    - condition: state
-      entity_id: sensor.0x00158d000254cc4f
-      state: 'left'
+      to: 'left'
   action:
     - service: input_select.select_previous
       entity_id: input_select.state_livingroom_light
@@ -14,10 +11,7 @@
   trigger:
     - platform: state
       entity_id: sensor.0x00158d000254cc4f
-  condition:
-    - condition: state
-      entity_id: sensor.0x00158d000254cc4f
-      state: 'right'
+      to: 'right'
   action:
     - service: input_select.select_next
       entity_id: input_select.state_livingroom_light

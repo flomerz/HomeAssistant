@@ -1,4 +1,4 @@
-vaccum_kitchen:
+vacuum_kitchen:
   sequence:
     - service: vacuum.xiaomi_clean_zone
       data_template:

@@ -68,24 +68,21 @@ device_tracker:
 google_assistant:
   project_id: !secret google_project_id
   api_key: !secret google_api_key
-  exposed_domains:
-    - light
+  expose_by_default: false
   entity_config:
-    switch.resin:
-      expose: true
-    switch.livingroom_bass:
-      expose: true
     switch.espresso:
       expose: true
-    switch.humidifier:
-      expose: true
+      room: '2 Küche'
     input_boolean.state_sleep:
       expose: true
+      room: '3 Schlafzimmer'
     input_boolean.state_media:
       expose: true
       name: Media
+      room: '1 Wohnzimmer'
       aliases:
         - Beamer
+        - TV
     script.bedroom_light_wakeup:
       expose: true
       name: Licht WakeUp
