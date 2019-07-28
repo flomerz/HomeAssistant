@@ -33,6 +33,7 @@ people:
     - device_tracker.flo
     - device_tracker.louisa
     - device_tracker.myrtha
+    - device_tracker.julia
     - device_tracker.ries
     - device_tracker.bri
     - device_tracker.gubi

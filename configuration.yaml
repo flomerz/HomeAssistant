@@ -23,28 +23,38 @@ http:
 
 updater:
 
-# recorder:
-#   include:
-#     domains:
-#       - light
-#       - switch
-#       - device_tracker
-#       - binary_sensor
-#       - sensor
+recorder:
+  include:
+    domains:
+      - light
+      - switch
+      # - device_tracker
+      # - binary_sensor
+      # - sensor
 
-# history:
+history:
 
-# logbook:
+logbook:
 
 config:
 
-sun:
+automation: !include automations.yaml
+automation old: !include_dir_merge_list config/automation
+sensor: !include_dir_merge_list config/entity/sensor/sensor
+binary_sensor: !include_dir_merge_list config/entity/sensor/binary_sensor
+switch: !include_dir_merge_list config/entity/switch
+light: !include_dir_merge_list config/entity/light
+input_boolean: !include_dir_merge_named config/entity/input/boolean
+input_select: !include_dir_merge_named config/entity/input/select
+scene: !include_dir_merge_list config/scene
+group: !include_dir_merge_named config/group
+script: !include_dir_merge_named config/script
 
-lirc:
+sun:
 
 mqtt:
   discovery: true
-  broker: localhost
+  broker: !env_var MQTT_HOST
 
 device_tracker:
   - platform: ddwrt
@@ -54,8 +64,6 @@ device_tracker:
     interval_seconds: 60
     consider_home: 180
     track_new_devices: yes
-
-  - platform: owntracks
 
 google_assistant:
   project_id: !secret google_project_id
@@ -81,9 +89,16 @@ google_assistant:
     script.bedroom_light_wakeup:
       expose: true
       name: Licht WakeUp
+    script.vaccum_kitchen:
+      expose: true
+      name: Küche Staubsaugen
+    script.vaccum_livingroom:
+      expose: true
+      name: Wohnzimmer Staubsaugen
 
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
     cache: true
     cache_dir: /tmp/tts
     time_memory: 300
@@ -96,14 +111,8 @@ notify:
     platform: rest
     resource: http://localhost:5000/broadcast_message
 
-automation: !include automations.yaml
-automation old: !include_dir_merge_list config/automation
-sensor: !include_dir_merge_list config/entity/sensor/sensor
-binary_sensor: !include_dir_merge_list config/entity/sensor/binary_sensor
-switch: !include_dir_merge_list config/entity/switch
-light: !include_dir_merge_list config/entity/light
-input_boolean: !include_dir_merge_named config/entity/input/boolean
-input_select: !include_dir_merge_named config/entity/input/select
-scene: !include_dir_merge_list config/scene
-group: !include_dir_merge_named config/group
-script: !include_dir_merge_named config/script
+vacuum:
+  - name: xiaomi_vacuum
+    platform: xiaomi_miio
+    host: rockrobo
+    token: !secret xiaomi_vaccum_token

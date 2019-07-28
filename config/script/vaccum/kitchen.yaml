@@ -1,0 +1,8 @@
+vaccum_kitchen:
+  sequence:
+    - service: vacuum.xiaomi_clean_zone
+      data_template:
+        entity_id: vacuum.xiaomi_vacuum
+        repeats: 3
+        zone:
+          - [31205,17013,32755,20663]
