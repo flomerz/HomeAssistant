@@ -89,10 +89,13 @@ google_assistant:
       name: Licht WakeUp
     script.vacuum_kitchen:
       expose: true
-      name: Küche Staubsaugen
+      name: Küche staubsaugen
     script.vacuum_livingroom:
       expose: true
-      name: Wohnzimmer Staubsaugen
+      name: Wohnzimmer staubsaugen
+    script.vacuum_livingroom_table:
+      expose: true
+      name: Sofatisch staubsaugen
 
 tts:
   - platform: google_translate
