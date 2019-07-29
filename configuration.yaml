@@ -28,6 +28,7 @@ recorder:
     domains:
       - light
       - switch
+      - input
       # - device_tracker
       # - binary_sensor
       # - sensor
@@ -86,10 +87,10 @@ google_assistant:
     script.bedroom_light_wakeup:
       expose: true
       name: Licht WakeUp
-    script.vaccum_kitchen:
+    script.vacuum_kitchen:
       expose: true
       name: Küche Staubsaugen
-    script.vaccum_livingroom:
+    script.vacuum_livingroom:
       expose: true
       name: Wohnzimmer Staubsaugen
 
