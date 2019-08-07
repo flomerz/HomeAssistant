@@ -17,7 +17,9 @@ light.livingroom_led_white_back:
 light.livingroom_rainbow:
   friendly_name: Rainbow
 light.0x000b57fffe48f4c4_light:
-  friendly_name: Schlafzimmer
+  friendly_name: IKEA LED 2700K
+light.0x90fd9ffffee5f479_light:
+  friendly_name: Schlafzimmerlampe
 light.wc:
   friendly_name: WC
 light.bathroom_led:

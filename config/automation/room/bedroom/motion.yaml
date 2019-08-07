@@ -7,7 +7,7 @@
   action:
     service: light.turn_on
     data:
-      entity_id: light.0x000b57fffe48f4c4_light
+      entity_id: light.0x90fd9ffffee5f479_light
       brightness: 100
 
 
@@ -20,4 +20,4 @@
       minutes: 5
   action:
     service: light.turn_off
-    entity_id: light.0x000b57fffe48f4c4_light
+    entity_id: light.0x90fd9ffffee5f479_light

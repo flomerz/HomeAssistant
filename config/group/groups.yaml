@@ -15,7 +15,7 @@ flat:
     - light.floor
     - light.kitchen
     - input_select.state_livingroom_light
-    - light.0x000b57fffe48f4c4_light
+    - light.0x90fd9ffffee5f479_light
     - light.wc
     - sensor.temperature_livingroom
     - sensor.humidity_livingroom
@@ -55,7 +55,6 @@ bathroom:
     - light.bathroom_left
     - light.bathroom_right
     - light.bathroom_led
-    - light.0x90fd9ffffee5f479_light
 
 media:
   name: Media
@@ -129,3 +128,8 @@ scenes:
     - scene.livingroom_bright
     - scene.livingroom_beamer
     - scene.livingroom_beamer_bright
+
+bathroom:
+  name: NOT IN USE
+  entities:
+    - light.0x000b57fffe48f4c4_light

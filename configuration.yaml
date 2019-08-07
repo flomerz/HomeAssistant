@@ -17,9 +17,6 @@ frontend:
 
 http:
   base_url: !secret base_url
-  server_port: 443
-  ssl_certificate: !secret ssl_certificate
-  ssl_key: !secret ssl_key
 
 updater:
 
@@ -28,10 +25,7 @@ recorder:
     domains:
       - light
       - switch
-      - input
-      # - device_tracker
-      # - binary_sensor
-      # - sensor
+      - input_boolean
 
 history:
 
@@ -71,19 +65,25 @@ google_assistant:
   api_key: !secret google_api_key
   expose_by_default: false
   entity_config:
-    switch.espresso:
-      expose: true
-      room: '2 Küche'
-    input_boolean.state_sleep:
-      expose: true
-      room: '3 Schlafzimmer'
+    # 1 Wohnzimmer
     input_boolean.state_media:
       expose: true
       name: Media
       room: '1 Wohnzimmer'
       aliases:
         - Beamer
-        - TV
+    # 2 Küche
+    switch.espresso:
+      expose: true
+      room: '2 Küche'
+    # 3 Schlafzimmer
+    input_boolean.state_sleep:
+      expose: true
+      room: '3 Schlafzimmer'
+    light.0x90fd9ffffee5f479_light:
+      expose: true
+      room: '3 Schlafzimmer'
+    # Scenes
     script.bedroom_light_wakeup:
       expose: true
       name: Licht WakeUp
@@ -96,6 +96,7 @@ google_assistant:
     script.vacuum_livingroom_table:
       expose: true
       name: Sofatisch staubsaugen
+
 
 tts:
   - platform: google_translate
