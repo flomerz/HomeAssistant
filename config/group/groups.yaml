@@ -128,8 +128,3 @@ scenes:
     - scene.livingroom_bright
     - scene.livingroom_beamer
     - scene.livingroom_beamer_bright
-
-bathroom:
-  name: NOT IN USE
-  entities:
-    - light.0x000b57fffe48f4c4_light
