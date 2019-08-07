@@ -13,6 +13,8 @@ homeassistant:
 
   customize: !include customize.yaml
 
+system_health:
+
 frontend:
 
 http:

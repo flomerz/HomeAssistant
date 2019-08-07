@@ -107,10 +107,6 @@ scene.livingroom_beamer:
 scene.livingroom_beamer_bright:
   friendly_name: Licht Beamer Hell
   icon: mdi:projector
-light.bathroom_left:
-  friendly_name: Bad (Links)
-light.bathroom_right:
-  friendly_name: Bad (Rechts)
 binary_sensor.motion_floor:
   friendly_name: Gang Bewegung
 binary_sensor.motion_kitchen:
@@ -130,11 +126,11 @@ sensor.0x00158d0002c5140f_click:
   friendly_name: Bad Schalter
   hidden: true
 switch.0x00158d0002c5140f_switch_left:
-  friendly_name: Bad Links
-  hidden: true
+  friendly_name: Bad (Links)
+  icon: mdi:lightbulb
 switch.0x00158d0002c5140f_switch_right:
-  friendly_name: Bad Rechts
-  hidden: true
+  friendly_name: Bad (Rechts)
+  icon: mdi:lightbulb
 sensor.0x000b57fffe30e00d_linkquality:
   hidden: true
 sensor.0x000b57fffe48f4c4_linkquality:
@@ -156,16 +152,16 @@ sensor.0x90fd9ffffee5f479_linkquality:
 sensor.0x00158d00032b6a0a_linkquality:
   hidden: true
 sensor.0x000b57fffe30e00d_action:
-  friendly_name: Dimmer Bewegung
+  friendly_name: Dimmer
   hidden: true
 sensor.0x000b57fffe30e00d_battery:
-  friendly_name: Dimmer Bewegung
+  friendly_name: Dimmer
 sensor.0x000b57fffe30e00d_brightness:
   friendly_name: Dimmer Helligkeit
 binary_sensor.0x00158d00032b6a0a_contact:
   friendly_name: Türe
 binary_sensor.0x00158d00032b6a0a_battery:
-  friendly_name: Türe Batterie
+  friendly_name: Türe
 binary_sensor.0x00158d0002b95ccb_occupancy:
   friendly_name: Wohnzimmer (Hinten) Bewegung
 binary_sensor.0x00158d0002b92fc8_occupancy:

@@ -1,7 +1,7 @@
 - alias: Floor Switch LEFT
   trigger:
     - platform: state
-      entity_id: sensor.0x00158d00026eb5c7
+      entity_id: sensor.0x00158d00026eb5c7_click
       to: 'left'
   action:
     - service: script.home
@@ -10,7 +10,7 @@
 - alias: Floor Switch RIGHT
   trigger:
     - platform: state
-      entity_id: sensor.0x00158d00026eb5c7
+      entity_id: sensor.0x00158d00026eb5c7_click
       to: 'right'
   action:
     - service: input_boolean.turn_off
@@ -22,7 +22,7 @@
 - alias: Floor Switch BOTH
   trigger:
     - platform: state
-      entity_id: sensor.0x00158d00026eb5c7
+      entity_id: sensor.0x00158d00026eb5c7_click
       to: 'both'
   action:
     - service: input_boolean.turn_on

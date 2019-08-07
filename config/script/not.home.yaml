@@ -7,8 +7,10 @@ not_home:
     - condition: state
       entity_id: group.people
       state: 'not_home'
+    # no sleep
+    - condition: state
+      entity_id: input_boolean.state_sleep
+      state: 'off'
     # states
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_home
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_sleep

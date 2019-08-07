@@ -52,8 +52,8 @@ livingroom:
 bathroom:
   name: Bad
   entities:
-    - light.bathroom_left
-    - light.bathroom_right
+    - switch.0x00158d0002c5140f_switch_left
+    - switch.0x00158d0002c5140f_switch_right
     - light.bathroom_led
 
 media:
