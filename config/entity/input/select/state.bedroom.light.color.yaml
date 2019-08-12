@@ -1,0 +1,11 @@
+state_bedroom_light_color:
+  name: Wohnzimmer Licht
+  options:
+    - Weiss
+    - Gelb
+    - Orange
+    - Rot
+    - Pink
+    - Violett
+    - Blau
+    - Grün
