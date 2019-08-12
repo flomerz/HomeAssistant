@@ -1,7 +1,7 @@
 - alias: Espresso Notify
   trigger:
     - platform: numeric_state
-      entity_id: sensor.temperature_kitchen
+      entity_id: sensor.temperature_espresso
       above: 40
     - platform: state
       entity_id: switch.espresso
@@ -10,7 +10,7 @@
         minutes: 6
   condition:
     - condition: numeric_state
-      entity_id: sensor.temperature_kitchen
+      entity_id: sensor.temperature_espresso
       above: 40
     - condition: state
       entity_id: switch.espresso

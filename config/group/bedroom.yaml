@@ -1,0 +1,4 @@
+bedroom:
+  name: Schlafzimmer
+  entities:
+    - light.light_bedroom_light

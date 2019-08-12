@@ -16,9 +16,9 @@ light.livingroom_led_white_back:
   friendly_name: LED Weiss Hinten
 light.livingroom_rainbow:
   friendly_name: Rainbow
-light.0x000b57fffe48f4c4_light:
-  friendly_name: IKEA LED 2700K
-light.0x90fd9ffffee5f479_light:
+light.light_door_light:
+  friendly_name: Türe
+light.light_bedroom_light:
   friendly_name: Schlafzimmerlampe
 light.wc:
   friendly_name: WC
@@ -37,9 +37,9 @@ sensor.temperature_livingroom:
 sensor.humidity_livingroom:
   friendly_name: Wohnzimmer Feuchtigkeit
   icon: mdi:water
-sensor.temperature_kitchen:
+sensor.temperature_espresso:
   friendly_name: Espresso Temperatur
-sensor.humidity_kitchen:
+sensor.humidity_espresso:
   friendly_name: Espresso Feuchtigkeit
   icon: mdi:water
 switch.espresso:
@@ -113,79 +113,89 @@ binary_sensor.motion_kitchen:
   friendly_name: Küche Bewegung
 binary_sensor.motion_wc:
   friendly_name: WC Bewegung
-sensor.0x00158d000273269a_battery:
-  friendly_name: Schlafzimmer Bewegung
-sensor.0x00158d000273269a_illuminance:
-  friendly_name: Schlafzimmer Helligkeit
-binary_sensor.0x00158d000273269a_occupancy:
-  friendly_name: Schlafzimmer Bewegung
+sensor.motion_workroom_battery:
+  friendly_name: Büro Bewegung
+sensor.motion_workroom_illuminance:
+  friendly_name: Büro Helligkeit
+binary_sensor.motion_workroom_occupancy:
+  friendly_name: Büro Bewegung
 scene.all_off:
   friendly_name: Alles Ausschalten
   icon: mdi:power-plug-off
-sensor.0x00158d0002c5140f_click:
+sensor.switch_bathroom_click:
   friendly_name: Bad Schalter
   hidden: true
-switch.0x00158d0002c5140f_switch_left:
+switch.switch_bathroom_switch_left:
   friendly_name: Bad (Links)
   icon: mdi:lightbulb
-switch.0x00158d0002c5140f_switch_right:
+switch.switch_bathroom_switch_right:
   friendly_name: Bad (Rechts)
   icon: mdi:lightbulb
-sensor.0x000b57fffe30e00d_linkquality:
+sensor.dimmer_linkquality:
   hidden: true
-sensor.0x000b57fffe48f4c4_linkquality:
+sensor.light_door_linkquality:
   hidden: true
-sensor.0x00158d000254cc4f_linkquality:
+sensor.switch_livingroom_linkquality:
   hidden: true
-sensor.0x00158d00026eb5c7_linkquality:
+sensor.switch_door_linkquality:
   hidden: true
-sensor.0x00158d000273269a_linkquality:
+sensor.motion_workroom_linkquality:
   hidden: true
-sensor.0x00158d0002b92fc8_linkquality:
+sensor.light_workroom_linkquality:
   hidden: true
-sensor.0x00158d0002b95ccb_linkquality:
+sensor.motion_livingroom_2_linkquality:
   hidden: true
-sensor.0x00158d0002c5140f_linkquality:
+sensor.motion_livingroom_1_linkquality:
   hidden: true
-sensor.0x90fd9ffffee5f479_linkquality:
+sensor.switch_bathroom_linkquality:
   hidden: true
-sensor.0x00158d00032b6a0a_linkquality:
+sensor.switch_bedroom_linkquality:
   hidden: true
-sensor.0x000b57fffe30e00d_action:
+sensor.light_bedroom_linkquality:
+  hidden: true
+sensor.sensor_door_linkquality:
+  hidden: true
+sensor.dimmer_action:
   friendly_name: Dimmer
   hidden: true
-sensor.0x000b57fffe30e00d_battery:
+sensor.dimmer_battery:
   friendly_name: Dimmer
-sensor.0x000b57fffe30e00d_brightness:
-  friendly_name: Dimmer Helligkeit
-binary_sensor.0x00158d00032b6a0a_contact:
+sensor.dimmer_brightness:
+  hidden: true
+binary_sensor.sensor_door_contact:
   friendly_name: Türe
-binary_sensor.0x00158d00032b6a0a_battery:
+binary_sensor.sensor_door_battery:
   friendly_name: Türe
-binary_sensor.0x00158d0002b95ccb_occupancy:
+binary_sensor.motion_livingroom_1_occupancy:
   friendly_name: Wohnzimmer (Hinten) Bewegung
-binary_sensor.0x00158d0002b92fc8_occupancy:
+binary_sensor.motion_livingroom_2_occupancy:
   friendly_name: Wohnzimmer (Mitte) Bewegung
-sensor.0x00158d0002b95ccb_illuminance:
+sensor.motion_livingroom_1_illuminance:
   friendly_name: Wohnzimmer (Hinten) Helligkeit
-sensor.0x00158d0002b92fc8_illuminance:
+sensor.motion_livingroom_2_illuminance:
   friendly_name: Wohnzimmer (Mitte) Helligkeit
-sensor.0x00158d0002b95ccb_battery:
+sensor.motion_livingroom_1_battery:
   friendly_name: Wohnzimmer (Hinten) Bewegung
-sensor.0x00158d0002b92fc8_battery:
+sensor.motion_livingroom_2_battery:
   friendly_name: Wohnzimmer (Mitte) Bewegung
-sensor.0x00158d000254cc4f_click:
+sensor.switch_livingroom_click:
+  hidden: true
+sensor.switch_door_click:
+  hidden: true
+sensor.switch_livingroom_battery:
   friendly_name: Wohnzimmer Schalter
-sensor.0x00158d00026eb5c7_click:
+sensor.switch_door_battery:
   friendly_name: Hauptschalter
-sensor.0x00158d000254cc4f_battery:
-  friendly_name: Wohnzimmer Schalter
-sensor.0x00158d00026eb5c7_battery:
-  friendly_name: Hauptschalter
+sensor.switch_bedroom_action:
+  hidden: true
+sensor.switch_bedroom_battery:
+  friendly_name: Schlafzimmer Schalter
 vacuum.xiaomi_vacuum:
   friendly_name: Staubi
-script.vacuum_livingroom:
-  friendly_name: Wohnzimmer staubsaugen
 script.vacuum_kitchen:
   friendly_name: Küche staubsaugen
+script.vacuum_livingroom:
+  friendly_name: Wohnzimmer staubsaugen
+script.vacuum_livingroom_table:
+  friendly_name: Sofatisch staubsaugen
   

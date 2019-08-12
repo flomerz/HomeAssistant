@@ -23,11 +23,11 @@ http:
 updater:
 
 recorder:
-  include:
-    domains:
-      - light
-      - switch
-      - input_boolean
+  # include:
+  #   domains:
+  #     - light
+  #     - switch
+  #     - input_boolean
 
 history:
 
@@ -82,7 +82,7 @@ google_assistant:
     input_boolean.state_sleep:
       expose: true
       room: '3 Schlafzimmer'
-    light.0x90fd9ffffee5f479_light:
+    light.light_bedroom_light:
       expose: true
       room: '3 Schlafzimmer'
     # Scenes

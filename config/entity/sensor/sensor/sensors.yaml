@@ -21,13 +21,13 @@
   unit_of_measurement: "%"
 
 - platform: mqtt
-  name: temperature_kitchen
+  name: temperature_espresso
   state_topic: "homie/espresso/sensor/temperature"
   qos: 0
   unit_of_measurement: "°C"
 
 - platform: mqtt
-  name: humidity_kitchen
+  name: humidity_espresso
   state_topic: "homie/espresso/sensor/humidity"
   qos: 0
   unit_of_measurement: "%"

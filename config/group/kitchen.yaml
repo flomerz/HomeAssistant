@@ -1,0 +1,8 @@
+kitchen:
+  name: Küche
+  entities:
+    - binary_sensor.motion_kitchen
+    - light.kitchen
+    - switch.espresso
+    - sensor.temperature_espresso
+    - sensor.humidity_espresso

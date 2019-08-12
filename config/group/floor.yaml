@@ -1,0 +1,7 @@
+floor:
+  name: Gang
+  entities:
+    - binary_sensor.sensor_door_contact
+    - binary_sensor.motion_floor
+    - light.light_door_light
+    - light.floor

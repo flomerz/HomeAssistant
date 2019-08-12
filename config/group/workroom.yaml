@@ -1,0 +1,6 @@
+workroom:
+  name: Büro
+  entities:
+    - binary_sensor.motion_workroom_occupancy
+    - sensor.motion_workroom_illuminance
+    - light.light_workroom_light
