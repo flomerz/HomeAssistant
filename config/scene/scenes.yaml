@@ -64,3 +64,18 @@
     light.livingroom_led_white_back:
       state: on
       brightness: 255
+
+- name: livingroom_film
+  entities:
+    light.livingroom_rainbow: off
+    light.livingroom_front: off
+    light.livingroom_big: off
+    light.livingroom_sofatable: off
+    light.livingroom_led_rgb:
+      state: on
+      rgb_color: [255, 204, 0]
+      brightness: 2
+    light.livingroom_led_white_front: off
+    light.livingroom_led_white_back:
+      state: on
+      brightness: 1

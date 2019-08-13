@@ -164,7 +164,7 @@ sensor.dimmer_brightness:
   hidden: true
 binary_sensor.sensor_door_contact:
   friendly_name: Türe
-binary_sensor.sensor_door_battery:
+sensor.sensor_door_battery:
   friendly_name: Türe
 binary_sensor.motion_livingroom_1_occupancy:
   friendly_name: Wohnzimmer (Hinten) Bewegung
@@ -198,4 +198,6 @@ script.vacuum_livingroom:
   friendly_name: Wohnzimmer staubsaugen
 script.vacuum_livingroom_table:
   friendly_name: Sofatisch staubsaugen
+light.light_workroom_light:
+  friendly_name: Büro
   

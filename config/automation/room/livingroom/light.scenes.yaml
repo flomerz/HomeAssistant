@@ -5,7 +5,20 @@
       to: 'Aus'
   action:
     - service: homeassistant.turn_off
-      entity_id: group.livingroom
+      entity_id: group.livingroom_light
+
+- alias: Light Film
+  trigger:
+    - platform: state
+      entity_id: input_select.state_livingroom_light
+      to: 'Film'
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.mode_livingroom_light
+        option: "{{ states('input_select.state_livingroom_light') }}"
+    - service: scene.turn_on
+      entity_id: scene.livingroom_film
 
 - alias: Light Beamer
   trigger:
@@ -19,6 +32,7 @@
         option: "{{ states('input_select.state_livingroom_light') }}"
     - service: scene.turn_on
       entity_id: scene.livingroom_beamer
+
 
 - alias: Light Beamer Bright
   trigger:

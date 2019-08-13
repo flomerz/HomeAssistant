@@ -2,7 +2,7 @@ bathroom:
   name: Bad / WC
   entities:
     - binary_sensor.motion_wc
-    # - light.wc
+    - light.wc
     - switch.switch_bathroom_switch_left
     - switch.switch_bathroom_switch_right
     - light.bathroom_led

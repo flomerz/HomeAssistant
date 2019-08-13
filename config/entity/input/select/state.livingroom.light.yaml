@@ -2,6 +2,7 @@ state_livingroom_light:
   name: Wohnzimmer Licht
   options:
     - Aus
+    - Film
     - Beamer
     - Beamer Hell
     - Normal
@@ -10,6 +11,7 @@ state_livingroom_light:
 mode_livingroom_light:
   name: Wohnzimmer Licht Mode
   options:
+    - Film
     - Beamer
     - Beamer Hell
     - Normal
