@@ -107,6 +107,9 @@ scene.livingroom_beamer:
 scene.livingroom_beamer_bright:
   friendly_name: Licht Beamer Hell
   icon: mdi:projector
+scene.livingroom_film:
+  friendly_name: Film
+  icon: mdi:projector
 binary_sensor.motion_floor:
   friendly_name: Gang Bewegung
 binary_sensor.motion_kitchen:
@@ -201,3 +204,5 @@ script.vacuum_livingroom_table:
 light.light_workroom_light:
   friendly_name: Büro
   
+group.all_automations:
+  hidden: true

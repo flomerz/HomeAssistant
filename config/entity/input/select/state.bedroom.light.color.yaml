@@ -1,5 +1,5 @@
 state_bedroom_light_color:
-  name: Wohnzimmer Licht
+  name: Farbe
   options:
     - Weiss
     - Gelb

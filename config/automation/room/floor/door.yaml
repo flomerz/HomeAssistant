@@ -5,6 +5,8 @@
       entity_id: binary_sensor.sensor_door_contact
       to: 'on'
   action:
+    - service: script.turn_off
+      entity_id: script.not_home
     - service: script.home
 
 

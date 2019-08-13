@@ -20,7 +20,7 @@
       entity_id: light.light_bedroom_light
       data:
         transition: 0
-        rgb_color: [255, 255, 0]
+        rgb_color: [255, 190, 0]
 
 - alias: Bedroom Light Color Orange
   trigger:
@@ -32,7 +32,7 @@
       entity_id: light.light_bedroom_light
       data:
         transition: 0
-        rgb_color: [255, 165, 0]
+        rgb_color: [255, 129, 1]
 
 - alias: Bedroom Light Color Rot
   trigger:
@@ -56,7 +56,7 @@
       entity_id: light.light_bedroom_light
       data:
         transition: 0
-        rgb_color: [255, 192, 203]
+        rgb_color: [255, 0, 191]
 
 - alias: Bedroom Light Color Violett
   trigger:
@@ -68,7 +68,7 @@
       entity_id: light.light_bedroom_light
       data:
         transition: 0
-        rgb_color: [128, 0, 128]
+        rgb_color: [191, 2, 255]
 
 - alias: Bedroom Light Color Blau
   trigger:

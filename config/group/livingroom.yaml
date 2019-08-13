@@ -48,3 +48,4 @@ livingroom_scenes:
     - scene.livingroom_bright
     - scene.livingroom_beamer
     - scene.livingroom_beamer_bright
+    - scene.livingroom_film
