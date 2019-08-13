@@ -56,7 +56,7 @@
       entity_id: light.light_bedroom_light
       data:
         transition: 0
-        rgb_color: [255, 0, 191]
+        rgb_color: [255, 6, 128]
 
 - alias: Bedroom Light Color Violett
   trigger:
