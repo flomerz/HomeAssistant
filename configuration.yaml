@@ -99,6 +99,43 @@ google_assistant:
       expose: true
       name: Sofatisch staubsaugen
 
+plant:
+  plant1:
+    sensors:
+      moisture: sensor.plant1_moisture
+      battery: sensor.plant1_battery
+      temperature: sensor.plant1_temperature
+      conductivity: sensor.plant1_conductivity
+      brightness: sensor.plant1_light
+    min_moisture: 20
+    max_moisture: 60
+    min_battery: 17
+    min_conductivity: 500
+    min_temperature: 15
+  plant2:
+    sensors:
+      moisture: sensor.plant2_moisture
+      battery: sensor.plant2_battery
+      temperature: sensor.plant2_temperature
+      conductivity: sensor.plant2_conductivity
+      brightness: sensor.plant2_light
+    min_moisture: 20
+    max_moisture: 60
+    min_battery: 17
+    min_conductivity: 500
+    min_temperature: 15
+  plant3:
+    sensors:
+      moisture: sensor.plant3_moisture
+      battery: sensor.plant3_battery
+      temperature: sensor.plant3_temperature
+      conductivity: sensor.plant3_conductivity
+      brightness: sensor.plant3_light
+    min_moisture: 20
+    max_moisture: 60
+    min_battery: 17
+    min_conductivity: 500
+    min_temperature: 15
 
 tts:
   - platform: google_translate

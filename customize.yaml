@@ -72,29 +72,6 @@ script.ir_receiver_vol_up:
 script.ir_receiver_vol_down:
   friendly_name: Lautstärke - Leiser
   icon: mdi:volume-low
-sun.sun:
-  friendly_name: Sonnenstand
-sensor.yr_symbol:
-  friendly_name: Wetter
-sensor.yr_temperature:
-  friendly_name: Temperatur
-sensor.yr_humidity:
-  friendly_name: Feuchtigkeit
-  icon: mdi:water
-sensor.yr_cloudiness:
-  friendly_name: Bewölkt
-  icon: mdi:cloud
-sensor.yr_wind_speed:
-  friendly_name: Wind
-  icon: mdi:weather-windy
-sensor.yr_wind_direction:
-  friendly_name: Windrichtung
-  icon: mdi:compass
-sensor.yr_pressure:
-  friendly_name: Luftdruck
-  icon: mdi:arrow-down-bold
-switch.ps4:
-  friendly_name: PS4
 scene.livingroom_ambient:
   friendly_name: Licht Normal
   icon: mdi:ceiling-light
@@ -203,6 +180,3 @@ script.vacuum_livingroom_table:
   friendly_name: Sofatisch staubsaugen
 light.light_workroom_light:
   friendly_name: Büro
-  
-group.all_automations:
-  hidden: true

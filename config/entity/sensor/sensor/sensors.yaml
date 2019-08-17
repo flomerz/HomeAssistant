@@ -1,13 +1,3 @@
-- platform: yr
-  monitored_conditions:
-    - temperature
-    - symbol
-    - windSpeed
-    - windDirection
-    - pressure
-    - humidity
-    - cloudiness
-
 - platform: mqtt
   name: temperature_livingroom
   state_topic: "homie/livingroom-climate/sensor/temperature"

@@ -21,10 +21,3 @@
   state_topic: "homie/resin/switch/state"
   command_topic: "homie/resin/switch/state/set"
   retain: true
-
-- platform: command_line
-  switches:
-    ps4:
-      command_on: "echo on"
-      command_off: "echo off"
-      command_state: "nc -z -w 5 {{ !secret ps4_ip }} 9295"
