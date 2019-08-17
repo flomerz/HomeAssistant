@@ -15,11 +15,8 @@
       entity_id: sensor.switch_bedroom_action
       to: 'brightness_up_click'
   action:
-    - service: light.turn_on
-      entity_id: light.light_bedroom_light
-      data_template:
-        transition: 0
-        brightness: "{{ state_attr('light.light_bedroom_light', 'brightness') + 48 }}"
+    - service: input_select.select_next
+      entity_id: input_select.state_bedroom_light_brightness
 
 - alias: Bedroom Brightness DOWN
   trigger:
@@ -27,11 +24,8 @@
       entity_id: sensor.switch_bedroom_action
       to: 'brightness_down_click'
   action:
-    - service: light.turn_on
-      entity_id: light.light_bedroom_light
-      data_template:
-        transition: 0
-        brightness: "{{ state_attr('light.light_bedroom_light', 'brightness') - 48 }}"
+    - service: input_select.select_next
+      entity_id: input_select.state_bedroom_light_brightness
 
 - alias: Bedroom Color Right
   trigger:

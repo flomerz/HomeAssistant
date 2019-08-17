@@ -9,3 +9,11 @@ state_bedroom_light_color:
     - Violett
     - Blau
     - Grün
+
+state_bedroom_light_brightness:
+  name: Helligkeit
+  options:
+    - 1
+    - 33
+    - 66
+    - 100

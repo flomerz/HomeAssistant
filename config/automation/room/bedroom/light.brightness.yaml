@@ -1,0 +1,47 @@
+- alias: Bedroom Light Brightness 1
+  trigger:
+    - platform: state
+      entity_id: input_select.state_bedroom_light_brightness
+      to: '1'
+  action:
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
+      data:
+        transition: 0
+        brightness: 1
+
+- alias: Bedroom Light Brightness 33
+  trigger:
+    - platform: state
+      entity_id: input_select.state_bedroom_light_brightness
+      to: '33'
+  action:
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
+      data:
+        transition: 0
+        brightness: 33
+
+- alias: Bedroom Light Brightness 66
+  trigger:
+    - platform: state
+      entity_id: input_select.state_bedroom_light_brightness
+      to: '66'
+  action:
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
+      data:
+        transition: 0
+        brightness: 66
+
+- alias: Bedroom Light Brightness 100
+  trigger:
+    - platform: state
+      entity_id: input_select.state_bedroom_light_brightness
+      to: '100'
+  action:
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
+      data:
+        transition: 0
+        brightness: 100
