@@ -15,6 +15,7 @@ bedroom_light_wakeup:
       entity_id: light.light_bedroom_light
       data:
         transition: 900
+        brightness: 1
         rgb_color: [1,190,255]
 
     - delay:
