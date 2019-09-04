@@ -1,27 +1,27 @@
 bedroom_light_wakeup:
   sequence:
-    # motion off
-    - service: homeassistant.turn_off
-      entity_id: automation.bedroom_motion_off
-    - service: homeassistant.turn_off
-      entity_id: automation.bedroom_motion_on
 
-    # light
     - service: light.turn_on
-      entity_id: light.light_door_light
+      entity_id: light.light_bedroom_light
       data:
-        brightness: 0
-    - service: light.turn_on
-      entity_id: light.light_door_light
-      data:
-        brightness: 255
-        transition: 900
+        transition: 0
+        brightness: 1
+        rgb_color: [255, 100, 1]
 
     - delay:
-        seconds: 1800
+        seconds: 5
 
-    # motion on
-    - service: homeassistant.turn_on
-      entity_id: automation.bedroom_motion_off
-    - service: homeassistant.turn_on
-      entity_id: automation.bedroom_motion_on
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
+      data:
+        transition: 900
+        rgb_color: [1,190,255]
+
+    - delay:
+        seconds: 1
+
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
+      data:
+        transition: 900
+        brightness: 255
