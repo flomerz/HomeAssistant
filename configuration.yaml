@@ -157,3 +157,13 @@ vacuum:
     platform: xiaomi_miio
     host: rockrobo
     token: !secret xiaomi_vaccum_token
+
+webhook:
+
+zigbee2mqtt_networkmap:
+  #topic: your topic (optional, default zigbee2mqtt)
+panel_iframe:
+  networkmap:
+    title: 'ZigBee'
+    url: '/local/community/zigbee2mqtt_networkmap/map.html'
+    icon: 'mdi:graphql'
