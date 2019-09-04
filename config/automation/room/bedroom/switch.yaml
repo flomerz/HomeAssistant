@@ -24,7 +24,7 @@
       entity_id: sensor.switch_bedroom_action
       to: 'brightness_down_click'
   action:
-    - service: input_select.select_next
+    - service: input_select.select_previous
       entity_id: input_select.state_bedroom_light_brightness
 
 - alias: Bedroom Color Right

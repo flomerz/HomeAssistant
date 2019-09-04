@@ -13,7 +13,7 @@ state_bedroom_light_color:
 state_bedroom_light_brightness:
   name: Helligkeit
   options:
-    - 1
-    - 33
-    - 66
-    - 100
+    - 1%
+    - 33%
+    - 66%
+    - 100%
