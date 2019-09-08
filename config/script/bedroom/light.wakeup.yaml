@@ -5,24 +5,23 @@ bedroom_light_wakeup:
       entity_id: light.light_bedroom_light
       data:
         transition: 0
-        brightness: 1
         rgb_color: [255, 100, 1]
-
-    - delay:
-        seconds: 5
-
-    - service: light.turn_on
-      entity_id: light.light_bedroom_light
-      data:
-        transition: 900
         brightness: 1
-        rgb_color: [1,190,255]
 
     - delay:
-        seconds: 1
+        seconds: 3
 
     - service: light.turn_on
       entity_id: light.light_bedroom_light
       data:
-        transition: 900
+        transition: 300
         brightness: 255
+
+    - delay:
+        seconds: 400
+
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
+      data:
+        transition: 500
+        rgb_color: [255, 226, 145]

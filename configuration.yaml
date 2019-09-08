@@ -23,15 +23,26 @@ http:
 updater:
 
 recorder:
-  # include:
-  #   domains:
-  #     - light
-  #     - switch
-  #     - input_boolean
+  include:
+    domains:
+      - light
+      - switch
+      - input_boolean
+    entities:
+      - sensor.plant1_moisture
+      - sensor.plant1_conductivity
+      - sensor.plant2_moisture
+      - sensor.plant2_conductivity
+      - sensor.plant3_moisture
+      - sensor.plant3_conductivity
+      - sensor.temperature_espresso
+      - sensor.humidity_espresso
+      - sensor.temperature_livingroom
+      - sensor.humidity_livingroom
 
 history:
 
-logbook:
+# logbook:
 
 config:
 
