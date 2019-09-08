@@ -62,7 +62,8 @@ sun:
 
 mqtt:
   discovery: true
-  broker: !env_var MQTT_HOST
+  # broker: !env_var MQTT_HOST
+  broker: localhost
 
 device_tracker:
   - platform: ddwrt
