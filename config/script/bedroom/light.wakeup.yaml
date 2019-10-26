@@ -3,8 +3,10 @@ bedroom_light_wakeup:
 
     - service: light.turn_on
       entity_id: light.light_bedroom_light
+    
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
       data:
-        transition: 0
         rgb_color: [255, 100, 1]
         brightness: 1
 
