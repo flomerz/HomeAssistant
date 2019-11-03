@@ -6,6 +6,17 @@
   action:
     - service: scene.turn_on
       entity_id: scene.all_off
-    - service: notify.flo
-      data:
-        message: 'state.sleep.on'
+
+- alias: Sleep OFF
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_sleep
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: device_tracker.flo
+      state: 'home'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.espresso
+    - service: script.bedroom_light_wakeup
