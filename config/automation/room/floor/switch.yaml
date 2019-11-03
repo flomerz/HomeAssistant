@@ -4,7 +4,8 @@
       entity_id: sensor.switch_door_click
       to: 'left'
   action:
-    - service: script.home
+    - service: vacuum.start
+      entity_id: vacuum.xiaomi_vacuum
 
 
 - alias: Floor Switch RIGHT
@@ -12,18 +13,6 @@
     - platform: state
       entity_id: sensor.switch_door_click
       to: 'right'
-  action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_home
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_sleep
-
-
-- alias: Floor Switch BOTH
-  trigger:
-    - platform: state
-      entity_id: sensor.switch_door_click
-      to: 'both'
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
