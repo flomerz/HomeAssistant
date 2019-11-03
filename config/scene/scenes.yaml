@@ -1,7 +1,6 @@
 - name: all_off
   entities:
-    input_select.state_livingroom_light:
-      option: Aus
+    input_select.state_livingroom_light: Aus
     group.all_lights: off
     group.all_switches: off
 
