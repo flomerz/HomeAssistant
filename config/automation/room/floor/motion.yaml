@@ -17,8 +17,10 @@
     for:
       minutes: 3
   action:
-    service: light.turn_off
-    entity_id: light.floor
+    - service: light.turn_off
+      entity_id: light.floor
+    - service: light.turn_off
+      entity_id: light.light_door_light
 
 
 - alias: Floor Motion ON -> WC
