@@ -1,0 +1,7 @@
+wakeup:
+  sequence:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_sleep
+    - service: switch.turn_on
+      entity_id: switch.espresso
+    - service: script.bedroom_light_wakeup
