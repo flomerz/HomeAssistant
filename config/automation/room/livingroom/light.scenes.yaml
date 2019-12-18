@@ -47,6 +47,19 @@
     - service: scene.turn_on
       entity_id: scene.livingroom_beamer_bright
 
+- alias: Light Chill
+  trigger:
+    - platform: state
+      entity_id: input_select.state_livingroom_light
+      to: 'Chill'
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.mode_livingroom_light
+        option: "{{ states('input_select.state_livingroom_light') }}"
+    - service: scene.turn_on
+      entity_id: scene.livingroom_chill
+
 - alias: Light Ambient
   trigger:
     - platform: state

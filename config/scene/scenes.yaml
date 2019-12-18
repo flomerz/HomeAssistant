@@ -1,5 +1,6 @@
 - name: all_off
   entities:
+    input_boolean.state_media: off
     input_select.state_livingroom_light: Aus
     group.all_lights: off
     group.all_switches: off
@@ -12,7 +13,7 @@
     light.livingroom_sofatable: on
     light.livingroom_led_rgb:
       state: on
-      effect: rainbow-light
+      rgb_color: [255, 0, 0]
       brightness: 255
     light.livingroom_led_white_front:
       state: on
@@ -20,6 +21,19 @@
     light.livingroom_led_white_back:
       state: on
       brightness: 255
+
+- name: livingroom_chill
+  entities:
+    light.livingroom_rainbow: on
+    light.livingroom_front: on
+    light.livingroom_big: off
+    light.livingroom_sofatable: on
+    light.livingroom_led_rgb:
+      state: on
+      effect: rainbow
+      brightness: 255
+    light.livingroom_led_white_front: off
+    light.livingroom_led_white_back: off
 
 - name: livingroom_bright
   entities:

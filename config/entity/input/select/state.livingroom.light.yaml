@@ -5,6 +5,7 @@ state_livingroom_light:
     - Film
     - Beamer
     - Beamer Hell
+    - Chill
     - Normal
     - Hell
 
@@ -14,6 +15,7 @@ mode_livingroom_light:
     - Film
     - Beamer
     - Beamer Hell
+    - Chill
     - Normal
     - Hell
   initial: Normal
