@@ -1,10 +1,10 @@
-- alias: Bathroom OFF
+- alias: Bedroom OFF
   trigger:
     - platform: state
       entity_id: light.light_bedroom_light
       to: 'on'
       for:
-        hour: 30
+        hour: 1
   action:
     - service: light.turn_off
       entity_id: light.light_bedroom_light
