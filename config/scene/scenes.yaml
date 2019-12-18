@@ -38,9 +38,9 @@
 - name: livingroom_bright
   entities:
     light.livingroom_rainbow: on
-    light.livingroom_front: off
+    light.livingroom_front: on
     light.livingroom_big: on
-    light.livingroom_sofatable: off
+    light.livingroom_sofatable: on
     light.livingroom_led_rgb:
       state: on
       effect: rainbow
