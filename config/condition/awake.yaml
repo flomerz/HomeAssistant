@@ -1,0 +1,5 @@
+- condition: and
+  conditions: !include home.yaml
+- condition: state
+  entity_id: input_boolean.state_sleep
+  state: 'off'

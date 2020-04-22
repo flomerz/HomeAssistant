@@ -16,7 +16,6 @@ livingroom_light:
 
 livingroom_devices:
   name: Geräte
-  control: hidden
   entities:
     - switch.resin
     - switch.humidifier
@@ -24,14 +23,12 @@ livingroom_devices:
 
 livingroom_sensors:
   name: Sensors
-  control: hidden
   entities:
     - sensor.temperature_livingroom
     - sensor.humidity_livingroom
 
 livingroom_media:
   name: Media
-  control: hidden
   entities:
     - script.media_power_on
     - script.media_power_off
@@ -41,7 +38,6 @@ livingroom_media:
 
 livingroom_scenes:
   name: Scenes
-  control: hidden
   entities:
     - input_select.mode_livingroom_light
     - scene.livingroom_ambient

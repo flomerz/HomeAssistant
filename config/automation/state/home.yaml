@@ -4,8 +4,8 @@
       entity_id: input_boolean.state_home
       to: 'off'
   action:
-    - service: scene.turn_on
-      entity_id: scene.all_off
+    - service: script.turn_on
+      entity_id: script.all_off
     - service: media_player.media_stop
       entity_id: media_player.googlehome7490
     - service: media_player.media_stop
@@ -13,7 +13,7 @@
     - service: media_player.media_stop
       entity_id: media_player.home_group
 
-- alias: Home ON Livingroom Light Mode Normal
+- alias: Home ON Livingroom Light Mode Chill
   trigger:
     - platform: state
       entity_id: input_boolean.state_home
@@ -22,4 +22,4 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.mode_livingroom_light
-        option: 'Normal'
+        option: 'Chill'

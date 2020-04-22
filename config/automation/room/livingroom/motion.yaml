@@ -1,14 +1,11 @@
 - alias: Livingroom Motion ON
   trigger:
     - platform: state
-      entity_id: binary_sensor.motion_livingroom_1_occupancy
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.motion_livingroom_2_occupancy
+      entity_id: binary_sensor.motion_livingroom_occupancy
       to: 'on'
   condition:
     - condition: and
-      conditions: !include ../../../condition/light.nosleep.yaml
+      conditions: !include ../../../condition/light_livingroom.yaml
     - condition: state
       entity_id: input_boolean.state_media
       state: 'off'
@@ -21,21 +18,13 @@
 - alias: Livingroom Motion OFF
   trigger:
     - platform: state
-      entity_id: binary_sensor.motion_livingroom_1_occupancy
-      to: 'off'
-      for:
-        minutes: 10
-    - platform: state
-      entity_id: binary_sensor.motion_livingroom_2_occupancy
+      entity_id: binary_sensor.motion_livingroom_occupancy
       to: 'off'
       for:
         minutes: 10
   condition:
     - condition: state
-      entity_id: binary_sensor.motion_livingroom_1_occupancy
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.motion_livingroom_2_occupancy
+      entity_id: binary_sensor.motion_livingroom_occupancy
       state: 'off'
     - condition: state
       entity_id: input_boolean.state_media

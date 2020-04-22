@@ -1,0 +1,41 @@
+# - platform: mqtt
+#   name: kitchen_lightswitch
+#   state_topic: "shellies/kitchen/relay/0"
+#   command_topic: "shellies/kitchen/relay/0/command"
+#   payload_on: "on"
+#   payload_off: "off"
+
+# - platform: mqtt
+#   name: bedroom_lightswitch
+#   state_topic: "shellies/bedroom/relay/0"
+#   command_topic: "shellies/bedroom/relay/0/command"
+#   payload_on: "on"
+#   payload_off: "off"
+
+# - platform: mqtt
+#   name: wc_lightswitch
+#   state_topic: "shellies/wc/relay/0"
+#   command_topic: "shellies/wc/relay/0/command"
+#   payload_on: "on"
+#   payload_off: "off"
+
+# - platform: mqtt
+#   name: bathroom_lightswitch
+#   state_topic: "shellies/bathroom/relay/0"
+#   command_topic: "shellies/bathroom/relay/0/command"
+#   payload_on: "on"
+#   payload_off: "off"
+
+# - platform: mqtt
+#   name: workroom_lightswitch
+#   state_topic: "shellies/workroom/relay/0"
+#   command_topic: "shellies/workroom/relay/0/command"
+#   payload_on: "on"
+#   payload_off: "off"
+
+# - platform: mqtt
+#   name: fitnessroom_lightswitch
+#   state_topic: "shellies/fitnessroom/relay/0"
+#   command_topic: "shellies/fitnessroom/relay/0/command"
+#   payload_on: "on"
+#   payload_off: "off"

@@ -3,7 +3,7 @@
     platform: state
     entity_id: binary_sensor.motion_floor
     to: 'on'
-  condition: !include ../../../condition/light.nosleep.yaml
+  condition: !include ../../../condition/light_livingroom.yaml
   action:
     service: light.turn_on
     entity_id: light.floor
@@ -15,7 +15,7 @@
     entity_id: binary_sensor.motion_floor
     to: 'off'
     for:
-      minutes: 3
+      minutes: 1
   action:
     - service: light.turn_off
       entity_id: light.floor
@@ -23,7 +23,7 @@
       entity_id: light.light_door_light
 
 
-- alias: Floor Motion ON -> WC
+- alias: Floor Motion ON (Sleep) -> WC
   trigger:
     platform: state
     entity_id: binary_sensor.motion_floor

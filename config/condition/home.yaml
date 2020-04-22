@@ -1,0 +1,3 @@
+- condition: state
+  entity_id: input_boolean.state_home
+  state: 'on'

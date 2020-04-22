@@ -1,0 +1,49 @@
+- alias: motion_on_workroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_workroom_occupancy
+      to: 'on'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/awake.yaml
+    - condition: or
+      conditions:
+        - condition: and
+          conditions: !include ../../../condition/night.yaml
+        - condition: numeric_state
+          entity_id: sensor.motion_workroom_illuminance
+          below: 40
+  action:
+    service: light.turn_on
+    entity_id: light.light_workroom_light
+
+- alias: motion_off_workroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_workroom_occupancy
+      to: 'off'
+      for:
+        minutes: 1
+  action:
+    - service: light.turn_off
+      entity_id: light.light_workroom_light
+
+- alias: motion_off_long_workroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_workroom_occupancy
+      to: 'off'
+      for:
+        minutes: 10
+  action:
+    - service: light.turn_off
+      entity_id: light.light_workroom_light
+
+- alias: motion_reset_workroom
+  trigger:
+    - platform: state
+      entity_id: light.light_workroom_light
+      to: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: automation.motion_off_workroom

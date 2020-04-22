@@ -1,0 +1,15 @@
+- alias: Baum Notify
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.plant1_moisture
+      below: 30
+  condition:
+    - condition: state
+      entity_id: input_boolean.state_sleep
+      state: 'off'
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'de baum hät durscht'
+        message_say: 'de baum hät durscht'

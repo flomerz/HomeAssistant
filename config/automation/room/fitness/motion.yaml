@@ -1,0 +1,61 @@
+- alias: motion_on_fitnessroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_fitnessroom_occupancy
+      to: 'on'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/awake.yaml
+    - condition: or
+      conditions:
+        - condition: and
+          conditions: !include ../../../condition/night.yaml
+        - condition: numeric_state
+          entity_id: sensor.motion_fitnessroom_illuminance
+          below: 40
+  action:
+    service: light.turn_on
+    entity_id: light.shelly_fitnessroom
+
+- alias: motion_off_fitnessroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_fitnessroom_occupancy
+      to: 'off'
+      for:
+        minutes: 1
+  action:
+    - service: light.turn_off
+      entity_id: light.shelly_fitnessroom
+
+- alias: motion_off_long_fitnessroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_fitnessroom_occupancy
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    - service: light.turn_off
+      entity_id: light.shelly_fitnessroom
+
+- alias: motion_off_disable_fitnessroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.shelly_fitnessroom_switch
+  condition:
+    - condition: state
+      entity_id: light.shelly_fitnessroom
+      state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: automation.motion_off_fitnessroom
+
+- alias: motion_reset_fitnessroom
+  trigger:
+    - platform: state
+      entity_id: light.shelly_fitnessroom
+      to: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: automation.motion_off_fitnessroom

@@ -1,7 +1,0 @@
-condition: and
-conditions:
-  - condition: and
-    conditions: !include light.yaml
-  - condition: state
-    entity_id: input_boolean.state_sleep
-    state: 'off'

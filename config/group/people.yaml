@@ -1,6 +1,5 @@
 people:
   name: Personen
-  control: hidden
   entities:
     - device_tracker.flo
     - device_tracker.louisa

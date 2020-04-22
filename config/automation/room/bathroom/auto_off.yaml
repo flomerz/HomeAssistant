@@ -1,0 +1,10 @@
+- alias: Bathroom Light OFF
+  trigger:
+    - platform: state
+      entity_id: light.shelly_bathroom
+      to: 'on'
+      for:
+        minutes: 30
+  action:
+    service: light.turn_off
+    entity_id: light.shelly_bathroom

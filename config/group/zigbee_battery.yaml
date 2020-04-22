@@ -1,6 +1,5 @@
 zigbee_battery:
   name: ZigBee Batterie
-  control: hidden
   entities:
     - sensor.sensor_door_battery
     - sensor.motion_livingroom_1_battery

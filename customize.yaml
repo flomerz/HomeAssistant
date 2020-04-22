@@ -99,15 +99,12 @@ sensor.motion_workroom_illuminance:
   friendly_name: Büro Helligkeit
 binary_sensor.motion_workroom_occupancy:
   friendly_name: Büro Bewegung
-scene.all_off:
+script.all_off:
   friendly_name: Alles Ausschalten
   icon: mdi:power-plug-off
 sensor.switch_bathroom_click:
   friendly_name: Bad Schalter
   hidden: true
-switch.switch_bathroom_switch_left:
-  friendly_name: Bad (Links)
-  icon: mdi:lightbulb
 switch.switch_bathroom_switch_right:
   friendly_name: Bad (Rechts)
   icon: mdi:lightbulb

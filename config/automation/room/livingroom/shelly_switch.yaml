@@ -1,0 +1,47 @@
+- alias: switch_diningtable_clk_1
+  trigger:
+    - platform: event
+      event_type: shelly_switch_click
+      event_data:
+        entity_id: binary_sensor.shelly_diningtable_switch
+        click_cnt: 1
+  action:
+    - service: light.turn_on
+      entity_id: light.shelly_diningtable
+      data:
+        brightness: 150
+
+- alias: switch_diningtable_clk_2
+  trigger:
+    - platform: event
+      event_type: shelly_switch_click
+      event_data:
+        entity_id: binary_sensor.shelly_diningtable_switch
+        click_cnt: 2
+  action:
+    - service: light.turn_on
+      entity_id: light.shelly_diningtable
+      data:
+        brightness: 255
+
+- alias: switch_diningtable_clk_3
+  trigger:
+    - platform: event
+      event_type: shelly_switch_click
+      event_data:
+        entity_id: binary_sensor.shelly_diningtable_switch
+        click_cnt: 3
+  action:
+    - service: light.turn_off
+      entity_id: light.shelly_diningtable
+
+- alias: switch_diningtable_2
+  trigger:
+    - platform: event
+      event_type: shelly_switch_click
+      event_data:
+        entity_id: binary_sensor.shelly_diningtable_switch_2
+        click_cnt: 1
+  action:
+    - service: input_boolean.toggle
+      entity_id: input_boolean.state_media

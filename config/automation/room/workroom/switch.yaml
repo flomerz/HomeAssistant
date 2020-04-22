@@ -1,0 +1,40 @@
+- alias: switch_on_workroom_1
+  trigger:
+    - platform: event
+      event_type: shelly_switch_click
+      event_data:
+        entity_id: binary_sensor.shelly_workroom_switch
+        click_cnt: 1
+  action:
+    - service: light.turn_on
+      entity_id: light.light_workroom_light
+      data:
+        color_temp: 500
+    - service: homeassistant.turn_off
+      entity_id: automation.motion_off_workroom
+
+- alias: switch_on_workroom_2
+  trigger:
+    - platform: event
+      event_type: shelly_switch_click
+      event_data:
+        entity_id: binary_sensor.shelly_workroom_switch
+        click_cnt: 2
+  action:
+    - service: light.turn_on
+      entity_id: light.light_workroom_light
+      data:
+        color_temp: 153
+    - service: homeassistant.turn_off
+      entity_id: automation.motion_off_workroom
+
+- alias: switch_on_workroom_3
+  trigger:
+    - platform: event
+      event_type: shelly_switch_click
+      event_data:
+        entity_id: binary_sensor.shelly_workroom_switch
+        click_cnt: 3
+  action:
+    - service: light.turn_off
+      entity_id: light.light_workroom_light

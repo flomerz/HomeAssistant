@@ -1,8 +1,0 @@
-- alias: Livingroom Media ON
-  trigger:
-    - platform: state
-      entity_id: switch.ps4
-      to: 'on'
-  action:
-    service: input_boolean.turn_on
-    entity_id: input_boolean.state_media

@@ -1,14 +1,14 @@
-- alias: Kitchen Motion ON
+- alias: motion_on_kitchen
   trigger:
     platform: state
     entity_id: binary_sensor.motion_kitchen
     to: 'on'
-  condition: !include ../../../condition/light.nosleep.yaml
+  condition: !include ../../../condition/light_livingroom.yaml
   action:
     service: light.turn_on
     entity_id: light.kitchen
 
-- alias: Kitchen Motion OFF
+- alias: motion_off_kitchen
   trigger:
     platform: state
     entity_id: binary_sensor.motion_kitchen
@@ -18,3 +18,41 @@
   action:
     service: light.turn_off
     entity_id: light.kitchen
+
+- alias: motion_off_long_kitchen
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_kitchen
+    to: 'off'
+    for:
+      minutes: 5
+  action:
+    - service: light.turn_off
+      entity_id: light.kitchen
+    - service: light.turn_off
+      entity_id: light.shelly_kitchen
+
+- alias: motion_off_disable_kitchen
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.shelly_kitchen_switch
+  condition:
+    - condition: state
+      entity_id: light.shelly_kitchen
+      state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: automation.motion_off_kitchen
+    - service: light.turn_on
+      entity_id: light.kitchen
+    - service: light.turn_on
+      entity_id: light.shelly_kitchen
+
+- alias: motion_reset_kitchen
+  trigger:
+    - platform: state
+      entity_id: light.shelly_kitchen
+      to: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: automation.motion_off_kitchen

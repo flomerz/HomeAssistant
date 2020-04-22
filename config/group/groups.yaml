@@ -1,37 +1,15 @@
 states:
   name: Zustände
-  control: hidden
   entities:
-    - scene.all_off
+    - script.all_off
     - input_boolean.state_home
     - input_boolean.state_sleep
     - input_boolean.state_media
 
 vacuum:
   name: Staubsauger
-  control: hidden
   entities:
     - vacuum.xiaomi_vacuum
     - script.vacuum_kitchen
     - script.vacuum_livingroom
     - script.vacuum_livingroom_table
-
-view_rooms:
-  name: Räume
-  view: yes
-  entities:
-    - group.kitchen
-    - group.floor
-    - group.workroom
-    - group.bedroom
-    - group.bathroom
-
-view_livingroom:
-  name: Wohnzimmer
-  view: yes
-  entities:
-    - group.livingroom_sensors
-    - group.livingroom_devices
-    - group.livingroom_light
-    - group.livingroom_media
-    - group.livingroom_scenes

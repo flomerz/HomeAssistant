@@ -1,0 +1,4 @@
+- condition: and
+  conditions: !include awake.yaml
+- condition: and
+  conditions: !include illuminance_livingroom.yaml
