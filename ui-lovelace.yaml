@@ -1,0 +1,439 @@
+resources:
+  - type: module
+    url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
+  - type: module
+    url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+  - type: module
+    url: /hacsfiles/button-entity-row/button-entity-row.js
+  - type: module
+    url: /hacsfiles/custom-header/custom-header.js
+  - type: module
+    url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+
+custom_header:
+  compact_mode: true
+  menu_dropdown: true
+
+title: Home Assistant
+views:
+
+  ####################  Home Tab ####################
+  - badges: []
+    title: Home
+    path: lovelace-home
+    icon: 'mdi:home'
+    cards:
+    
+      - type: entities
+        show_header_toggle: false
+        entities:
+          
+          ####################  States  ####################
+          - type: 'custom:button-entity-row'
+            buttons:
+              - entity: input_boolean.state_home
+                state_icons:
+                  "on": 'mdi:home'
+                  "off": 'mdi:home'
+              - entity: input_boolean.state_sleep
+                icon: 'mdi:sleep'
+                state_icons:
+                  "on": 'mdi:sleep'
+                  "off": 'mdi:sleep'
+              - entity: input_boolean.state_media
+                state_icons:
+                  "on": 'mdi:projector-screen'
+                  "off": 'mdi:projector-screen'
+
+          - type: section
+
+          ####################  Lights  ####################
+          # Esstisch
+          - type: 'custom:slider-entity-row'
+            entity: light.shelly_diningtable
+            name: Esstisch
+            toggle: true
+
+          # Wohnzimmer
+          - type: 'custom:multiple-entity-row'
+            entity: light.livingroom_led_rgb
+            name: Wohnzimmer
+            icon: mdi:lightbulb-group
+            show_state: false
+            entities:
+              - entity: input_select.state_livingroom_light
+                name: false
+          - type: 'custom:button-entity-row'
+            buttons:
+              - icon: 'mdi:track-light'
+                service: input_select.select_option
+                service_data:
+                  entity_id: input_select.state_livingroom_light
+                  option: Hell
+              - icon: 'mdi:lightbulb-group'
+                service: input_select.select_option
+                service_data:
+                  entity_id: input_select.state_livingroom_light
+                  option: Normal
+              - icon: 'mdi:lightbulb-multiple'
+                service: input_select.select_option
+                service_data:
+                  entity_id: input_select.state_livingroom_light
+                  option: Chill
+              - icon: 'mdi:lightbulb'
+                service: input_select.select_option
+                service_data:
+                  entity_id: input_select.state_livingroom_light
+                  option: Beamer Hell
+              - icon: 'mdi:projector-screen'
+                service: input_select.select_option
+                service_data:
+                  entity_id: input_select.state_livingroom_light
+                  option: Beamer
+              - icon: 'mdi:movie-open'
+                service: input_select.select_option
+                service_data:
+                  entity_id: input_select.state_livingroom_light
+                  option: Film
+              - icon: 'mdi:lightbulb-group-off'
+                service: input_select.select_option
+                service_data:
+                  entity_id: input_select.state_livingroom_light
+                  option: Aus
+
+          # Schlafzimmer
+          - type: 'custom:slider-entity-row'
+            entity: light.light_bedroom_light
+            name: Schlafzimmer
+            toggle: true
+
+          # Büro
+          - type: 'custom:slider-entity-row'
+            entity: light.light_workroom_light
+            toggle: true
+
+          # Fitnesszimmer
+          - name: Fitnesszimmer
+            entity: light.shelly_fitnessroom
+
+          # Eingang
+          - type: 'custom:multiple-entity-row'
+            entity: light.floor
+            name: Eingang
+            show_state: false
+            entities:
+              - entity: light.light_door_light
+                name: Türe
+                toggle: true
+              - entity: light.floor
+                name: Gang
+                toggle: true
+
+          # WC
+          - type: 'custom:multiple-entity-row'
+            entity: light.shelly_wc
+            name: WC
+            show_state: false
+            entities:
+              - entity: light.wc
+                name: LED
+                toggle: true
+              - entity: light.shelly_wc
+                name: Lavabo
+                toggle: true
+
+          # Badezimmer
+          - type: 'custom:multiple-entity-row'
+            entity: light.shelly_bathroom
+            name: Badezimmer
+            show_state: false
+            entities:
+              - entity: light.bathroom_led
+                name: LED
+                toggle: true
+              - entity: light.shelly_bathroom
+                name: Lavabo
+                toggle: true
+
+
+  ####################  Espresso Tab  ####################
+  - badges: []
+    title: Espresso
+    path: lovelace-espresso
+    icon: 'mdi:coffee'
+    cards:
+
+      # Toggle
+      - type: entities
+        name: Espresso
+        entities:
+          - type: 'custom:multiple-entity-row'
+            entity: switch.espresso
+            name: Espresso
+            icon: mdi:coffee
+            state_color: true
+            toggle: true
+            entities:
+              - entity: sensor.temperature_espresso
+                name: false
+      # Chart
+      - type: 'custom:mini-graph-card'
+        entities:
+          - entity: sensor.temperature_espresso
+        animate: true
+        decimals: 1
+        hour24: true
+        hours_to_show: 18
+        points_per_hour: 6
+        show:
+          name: false
+          icon: false
+          # state: false
+          labels: true
+        color_thresholds:
+          - value: 0
+            color: var(--primary-color)
+          - value: 50
+            color: var(--primary-color)
+          - value: 55
+            color: '#ff0000'
+          - value: 65
+            color: '#ff0000'
+
+
+  ####################  Temperatur Tab  ####################
+  - badges: []
+    title: Temperatur
+    path: lovelace-temperature
+    icon: 'mdi:thermometer'
+    panel: true
+    cards:
+
+      - type: vertical-stack
+        cards:
+
+          ####################  Temperatur  ####################
+          - type: horizontal-stack
+            title: Temperatur
+            cards:
+              # Innen
+              - type: 'custom:mini-graph-card'
+                name: Innen
+                icon: mdi:thermometer
+                entities:
+                  - entity: sensor.temperature_livingroom
+                animate: true
+                decimals: 1
+                hour24: true
+                hours_to_show: 24
+                points_per_hour: 2
+                show:
+                  labels: true
+                  icon_adaptive_color: true
+              # Aussen
+              - type: 'custom:mini-graph-card'
+                name: Aussen
+                icon: mdi:thermometer
+                entities:
+                  - entity: sensor.weather_temperature
+                animate: true
+                decimals: 1
+                hour24: true
+                hours_to_show: 24
+                points_per_hour: 2
+                show:
+                  labels: true
+                  icon_adaptive_color: true
+
+
+          ####################  Feuchtigkeit  ####################
+          - type: horizontal-stack
+            title: Feuchtigkeit
+            cards:
+              # Innen
+              - type: 'custom:mini-graph-card'
+                name: Innen
+                icon: mdi:water-percent
+                entities:
+                  - entity: sensor.humidity_livingroom
+                animate: true
+                decimals: 1
+                hour24: true
+                hours_to_show: 24
+                points_per_hour: 2
+                show:
+                  labels: true
+                  icon_adaptive_color: true
+              # Aussen
+              - type: 'custom:mini-graph-card'
+                name: Aussen
+                icon: mdi:water-percent
+                entities:
+                  - entity: sensor.weather_humidity
+                animate: true
+                decimals: 1
+                hour24: true
+                hours_to_show: 24
+                points_per_hour: 2
+                show:
+                  labels: true
+                  icon_adaptive_color: true
+
+
+  ####################  Pflanzen  ####################
+  - badges: []
+    title: Pflanzen
+    path: 'lovelance-plant'
+    icon: mdi:flower
+    panel: true
+    cards:
+
+      - type: vertical-stack
+        cards:
+
+          ####################  Busch  ####################
+          - type: horizontal-stack
+            title: Busch
+            cards:
+              # Wasser
+              - type: 'custom:mini-graph-card'
+                name: Wasser
+                entities:
+                  - entity: sensor.plant1_moisture
+                animate: true
+                decimals: 0
+                hour24: true
+                hours_to_show: 720
+                points_per_hour: 0.1
+                show:
+                  icon_adaptive_color: true
+                  labels: true
+                color_thresholds:
+                  - value: 20
+                    color: '#ff0000'
+                  - value: 40
+                    color: '#03a9f4'
+                  - value: 60
+                    color: '#03a9f4'
+                  - value: 80
+                    color: '#ff9800'
+              # Dünger
+              - type: 'custom:mini-graph-card'
+                name: Dünger
+                entities:
+                  - entity: sensor.plant1_conductivity
+                animate: true
+                decimals: 0
+                hour24: true
+                hours_to_show: 720
+                points_per_hour: 0.1
+                show:
+                  icon_adaptive_color: true
+                  labels: true
+                color_thresholds:
+                  - value: 300
+                    color: '#ff0000'
+                  - value: 800
+                    color: '#03a9f4'
+                  - value: 2000
+                    color: '#03a9f4'
+                  - value: 2500
+                    color: '#ff9800'
+
+          ####################  Baum  ####################
+          - type: horizontal-stack
+            title: Baum
+            cards:
+              # Wasser
+              - type: 'custom:mini-graph-card'
+                name: Wasser
+                entities:
+                  - entity: sensor.plant2_moisture
+                animate: true
+                decimals: 0
+                hour24: true
+                hours_to_show: 720
+                points_per_hour: 0.1
+                show:
+                  icon_adaptive_color: true
+                  labels: true
+                color_thresholds:
+                  - value: 20
+                    color: '#ff0000'
+                  - value: 40
+                    color: '#03a9f4'
+                  - value: 60
+                    color: '#03a9f4'
+                  - value: 80
+                    color: '#ff9800'
+              # Dünger
+              - type: 'custom:mini-graph-card'
+                name: Dünger
+                entities:
+                  - entity: sensor.plant2_conductivity
+                animate: true
+                decimals: 0
+                hour24: true
+                hours_to_show: 720
+                points_per_hour: 0.1
+                show:
+                  icon_adaptive_color: true
+                  labels: true
+                color_thresholds:
+                  - value: 300
+                    color: '#ff0000'
+                  - value: 800
+                    color: '#03a9f4'
+                  - value: 2000
+                    color: '#03a9f4'
+                  - value: 2500
+                    color: '#ff9800'
+
+          ####################  Bonsai  ####################
+          - type: horizontal-stack
+            title: Bonsai
+            cards:
+              # Wasser
+              - type: 'custom:mini-graph-card'
+                name: Wasser
+                entities:
+                  - entity: sensor.plant3_moisture
+                animate: true
+                decimals: 0
+                hour24: true
+                hours_to_show: 720
+                points_per_hour: 0.1
+                show:
+                  icon_adaptive_color: true
+                  labels: true
+                color_thresholds:
+                  - value: 20
+                    color: '#ff0000'
+                  - value: 40
+                    color: '#03a9f4'
+                  - value: 60
+                    color: '#03a9f4'
+                  - value: 80
+                    color: '#ff9800'
+              # Dünger
+              - type: 'custom:mini-graph-card'
+                name: Dünger
+                entities:
+                  - entity: sensor.plant3_conductivity
+                animate: true
+                decimals: 0
+                hour24: true
+                hours_to_show: 720
+                points_per_hour: 0.1
+                show:
+                  icon_adaptive_color: true
+                  labels: true
+                color_thresholds:
+                  - value: 300
+                    color: '#ff0000'
+                  - value: 800
+                    color: '#03a9f4'
+                  - value: 2000
+                    color: '#03a9f4'
+                  - value: 2500
+                    color: '#ff9800'

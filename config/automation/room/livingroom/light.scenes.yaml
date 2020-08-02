@@ -4,8 +4,8 @@
       entity_id: input_select.state_livingroom_light
       to: 'Aus'
   action:
-    - service: homeassistant.turn_off
-      entity_id: group.livingroom_light
+    - service: scene.turn_on
+      entity_id: scene.livingroom_off
 
 - alias: Light Film
   trigger:

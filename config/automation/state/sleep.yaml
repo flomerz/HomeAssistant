@@ -6,3 +6,26 @@
   action:
     - service: script.turn_on
       entity_id: script.all_off
+    - service: media_player.volume_set
+      entity_id: media_player.schlafzimmer_assistant
+      data:
+        volume_level: 0.04
+    - service: media_player.volume_set
+      entity_id: media_player.wohnzimmer_assistant
+      data:
+        volume_level: 0
+
+- alias: Sleep OFF
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_sleep
+      to: 'off'
+  action:
+    - service: media_player.volume_set
+      entity_id: media_player.schlafzimmer_assistant
+      data:
+        volume_level: 0.1
+    - service: media_player.volume_set
+      entity_id: media_player.wohnzimmer_assistant
+      data:
+        volume_level: 0.6

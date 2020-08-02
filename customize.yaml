@@ -1,179 +1,179 @@
-light.floor:
-  friendly_name: Gang
-light.kitchen:
-  friendly_name: Küche
-light.livingroom_big:
-  friendly_name: Stehlampe
-light.livingroom_sofatable:
-  friendly_name: Sofatisch
-light.livingroom_front:
-  friendly_name: Vorne
-light.livingroom_led_rgb:
-  friendly_name: LED RGB
-light.livingroom_led_white_front:
-  friendly_name: LED Weiss Vorne
-light.livingroom_led_white_back:
-  friendly_name: LED Weiss Hinten
-light.livingroom_rainbow:
-  friendly_name: Rainbow
-light.light_door_light:
-  friendly_name: Türe
-light.light_bedroom_light:
-  friendly_name: Schlafzimmerlampe
-light.wc:
-  friendly_name: WC
-light.bathroom_led:
-  friendly_name: Bad LED
-script.scene_ambient:
-  friendly_name: Ambient
-script.scene_bright:
-  friendly_name: Hell
-script.scene_beamer:
-  friendly_name: Beamer
-script.scene_beamer_bright:
-  friendly_name: Beamer Hell
-sensor.temperature_livingroom:
-  friendly_name: Wohnzimmer Temperatur
-sensor.humidity_livingroom:
-  friendly_name: Wohnzimmer Feuchtigkeit
-  icon: mdi:water
-sensor.temperature_espresso:
-  friendly_name: Espresso Temperatur
-sensor.humidity_espresso:
-  friendly_name: Espresso Feuchtigkeit
-  icon: mdi:water
-switch.espresso:
-  friendly_name: Espresso
-  icon: mdi:coffee
-switch.livingroom_bass:
-  friendly_name: Bass
-  icon: mdi:speaker
-switch.resin:
-  friendly_name: Brunnen
-  icon: mdi:water
-switch.humidifier:
-  friendly_name: Luftbefeuchter
-  icon: mdi:water
-input_boolean.state_sleep:
-  friendly_name: Schlafen
-input_boolean.state_home:
-  friendly_name: Dihei
-input_boolean.state_media:
-  friendly_name: Media
-script.media_power_on:
-  friendly_name: Media Ein
-  icon: mdi:monitor
-script.media_power_off:
-  friendly_name: Media Aus
-  icon: mdi:monitor
-script.ir_receiver_vol_up:
-  friendly_name: Lautstärke - Lauter
-  icon: mdi:volume-high
-script.ir_receiver_vol_down:
-  friendly_name: Lautstärke - Leiser
-  icon: mdi:volume-low
-scene.livingroom_ambient:
-  friendly_name: Licht Normal
-  icon: mdi:ceiling-light
-scene.livingroom_bright:
-  friendly_name: Licht Hell
-  icon: mdi:track-light
-scene.livingroom_beamer:
-  friendly_name: Licht Beamer
-  icon: mdi:projector
-scene.livingroom_beamer_bright:
-  friendly_name: Licht Beamer Hell
-  icon: mdi:projector
-scene.livingroom_film:
-  friendly_name: Film
-  icon: mdi:projector
-binary_sensor.motion_floor:
-  friendly_name: Gang Bewegung
-binary_sensor.motion_kitchen:
-  friendly_name: Küche Bewegung
-binary_sensor.motion_wc:
-  friendly_name: WC Bewegung
-sensor.motion_workroom_battery:
-  friendly_name: Büro Bewegung
-sensor.motion_workroom_illuminance:
-  friendly_name: Büro Helligkeit
-binary_sensor.motion_workroom_occupancy:
-  friendly_name: Büro Bewegung
-script.all_off:
-  friendly_name: Alles Ausschalten
-  icon: mdi:power-plug-off
-sensor.switch_bathroom_click:
-  friendly_name: Bad Schalter
-  hidden: true
-switch.switch_bathroom_switch_right:
-  friendly_name: Bad (Rechts)
-  icon: mdi:lightbulb
-sensor.dimmer_linkquality:
-  hidden: true
-sensor.light_door_linkquality:
-  hidden: true
-sensor.switch_livingroom_linkquality:
-  hidden: true
-sensor.switch_door_linkquality:
-  hidden: true
-sensor.motion_workroom_linkquality:
-  hidden: true
-sensor.light_workroom_linkquality:
-  hidden: true
-sensor.motion_livingroom_2_linkquality:
-  hidden: true
-sensor.motion_livingroom_1_linkquality:
-  hidden: true
-sensor.switch_bathroom_linkquality:
-  hidden: true
-sensor.switch_bedroom_linkquality:
-  hidden: true
-sensor.light_bedroom_linkquality:
-  hidden: true
-sensor.sensor_door_linkquality:
-  hidden: true
-sensor.dimmer_action:
-  friendly_name: Dimmer
-  hidden: true
-sensor.dimmer_battery:
-  friendly_name: Dimmer
-sensor.dimmer_brightness:
-  hidden: true
-binary_sensor.sensor_door_contact:
-  friendly_name: Türe
-sensor.sensor_door_battery:
-  friendly_name: Türe
-binary_sensor.motion_livingroom_1_occupancy:
-  friendly_name: Wohnzimmer (Hinten) Bewegung
-binary_sensor.motion_livingroom_2_occupancy:
-  friendly_name: Wohnzimmer (Mitte) Bewegung
-sensor.motion_livingroom_1_illuminance:
-  friendly_name: Wohnzimmer (Hinten) Helligkeit
-sensor.motion_livingroom_2_illuminance:
-  friendly_name: Wohnzimmer (Mitte) Helligkeit
-sensor.motion_livingroom_1_battery:
-  friendly_name: Wohnzimmer (Hinten) Bewegung
-sensor.motion_livingroom_2_battery:
-  friendly_name: Wohnzimmer (Mitte) Bewegung
-sensor.switch_livingroom_click:
-  hidden: true
-sensor.switch_door_click:
-  hidden: true
-sensor.switch_livingroom_battery:
-  friendly_name: Wohnzimmer Schalter
-sensor.switch_door_battery:
-  friendly_name: Hauptschalter
-sensor.switch_bedroom_action:
-  hidden: true
-sensor.switch_bedroom_battery:
-  friendly_name: Schlafzimmer Schalter
-vacuum.xiaomi_vacuum:
-  friendly_name: Staubi
-script.vacuum_kitchen:
-  friendly_name: Küche staubsaugen
-script.vacuum_livingroom:
-  friendly_name: Wohnzimmer staubsaugen
-script.vacuum_livingroom_table:
-  friendly_name: Sofatisch staubsaugen
-light.light_workroom_light:
-  friendly_name: Büro
+# light.floor:
+#   friendly_name: Gang
+# light.kitchen:
+#   friendly_name: Küche
+# light.livingroom_big:
+#   friendly_name: Stehlampe
+# light.livingroom_sofatable:
+#   friendly_name: Sofatisch
+# light.livingroom_front:
+#   friendly_name: Vorne
+# light.livingroom_led_rgb:
+#   friendly_name: LED RGB
+# light.livingroom_led_white_front:
+#   friendly_name: LED Weiss Vorne
+# light.livingroom_led_white_back:
+#   friendly_name: LED Weiss Hinten
+# light.livingroom_rainbow:
+#   friendly_name: Rainbow
+# light.light_door_light:
+#   friendly_name: Türe
+# light.light_bedroom_light:
+#   friendly_name: Schlafzimmerlampe
+# light.wc:
+#   friendly_name: WC
+# light.bathroom_led:
+#   friendly_name: Bad LED
+# script.scene_ambient:
+#   friendly_name: Ambient
+# script.scene_bright:
+#   friendly_name: Hell
+# script.scene_beamer:
+#   friendly_name: Beamer
+# script.scene_beamer_bright:
+#   friendly_name: Beamer Hell
+# sensor.temperature_livingroom:
+#   friendly_name: Wohnzimmer Temperatur
+# sensor.humidity_livingroom:
+#   friendly_name: Wohnzimmer Feuchtigkeit
+#   icon: mdi:water
+# sensor.temperature_espresso:
+#   friendly_name: Espresso Temperatur
+# sensor.humidity_espresso:
+#   friendly_name: Espresso Feuchtigkeit
+#   icon: mdi:water
+# switch.espresso:
+#   friendly_name: Espresso
+#   icon: mdi:coffee
+# switch.livingroom_bass:
+#   friendly_name: Bass
+#   icon: mdi:speaker
+# switch.resin:
+#   friendly_name: Brunnen
+#   icon: mdi:water
+# switch.humidifier:
+#   friendly_name: Luftbefeuchter
+#   icon: mdi:water
+# input_boolean.state_sleep:
+#   friendly_name: Schlafen
+# input_boolean.state_home:
+#   friendly_name: Dihei
+# input_boolean.state_media:
+#   friendly_name: Media
+# script.media_power_on:
+#   friendly_name: Media Ein
+#   icon: mdi:monitor
+# script.media_power_off:
+#   friendly_name: Media Aus
+#   icon: mdi:monitor
+# script.ir_receiver_vol_up:
+#   friendly_name: Lautstärke - Lauter
+#   icon: mdi:volume-high
+# script.ir_receiver_vol_down:
+#   friendly_name: Lautstärke - Leiser
+#   icon: mdi:volume-low
+# scene.livingroom_ambient:
+#   friendly_name: Licht Normal
+#   icon: mdi:ceiling-light
+# scene.livingroom_bright:
+#   friendly_name: Licht Hell
+#   icon: mdi:track-light
+# scene.livingroom_beamer:
+#   friendly_name: Licht Beamer
+#   icon: mdi:projector
+# scene.livingroom_beamer_bright:
+#   friendly_name: Licht Beamer Hell
+#   icon: mdi:projector
+# scene.livingroom_film:
+#   friendly_name: Film
+#   icon: mdi:projector
+# binary_sensor.motion_floor:
+#   friendly_name: Gang Bewegung
+# binary_sensor.motion_kitchen:
+#   friendly_name: Küche Bewegung
+# binary_sensor.motion_wc:
+#   friendly_name: WC Bewegung
+# sensor.motion_workroom_battery:
+#   friendly_name: Büro Bewegung
+# sensor.motion_workroom_illuminance:
+#   friendly_name: Büro Helligkeit
+# binary_sensor.motion_workroom_occupancy:
+#   friendly_name: Büro Bewegung
+# script.all_off:
+#   friendly_name: Alles Ausschalten
+#   icon: mdi:power-plug-off
+# sensor.switch_bathroom_click:
+#   friendly_name: Bad Schalter
+#   hidden: true
+# switch.switch_bathroom_switch_right:
+#   friendly_name: Bad (Rechts)
+#   icon: mdi:lightbulb
+# sensor.dimmer_linkquality:
+#   hidden: true
+# sensor.light_door_linkquality:
+#   hidden: true
+# sensor.switch_livingroom_linkquality:
+#   hidden: true
+# sensor.switch_door_linkquality:
+#   hidden: true
+# sensor.motion_workroom_linkquality:
+#   hidden: true
+# sensor.light_workroom_linkquality:
+#   hidden: true
+# sensor.motion_livingroom_2_linkquality:
+#   hidden: true
+# sensor.motion_livingroom_1_linkquality:
+#   hidden: true
+# sensor.switch_bathroom_linkquality:
+#   hidden: true
+# sensor.switch_bedroom_linkquality:
+#   hidden: true
+# sensor.light_bedroom_linkquality:
+#   hidden: true
+# sensor.sensor_door_linkquality:
+#   hidden: true
+# sensor.dimmer_action:
+#   friendly_name: Dimmer
+#   hidden: true
+# sensor.dimmer_battery:
+#   friendly_name: Dimmer
+# sensor.dimmer_brightness:
+#   hidden: true
+# binary_sensor.sensor_door_contact:
+#   friendly_name: Türe
+# sensor.sensor_door_battery:
+#   friendly_name: Türe
+# binary_sensor.motion_livingroom_1_occupancy:
+#   friendly_name: Wohnzimmer (Hinten) Bewegung
+# binary_sensor.motion_livingroom_2_occupancy:
+#   friendly_name: Wohnzimmer (Mitte) Bewegung
+# sensor.motion_livingroom_1_illuminance:
+#   friendly_name: Wohnzimmer (Hinten) Helligkeit
+# sensor.motion_livingroom_2_illuminance:
+#   friendly_name: Wohnzimmer (Mitte) Helligkeit
+# sensor.motion_livingroom_1_battery:
+#   friendly_name: Wohnzimmer (Hinten) Bewegung
+# sensor.motion_livingroom_2_battery:
+#   friendly_name: Wohnzimmer (Mitte) Bewegung
+# sensor.switch_livingroom_click:
+#   hidden: true
+# sensor.switch_door_click:
+#   hidden: true
+# sensor.switch_livingroom_battery:
+#   friendly_name: Wohnzimmer Schalter
+# sensor.switch_door_battery:
+#   friendly_name: Hauptschalter
+# sensor.switch_bedroom_action:
+#   hidden: true
+# sensor.switch_bedroom_battery:
+#   friendly_name: Schlafzimmer Schalter
+# vacuum.xiaomi_vacuum:
+#   friendly_name: Staubi
+# script.vacuum_kitchen:
+#   friendly_name: Küche staubsaugen
+# script.vacuum_livingroom:
+#   friendly_name: Wohnzimmer staubsaugen
+# script.vacuum_livingroom_table:
+#   friendly_name: Sofatisch staubsaugen
+# light.light_workroom_light:
+#   friendly_name: Büro

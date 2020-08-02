@@ -1,6 +1,0 @@
-bathroom:
-  name: Bad / WC
-  entities:
-    - light.wc
-    - light.bathroom_led
-    - light.bathroom_lightswitch

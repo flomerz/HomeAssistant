@@ -1,15 +1,53 @@
 - alias: Baum Notify
   trigger:
-    - platform: numeric_state
+    - platform: time
+      at: '21:00:00'
+  condition:
+    - condition: numeric_state
       entity_id: sensor.plant1_moisture
       below: 30
-  condition:
     - condition: state
       entity_id: input_boolean.state_sleep
       state: 'off'
   action:
     - service: script.notify_google
       data:
-        language: de
+        language: it
         message: 'de baum hät durscht'
         message_say: 'de baum hät durscht'
+
+- alias: Busch Notify
+  trigger:
+    - platform: time
+      at: '21:01:00'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.plant1_moisture
+      below: 40
+    - condition: state
+      entity_id: input_boolean.state_sleep
+      state: 'off'
+  action:
+    - service: script.notify_google
+      data:
+        language: it
+        message: 'de busch hät durscht'
+        message_say: 'de busch hät durscht'
+
+- alias: Bonsai Notify
+  trigger:
+    - platform: time
+      at: '21:02:00'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.plant1_moisture
+      below: 40
+    - condition: state
+      entity_id: input_boolean.state_sleep
+      state: 'off'
+  action:
+    - service: script.notify_google
+      data:
+        language: it
+        message: 'de bonsei hät durscht'
+        message_say: 'de bonsei hät durscht'

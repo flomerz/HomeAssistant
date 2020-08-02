@@ -1,11 +1,4 @@
 - platform: mqtt
-  name: livingroom_rainbow
-  state_topic: "homie/rainbow-light/light/state"
-  command_topic: "homie/rainbow-light/light/state/set"
-  rgb_state_topic: "homie/rainbow-light/light/rgb"
-  rgb_command_topic: "homie/rainbow-light/light/rgb/set"
-
-- platform: mqtt
   name: livingroom_front
   state_topic: "homie/livingroom-light-front/switch/state"
   command_topic: "homie/livingroom-light-front/switch/state/set"

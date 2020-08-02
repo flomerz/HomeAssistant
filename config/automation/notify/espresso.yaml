@@ -18,11 +18,20 @@
       for:
         minutes: 6
   action:
-    - service: notify.flo
-      data:
-        message: 'Espresso ist aufgewärmt'
     - service: script.notify_google
       data:
         language: it
         message: 'espresso isch fertig'
         message_say: 'hey hey bueb käfi isch fertig'
+
+- alias: Espresso ON Notify
+  trigger:
+    - platform: state
+      entity_id: switch.espresso
+      to: 'on'
+  action:
+    - service: script.notify_google
+      data:
+        language: it
+        message: 'espresso wird ufgwärmt'
+        message_say: 'mache käfi'

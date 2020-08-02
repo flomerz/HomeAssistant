@@ -27,11 +27,9 @@ media_power_on:
     - delay:
         seconds: 1
     - service: script.ir_beamer_power_on
+
     - delay:
-        seconds: 20
-    
-    - service: switch.turn_on
-      entity_id: switch.livingroom_bass
+        seconds: 30
     
     # scene beamer
     - service: input_select.select_option
@@ -50,15 +48,15 @@ media_power_off:
     - service: input_select.select_option
       data:
         entity_id: input_select.state_livingroom_light
-        option: Normal
+        option: Aus
 
     # turn off devices
-    - service: switch.turn_off
-      entity_id: switch.livingroom_bass
-      
+    - service: media_player.turn_off
+      entity_id: media_player.playstation_4
+
     - service: script.ir_receiver_tv
     - delay:
-        seconds: 1
+        seconds: 5
     - service: script.ir_receiver_power
     - delay:
         seconds: 1
@@ -67,5 +65,14 @@ media_power_off:
         seconds: 10
     - service: script.ir_beamer_power_off
     - delay:
-        minutes: 1
+        seconds: 60
     - service: script.ir_beamer_power_off
+
+receiver_off_delayed:
+  sequence:
+    - delay:
+        minutes: 1
+    - service: script.ir_receiver_tv
+    - delay:
+        seconds: 5
+    - service: script.ir_receiver_power

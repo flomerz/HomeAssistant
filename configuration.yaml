@@ -16,6 +16,10 @@ homeassistant:
 system_health:
 
 frontend:
+  themes: !include_dir_merge_named themes
+
+lovelace:
+  mode: yaml
 
 http:
   base_url: !secret base_url
@@ -209,7 +213,7 @@ vacuum:
 webhook:
 
 zigbee2mqtt_networkmap:
-  #topic: y40:31:3C:A8:41:E4our topic (optional, default zigbee2mqtt)
+  #topic: your topic (optional, default zigbee2mqtt)
 panel_iframe:
   networkmap:
     title: 'ZigBee'

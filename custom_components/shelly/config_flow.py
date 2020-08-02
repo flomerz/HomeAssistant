@@ -1,4 +1,4 @@
-"""Adds config flow for Shelly."""
+"""Adds config flow for HACS."""
 # pylint: disable=dangerous-default-value
 import logging
 import voluptuous as vol
@@ -62,10 +62,10 @@ class ShellyFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         return ShellyOptionsFlowHandler(config_entry)
 
 class ShellyOptionsFlowHandler(config_entries.OptionsFlow):
-    """Shelly config flow options handler."""
+    """HACS config flow options handler."""
 
     def __init__(self, config_entry):
-        """Initialize Shelly options flow."""
+        """Initialize HACS options flow."""
         self.config_entry = config_entry
         self._options = {}
         self._step_cnt = 0

@@ -1,6 +1,0 @@
-bedroom:
-  name: Schlafzimmer
-  entities:
-    - light.light_bedroom_light
-    - input_select.state_bedroom_light_brightness
-    - input_select.state_bedroom_light_color

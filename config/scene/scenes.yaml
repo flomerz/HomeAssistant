@@ -1,6 +1,15 @@
+- name: livingroom_off
+  entities:
+    light.livingroom_front: off
+    light.livingroom_big: off
+    light.livingroom_sofatable: off
+    light.livingroom_led_rgb: off
+    light.livingroom_led_white_front: off
+    light.livingroom_led_white_back: off
+    light.shelly_diningtable: off
+
 - name: livingroom_ambient
   entities:
-    light.livingroom_rainbow: on
     light.livingroom_front: on
     light.livingroom_big: off
     light.livingroom_sofatable: on
@@ -20,7 +29,6 @@
 
 - name: livingroom_chill
   entities:
-    light.livingroom_rainbow: on
     light.livingroom_front: on
     light.livingroom_big: off
     light.livingroom_sofatable: on
@@ -36,7 +44,6 @@
 
 - name: livingroom_bright
   entities:
-    light.livingroom_rainbow: on
     light.livingroom_front: on
     light.livingroom_big: on
     light.livingroom_sofatable: on
@@ -52,7 +59,6 @@
 
 - name: livingroom_beamer
   entities:
-    light.livingroom_rainbow: on
     light.livingroom_front: off
     light.livingroom_big: off
     light.livingroom_sofatable: off
@@ -66,7 +72,6 @@
 
 - name: livingroom_beamer_bright
   entities:
-    light.livingroom_rainbow: on
     light.livingroom_front: off
     light.livingroom_big: off
     light.livingroom_sofatable: on
@@ -88,7 +93,6 @@
     light.kitchen: off
     light.floor: off
     light.light_door_light: off
-    light.livingroom_rainbow: off
     light.livingroom_front: off
     light.livingroom_big: off
     light.livingroom_sofatable: off

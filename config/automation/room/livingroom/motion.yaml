@@ -21,7 +21,7 @@
       entity_id: binary_sensor.motion_livingroom_occupancy
       to: 'off'
       for:
-        minutes: 10
+        minutes: 5
   condition:
     - condition: state
       entity_id: binary_sensor.motion_livingroom_occupancy

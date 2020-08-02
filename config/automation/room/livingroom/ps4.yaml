@@ -1,0 +1,19 @@
+- alias: ps4_on
+  trigger:
+    - platform: state
+      entity_id: media_player.playstation_4
+      to: 'idle'
+  action:
+    - service: script.ir_receiver_tv
+
+- alias: ps4_on
+  trigger:
+    - platform: state
+      entity_id: media_player.playstation_4
+      to: 'standby'
+  condition:
+    - condition: state
+      entity_id: input_boolean.state_media
+      state: 'off'
+  action:
+    - service: script.receiver_off_delayed
