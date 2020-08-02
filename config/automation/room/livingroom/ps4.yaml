@@ -6,7 +6,7 @@
   action:
     - service: script.ir_receiver_tv
 
-- alias: ps4_on
+- alias: ps4_off
   trigger:
     - platform: state
       entity_id: media_player.playstation_4
