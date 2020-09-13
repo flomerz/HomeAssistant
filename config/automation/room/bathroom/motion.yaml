@@ -1,0 +1,29 @@
+- alias: motion_on_bathroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_bathroom_occupancy
+      to: 'on'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/awake.yaml
+    - condition: or
+      conditions:
+        - condition: and
+          conditions: !include ../../../condition/night.yaml
+        - condition: numeric_state
+          entity_id: sensor.motion_bathroom_illuminance
+          below: 30
+  action:
+    service: light.turn_on
+    entity_id: light.bathroom_led
+
+- alias: motion_off_bathroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_bathroom_occupancy
+      to: 'off'
+      for:
+        minutes: 10
+  action:
+    - service: light.turn_off
+      entity_id: light.bathroom_led

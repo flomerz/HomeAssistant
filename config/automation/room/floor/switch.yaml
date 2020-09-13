@@ -18,11 +18,27 @@
       entity_id: input_boolean.state_sleep
 
 
-- alias: Floor Switch BOTH
+- alias: Floor Switch BOTH Clean
   trigger:
     - platform: state
       entity_id: sensor.switch_door_click
       to: 'both'
+  condition:
+    - condition: state
+      entity_id: vacuum.xiaomi_vacuum
+      state: 'docked'
   action:
     - service: vacuum.start
       entity_id: vacuum.xiaomi_vacuum
+
+- alias: Floor Switch BOTH Clean Stop
+  trigger:
+    - platform: state
+      entity_id: sensor.switch_door_click
+      to: 'both'
+  condition:
+    - condition: state
+      entity_id: vacuum.xiaomi_vacuum
+      state: 'cleaning'
+  action:
+    - service: script.vacuum_home_stop

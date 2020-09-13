@@ -2,7 +2,7 @@
     "CUSA00127": {
         "locked": false,
         "media_content_type": "app",
-        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/CH/de/19/EP4350-CUSA00127_00-NETFLIXPOLLUX001/1593911006000/image",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/CH/de/19/EP4350-CUSA00127_00-NETFLIXPOLLUX001/1599354333000/image",
         "media_title": "Netflix"
     },
     "CUSA00917": {
@@ -16,6 +16,12 @@
         "media_content_type": "app",
         "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/CH/de/19/EP4381-CUSA01116_00-YOUTUBESCEE00000/1592097349000/image",
         "media_title": "YouTube"
+    },
+    "CUSA01780": {
+        "locked": false,
+        "media_content_type": "app",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/us/en/999/EP4950-CUSA01780_00-US00000000000000/1559667794000/image",
+        "media_title": "Spotify"
     },
     "CUSA02012": {
         "locked": false,
@@ -40,6 +46,12 @@
         "media_content_type": "game",
         "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/CH/de/19/EP0002-CUSA08632_00-CODWWIITHEGAME01/1591664191000/image",
         "media_title": "Call of Duty\u00ae: WWII"
+    },
+    "CUSA12414": {
+        "locked": false,
+        "media_content_type": "game",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/CH/de/19/EP3969-CUSA12414_00-STARTPACK0000000/1599612719000/image",
+        "media_title": "HITMAN\u2122 2 - Kostenloses Starter-Pack"
     },
     "CUSA15279": {
         "locked": false,
