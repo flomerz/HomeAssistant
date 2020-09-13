@@ -42,13 +42,16 @@ class ShellyDevice(RestoreEntity):
 
         self._is_removed = False
         self._master_unit = False
+        if hasattr(dev, 'master_unit') and dev.master_unit:
+            self._master_unit = True
 
         self._settings = instance.get_settings(dev.id, dev.block.id)
 
     def _updated(self, _block):
         """Receive events when the switch state changed (by mobile,
         switch etc)"""
-        if self.entity_id is not None and not self._is_removed:
+        disabled = self.registry_entry and self.registry_entry.disabled_by
+        if self.entity_id is not None and not self._is_removed and not disabled:
             self.schedule_update_ha_state(True)
 
         if self._dev.info_values is not None:
@@ -80,6 +83,24 @@ class ShellyDevice(RestoreEntity):
             name += " [" + self._dev.id + "]"
         return name
 
+    def _debug_info(self, key, dev):
+        if not self.instance._debug_msg:
+            return ""
+        dbg = ""
+        if key in dev.info_values_coap:
+            dbg += ", C=" + str(dev.info_values_coap[key])
+        if key in dev.info_values_status:
+            dbg += ", S=" + str(dev.info_values_status[key])
+        return dbg
+
+    def _debug_add_state_info(self, attrs):
+        if not self.instance._debug_msg:
+            return
+        if self._dev.state_coap is not None:
+            attrs['state_CoAP'] = self._dev.state_coap
+        if self._dev.state_status is not None:
+            attrs['state_RESTAPI'] = self._dev.state_status
+
     @property
     def device_state_attributes(self):
         """Show state attributes in HASS"""
@@ -87,11 +108,13 @@ class ShellyDevice(RestoreEntity):
                  'shelly_id': self._dev.id,
                  'ip_address': self._dev.ip_addr
                 }
+
+        self._debug_add_state_info(attrs)
         room = self._dev.room_name()
         if room:
             attrs['room'] = room
 
-        if self._master_unit:
+        if self._master_unit or self.instance._debug_msg:
 
             attrs['protocols'] = self._dev.protocols
 
@@ -101,21 +124,23 @@ class ShellyDevice(RestoreEntity):
                     if self.instance.conf_attribute(key):
                         settings = self._settings.get(key)
                         value = self.instance.format_value(settings, value, True)
+                        key += self._debug_info(key, self._dev.block)
                         attrs[key] = value
 
-            if self._dev.info_values is not None:
-                for key, value in self._dev.info_values.items():
-                    if self.instance.conf_attribute(key):
-                        settings = self._settings.get(key)
-                        value = self.instance.format_value(settings, value, True)
-                        attrs[key] = value
+        if self._dev.info_values is not None:
+            for key, value in self._dev.info_values.items():
+                if self.instance.conf_attribute(key):
+                    settings = self._settings.get(key)
+                    value = self.instance.format_value(settings, value, True)
+                    key += self._debug_info(key, self._dev)
+                    attrs[key] = value
 
-            if self._dev.sensor_values is not None:
-                for key, value in self._dev.sensor_values.items():
-                    if self.instance.conf_attribute(key):
-                        settings = self._settings.get(key)
-                        value = self.instance.format_value(settings, value, True)
-                        attrs[key] = value
+        # if self._dev.sensor_values is not None:
+        #     for key, value in self._dev.sensor_values.items():
+        #         if self.instance.conf_attribute(key):
+        #             settings = self._settings.get(key)
+        #             value = self.instance.format_value(settings, value, True)
+        #             attrs[key] = value
 
         return attrs
 

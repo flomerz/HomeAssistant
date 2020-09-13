@@ -4,8 +4,6 @@
       entity_id: binary_sensor.motion_bathroom_occupancy
       to: 'on'
   condition:
-    - condition: and
-      conditions: !include ../../../condition/awake.yaml
     - condition: or
       conditions:
         - condition: and
