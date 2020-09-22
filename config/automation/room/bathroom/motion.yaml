@@ -21,7 +21,7 @@
       entity_id: binary_sensor.motion_bathroom_occupancy
       to: 'off'
       for:
-        minutes: 10
+        minutes: 1
   action:
     - service: light.turn_off
       entity_id: light.bathroom_led

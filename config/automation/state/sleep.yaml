@@ -9,7 +9,7 @@
     - service: media_player.volume_set
       entity_id: media_player.schlafzimmer_assistant
       data:
-        volume_level: 0.04
+        volume_level: 0.06
     - service: media_player.volume_set
       entity_id: media_player.wohnzimmer_assistant
       data:
