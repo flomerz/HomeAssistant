@@ -1,7 +1,7 @@
-- alias: Bathroom Switch Toggle
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.shelly_bathroom_switch
-  action:
-    - service: light.toggle
-      entity_id: light.shelly_bathroom
+# - alias: Bathroom Switch Toggle
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.shelly_bathroom_switch
+#   action:
+#     - service: light.toggle
+#       entity_id: light.shelly_bathroom

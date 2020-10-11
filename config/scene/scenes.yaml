@@ -6,7 +6,7 @@
     light.livingroom_led_rgb: off
     light.livingroom_led_white_front: off
     light.livingroom_led_white_back: off
-    light.shelly_diningtable: off
+    # light.shelly_diningtable: off
 
 - name: livingroom_ambient
   entities:
@@ -23,9 +23,9 @@
     light.livingroom_led_white_back:
       state: on
       brightness: 255
-    light.shelly_diningtable:
-      state: on
-      brightness: 75
+    # light.shelly_diningtable:
+    #   state: on
+    #   brightness: 75
 
 - name: livingroom_chill
   entities:
@@ -38,9 +38,9 @@
       brightness: 255
     light.livingroom_led_white_front: off
     light.livingroom_led_white_back: off
-    light.shelly_diningtable:
-      state: on
-      brightness: 75
+    # light.shelly_diningtable:
+    #   state: on
+    #   brightness: 75
 
 - name: livingroom_bright
   entities:
@@ -53,9 +53,9 @@
       brightness: 255
     light.livingroom_led_white_front: off
     light.livingroom_led_white_back: off
-    light.shelly_diningtable:
-      state: on
-      brightness: 255
+    # light.shelly_diningtable:
+    #   state: on
+    #   brightness: 255
 
 - name: livingroom_beamer
   entities:
@@ -83,9 +83,9 @@
     light.livingroom_led_white_back:
       state: on
       brightness: 255
-    light.shelly_diningtable:
-      state: on
-      brightness: 75
+    # light.shelly_diningtable:
+    #   state: on
+    #   brightness: 75
 
 - name: livingroom_film
   entities:

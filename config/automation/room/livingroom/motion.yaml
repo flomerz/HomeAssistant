@@ -34,3 +34,14 @@
       data:
         entity_id: input_select.state_livingroom_light
         option: Aus
+
+- alias: Livingroom Motion Diningtable OFF
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_livingroom_occupancy
+      to: 'off'
+      for:
+        minutes: 60
+  action:
+    - service: light.turn_off
+      entity_id: light.shelly_diningtable

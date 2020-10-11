@@ -48,7 +48,7 @@ media_power_off:
     - service: input_select.select_option
       data:
         entity_id: input_select.state_livingroom_light
-        option: Aus
+        option: Chill
 
     # turn off devices
     - service: media_player.turn_off

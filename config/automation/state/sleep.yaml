@@ -29,3 +29,7 @@
       entity_id: media_player.wohnzimmer_assistant
       data:
         volume_level: 0.6
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.mode_livingroom_light
+        option: 'Chill'
