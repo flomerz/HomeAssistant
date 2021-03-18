@@ -4,6 +4,9 @@
       hours: '/1'
       minutes: 0
       seconds: 0
+    - platform: numeric_state
+      entity_id: sensor.netatmo_home_indoor_co2
+      above: 1000
   condition:
     - condition: state
       entity_id: input_boolean.state_sleep
@@ -25,6 +28,9 @@
       hours: '/1'
       minutes: 0
       seconds: 0
+    - platform: numeric_state
+      entity_id: sensor.netatmo_home_indoor_co2
+      above: 1300
   condition:
     - condition: state
       entity_id: input_boolean.state_sleep
@@ -46,6 +52,9 @@
       hours: '/1'
       minutes: 0
       seconds: 0
+    - platform: numeric_state
+      entity_id: sensor.netatmo_home_indoor_buro_co2
+      above: 1000
   condition:
     - condition: state
       entity_id: input_boolean.state_sleep
@@ -67,6 +76,9 @@
       hours: '/1'
       minutes: 0
       seconds: 0
+    - platform: numeric_state
+      entity_id: sensor.netatmo_home_indoor_buro_co2
+      above: 1300
   condition:
     - condition: state
       entity_id: input_boolean.state_sleep
@@ -88,6 +100,9 @@
       hours: '/1'
       minutes: 0
       seconds: 0
+    - platform: numeric_state
+      entity_id: sensor.netatmo_home_indoor_humidity
+      below: 35
   condition:
     - condition: state
       entity_id: input_boolean.state_sleep
