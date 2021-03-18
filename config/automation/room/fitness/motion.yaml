@@ -34,7 +34,7 @@
       entity_id: binary_sensor.motion_fitnessroom_occupancy
       to: 'off'
       for:
-        minutes: 5
+        minutes: 90
   action:
     - service: light.turn_off
       entity_id: light.shelly_fitnessroom

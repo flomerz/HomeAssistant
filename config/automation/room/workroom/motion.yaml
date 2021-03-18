@@ -34,7 +34,7 @@
       entity_id: binary_sensor.motion_workroom_occupancy
       to: 'off'
       for:
-        minutes: 30
+        minutes: 90
   action:
     - service: light.turn_off
       entity_id: light.light_workroom_light
