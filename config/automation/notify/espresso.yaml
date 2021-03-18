@@ -22,7 +22,7 @@
       data:
         language: it
         message: 'espresso isch fertig'
-        message_say: 'hey hey bueb käfi isch fertig'
+        message_say: 'espresso isch fertig'
 
 - alias: Espresso ON Notify
   trigger:
@@ -34,4 +34,4 @@
       data:
         language: it
         message: 'espresso wird ufgwärmt'
-        message_say: 'mache käfi'
+        message_say: 'mack käfi'
