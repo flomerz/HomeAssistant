@@ -106,6 +106,10 @@ shelly:
       entity_id: diningtable
       light_switch: true
 
+netatmo:
+  client_id: !secret netatmo_client_id
+  client_secret: !secret netatmo_client_secret
+
 device_tracker:
   - platform: ddwrt
     host: !secret ddwrt_ip
