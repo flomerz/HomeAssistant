@@ -29,21 +29,14 @@ views:
         entities:
           
           ####################  States  ####################
-          - type: 'custom:button-entity-row'
-            buttons:
+          - type: buttons
+            entities:
               - entity: input_boolean.state_home
-                state_icons:
-                  "on": 'mdi:home'
-                  "off": 'mdi:home'
+                icon: 'mdi:home'
               - entity: input_boolean.state_sleep
                 icon: 'mdi:sleep'
-                state_icons:
-                  "on": 'mdi:sleep'
-                  "off": 'mdi:sleep'
               - entity: input_boolean.state_media
-                state_icons:
-                  "on": 'mdi:projector-screen'
-                  "off": 'mdi:projector-screen'
+                icon: 'mdi:projector-screen'
 
           - type: section
 
