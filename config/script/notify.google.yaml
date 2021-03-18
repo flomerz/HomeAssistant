@@ -15,9 +15,9 @@ notify_google_broadcast:
         - condition: template
           value_template: "{{ is_state('media_player.home_group', 'playing') }}"
         - condition: template
-          value_template: "{{ is_state('media_player.googlehome4508', 'playing') }}"
+          value_template: "{{ is_state('media_player.wohnzimmer_assistant', 'playing') }}"
         - condition: template
-          value_template: "{{ is_state('media_player.googlehome7490', 'playing') }}"
+          value_template: "{{ is_state('media_player.schlafzimmer_assistant', 'playing') }}"
     - service: notify.google
       data_template:
         message: '{{ message }}'
@@ -29,9 +29,9 @@ notify_google_say:
         - condition: template
           value_template: "{{ not is_state('media_player.home_group', 'playing') }}"
         - condition: template
-          value_template: "{{ not is_state('media_player.googlehome4508', 'playing') }}"
+          value_template: "{{ not is_state('media_player.wohnzimmer_assistant', 'playing') }}"
         - condition: template
-          value_template: "{{ not is_state('media_player.googlehome7490', 'playing') }}"
+          value_template: "{{ not is_state('media_player.schlafzimmer_assistant', 'playing') }}"
     # notify
     - service: tts.google_say
       entity_id: media_player.home_group
