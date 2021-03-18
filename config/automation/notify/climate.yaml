@@ -1,6 +1,6 @@
 - alias: Notify Wohnzimmer CO2
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/30'
       seconds: 0
     - platform: numeric_state
@@ -23,7 +23,7 @@
 
 - alias: Notify Wohnzimmer CO2 Max
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/30'
       seconds: 0
     - platform: numeric_state
@@ -46,7 +46,7 @@
 
 - alias: Notify Büro CO2
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/30'
       seconds: 0
     - platform: numeric_state
@@ -69,7 +69,7 @@
 
 - alias: Notify Büro CO2 Max
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/30'
       seconds: 0
     - platform: numeric_state
@@ -92,7 +92,7 @@
 
 - alias: Notify Wohnzimmer Feuchtigkeit
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/30'
       seconds: 0
     - platform: numeric_state
