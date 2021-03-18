@@ -1,8 +1,7 @@
 - alias: Notify Wohnzimmer CO2
   trigger:
     - platform: time
-      hours: '/1'
-      minutes: 0
+      minutes: '/30'
       seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_co2
@@ -25,8 +24,7 @@
 - alias: Notify Wohnzimmer CO2 Max
   trigger:
     - platform: time
-      hours: '/1'
-      minutes: 0
+      minutes: '/30'
       seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_co2
@@ -49,8 +47,7 @@
 - alias: Notify Büro CO2
   trigger:
     - platform: time
-      hours: '/1'
-      minutes: 0
+      minutes: '/30'
       seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
@@ -73,8 +70,7 @@
 - alias: Notify Büro CO2 Max
   trigger:
     - platform: time
-      hours: '/1'
-      minutes: 0
+      minutes: '/30'
       seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
@@ -97,8 +93,7 @@
 - alias: Notify Wohnzimmer Feuchtigkeit
   trigger:
     - platform: time
-      hours: '/1'
-      minutes: 0
+      minutes: '/30'
       seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_humidity
