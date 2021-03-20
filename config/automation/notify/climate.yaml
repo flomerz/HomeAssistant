@@ -13,6 +13,7 @@
     - condition: numeric_state
       entity_id: sensor.netatmo_home_indoor_co2
       above: 1000
+      below: 1300
   action:
     - service: script.notify_google
       data:
@@ -59,12 +60,16 @@
     - condition: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
       above: 1000
+      below: 1300
   action:
-    - service: script.notify_google
-      data:
-        language: ru
-        message: 'schlimmi luft im büro'
-        message_say: 'schlimmi luft in bueru'
+    - service: notify.browser
+      data_template:
+        message: "Büro lüften! ({{ states('sensor.netatmo_home_indoor_buro_co2') }}ppm)"
+    # - service: script.notify_google
+    #   data:
+    #     language: ru
+    #     message: 'schlimmi luft im büro'
+    #     message_say: 'schlimmi luft in bueru'
 
 
 - alias: Notify Büro CO2 Max
@@ -83,11 +88,14 @@
       entity_id: sensor.netatmo_home_indoor_buro_co2
       above: 1300
   action:
-    - service: script.notify_google
-      data:
-        language: ru
-        message: 'kann nuem schnufä im büro'
-        message_say: 'kann numm schnufä in bueru'
+    - service: notify.browser
+      data_template:
+        message: "Büro Luft kritisch! ({{ states('sensor.netatmo_home_indoor_buro_co2') }}ppm)"
+    # - service: script.notify_google
+    #   data:
+    #     language: ru
+    #     message: 'kann nuem schnufä im büro'
+    #     message_say: 'kann numm schnufä in bueru'
 
 
 - alias: Notify Wohnzimmer Feuchtigkeit

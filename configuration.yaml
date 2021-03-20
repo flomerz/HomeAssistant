@@ -204,12 +204,17 @@ tts:
     time_memory: 57600
 
 notify:
-  - name: flo
-    platform: pushbullet
-    api_key: !secret pushbullet_api_key
+  # - name: flo
+  #   platform: pushbullet
+  #   api_key: !secret pushbullet_api_key
   - name: google
     platform: rest
     resource: http://localhost:5000/broadcast_message
+  - platform: html5
+    name: browser
+    vapid_pub_key: !secret html5_push_pub
+    vapid_prv_key: !secret html5_push_prv
+    vapid_email: !secret html5_push_email
 
 vacuum:
   - name: xiaomi_vacuum
