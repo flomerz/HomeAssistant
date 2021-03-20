@@ -210,72 +210,151 @@ views:
       - type: vertical-stack
         cards:
 
-          ####################  Temperatur  ####################
+          ####################  Innen  ####################
           - type: horizontal-stack
-            title: Temperatur
             cards:
-              # Innen
+              # Temperatur
               - type: 'custom:mini-graph-card'
-                name: Innen
+                name: Temperatur
                 icon: mdi:thermometer
                 entities:
-                  - entity: sensor.temperature_livingroom
+                  - entity: sensor.netatmo_home_indoor_temperature
+                    name: Wohnzimmer
+                  - entity: sensor.netatmo_home_indoor_buro_temperature
+                    name: Büro
                 animate: true
+                height: 400
                 decimals: 1
                 hour24: true
-                hours_to_show: 24
+                hours_to_show: 168
                 points_per_hour: 2
                 show:
                   labels: true
                   icon_adaptive_color: true
-              # Aussen
+                color_thresholds:
+                  - value: 30
+                    color: "#ff0000"
+                  - value: 23
+                    color: "#00ff00"
+                  - value: 15
+                    color: "#0000ff"
+              # Feuchtigkeit
               - type: 'custom:mini-graph-card'
-                name: Aussen
-                icon: mdi:thermometer
+                name: Feuchtigkeit
+                icon: mdi:water-percent
                 entities:
-                  - entity: sensor.weather_temperature
+                  - entity: sensor.netatmo_home_indoor_humidity
+                    name: Wohnzimmer
+                  - entity: sensor.netatmo_home_indoor_buro_humidity
+                    name: Büro
                 animate: true
+                height: 400
                 decimals: 1
                 hour24: true
-                hours_to_show: 24
+                hours_to_show: 168
+                points_per_hour: 2
+                show:
+                  labels: true
+                  icon_adaptive_color: true
+                color_thresholds:
+                  - value: 30
+                    color: "#ff0000"
+                  - value: 45
+                    color: "#00ff00"
+                  - value: 60
+                    color: "#0000ff"
+          - type: horizontal-stack
+            cards:
+              # CO2
+              - type: 'custom:mini-graph-card'
+                name: CO²
+                icon: mdi:molecule-co2
+                entities:
+                  - entity: sensor.netatmo_home_indoor_co2
+                    name: Wohnzimmer
+                  - entity: sensor.netatmo_home_indoor_buro_co2
+                    name: Büro
+                animate: true
+                height: 400
+                hour24: true
+                hours_to_show: 168
+                points_per_hour: 2
+                show:
+                  labels: true
+                  icon_adaptive_color: true
+                color_thresholds:
+                  - value: 1600
+                    color: "#ff0000"
+                  - value: 400
+                    color: "#00ff00"
+              # Luftdruck
+              - type: 'custom:mini-graph-card'
+                name: Luftdruck
+                icon: mdi:gauge
+                entities:
+                  - entity: sensor.netatmo_home_indoor_pressure
+                    name: Wohnzimmer
+                animate: true
+                height: 400
+                decimals: 1
+                hour24: true
+                hours_to_show: 168
                 points_per_hour: 2
                 show:
                   labels: true
                   icon_adaptive_color: true
 
 
-          ####################  Feuchtigkeit  ####################
+          ####################  Aussen  ####################
           - type: horizontal-stack
-            title: Feuchtigkeit
+            title: Aussen
             cards:
-              # Innen
+              # Temperatur
               - type: 'custom:mini-graph-card'
-                name: Innen
+                name: Temperatur
                 icon: mdi:water-percent
                 entities:
-                  - entity: sensor.humidity_livingroom
+                  - entity: sensor.netatmo_home_indoor_aussen_temperature
+                    name: Aussen
                 animate: true
+                height: 400
                 decimals: 1
                 hour24: true
-                hours_to_show: 24
+                hours_to_show: 168
                 points_per_hour: 2
                 show:
                   labels: true
                   icon_adaptive_color: true
-              # Aussen
+                color_thresholds:
+                  - value: 35
+                    color: "#ff0000"
+                  - value: 20
+                    color: "#00ff00"
+                  - value: 5
+                    color: "#0000ff"
+              # Feuchtigkeit
               - type: 'custom:mini-graph-card'
-                name: Aussen
+                name: Feuchtigkeit
                 icon: mdi:water-percent
                 entities:
-                  - entity: sensor.weather_humidity
+                  - entity: sensor.netatmo_home_indoor_aussen_humidity
+                    name: Aussen
                 animate: true
+                height: 400
                 decimals: 1
                 hour24: true
-                hours_to_show: 24
+                hours_to_show: 168
                 points_per_hour: 2
                 show:
                   labels: true
                   icon_adaptive_color: true
+                color_thresholds:
+                  - value: 30
+                    color: "#ff0000"
+                  - value: 45
+                    color: "#00ff00"
+                  - value: 60
+                    color: "#0000ff"
 
 
   ####################  Pflanzen  ####################
