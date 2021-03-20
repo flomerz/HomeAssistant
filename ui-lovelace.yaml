@@ -4,15 +4,7 @@ resources:
   - type: module
     url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
   - type: module
-    url: /hacsfiles/button-entity-row/button-entity-row.js
-  - type: module
-    url: /hacsfiles/custom-header/custom-header.js
-  - type: module
     url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-
-custom_header:
-  compact_mode: true
-  menu_dropdown: true
 
 title: Home Assistant
 views:
@@ -56,43 +48,64 @@ views:
             entities:
               - entity: input_select.state_livingroom_light
                 name: false
-          - type: 'custom:button-entity-row'
-            buttons:
-              - icon: 'mdi:track-light'
-                service: input_select.select_option
-                service_data:
-                  entity_id: input_select.state_livingroom_light
-                  option: Hell
-              - icon: 'mdi:lightbulb-group'
-                service: input_select.select_option
-                service_data:
-                  entity_id: input_select.state_livingroom_light
-                  option: Normal
-              - icon: 'mdi:lightbulb-multiple'
-                service: input_select.select_option
-                service_data:
-                  entity_id: input_select.state_livingroom_light
-                  option: Chill
-              - icon: 'mdi:lightbulb'
-                service: input_select.select_option
-                service_data:
-                  entity_id: input_select.state_livingroom_light
-                  option: Beamer Hell
-              - icon: 'mdi:projector-screen'
-                service: input_select.select_option
-                service_data:
-                  entity_id: input_select.state_livingroom_light
-                  option: Beamer
-              - icon: 'mdi:movie-open'
-                service: input_select.select_option
-                service_data:
-                  entity_id: input_select.state_livingroom_light
-                  option: Film
-              - icon: 'mdi:lightbulb-group-off'
-                service: input_select.select_option
-                service_data:
-                  entity_id: input_select.state_livingroom_light
-                  option: Aus
+          - type: buttons
+            entities:
+              - entity: input_select.state_livingroom_light
+                icon: 'mdi:track-light'
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.state_livingroom_light
+                    option: Hell
+              - entity: input_select.state_livingroom_light
+                icon: 'mdi:lightbulb-group'
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.state_livingroom_light
+                    option: Normal
+              - entity: input_select.state_livingroom_light
+                icon: 'mdi:lightbulb-multiple'
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.state_livingroom_light
+                    option: Chill
+              - entity: input_select.state_livingroom_light
+                icon: 'mdi:lightbulb'
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.state_livingroom_light
+                    option: Beamer Hell
+              - entity: input_select.state_livingroom_light
+                icon: 'mdi:projector-screen'
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.state_livingroom_light
+                    option: Beamer
+              - entity: input_select.state_livingroom_light
+                icon: 'mdi:movie-open'
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.state_livingroom_light
+                    option: Film
+              - entity: input_select.state_livingroom_light
+                icon: 'mdi:lightbulb-group-off'
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.state_livingroom_light
+                    option: Aus
 
           # Schlafzimmer
           - type: 'custom:slider-entity-row'
