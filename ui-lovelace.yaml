@@ -8,6 +8,7 @@ views:
     icon: 'mdi:home'
     cards:
     
+      ####################  Main  ####################
       - type: entities
         show_header_toggle: false
         entities:
@@ -153,14 +154,7 @@ views:
                 name: Lavabo
                 toggle: true
 
-
-  ####################  Espresso Tab  ####################
-  - badges: []
-    title: Espresso
-    path: lovelace-espresso
-    icon: 'mdi:coffee'
-    cards:
-
+      ####################  Espresso  ####################
       # Toggle
       - type: entities
         name: Espresso
@@ -174,29 +168,33 @@ views:
             entities:
               - entity: sensor.temperature_espresso
                 name: false
-      # Chart
-      - type: 'custom:mini-graph-card'
-        entities:
-          - entity: sensor.temperature_espresso
-        animate: true
-        decimals: 1
-        hour24: true
-        hours_to_show: 18
-        points_per_hour: 6
-        show:
-          name: false
-          icon: false
-          # state: false
-          labels: true
-        color_thresholds:
-          - value: 0
-            color: var(--primary-color)
-          - value: 50
-            color: var(--primary-color)
-          - value: 55
-            color: '#ff0000'
-          - value: 65
-            color: '#ff0000'
+          # Chart
+          - type: 'custom:mini-graph-card'
+            entities:
+              - entity: sensor.temperature_espresso
+                show_points: false
+            animate: true
+            height: 400
+            line_width: 1
+            decimals: 1
+            hour24: true
+            hours_to_show: 18
+            points_per_hour: 6
+            group: true
+            show:
+              name: false
+              icon: false
+              state: false
+              labels: true
+            color_thresholds:
+              - value: 0
+                color: '#0000ff'
+              - value: 50
+                color: '#0000ff'
+              - value: 55
+                color: '#ff0000'
+              - value: 65
+                color: '#ff0000'
 
 
   ####################  Temperatur Tab  ####################
@@ -220,14 +218,18 @@ views:
                 entities:
                   - entity: sensor.netatmo_home_indoor_temperature
                     name: Wohnzimmer
+                    show_points: false
                   - entity: sensor.netatmo_home_indoor_buro_temperature
                     name: Büro
+                    show_points: false
                 animate: true
                 height: 400
+                line_width: 1
                 decimals: 1
                 hour24: true
                 hours_to_show: 168
                 points_per_hour: 2
+                tap_action: none
                 show:
                   labels: true
                   icon_adaptive_color: true
@@ -245,14 +247,18 @@ views:
                 entities:
                   - entity: sensor.netatmo_home_indoor_humidity
                     name: Wohnzimmer
+                    show_points: false
                   - entity: sensor.netatmo_home_indoor_buro_humidity
                     name: Büro
+                    show_points: false
                 animate: true
                 height: 400
+                line_width: 1
                 decimals: 1
                 hour24: true
                 hours_to_show: 168
                 points_per_hour: 2
+                tap_action: none
                 show:
                   labels: true
                   icon_adaptive_color: true
@@ -272,13 +278,17 @@ views:
                 entities:
                   - entity: sensor.netatmo_home_indoor_co2
                     name: Wohnzimmer
+                    show_points: false
                   - entity: sensor.netatmo_home_indoor_buro_co2
                     name: Büro
+                    show_points: false
                 animate: true
                 height: 400
+                line_width: 1
                 hour24: true
                 hours_to_show: 168
                 points_per_hour: 2
+                tap_action: none
                 show:
                   labels: true
                   icon_adaptive_color: true
@@ -294,12 +304,15 @@ views:
                 entities:
                   - entity: sensor.netatmo_home_indoor_pressure
                     name: Wohnzimmer
+                    show_points: false
                 animate: true
                 height: 400
+                line_width: 1
                 decimals: 1
                 hour24: true
                 hours_to_show: 168
                 points_per_hour: 2
+                tap_action: none
                 show:
                   labels: true
                   icon_adaptive_color: true
@@ -312,16 +325,19 @@ views:
               # Temperatur
               - type: 'custom:mini-graph-card'
                 name: Temperatur
-                icon: mdi:water-percent
+                icon: mdi:thermometer
                 entities:
                   - entity: sensor.netatmo_home_indoor_aussen_temperature
                     name: Aussen
+                    show_points: false
                 animate: true
                 height: 400
+                line_width: 1
                 decimals: 1
                 hour24: true
                 hours_to_show: 168
                 points_per_hour: 2
+                tap_action: none
                 show:
                   labels: true
                   icon_adaptive_color: true
@@ -339,12 +355,15 @@ views:
                 entities:
                   - entity: sensor.netatmo_home_indoor_aussen_humidity
                     name: Aussen
+                    show_points: false
                 animate: true
                 height: 400
+                line_width: 1
                 decimals: 1
                 hour24: true
                 hours_to_show: 168
                 points_per_hour: 2
+                tap_action: none
                 show:
                   labels: true
                   icon_adaptive_color: true
@@ -368,149 +387,72 @@ views:
       - type: vertical-stack
         cards:
 
-          ####################  Busch  ####################
-          - type: horizontal-stack
-            title: Busch
-            cards:
-              # Wasser
-              - type: 'custom:mini-graph-card'
-                name: Wasser
-                entities:
-                  - entity: sensor.plant1_moisture
-                animate: true
-                decimals: 0
-                hour24: true
-                hours_to_show: 720
-                points_per_hour: 0.1
-                show:
-                  icon_adaptive_color: true
-                  labels: true
-                color_thresholds:
-                  - value: 20
-                    color: '#ff0000'
-                  - value: 40
-                    color: '#03a9f4'
-                  - value: 60
-                    color: '#03a9f4'
-                  - value: 80
-                    color: '#ff9800'
-              # Dünger
-              - type: 'custom:mini-graph-card'
-                name: Dünger
-                entities:
-                  - entity: sensor.plant1_conductivity
-                animate: true
-                decimals: 0
-                hour24: true
-                hours_to_show: 720
-                points_per_hour: 0.1
-                show:
-                  icon_adaptive_color: true
-                  labels: true
-                color_thresholds:
-                  - value: 300
-                    color: '#ff0000'
-                  - value: 800
-                    color: '#03a9f4'
-                  - value: 2000
-                    color: '#03a9f4'
-                  - value: 2500
-                    color: '#ff9800'
+          # Wasser
+          - type: 'custom:mini-graph-card'
+            name: Wasser
+            entities:
+              - entity: sensor.plant1_moisture
+                name: Busch
+                show_points: false
+              - entity: sensor.plant2_moisture
+                name: Baum
+                show_points: false
+              - entity: sensor.plant3_moisture
+                name: Rosmarin
+                show_points: false
+            animate: true
+            height: 240
+            line_width: 1
+            decimals: 0
+            hour24: true
+            hours_to_show: 720
+            points_per_hour: 0.1
+            lower_bound: 0
+            upper_bound: 100
+            tap_action: none
+            show:
+              icon_adaptive_color: true
+            color_thresholds:
+              - value: 20
+                color: '#ff0000'
+              - value: 40
+                color: '#03a9f4'
+              - value: 60
+                color: '#03a9f4'
+              - value: 80
+                color: '#ff9800'
 
-          ####################  Baum  ####################
-          - type: horizontal-stack
-            title: Baum
-            cards:
-              # Wasser
-              - type: 'custom:mini-graph-card'
-                name: Wasser
-                entities:
-                  - entity: sensor.plant2_moisture
-                animate: true
-                decimals: 0
-                hour24: true
-                hours_to_show: 720
-                points_per_hour: 0.1
-                show:
-                  icon_adaptive_color: true
-                  labels: true
-                color_thresholds:
-                  - value: 20
-                    color: '#ff0000'
-                  - value: 40
-                    color: '#03a9f4'
-                  - value: 60
-                    color: '#03a9f4'
-                  - value: 80
-                    color: '#ff9800'
-              # Dünger
-              - type: 'custom:mini-graph-card'
-                name: Dünger
-                entities:
-                  - entity: sensor.plant2_conductivity
-                animate: true
-                decimals: 0
-                hour24: true
-                hours_to_show: 720
-                points_per_hour: 0.1
-                show:
-                  icon_adaptive_color: true
-                  labels: true
-                color_thresholds:
-                  - value: 300
-                    color: '#ff0000'
-                  - value: 800
-                    color: '#03a9f4'
-                  - value: 2000
-                    color: '#03a9f4'
-                  - value: 2500
-                    color: '#ff9800'
-
-          ####################  Bonsai  ####################
-          - type: horizontal-stack
-            title: Bonsai
-            cards:
-              # Wasser
-              - type: 'custom:mini-graph-card'
-                name: Wasser
-                entities:
-                  - entity: sensor.plant3_moisture
-                animate: true
-                decimals: 0
-                hour24: true
-                hours_to_show: 720
-                points_per_hour: 0.1
-                show:
-                  icon_adaptive_color: true
-                  labels: true
-                color_thresholds:
-                  - value: 20
-                    color: '#ff0000'
-                  - value: 40
-                    color: '#03a9f4'
-                  - value: 60
-                    color: '#03a9f4'
-                  - value: 80
-                    color: '#ff9800'
-              # Dünger
-              - type: 'custom:mini-graph-card'
-                name: Dünger
-                entities:
-                  - entity: sensor.plant3_conductivity
-                animate: true
-                decimals: 0
-                hour24: true
-                hours_to_show: 720
-                points_per_hour: 0.1
-                show:
-                  icon_adaptive_color: true
-                  labels: true
-                color_thresholds:
-                  - value: 300
-                    color: '#ff0000'
-                  - value: 800
-                    color: '#03a9f4'
-                  - value: 2000
-                    color: '#03a9f4'
-                  - value: 2500
-                    color: '#ff9800'
+          # Dünger
+          - type: 'custom:mini-graph-card'
+            name: Dünger
+            entities:
+              - entity: sensor.plant1_conductivity
+                name: Busch
+                show_points: false
+              - entity: sensor.plant2_conductivity
+                name: Baum
+                show_points: false
+              - entity: sensor.plant3_conductivity
+                name: Rosmarin
+                show_points: false
+            animate: true
+            height: 240
+            line_width: 1
+            decimals: 0
+            hour24: true
+            hours_to_show: 720
+            points_per_hour: 0.1
+            lower_bound: 0
+            upper_bound: 3000
+            tap_action: none
+            show:
+              icon_adaptive_color: true
+            color_thresholds:
+              - value: 300
+                color: '#ff0000'
+              - value: 800
+                color: '#03a9f4'
+              - value: 2000
+                color: '#03a9f4'
+              - value: 2500
+                color: '#ff9800'
