@@ -12,3 +12,4 @@ wakeup:
       entity_id: switch.espresso
   
     - service: script.bedroom_light_wakeup
+    

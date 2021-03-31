@@ -10,15 +10,6 @@
         rgb_color: [255, 100, 1] #orange
         brightness: 168
 
-- alias: Bedroom Right Hold
-  trigger:
-    - platform: state
-      entity_id: sensor.switch_bedroom_action
-      to: 'arrow_right_hold'
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.state_sleep
-
 - alias: Bedroom Color Left
   trigger:
     - platform: state
@@ -31,14 +22,18 @@
         rgb_color: [255, 0, 0] #red
         brightness: 168
 
-- alias: Bedroom Left Hold
+- alias: Bedroom Left/Right Hold
   trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
       to: 'arrow_left_hold'
+    - platform: state
+      entity_id: sensor.switch_bedroom_action
+      to: 'arrow_right_hold'
   action:
-    - service: input_boolean.turn_on
+    - service: input_boolean.toggle
       entity_id: input_boolean.state_sleep
+    - service: script.espresso_not_sleep
 
 - alias: switch_bedroom_toggle_on
   trigger:

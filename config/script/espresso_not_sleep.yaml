@@ -1,0 +1,9 @@
+espresso_not_sleep:
+  sequence:
+
+    - condition: state
+      entity_id: input_boolean.state_sleep
+      state: 'off'
+
+    - service: switch.turn_on
+      entity_id: switch.espresso
