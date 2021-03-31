@@ -1,11 +1,11 @@
 - alias: Baum Notify
   trigger:
-    - platform: time
-      at: '21:00:00'
+    - platform: time_pattern
+      minutes: 5
   condition:
     - condition: numeric_state
       entity_id: sensor.plant1_moisture
-      below: 30
+      below: 35
     - condition: state
       entity_id: input_boolean.state_sleep
       state: 'off'
@@ -18,12 +18,12 @@
 
 - alias: Busch Notify
   trigger:
-    - platform: time
-      at: '21:01:00'
+    - platform: time_pattern
+      minutes: 6
   condition:
     - condition: numeric_state
       entity_id: sensor.plant1_moisture
-      below: 40
+      below: 35
     - condition: state
       entity_id: input_boolean.state_sleep
       state: 'off'
@@ -34,14 +34,14 @@
         message: 'de busch hät durscht'
         message_say: 'de busch hät durscht'
 
-- alias: Bonsai Notify
+- alias: Rosmarie Notify
   trigger:
-    - platform: time
-      at: '21:02:00'
+    - platform: time_pattern
+      minutes: 7
   condition:
     - condition: numeric_state
       entity_id: sensor.plant1_moisture
-      below: 40
+      below: 35
     - condition: state
       entity_id: input_boolean.state_sleep
       state: 'off'
@@ -49,5 +49,5 @@
     - service: script.notify_google
       data:
         language: it
-        message: 'de bonsei hät durscht'
-        message_say: 'de bonsei hät durscht'
+        message: 'de rosmarie hät durscht'
+        message_say: 'de rosmarie hät durscht'

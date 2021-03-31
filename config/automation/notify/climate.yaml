@@ -2,7 +2,6 @@
   trigger:
     - platform: time_pattern
       minutes: '/30'
-      seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_co2
       above: 1000
@@ -26,7 +25,6 @@
   trigger:
     - platform: time_pattern
       minutes: '/30'
-      seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_co2
       above: 1300
@@ -49,7 +47,6 @@
   trigger:
     - platform: time_pattern
       minutes: '/30'
-      seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
       above: 1000
@@ -76,7 +73,6 @@
   trigger:
     - platform: time_pattern
       minutes: '/30'
-      seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
       above: 1300
@@ -102,7 +98,6 @@
   trigger:
     - platform: time_pattern
       minutes: '/30'
-      seconds: 0
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_humidity
       below: 35
