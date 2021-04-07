@@ -51,9 +51,9 @@
 # switch.resin:
 #   friendly_name: Brunnen
 #   icon: mdi:water
-# switch.humidifier:
-#   friendly_name: Luftbefeuchter
-#   icon: mdi:water
+switch.humidifier:
+  friendly_name: Luftbefeuchter
+  icon: mdi:pot-steam
 # input_boolean.state_sleep:
 #   friendly_name: Schlafen
 # input_boolean.state_home:
