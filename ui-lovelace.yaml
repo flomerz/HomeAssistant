@@ -257,7 +257,9 @@ views:
                 hour24: true
                 hours_to_show: 24
                 points_per_hour: 6
-                tap_action: none
+                tap_action:
+                  action: more-info
+                  entity: switch.humidifier
                 show:
                   labels: true
                   icon_adaptive_color: true
