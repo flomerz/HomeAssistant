@@ -27,10 +27,8 @@ views:
 
           ####################  Lights  ####################
           # Esstisch
-          # - type: 'custom:slider-entity-row'
-          #   entity: light.shelly_diningtable
-          #   name: Esstisch
-          #   toggle: true
+          - entity: light.shelly_diningtable
+            name: Esstisch
 
           # Wohnzimmer
           - type: 'custom:multiple-entity-row'

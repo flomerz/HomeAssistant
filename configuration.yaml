@@ -73,7 +73,7 @@ mqtt:
 mobile_app:
 
 shelly:
-  discovery: true
+  discovery: false
   version: false #add version sensor
   sensors:
     - switch
@@ -102,7 +102,7 @@ shelly:
       name: Licht Fitnesszimmer
       entity_id: fitnessroom
       light_switch: true
-    - id: "F3C4C0"
+    - id: "483FDAA1A6D9"
       name: Licht Esstisch
       entity_id: diningtable
       light_switch: true
