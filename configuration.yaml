@@ -81,7 +81,7 @@ shelly:
     - id: "8CAAB505F04A"
       name: Lichtschalter Schlafzimmer
       entity_id: bedroom
-      light_switch: true
+      light_switch: false
     - id: "E098068CC71C"
       name: Licht Küchenzeile
       entity_id: kitchen
@@ -97,7 +97,7 @@ shelly:
     - id: "E098068CC7E3"
       name: Lichtschalter Büro
       entity_id: workroom
-      light_switch: true
+      light_switch: false
     - id: "E098068DA79E"
       name: Licht Fitnesszimmer
       entity_id: fitnessroom
