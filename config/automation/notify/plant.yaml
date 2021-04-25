@@ -4,7 +4,7 @@
       minutes: 5
   condition:
     - condition: numeric_state
-      entity_id: sensor.plant1_moisture
+      entity_id: sensor.plant2_moisture
       below: 35
     - condition: state
       entity_id: input_boolean.state_sleep
@@ -40,7 +40,7 @@
       minutes: 7
   condition:
     - condition: numeric_state
-      entity_id: sensor.plant1_moisture
+      entity_id: sensor.plant3_moisture
       below: 35
     - condition: state
       entity_id: input_boolean.state_sleep
