@@ -22,4 +22,5 @@
       entity_id: sensor.switch_livingroom_click
       to: 'both'
   action:
-    - service: script.vacuum_livingroom_table
+    - service: input_boolean.toggle
+      entity_id: input_boolean.state_media

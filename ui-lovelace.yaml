@@ -404,7 +404,7 @@ views:
             decimals: 0
             hour24: true
             hours_to_show: 720
-            points_per_hour: 0.2
+            points_per_hour: 0.5
             lower_bound: 0
             upper_bound: 100
             tap_action: none
@@ -439,7 +439,7 @@ views:
             decimals: 0
             hour24: true
             hours_to_show: 720
-            points_per_hour: 0.2
+            points_per_hour: 0.5
             lower_bound: 0
             upper_bound: 3000
             tap_action: none
