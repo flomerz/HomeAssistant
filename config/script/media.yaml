@@ -54,6 +54,9 @@ media_power_off:
     - service: media_player.turn_off
       entity_id: media_player.playstation_4
 
+    - service: media_player.turn_off
+      entity_id: media_player.shield
+
     - service: script.ir_receiver_tv
     - delay:
         seconds: 5
@@ -76,3 +79,10 @@ receiver_off_delayed:
     - delay:
         seconds: 5
     - service: script.ir_receiver_power
+
+receiver_on:
+  sequence:
+    # disable off script
+    - service: script.turn_off
+      entity_id: script.receiver_off_delayed
+    - service: script.ir_receiver_tv

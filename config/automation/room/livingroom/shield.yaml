@@ -1,16 +1,16 @@
-- alias: ps4_on
+- alias: shield_on
   trigger:
     - platform: state
-      entity_id: media_player.playstation_4
-      to: 'idle'
+      entity_id: media_player.shield
+      to: 'playing'
   action:
     - service: script.receiver_on
 
-- alias: ps4_off
+- alias: shield_off
   trigger:
     - platform: state
-      entity_id: media_player.playstation_4
-      to: 'standby'
+      entity_id: media_player.shield
+      to: 'off'
   condition:
     - condition: state
       entity_id: input_boolean.state_media
