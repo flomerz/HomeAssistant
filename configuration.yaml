@@ -216,12 +216,6 @@ notify:
     vapid_prv_key: !secret html5_push_prv
     vapid_email: !secret html5_push_email
 
-vacuum:
-  - name: xiaomi_vacuum
-    platform: xiaomi_miio
-    host: rockrobo
-    token: !secret xiaomi_vaccum_token
-
 webhook:
 
 zigbee2mqtt_networkmap:
