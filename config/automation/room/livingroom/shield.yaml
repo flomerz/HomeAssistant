@@ -16,4 +16,4 @@
       entity_id: input_boolean.state_media
       state: 'off'
   action:
-    - service: script.receiver_off_delayed
+    - service: script.receiver_off

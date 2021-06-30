@@ -11,22 +11,8 @@ media_power_on:
         option: Beamer Hell
     
     # turn on devices
-    - service: script.ir_receiver_tv
-    - delay:
-        seconds: 1
-    - service: script.ir_beamer_power_on
-    - delay:
-        seconds: 3
-    - service: script.ir_receiver_tv
-    - delay:
-        seconds: 1
-    - service: script.ir_beamer_power_on
-    - delay:
-        seconds: 3
-    - service: script.ir_receiver_tv
-    - delay:
-        seconds: 1
-    - service: script.ir_beamer_power_on
+    - service: script.receiver_on
+    - service: script.beamer_on
 
     - delay:
         seconds: 30
@@ -53,36 +39,66 @@ media_power_off:
     # turn off devices
     - service: media_player.turn_off
       entity_id: media_player.playstation_4
-
     - service: media_player.turn_off
       entity_id: media_player.shield
-
-    - service: script.ir_receiver_tv
-    - delay:
-        seconds: 5
-    - service: script.ir_receiver_power
-    - delay:
-        seconds: 1
-    - service: script.ir_beamer_power_off
-    - delay:
-        seconds: 10
-    - service: script.ir_beamer_power_off
-    - delay:
-        seconds: 60
-    - service: script.ir_beamer_power_off
-
-receiver_off_delayed:
-  sequence:
-    - delay:
-        minutes: 1
-    - service: script.ir_receiver_tv
-    - delay:
-        seconds: 5
-    - service: script.ir_receiver_power
+    - service: script.receiver_off
+    - service: script.beamer_off
 
 receiver_on:
   sequence:
     # disable off script
     - service: script.turn_off
-      entity_id: script.receiver_off_delayed
+      entity_id: script.receiver_off
+
     - service: script.ir_receiver_tv
+    - delay:
+        seconds: 3
+    - service: script.ir_receiver_tv
+    - delay:
+        seconds: 3
+    - service: script.ir_receiver_tv
+
+receiver_off:
+  sequence:
+    # disable on script
+    - service: script.turn_off
+      entity_id: script.receiver_on
+
+    - service: script.ir_receiver_tv
+    - delay:
+        seconds: 5
+    - service: script.ir_receiver_power
+    - delay:
+        seconds: 10
+    - service: script.ir_receiver_tv
+    - delay:
+        seconds: 5
+    - service: script.ir_receiver_power
+
+beamer_on:
+  sequence:
+    # disable off script
+    - service: script.turn_off
+      entity_id: script.beamer_off
+
+    - service: script.ir_beamer_power_on
+    - delay:
+        seconds: 3
+    - service: script.ir_beamer_power_on
+    - delay:
+        seconds: 3
+    - service: script.ir_beamer_power_on
+
+beamer_off:
+  sequence:
+    # disable on script
+    - service: script.turn_off
+      entity_id: script.beamer_on
+
+    - service: script.ir_beamer_power_off
+    - delay:
+        seconds: 3
+    - service: script.ir_beamer_power_off
+    - delay:
+        seconds: 3
+    - service: script.ir_beamer_power_off
