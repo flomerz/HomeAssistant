@@ -7,11 +7,13 @@
     - service: script.turn_on
       entity_id: script.all_off
     - service: media_player.media_stop
-      entity_id: media_player.googlehome7490
+      entity_id: media_player.wohnzimmer_assistant
     - service: media_player.media_stop
-      entity_id: media_player.googlehome4508
+      entity_id: media_player.schlafzimmer_assistant
     - service: media_player.media_stop
       entity_id: media_player.home_group
+    - service: vacuum.start
+      entity_id: vacuum.xiaomi_vacuum
 
 - alias: Home ON Livingroom Light Mode Chill
   trigger:
