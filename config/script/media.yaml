@@ -64,6 +64,15 @@ receiver_on:
 
 receiver_off:
   sequence:
+    # disable off script
+    - service: script.turn_off
+      entity_id: script.receiver_off_internal
+    - delay:
+        seconds: 5
+    - service: script.receiver_off_internal
+
+receiver_off_internal:
+  sequence:
     # disable on script
     - service: script.turn_off
       entity_id: script.receiver_on
