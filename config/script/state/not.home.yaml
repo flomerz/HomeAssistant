@@ -2,7 +2,7 @@ not_home:
   sequence:
     # delay
     - delay:
-        minutes: 10
+        minutes: 15
     # no people home
     - condition: state
       entity_id: group.people
