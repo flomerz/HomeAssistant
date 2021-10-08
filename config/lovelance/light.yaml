@@ -100,7 +100,7 @@ entities:
     name: Eingang
     show_state: false
     entities:
-      - entity: light.light_door_light
+      - entity: light.light_door
         name: Türe
         toggle: true
       - entity: light.floor

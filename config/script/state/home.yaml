@@ -7,6 +7,6 @@ home:
     - condition: and
       conditions: !include ../../condition/light_livingroom.yaml
     - service: light.turn_on
-      entity_id: light.light_door_light
+      entity_id: light.light_door
     - service: light.turn_on
       entity_id: light.floor

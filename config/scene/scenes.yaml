@@ -81,7 +81,7 @@
     light.shelly_kitchen: off
     light.kitchen: off
     light.floor: off
-    light.light_door_light: off
+    light.light_door: off
     light.livingroom_front: off
     light.livingroom_big: off
     light.livingroom_sofatable: off

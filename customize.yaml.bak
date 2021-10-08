@@ -16,7 +16,7 @@ light.livingroom_led_white_back:
   friendly_name: LED Weiss Hinten
 light.livingroom_rainbow:
   friendly_name: Rainbow
-light.light_door_light:
+light.light_door:
   friendly_name: Türe
 light.light_bedroom_light:
   friendly_name: Schlafzimmerlampe

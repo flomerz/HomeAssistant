@@ -20,7 +20,7 @@
     - service: light.turn_off
       entity_id: light.floor
     - service: light.turn_off
-      entity_id: light.light_door_light
+      entity_id: light.light_door
 
 
 - alias: Floor Motion ON (Sleep) -> WC
