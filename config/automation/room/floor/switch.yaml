@@ -4,8 +4,9 @@
       entity_id: sensor.switch_door_click
       to: 'left'
   action:
-    - service: light.turn_on
-      entity_id: light.light_door_light
+    - service: script.turn_off
+      entity_id: script.not_home
+    - service: script.home
 
 
 - alias: Floor Switch RIGHT
