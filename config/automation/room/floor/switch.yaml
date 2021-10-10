@@ -7,6 +7,10 @@
     - service: script.turn_off
       entity_id: script.not_home
     - service: script.home
+    - service: light.turn_on
+      entity_id: light.floor
+    - service: light.turn_on
+      entity_id: light.light_door
 
 
 - alias: Floor Switch RIGHT

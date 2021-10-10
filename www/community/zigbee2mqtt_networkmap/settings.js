@@ -1,2 +1,2 @@
-var webhook_trigger_update_id = '60d88b3a92e4c14a01d8596856ee0a5f5fd2fe8e1467fbd23b5dbc8b0a4394ed';
-var webhook_check_update_id = 'cad6f4d2cc8eafadc4fcbbcae7e7be5d4a7915104a44146af79b11e8be8b3d5b';
+var webhook_trigger_update_id = 'fd0c8bf54fb85fb0e253a0b53969e4b28921d92deac0679bc26c099ae07d3601';
+var webhook_check_update_id = '7fa2f5ff571e8be38d2db68d305ea6cd2442cf6b8b55cd9832c620f3d23e8d8b';
