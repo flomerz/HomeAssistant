@@ -240,178 +240,206 @@ views:
       - type: vertical-stack
         cards:
 
-          ####################  Innen  ####################
-          - type: horizontal-stack
-            cards:
-              # Temperatur
-              - type: 'custom:mini-graph-card'
-                name: Temperatur
-                icon: mdi:thermometer
-                entities:
-                  - entity: sensor.netatmo_home_indoor_temperature
-                    name: Wohnzimmer
-                    # show_points: false
-                  - entity: sensor.netatmo_home_indoor_buro_temperature
-                    name: Büro
-                    # show_points: false
-                  - entity: sensor.netatmo_home_indoor_aussen_temperature
-                    name: Aussen
-                    # show_points: false
-                animate: true
-                height: 540
-                line_width: 1
-                decimals: 1
-                hour24: true
-                hours_to_show: 168
-                points_per_hour: 6
-                tap_action: none
-                show:
-                  labels: true
-                  icon_adaptive_color: true
-                color_thresholds:
-                  - value: 30
-                    color: "#ff0000"
-                  - value: 23
-                    color: "#00ff00"
-                  - value: 15
-                    color: "#0000ff"
-              # Feuchtigkeit
-              - type: 'custom:mini-graph-card'
-                name: Feuchtigkeit
-                icon: mdi:water-percent
-                entities:
-                  - entity: sensor.netatmo_home_indoor_humidity
-                    name: Wohnzimmer
-                    # show_points: false
-                  - entity: sensor.netatmo_home_indoor_buro_humidity
-                    name: Büro
-                    # show_points: false
-                  - entity: sensor.netatmo_home_indoor_aussen_humidity
-                    name: Aussen
-                    # show_points: false
-                animate: true
-                height: 540
-                line_width: 1
-                hour24: true
-                hours_to_show: 168
-                points_per_hour: 6
-                tap_action:
-                  action: more-info
-                  entity: switch.humidifier
-                show:
-                  labels: true
-                  icon_adaptive_color: true
-                color_thresholds:
-                  - value: 30
-                    color: "#ff0000"
-                  - value: 45
-                    color: "#00ff00"
-                  - value: 60
-                    color: "#0000ff"
-          - type: horizontal-stack
-            cards:
-              # CO2
-              - type: 'custom:mini-graph-card'
-                name: CO²
-                icon: mdi:molecule-co2
-                entities:
-                  - entity: sensor.netatmo_home_indoor_co2
-                    name: Wohnzimmer
-                    # show_points: false
-                  - entity: sensor.netatmo_home_indoor_buro_co2
-                    name: Büro
-                    # show_points: false
-                animate: true
-                height: 540
-                line_width: 1
-                hour24: true
-                hours_to_show: 168
-                points_per_hour: 6
-                tap_action: none
-                show:
-                  labels: true
-                  icon_adaptive_color: true
-                color_thresholds:
-                  - value: 1600
-                    color: "#ff0000"
-                  - value: 400
-                    color: "#00ff00"
-              # Luftdruck
-              - type: 'custom:mini-graph-card'
-                name: Luftdruck
-                icon: mdi:gauge
-                entities:
-                  - entity: sensor.netatmo_home_indoor_pressure
-                    name: Wohnzimmer
-                    # show_points: false
-                animate: true
-                height: 540
-                line_width: 1
-                decimals: 1
-                hour24: true
-                hours_to_show: 168
-                points_per_hour: 6
-                tap_action: none
-                show:
-                  labels: true
-                  icon_adaptive_color: true
+          # CO2 8h
+          - type: 'custom:mini-graph-card'
+            name: CO² (8h)
+            icon: mdi:molecule-co2
+            entities:
+              - entity: sensor.netatmo_home_indoor_co2
+                name: Wohnzimmer
+                show_state: true
+              - entity: sensor.netatmo_home_indoor_buro_co2
+                name: Büro
+                show_state: true
+            animate: true
+            height: 150
+            font_size: 50
+            line_width: 1
+            hour24: true
+            hours_to_show: 8
+            points_per_hour: 6
+            tap_action: none
+            show:
+              labels: true
+              icon_adaptive_color: true
+            color_thresholds:
+              - value: 1600
+                color: "#ff0000"
+              - value: 400
+                color: "#00ff00"
+          
+          # Temperatur 8h
+          - type: 'custom:mini-graph-card'
+            name: Temperatur (8h)
+            icon: mdi:thermometer
+            entities:
+              - entity: sensor.netatmo_home_indoor_temperature
+                name: Wohnzimmer
+                show_state: true
+              - entity: sensor.netatmo_home_indoor_buro_temperature
+                name: Büro
+                show_state: true
+            animate: true
+            height: 150
+            font_size: 50
+            line_width: 1
+            decimals: 1
+            hour24: true
+            hours_to_show: 8
+            points_per_hour: 6
+            tap_action: none
+            show:
+              labels: true
+              icon_adaptive_color: true
+            color_thresholds:
+              - value: 30
+                color: "#ff0000"
+              - value: 23
+                color: "#00ff00"
+              - value: 15
+                color: "#0000ff"
+          
+          # Feuchtigkeit 8h
+          - type: 'custom:mini-graph-card'
+            name: Feuchtigkeit (8h)
+            icon: mdi:water-percent
+            entities:
+              - entity: sensor.netatmo_home_indoor_humidity
+                name: Wohnzimmer
+                show_state: true
+              - entity: sensor.netatmo_home_indoor_buro_humidity
+                name: Büro
+                show_state: true
+            animate: true
+            height: 150
+            font_size: 50
+            line_width: 1
+            hour24: true
+            hours_to_show: 8
+            points_per_hour: 6
+            tap_action:
+              action: more-info
+              entity: switch.humidifier
+            show:
+              labels: true
+              icon_adaptive_color: true
+            color_thresholds:
+              - value: 30
+                color: "#ff0000"
+              - value: 45
+                color: "#00ff00"
+              - value: 60
+                color: "#0000ff"
 
+          # CO2 7d
+          - type: 'custom:mini-graph-card'
+            name: CO² (7d)
+            icon: mdi:molecule-co2
+            entities:
+              - entity: sensor.netatmo_home_indoor_co2
+                name: Wohnzimmer
+                show_state: true
+              - entity: sensor.netatmo_home_indoor_buro_co2
+                name: Büro
+                show_state: true
+            animate: true
+            height: 150
+            font_size: 50
+            line_width: 1
+            hour24: true
+            hours_to_show: 168
+            points_per_hour: 1
+            tap_action: none
+            show:
+              labels: true
+              icon_adaptive_color: true
+            color_thresholds:
+              - value: 1600
+                color: "#ff0000"
+              - value: 400
+                color: "#00ff00"
 
-          ####################  Aussen  ####################
-          # - type: horizontal-stack
-          #   title: Aussen
-          #   cards:
-          #     # Temperatur
-          #     - type: 'custom:mini-graph-card'
-          #       name: Temperatur
-          #       icon: mdi:thermometer
-          #       entities:
-          #         - entity: sensor.netatmo_home_indoor_aussen_temperature
-          #           name: Aussen
-          #           show_points: false
-          #       animate: true
-          #       height: 400
-          #       line_width: 1
-          #       decimals: 1
-          #       hour24: true
-          #       hours_to_show: 168
-          #       points_per_hour: 6
-          #       tap_action: none
-          #       show:
-          #         labels: true
-          #         icon_adaptive_color: true
-          #       color_thresholds:
-          #         - value: 35
-          #           color: "#ff0000"
-          #         - value: 20
-          #           color: "#00ff00"
-          #         - value: 5
-          #           color: "#0000ff"
-          #     # Feuchtigkeit
-          #     - type: 'custom:mini-graph-card'
-          #       name: Feuchtigkeit
-          #       icon: mdi:water-percent
-          #       entities:
-          #         - entity: sensor.netatmo_home_indoor_aussen_humidity
-          #           name: Aussen
-          #           show_points: false
-          #       animate: true
-          #       height: 400
-          #       line_width: 1
-          #       hour24: true
-          #       hours_to_show: 168
-          #       points_per_hour: 6
-          #       tap_action: none
-          #       show:
-          #         labels: true
-          #         icon_adaptive_color: true
-          #       color_thresholds:
-          #         - value: 30
-          #           color: "#ff0000"
-          #         - value: 45
-          #           color: "#00ff00"
-          #         - value: 60
-          #           color: "#0000ff"
+          # Temperatur 7d
+          - type: 'custom:mini-graph-card'
+            name: Temperatur (7d)
+            icon: mdi:thermometer
+            entities:
+              - entity: sensor.netatmo_home_indoor_aussen_temperature
+                name: Aussen
+                show_state: true
+              - entity: sensor.netatmo_home_indoor_temperature
+                name: Wohnzimmer
+              - entity: sensor.netatmo_home_indoor_buro_temperature
+                name: Büro
+            animate: true
+            height: 150
+            font_size: 50
+            line_width: 1
+            decimals: 1
+            hour24: true
+            hours_to_show: 168
+            points_per_hour: 1
+            tap_action: none
+            show:
+              labels: true
+              icon_adaptive_color: true
+            color_thresholds:
+              - value: 30
+                color: "#ff0000"
+              - value: 23
+                color: "#00ff00"
+              - value: 15
+                color: "#0000ff"
+
+          # Feuchtigkeit 7d
+          - type: 'custom:mini-graph-card'
+            name: Feuchtigkeit (7d)
+            icon: mdi:water-percent
+            entities:
+              - entity: sensor.netatmo_home_indoor_aussen_humidity
+                name: Aussen
+              - entity: sensor.netatmo_home_indoor_humidity
+                name: Wohnzimmer
+              - entity: sensor.netatmo_home_indoor_buro_humidity
+                name: Büro
+            animate: true
+            height: 150
+            font_size: 50
+            line_width: 1
+            hour24: true
+            hours_to_show: 168
+            points_per_hour: 1
+            tap_action: none
+            show:
+              labels: true
+              icon_adaptive_color: true
+            color_thresholds:
+              - value: 30
+                color: "#ff0000"
+              - value: 45
+                color: "#00ff00"
+              - value: 60
+                color: "#0000ff"
+
+          # Luftdruck 7d
+          - type: 'custom:mini-graph-card'
+            name: Luftdruck (7d)
+            icon: mdi:gauge
+            entities:
+              - entity: sensor.netatmo_home_indoor_pressure
+                name: Wohnzimmer
+            animate: true
+            height: 150
+            font_size: 50
+            line_width: 1
+            decimals: 1
+            hour24: true
+            hours_to_show: 168
+            points_per_hour: 1
+            tap_action: none
+            show:
+              labels: true
+              icon_adaptive_color: true
 
 
   ####################  Pflanzen  ####################
