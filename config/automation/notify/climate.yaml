@@ -43,25 +43,25 @@
         message_say: 'kann numm schnufä'
 
 
-- alias: Notify Büro CO2
-  trigger:
-    - platform: time_pattern
-      minutes: '/30'
-    - platform: numeric_state
-      entity_id: sensor.netatmo_home_indoor_buro_co2
-      above: 1000
-  condition:
-    - condition: state
-      entity_id: input_boolean.state_sleep
-      state: 'off'
-    - condition: numeric_state
-      entity_id: sensor.netatmo_home_indoor_buro_co2
-      above: 1000
-      below: 1300
-  action:
-    - service: notify.browser
-      data_template:
-        message: "Büro lüften! ({{ states('sensor.netatmo_home_indoor_buro_co2') }}ppm)"
+# - alias: Notify Büro CO2
+#   trigger:
+#     - platform: time_pattern
+#       minutes: '/30'
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_home_indoor_buro_co2
+#       above: 1000
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.state_sleep
+#       state: 'off'
+#     - condition: numeric_state
+#       entity_id: sensor.netatmo_home_indoor_buro_co2
+#       above: 1000
+#       below: 1300
+#   action:
+#     - service: notify.browser
+#       data_template:
+#         message: "Büro lüften! ({{ states('sensor.netatmo_home_indoor_buro_co2') }}ppm)"
     # - service: script.notify_google
     #   data:
     #     language: ru
@@ -69,24 +69,24 @@
     #     message_say: 'schlimmi luft in bueru'
 
 
-- alias: Notify Büro CO2 Max
-  trigger:
-    - platform: time_pattern
-      minutes: '/30'
-    - platform: numeric_state
-      entity_id: sensor.netatmo_home_indoor_buro_co2
-      above: 1300
-  condition:
-    - condition: state
-      entity_id: input_boolean.state_sleep
-      state: 'off'
-    - condition: numeric_state
-      entity_id: sensor.netatmo_home_indoor_buro_co2
-      above: 1300
-  action:
-    - service: notify.browser
-      data_template:
-        message: "Büro Luft kritisch! ({{ states('sensor.netatmo_home_indoor_buro_co2') }}ppm)"
+# - alias: Notify Büro CO2 Max
+#   trigger:
+#     - platform: time_pattern
+#       minutes: '/30'
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_home_indoor_buro_co2
+#       above: 1300
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.state_sleep
+#       state: 'off'
+#     - condition: numeric_state
+#       entity_id: sensor.netatmo_home_indoor_buro_co2
+#       above: 1300
+#   action:
+#     - service: notify.browser
+#       data_template:
+#         message: "Büro Luft kritisch! ({{ states('sensor.netatmo_home_indoor_buro_co2') }}ppm)"
     # - service: script.notify_google
     #   data:
     #     language: ru
