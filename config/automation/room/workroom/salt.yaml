@@ -1,0 +1,8 @@
+- alias: workroom_salt_on
+  trigger:
+    - platform: state
+      entity_id: light.workroom_salt_light
+      to: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: automation.motion_off_workroom

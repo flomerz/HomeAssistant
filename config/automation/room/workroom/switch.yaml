@@ -1,12 +1,36 @@
-- alias: switch_on_workroom_1
+- alias: switch_on_workroom_1_off
   trigger:
     - platform: event
       event_type: shelly_switch_click
       event_data:
         entity_id: binary_sensor.shelly_workroom_switch
         click_cnt: 1
+  condition:
+    condition: state
+    entity_id: light.light_workroom_light
+    state: 'on'
   action:
-    - service: light.toggle
+    - service: light.turn_off
+      entity_id: light.light_workroom_light
+    - service: light.turn_off
+      entity_id: light.workroom_co2_light
+    - service: light.turn_off
+      entity_id: light.workroom_salt_light
+
+
+- alias: switch_on_workroom_1_on
+  trigger:
+    - platform: event
+      event_type: shelly_switch_click
+      event_data:
+        entity_id: binary_sensor.shelly_workroom_switch
+        click_cnt: 1
+  condition:
+    condition: state
+    entity_id: light.light_workroom_light
+    state: 'off'
+  action:
+    - service: light.turn_on
       entity_id: light.light_workroom_light
 
 
@@ -24,6 +48,8 @@
         color_temp: 500
     - service: homeassistant.turn_off
       entity_id: automation.motion_off_workroom
+    - service: light.turn_on
+      entity_id: light.workroom_salt_light
     
 
 - alias: switch_on_workroom_3
@@ -40,4 +66,6 @@
         color_temp: 153
     - service: homeassistant.turn_off
       entity_id: automation.motion_off_workroom
+    - service: light.turn_on
+      entity_id: light.workroom_salt_light
 
