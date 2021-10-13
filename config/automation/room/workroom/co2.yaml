@@ -8,7 +8,7 @@
       to: 'on'
   condition:
     - condition: and
-      conditions: !include ../../../condition/awake.yaml
+      conditions: !include ../../../condition/workroom.yaml
     - condition: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
       above: 1000
@@ -26,7 +26,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
-      below: 1000
+      below: 800
   action:
     service: light.turn_off
     entity_id: light.workroom_co2_light

@@ -1,4 +1,4 @@
-- alias: motion_on_workroom
+- alias: workroom_motion_on
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_workroom_occupancy
@@ -12,23 +12,26 @@
           conditions: !include ../../../condition/night.yaml
         - condition: numeric_state
           entity_id: sensor.motion_workroom_illuminance
-          below: 30
+          below: 60
   action:
-    service: light.turn_on
-    entity_id: light.light_workroom_light
+    - service: light.turn_on
+      entity_id: light.light_workroom_light
 
-- alias: motion_off_workroom
+
+- alias: workroom_motion_off
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_workroom_occupancy
       to: 'off'
-      for:
-        minutes: 1
+  condition:
+    - condition: not
+      conditions: !include ../../../condition/workroom.yaml
   action:
     - service: light.turn_off
       entity_id: light.light_workroom_light
 
-- alias: motion_off_long_workroom
+
+- alias: workroom_motion_off_long
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_workroom_occupancy
@@ -42,12 +45,3 @@
       entity_id: light.workroom_co2_light
     - service: light.turn_off
       entity_id: light.workroom_salt_light
-
-- alias: motion_reset_workroom
-  trigger:
-    - platform: state
-      entity_id: light.light_workroom_light
-      to: 'off'
-  action:
-    - service: homeassistant.turn_on
-      entity_id: automation.motion_off_workroom

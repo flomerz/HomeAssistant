@@ -4,5 +4,25 @@
       entity_id: light.workroom_salt_light
       to: 'on'
   action:
-    - service: homeassistant.turn_off
-      entity_id: automation.motion_off_workroom
+    - service: input_boolean.turn_on
+      entity_id: input_bolean.state_workroom
+
+
+- alias: workroom_motion_on_salt
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_workroom_occupancy
+      to: 'on'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/workroom.yaml
+    - condition: or
+      conditions:
+        - condition: and
+          conditions: !include ../../../condition/night.yaml
+        - condition: numeric_state
+          entity_id: sensor.motion_workroom_illuminance
+          below: 30
+  action:
+    - service: light.turn_on
+      entity_id: light.workroom_salt_light

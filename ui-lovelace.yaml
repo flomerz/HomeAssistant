@@ -20,6 +20,10 @@ views:
                 icon: 'mdi:home'
               - entity: input_boolean.state_sleep
                 icon: 'mdi:sleep'
+              - entity: input_boolean.state_workroom
+                icon: 'mdi:desk'
+              - entity: input_boolean.state_fitnessroom
+                icon: 'mdi:weight-lifter'
               - entity: input_boolean.state_media
                 icon: 'mdi:projector-screen'
 

@@ -1,71 +1,54 @@
-- alias: switch_on_workroom_1_off
+- alias: workroom_switch_1
   trigger:
     - platform: event
       event_type: shelly_switch_click
       event_data:
         entity_id: binary_sensor.shelly_workroom_switch
         click_cnt: 1
-  condition:
-    condition: state
-    entity_id: light.light_workroom_light
-    state: 'on'
   action:
-    - service: light.turn_off
-      entity_id: light.light_workroom_light
-    - service: light.turn_off
-      entity_id: light.workroom_co2_light
-    - service: light.turn_off
-      entity_id: light.workroom_salt_light
-
-
-- alias: switch_on_workroom_1_on
-  trigger:
-    - platform: event
-      event_type: shelly_switch_click
-      event_data:
-        entity_id: binary_sensor.shelly_workroom_switch
-        click_cnt: 1
-  condition:
-    condition: state
-    entity_id: light.light_workroom_light
-    state: 'off'
-  action:
-    - service: light.turn_on
+    - service: light.toggle
       entity_id: light.light_workroom_light
 
 
-- alias: switch_on_workroom_2
+- alias: workroom_switch_2_on
   trigger:
     - platform: event
       event_type: shelly_switch_click
       event_data:
         entity_id: binary_sensor.shelly_workroom_switch
         click_cnt: 2
+  condition:
+    - condition: state
+      entity_id: input_boolean.state_workroom
+      state: 'off'
   action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.state_workroom
     - service: light.turn_on
       entity_id: light.light_workroom_light
       data:
         color_temp: 500
-    - service: homeassistant.turn_off
-      entity_id: automation.motion_off_workroom
     - service: light.turn_on
       entity_id: light.workroom_salt_light
-    
 
-- alias: switch_on_workroom_3
+
+- alias: workroom_switch_2_off
   trigger:
     - platform: event
       event_type: shelly_switch_click
       event_data:
         entity_id: binary_sensor.shelly_workroom_switch
-        click_cnt: 3
+        click_cnt: 2
+  condition:
+    - condition: state
+      entity_id: input_boolean.state_workroom
+      state: 'on'
   action:
-    - service: light.turn_on
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_workroom
+    - service: light.turn_off
       entity_id: light.light_workroom_light
-      data:
-        color_temp: 153
-    - service: homeassistant.turn_off
-      entity_id: automation.motion_off_workroom
-    - service: light.turn_on
+    - service: light.turn_off
+      entity_id: light.workroom_co2_light
+    - service: light.turn_off
       entity_id: light.workroom_salt_light
-
