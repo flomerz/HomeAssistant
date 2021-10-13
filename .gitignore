@@ -12,3 +12,4 @@ secrets.yaml
 google_assistant_service_account.json
 .ps4-games*.json
 html5_push_registrations.conf
+www/community/zigbee2mqtt_networkmap/settings.js
