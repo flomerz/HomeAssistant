@@ -24,8 +24,9 @@
       entity_id: binary_sensor.motion_workroom_occupancy
       to: 'off'
   condition:
-    - condition: not
-      conditions: !include ../../../condition/workroom.yaml
+    - condition: state
+      entity_id: input_boolean.state_workroom
+      state: 'off'
   action:
     - service: light.turn_off
       entity_id: light.light_workroom_light
