@@ -145,6 +145,9 @@ views:
                   service_data:
                     entity_id: light.light_workroom_light
                     color_temp: 454
+              - entity: light.workroom_salt_light
+                name: Salz
+                toggle: true
               - entity: light.light_workroom_light
                 name: Licht
                 toggle: true
