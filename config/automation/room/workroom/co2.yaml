@@ -8,7 +8,7 @@
       to: 'on'
   condition:
     - condition: and
-      conditions: !include ../../../condition/workroom.yaml
+      conditions: !include ../../../condition/state_workroom.yaml
     - condition: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
       above: 1000
@@ -18,8 +18,8 @@
         {{ motion.state == 'on' or
           (now() - motion.last_changed).total_seconds() <= 90*60 }}
   action:
-    service: light.turn_on
-    entity_id: light.workroom_co2_light
+    - service: light.turn_on
+      entity_id: light.workroom_co2_light
 
 
 - alias: workroom_co2_warning_off
@@ -28,5 +28,5 @@
       entity_id: sensor.netatmo_home_indoor_buro_co2
       below: 800
   action:
-    service: light.turn_off
-    entity_id: light.workroom_co2_light
+    - service: light.turn_off
+      entity_id: light.workroom_co2_light

@@ -6,12 +6,14 @@
   action:
     - service: script.turn_on
       entity_id: script.all_off
+    # google
     - service: media_player.media_stop
       entity_id: media_player.wohnzimmer_assistant
     - service: media_player.media_stop
       entity_id: media_player.schlafzimmer_assistant
     - service: media_player.media_stop
       entity_id: media_player.home_group
+    # vacuum
     - service: vacuum.start
       entity_id: vacuum.xiaomi_vacuum
 

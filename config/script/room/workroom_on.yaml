@@ -1,0 +1,8 @@
+workroom_on:
+  sequence:
+    - service: light.turn_on
+      entity_id: light.light_workroom_light
+    - condition: and
+      conditions: !include ../../condition/state_workroom.yaml
+    - service: light.turn_on
+      entity_id: light.workroom_salt_light

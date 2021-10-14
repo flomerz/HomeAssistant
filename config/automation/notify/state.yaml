@@ -1,0 +1,62 @@
+- alias: notify_state_workroom_on
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_workroom
+      to: 'on'
+  condition:
+    - condition: and
+      conditions: !include ../../condition/awake.yaml
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'Schaffä'
+        message_say: 'Schaffä'
+
+
+- alias: notify_state_workroom_off
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_workroom
+      to: 'off'
+  condition:
+    - condition: and
+      conditions: !include ../../condition/awake.yaml
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'Schaffä fertig'
+        message_say: 'Schaffä fertig'
+
+
+- alias: notify_state_fitnessroom_on
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_fitnessroom
+      to: 'on'
+  condition:
+    - condition: and
+      conditions: !include ../../condition/awake.yaml
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'Fitte'
+        message_say: 'Fitte'
+
+
+- alias: notify_state_fitnessroom_off
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_fitnessroom
+      to: 'off'
+  condition:
+    - condition: and
+      conditions: !include ../../condition/awake.yaml
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'Fitte fertig'
+        message_say: 'Fitte fertig'

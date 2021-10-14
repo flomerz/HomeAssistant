@@ -1,0 +1,18 @@
+- alias: state_workroom_on
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_workroom
+      to: 'on'
+  condition:
+    - condition: and
+      conditions: !include ../../condition/illuminance_workroom.yaml
+  action:
+    - service: script.workroom_on
+
+- alias: state_workroom_off
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_workroom
+      to: 'off'
+  action:
+    - service: script.workroom_off

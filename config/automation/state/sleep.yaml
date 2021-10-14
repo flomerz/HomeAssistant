@@ -6,6 +6,7 @@
   action:
     - service: script.turn_on
       entity_id: script.all_off
+    # google
     - service: media_player.volume_set
       entity_id: media_player.schlafzimmer_assistant
       data:
@@ -21,6 +22,7 @@
       entity_id: input_boolean.state_sleep
       to: 'off'
   action:
+    # google
     - service: media_player.volume_set
       entity_id: media_player.schlafzimmer_assistant
       data:
@@ -33,5 +35,6 @@
       data:
         entity_id: input_select.mode_livingroom_light
         option: 'Chill'
+    # light
     - service: light.turn_on
       entity_id: light.shelly_diningtable

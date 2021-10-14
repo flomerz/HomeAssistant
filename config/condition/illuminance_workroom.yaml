@@ -1,0 +1,7 @@
+- condition: or
+  conditions:
+    - condition: and
+      conditions: !include night.yaml
+    - condition: numeric_state
+      entity_id: sensor.motion_workroom_illuminance
+      below: 50

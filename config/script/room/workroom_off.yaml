@@ -1,0 +1,8 @@
+workroom_off:
+  sequence:
+    - service: light.turn_off
+      entity_id: light.light_workroom_light
+    - service: light.turn_off
+      entity_id: light.workroom_co2_light
+    - service: light.turn_off
+      entity_id: light.workroom_salt_light

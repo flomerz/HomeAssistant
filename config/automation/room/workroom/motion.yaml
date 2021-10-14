@@ -6,16 +6,10 @@
   condition:
     - condition: and
       conditions: !include ../../../condition/awake.yaml
-    - condition: or
-      conditions:
-        - condition: and
-          conditions: !include ../../../condition/night.yaml
-        - condition: numeric_state
-          entity_id: sensor.motion_workroom_illuminance
-          below: 60
+    - condition: and
+      conditions: !include ../../../condition/illuminance_workroom.yaml
   action:
-    - service: light.turn_on
-      entity_id: light.light_workroom_light
+    - service: script.workroom_on
 
 
 - alias: workroom_motion_off
@@ -24,29 +18,15 @@
       entity_id: binary_sensor.motion_workroom_occupancy
       to: 'off'
   condition:
-    - condition: state
-      entity_id: input_boolean.state_workroom
-      state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.state_workroom
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_workroom_occupancy
+          state: 'off'
+          for:
+            minutes: 90
   action:
-    - service: light.turn_off
-      entity_id: light.light_workroom_light
-    - service: light.turn_off
-      entity_id: light.workroom_co2_light
-    - service: light.turn_off
-      entity_id: light.workroom_salt_light
-
-
-- alias: workroom_motion_off_long
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_workroom_occupancy
-      to: 'off'
-      for:
-        minutes: 90
-  action:
-    - service: light.turn_off
-      entity_id: light.light_workroom_light
-    - service: light.turn_off
-      entity_id: light.workroom_co2_light
-    - service: light.turn_off
-      entity_id: light.workroom_salt_light
+    - service: script.workroom_off

@@ -10,45 +10,13 @@
       entity_id: light.light_workroom_light
 
 
-- alias: workroom_switch_2_on
+- alias: workroom_switch_2
   trigger:
     - platform: event
       event_type: shelly_switch_click
       event_data:
         entity_id: binary_sensor.shelly_workroom_switch
         click_cnt: 2
-  condition:
-    - condition: state
-      entity_id: input_boolean.state_workroom
-      state: 'off'
   action:
-    - service: input_boolean.turn_on
+    - service: input_boolean.toggle
       entity_id: input_boolean.state_workroom
-    - service: light.turn_on
-      entity_id: light.light_workroom_light
-      data:
-        color_temp: 500
-    - service: light.turn_on
-      entity_id: light.workroom_salt_light
-
-
-- alias: workroom_switch_2_off
-  trigger:
-    - platform: event
-      event_type: shelly_switch_click
-      event_data:
-        entity_id: binary_sensor.shelly_workroom_switch
-        click_cnt: 2
-  condition:
-    - condition: state
-      entity_id: input_boolean.state_workroom
-      state: 'on'
-  action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_workroom
-    - service: light.turn_off
-      entity_id: light.light_workroom_light
-    - service: light.turn_off
-      entity_id: light.workroom_co2_light
-    - service: light.turn_off
-      entity_id: light.workroom_salt_light
