@@ -132,17 +132,19 @@ views:
                 state_color: true
                 tap_action:
                   action: call-service
-                  service: automation.trigger
+                  service: light.turn_on
                   service_data:
-                    entity_id: automation.switch_on_workroom_3
+                    entity_id: light.light_workroom_light
+                    color_temp: 250
               - name: Nacht
                 icon: mdi:brightness-4
                 state_color: true
                 tap_action:
                   action: call-service
-                  service: automation.trigger
+                  service: light.turn_on
                   service_data:
-                    entity_id: automation.switch_on_workroom_2
+                    entity_id: light.light_workroom_light
+                    color_temp: 454
               - entity: light.light_workroom_light
                 name: Licht
                 toggle: true
