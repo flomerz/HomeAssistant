@@ -3,7 +3,7 @@
 .uuid
 .storage
 deps/
-home-assistant.log
+home-assistant.log*
 *.db
 *.db-journal
 home-assistant_v2.db*
