@@ -1,0 +1,7 @@
+- alias: workroom_illuminance_high
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.motion_workroom_illuminance
+      above: 100
+  action:
+    - service: script.workroom_off
