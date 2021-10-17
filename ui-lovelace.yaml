@@ -243,7 +243,6 @@ views:
     title: Klima
     path: climate
     icon: 'mdi:thermometer'
-    panel: true
     cards:
 
       - type: vertical-stack
@@ -343,6 +342,10 @@ views:
               - value: 60
                 color: "#0000ff"
 
+
+      - type: vertical-stack
+        cards:
+
           # CO2 7d
           - type: 'custom:mini-graph-card'
             name: CO² (7d)
@@ -436,26 +439,26 @@ views:
               - value: 60
                 color: "#0000ff"
 
-          # Luftdruck 7d
-          - type: 'custom:mini-graph-card'
-            name: Luftdruck (7d)
-            icon: mdi:gauge
-            entities:
-              - entity: sensor.netatmo_home_indoor_pressure
-                name: Wohnzimmer
-            animate: true
-            height: 150
-            line_width: 4
-            decimals: 1
-            hour24: true
-            hours_to_show: 168
-            points_per_hour: 1
-            tap_action: none
-            show:
-              labels: true
-              icon_adaptive_color: true
-              extrema: true
-              average: true
+      # Luftdruck 7d
+      - type: 'custom:mini-graph-card'
+        name: Luftdruck (7d)
+        icon: mdi:gauge
+        entities:
+          - entity: sensor.netatmo_home_indoor_pressure
+            name: Wohnzimmer
+        animate: true
+        height: 150
+        line_width: 4
+        decimals: 1
+        hour24: true
+        hours_to_show: 168
+        points_per_hour: 1
+        tap_action: none
+        show:
+          labels: true
+          icon_adaptive_color: true
+          extrema: true
+          average: true
 
 
   ####################  Pflanzen  ####################
@@ -463,7 +466,6 @@ views:
     title: Pflanzen
     path: 'plants'
     icon: mdi:flower
-    panel: true
     cards:
 
       - type: vertical-stack
