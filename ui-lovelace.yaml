@@ -127,7 +127,7 @@ views:
             name: Büro
             show_state: false
             entities:
-              - name: Tag
+              - name: Kühl
                 icon: mdi:brightness-5
                 state_color: true
                 tap_action:
@@ -136,8 +136,17 @@ views:
                   service_data:
                     entity_id: light.light_workroom_light
                     color_temp: 250
-              - name: Nacht
-                icon: mdi:brightness-4
+              - name: Normal
+                icon: mdi:brightness-6
+                state_color: true
+                tap_action:
+                  action: call-service
+                  service: light.turn_on
+                  service_data:
+                    entity_id: light.light_workroom_light
+                    color_temp: 352
+              - name: Warm
+                icon: mdi:brightness-7
                 state_color: true
                 tap_action:
                   action: call-service
