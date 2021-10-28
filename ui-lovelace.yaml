@@ -127,7 +127,7 @@ views:
             name: Büro
             show_state: false
             entities:
-              - name: Kühl
+              - name: Kalt
                 icon: mdi:brightness-5
                 state_color: true
                 tap_action:
@@ -269,12 +269,11 @@ views:
                 name: Büro
                 show_state: true
             animate: true
-            height: 150
+            height: 190
             line_width: 4
             hour24: true
             hours_to_show: 8
             points_per_hour: 6
-            tap_action: none
             show:
               labels: true
               icon_adaptive_color: true
@@ -298,13 +297,12 @@ views:
                 name: Büro
                 show_state: true
             animate: true
-            height: 150
+            height: 190
             line_width: 4
             decimals: 1
             hour24: true
             hours_to_show: 8
             points_per_hour: 6
-            tap_action: none
             show:
               labels: true
               icon_adaptive_color: true
@@ -330,7 +328,7 @@ views:
                 name: Büro
                 show_state: true
             animate: true
-            height: 150
+            height: 190
             line_width: 4
             hour24: true
             hours_to_show: 8
@@ -366,13 +364,16 @@ views:
               - entity: sensor.netatmo_home_indoor_buro_co2
                 name: Büro
                 show_state: true
+              - entity: sensor.netatmo_home_indoor_pressure
+                name: Luftdruck
+                y_axis: secondary
+                color: red
             animate: true
-            height: 150
+            height: 190
             line_width: 4
             hour24: true
             hours_to_show: 168
             points_per_hour: 1
-            tap_action: none
             show:
               labels: true
               icon_adaptive_color: true
@@ -397,13 +398,12 @@ views:
               - entity: sensor.netatmo_home_indoor_buro_temperature
                 name: Büro
             animate: true
-            height: 150
+            height: 190
             line_width: 4
             decimals: 1
             hour24: true
             hours_to_show: 168
             points_per_hour: 1
-            tap_action: none
             show:
               labels: true
               icon_adaptive_color: true
@@ -429,12 +429,11 @@ views:
               - entity: sensor.netatmo_home_indoor_buro_humidity
                 name: Büro
             animate: true
-            height: 150
+            height: 190
             line_width: 4
             hour24: true
             hours_to_show: 168
             points_per_hour: 1
-            tap_action: none
             show:
               labels: true
               icon_adaptive_color: true
@@ -448,27 +447,6 @@ views:
               - value: 60
                 color: "#0000ff"
 
-      # Luftdruck 7d
-      - type: 'custom:mini-graph-card'
-        name: Luftdruck (7d)
-        icon: mdi:gauge
-        entities:
-          - entity: sensor.netatmo_home_indoor_pressure
-            name: Wohnzimmer
-        animate: true
-        height: 150
-        line_width: 4
-        decimals: 1
-        hour24: true
-        hours_to_show: 168
-        points_per_hour: 1
-        tap_action: none
-        show:
-          labels: true
-          icon_adaptive_color: true
-          extrema: true
-          average: true
-
 
   ####################  Pflanzen  ####################
   - badges: []
@@ -480,31 +458,29 @@ views:
       - type: vertical-stack
         cards:
 
-          # Wasser
+          # Wasser (1d)
           - type: 'custom:mini-graph-card'
-            name: Wasser
+            name: Wasser (1d)
             entities:
               - entity: sensor.plant1_moisture
                 name: Busch
-                # show_points: false
               - entity: sensor.plant2_moisture
                 name: Baum
-                # show_points: false
               - entity: sensor.plant3_moisture
                 name: Rosmarin
-                # show_points: false
             animate: true
-            height: 280
-            line_width: 1
+            height: 190
+            line_width: 4
             decimals: 0
             hour24: true
-            hours_to_show: 720
-            points_per_hour: 0.5
+            hours_to_show: 24
+            points_per_hour: 1
             lower_bound: 0
             upper_bound: 100
-            tap_action: none
             show:
               icon_adaptive_color: true
+              extrema: true
+              average: true
             color_thresholds:
               - value: 20
                 color: '#ff0000'
@@ -515,31 +491,169 @@ views:
               - value: 80
                 color: '#ff9800'
 
-          # Dünger
+          # Dünger (1d)
           - type: 'custom:mini-graph-card'
-            name: Dünger
+            name: Dünger (1d)
             entities:
               - entity: sensor.plant1_conductivity
                 name: Busch
-                # show_points: false
               - entity: sensor.plant2_conductivity
                 name: Baum
-                # show_points: false
               - entity: sensor.plant3_conductivity
                 name: Rosmarin
-                # show_points: false
             animate: true
-            height: 280
-            line_width: 1
+            height: 190
+            line_width: 4
             decimals: 0
             hour24: true
-            hours_to_show: 720
+            hours_to_show: 24
+            points_per_hour: 1
+            lower_bound: 0
+            upper_bound: 3000
+            show:
+              icon_adaptive_color: true
+              extrema: true
+              average: true
+            color_thresholds:
+              - value: 300
+                color: '#ff0000'
+              - value: 800
+                color: '#00ff00'
+              - value: 2000
+                color: '#00ff00'
+              - value: 2500
+                color: '#ff9800'
+
+
+      - type: vertical-stack
+        cards:
+
+          # Wasser (7d)
+          - type: 'custom:mini-graph-card'
+            name: Wasser (7d)
+            entities:
+              - entity: sensor.plant1_moisture
+                name: Busch
+              - entity: sensor.plant2_moisture
+                name: Baum
+              - entity: sensor.plant3_moisture
+                name: Rosmarin
+            animate: true
+            height: 190
+            line_width: 4
+            decimals: 0
+            hour24: true
+            hours_to_show: 168
+            points_per_hour: 0.5
+            lower_bound: 0
+            upper_bound: 100
+            show:
+              icon_adaptive_color: true
+              extrema: true
+              average: true
+            color_thresholds:
+              - value: 20
+                color: '#ff0000'
+              - value: 40
+                color: '#00ff00'
+              - value: 60
+                color: '#00ff00'
+              - value: 80
+                color: '#ff9800'
+
+          # Dünger (7d)
+          - type: 'custom:mini-graph-card'
+            name: Dünger (7d)
+            entities:
+              - entity: sensor.plant1_conductivity
+                name: Busch
+              - entity: sensor.plant2_conductivity
+                name: Baum
+              - entity: sensor.plant3_conductivity
+                name: Rosmarin
+            animate: true
+            height: 190
+            line_width: 4
+            decimals: 0
+            hour24: true
+            hours_to_show: 168
             points_per_hour: 0.5
             lower_bound: 0
             upper_bound: 3000
-            tap_action: none
             show:
               icon_adaptive_color: true
+              extrema: true
+              average: true
+            color_thresholds:
+              - value: 300
+                color: '#ff0000'
+              - value: 800
+                color: '#00ff00'
+              - value: 2000
+                color: '#00ff00'
+              - value: 2500
+                color: '#ff9800'
+
+
+      - type: vertical-stack
+        cards:
+
+          # Wasser (30d)
+          - type: 'custom:mini-graph-card'
+            name: Wasser (30d)
+            entities:
+              - entity: sensor.plant1_moisture
+                name: Busch
+              - entity: sensor.plant2_moisture
+                name: Baum
+              - entity: sensor.plant3_moisture
+                name: Rosmarin
+            animate: true
+            height: 190
+            line_width: 4
+            decimals: 0
+            hour24: true
+            hours_to_show: 720
+            points_per_hour: 0.1
+            lower_bound: 0
+            upper_bound: 100
+            show:
+              icon_adaptive_color: true
+              extrema: true
+              average: true
+            color_thresholds:
+              - value: 20
+                color: '#ff0000'
+              - value: 40
+                color: '#00ff00'
+              - value: 60
+                color: '#00ff00'
+              - value: 80
+                color: '#ff9800'
+
+          # Dünger (30d)
+          - type: 'custom:mini-graph-card'
+            name: Dünger (30d)
+            entities:
+              - entity: sensor.plant1_conductivity
+                name: Busch
+              - entity: sensor.plant2_conductivity
+                name: Baum
+              - entity: sensor.plant3_conductivity
+                name: Rosmarin
+            animate: true
+            height: 190
+            line_width: 4
+            decimals: 0
+            hour24: true
+            hours_to_show: 720
+            points_per_hour: 0.1
+            lower_bound: 0
+            upper_bound: 3000
+            show:
+              icon_adaptive_color: true
+              extrema: true
+              average: true
             color_thresholds:
               - value: 300
                 color: '#ff0000'
@@ -560,45 +674,29 @@ views:
 
       ####################  Motion  ####################
       - type: entities
+        title: Bewegung
         entities:
-          - type: 'custom:multiple-entity-row'
-            entity: binary_sensor.motion_livingroom_occupancy
-            show_state: false
-            name: ''
-            icon: ''
+          - type: buttons
             entities:
-              - entity: binary_sensor.motion_livingroom_occupancy
-                name: Wohnzimmer
-                icon: 'mdi:walk'
-                state_color: true
               - entity: binary_sensor.motion_floor
-                name: Gang
-                icon: 'mdi:walk'
-                state_color: true
+                icon: 'mdi:floor-plan'
+              - entity: binary_sensor.motion_livingroom_occupancy
+                icon: 'mdi:sofa'
               - entity: binary_sensor.motion_kitchen
-                name: Küche
-                icon: 'mdi:walk'
-                state_color: true
+                icon: 'mdi:pot-steam'
               - entity: binary_sensor.motion_workroom_occupancy
-                name: Büro
-                icon: 'mdi:walk'
-                state_color: true
+                icon: 'mdi:desk'
               - entity: binary_sensor.motion_fitnessroom_occupancy
-                name: Fitnesszimmer
-                icon: 'mdi:walk'
-                state_color: true
+                icon: 'mdi:weight-lifter'
               - entity: binary_sensor.motion_bathroom_occupancy
-                name: Bad
-                icon: 'mdi:walk'
-                state_color: true
+                icon: 'mdi:shower'
               - entity: binary_sensor.motion_wc
-                name: WC
-                icon: 'mdi:walk'
-                state_color: true
+                icon: 'mdi:toilet'
 
 
       ####################  Battery  ####################
       - type: custom:battery-state-card
+        name: Batterie
         entities:
           - entity: sensor.motion_livingroom_battery
             name: Bewegung Wohnzimmer
