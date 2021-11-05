@@ -4,4 +4,7 @@
       entity_id: sensor.motion_workroom_illuminance
       above: 100
   action:
-    - service: script.workroom_off
+    - service: light.turn_off
+      entity_id: light.light_workroom_light
+    - service: light.turn_off
+      entity_id: light.workroom_salt_light
