@@ -1,10 +1,5 @@
 all_off:
   sequence:
-    # states
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_workroom
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_fitnessroom
     # entities
     - service: light.turn_off
       entity_id: all

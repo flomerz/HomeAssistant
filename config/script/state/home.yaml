@@ -1,9 +1,15 @@
 home:
   sequence:
+    # states
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_home
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_workroom
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_fitnessroom
+    # light
     - condition: and
       conditions: !include ../../condition/light_livingroom.yaml
     - service: light.turn_on
