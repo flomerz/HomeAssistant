@@ -1,4 +1,4 @@
-- alias: Home OFF
+- alias: state_home_off
   trigger:
     - platform: state
       entity_id: input_boolean.state_home
@@ -17,12 +17,18 @@
     - service: vacuum.start
       entity_id: vacuum.xiaomi_vacuum
 
-- alias: Home ON Livingroom Light Mode Chill
+- alias: state_home_on
   trigger:
     - platform: state
       entity_id: input_boolean.state_home
-      to: 'off'
+      to: 'on'
   action:
+    # states
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_workroom
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_fitnessroom
+    # light
     - service: input_select.select_option
       data:
         entity_id: input_select.mode_livingroom_light
