@@ -21,3 +21,7 @@
   state_topic: "homie/resin/switch/state"
   command_topic: "homie/resin/switch/state/set"
   retain: true
+
+- platform: mystrom
+  name: mystrom_1
+  host: !secret mystrom-1_ip

@@ -37,6 +37,9 @@ views:
             icon: mdi:lightbulb-group
             show_state: false
             entities:
+              - entity: automation.livingroom_motion_off
+                name: Auto-OFF
+                toggle: true
               - entity: input_select.state_livingroom_light
                 name: false
           - type: buttons
@@ -97,6 +100,8 @@ views:
                   service_data:
                     entity_id: input_select.state_livingroom_light
                     option: Aus
+          
+          - type: section
           
           # Küche
           - type: 'custom:multiple-entity-row'
@@ -244,6 +249,45 @@ views:
               - value: 55
                 color: '#ff0000'
               - value: 65
+                color: '#ff0000'
+
+
+      ####################  E-Bike  ####################
+      # Toggle
+      - type: entities
+        name: E-Bike
+        entities:
+          - type: 'custom:multiple-entity-row'
+            entity: switch.mystrom_1
+            name: E-Bike
+            icon: mdi:bike
+            state_color: true
+            toggle: true
+            entities:
+              - entity: sensor.mystrom_1_power
+                name: false
+          # Chart
+          - type: 'custom:mini-graph-card'
+            entities:
+              - entity: sensor.mystrom_1_power
+                show_points: false
+            animate: true
+            height: 100
+            line_width: 1
+            decimals: 1
+            hour24: true
+            hours_to_show: 24
+            points_per_hour: 30
+            group: true
+            show:
+              name: false
+              icon: false
+              state: false
+              labels: true
+            color_thresholds:
+              - value: 0
+                color: '#00ff00'
+              - value: 150
                 color: '#ff0000'
 
 
