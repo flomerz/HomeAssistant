@@ -6,6 +6,7 @@
     light.livingroom_led_rgb: off
     light.livingroom_led_white_front: off
     light.livingroom_led_white_back: off
+    light.christmas_light: off
 
 - name: livingroom_ambient
   entities:
@@ -23,6 +24,7 @@
       state: on
       brightness: 255
     light.shelly_diningtable: on
+    light.christmas_light: on
 
 - name: livingroom_chill
   entities:
@@ -36,6 +38,7 @@
     light.livingroom_led_white_front: off
     light.livingroom_led_white_back: off
     light.shelly_diningtable: on
+    light.christmas_light: on
 
 - name: livingroom_bright
   entities:
@@ -49,6 +52,7 @@
     light.livingroom_led_white_front: off
     light.livingroom_led_white_back: off
     light.shelly_diningtable: on
+    light.christmas_light: on
 
 - name: livingroom_beamer_bright
   entities:
@@ -63,6 +67,7 @@
     light.livingroom_led_white_back:
       state: on
       brightness: 255
+    light.christmas_light: on
 
 - name: livingroom_beamer
   entities:
@@ -94,3 +99,4 @@
       state: on
       brightness: 1
     light.shelly_diningtable: off
+    light.christmas_light: off
