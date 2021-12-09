@@ -1,8 +1,8 @@
 vacuum_home_stop:
   sequence:
     - service: vacuum.stop
-      entity_id: vacuum.xiaomi_vacuum
+      entity_id: vacuum.staubi
     - delay:
         seconds: 2
     - service: vacuum.return_to_base
-      entity_id: vacuum.xiaomi_vacuum
+      entity_id: vacuum.staubi

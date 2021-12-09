@@ -15,7 +15,7 @@
       entity_id: media_player.home_group
     # vacuum
     - service: vacuum.start
-      entity_id: vacuum.xiaomi_vacuum
+      entity_id: vacuum.staubi
 
 - alias: state_home_on
   trigger:

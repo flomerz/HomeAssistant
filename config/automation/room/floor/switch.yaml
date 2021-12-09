@@ -30,11 +30,11 @@
       to: 'both'
   condition:
     - condition: state
-      entity_id: vacuum.xiaomi_vacuum
+      entity_id: vacuum.staubi
       state: 'docked'
   action:
     - service: vacuum.start
-      entity_id: vacuum.xiaomi_vacuum
+      entity_id: vacuum.staubi
 
 - alias: Floor Switch BOTH Clean Stop
   trigger:
@@ -43,7 +43,7 @@
       to: 'both'
   condition:
     - condition: state
-      entity_id: vacuum.xiaomi_vacuum
+      entity_id: vacuum.staubi
       state: 'cleaning'
   action:
     - service: script.vacuum_home_stop

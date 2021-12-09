@@ -2,7 +2,7 @@ vacuum_livingroom:
   sequence:
     - service: vacuum.xiaomi_clean_zone
       data_template:
-        entity_id: vacuum.xiaomi_vacuum
+        entity_id: vacuum.staubi
         repeats: 3
         zone:
           - [25258,17220,28758,21220]
