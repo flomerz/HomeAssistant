@@ -1,0 +1,15 @@
+cellar_charge:
+  sequence:
+
+    - delay:
+        hours: 3
+    
+    - service: switch.turn_on
+      entity_id: switch.cellar_charger
+
+    - delay:
+        hours: 5
+
+    - service: switch.turn_off
+      entity_id: switch.cellar_charger
+    

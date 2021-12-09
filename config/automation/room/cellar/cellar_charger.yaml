@@ -1,0 +1,62 @@
+- alias: cellar_charger_start
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.cellar_charger_button
+      to: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.cellar_charger_led
+
+
+- alias: cellar_charger_led_start
+  trigger:
+    - platform: state
+      entity_id: switch.cellar_charger_led
+      to: 'on'
+  action:
+    - service: script.cellar_charge
+
+
+- alias: cellar_charger_led_stop
+  trigger:
+    - platform: state
+      entity_id: switch.cellar_charger_led
+      to: 'off'
+  action:
+    - service: script.turn_off
+      entity_id: script.cellar_charge
+
+
+- alias: cellar_charge_ebike_60
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.mystrom_1_power
+      above: 170
+    - platform: state
+      entity_id: switch.mystrom_1
+      to: 'on'
+      for:
+        hours: 4
+  action:
+    - service: switch.turn_off
+      entity_id: switch.mystrom_1
+
+
+- alias: cellar_charger_done
+  trigger:
+    - platform: state
+      entity_id: switch.cellar_charger
+      to: 'off'
+    - platform: state
+      entity_id: switch.mystrom_1
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.cellar_charger
+      state: 'off'
+    - condition: state
+      entity_id: switch.mystrom_1
+      state: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.cellar_charger_led

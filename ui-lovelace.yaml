@@ -262,10 +262,20 @@ views:
             name: E-Bike
             icon: mdi:bike
             state_color: true
-            toggle: true
+            toggle: false
+            show_state: false
             entities:
               - entity: sensor.mystrom_1_power
                 name: false
+              - entity: switch.mystrom_1
+                name: E-Bike
+                toggle: true
+              - entity: switch.cellar_charger
+                name: Ladegeräte
+                toggle: true
+              - entity: switch.cellar_charger_led
+                name: Laden
+                toggle: true
           # Chart
           - type: 'custom:mini-graph-card'
             entities:
