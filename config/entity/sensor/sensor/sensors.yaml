@@ -25,6 +25,5 @@
 - platform: template
   sensors:
     mystrom_1_power:
-      friendly_name: "Current Power"
       unit_of_measurement: "W"
       value_template: "{{ state_attr('switch.mystrom_1', 'current_power_w') }}"
