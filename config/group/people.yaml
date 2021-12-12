@@ -1,5 +1,5 @@
 people:
   name: Personen
   entities:
-    - device_tracker.flo
+    - device_tracker.florian
     - device_tracker.louisa

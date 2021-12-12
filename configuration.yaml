@@ -72,7 +72,23 @@ mqtt:
   discovery: true
   broker: localhost
 
+device_tracker:
+  - platform: ddwrt
+    host: !secret ddwrt_ip
+    username: !secret ddwrt_username
+    password: !secret ddwrt_password
+    wireless_only: false
+    interval_seconds: 60
+    consider_home: 180
+    new_device_defaults:
+      track_new_devices: false
+
 mobile_app:
+
+media_player:
+  - platform: androidtv
+    name: SHIELD
+    host: !secret shield_ip
 
 shelly:
   discovery: false

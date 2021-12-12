@@ -20,13 +20,10 @@
     entity_id: switch.espresso
 
 
-- alias: Espresso ON Sleep 7h
+- alias: Espresso ON Wakeup Alarm
   trigger:
-    - platform: state
-      entity_id: input_boolean.state_sleep
-      to: 'on'
-      for:
-        hours: 7
+    - platform: time
+      at: sensor.florian_handy_next_alarm
   action:
     service: switch.turn_on
     entity_id: switch.espresso
