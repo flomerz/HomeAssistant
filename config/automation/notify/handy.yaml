@@ -1,0 +1,32 @@
+- alias: Notify Handy Charge 80 Florian
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.florian_handy_battery_level
+      above: 80
+  condition:
+    - condition: state
+      entity_id: device_tracker.florian
+      state: 'home'
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'diss handy isch ufglade'
+        message_say: 'diss handy isch ufglade'
+
+
+- alias: Notify Handy Charge 20 Florian
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.florian_handy_battery_level
+      below: 20
+  condition:
+    - condition: state
+      entity_id: device_tracker.florian
+      state: 'home'
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'diss handy musch uflade'
+        message_say: 'diss handy musch uflade'
