@@ -25,5 +25,4 @@
     - platform: time
       at: sensor.florian_handy_next_alarm
   action:
-    service: switch.turn_on
-    entity_id: switch.espresso
+    service: script.wakeup
