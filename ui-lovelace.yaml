@@ -311,9 +311,9 @@ views:
       - type: vertical-stack
         cards:
 
-          # CO2 8h
+          # CO2 12h
           - type: 'custom:mini-graph-card'
-            name: CO² (8h)
+            name: CO² (12h)
             icon: mdi:molecule-co2
             entities:
               - entity: sensor.netatmo_home_indoor_co2
@@ -326,7 +326,7 @@ views:
             height: 190
             line_width: 4
             hour24: true
-            hours_to_show: 8
+            hours_to_show: 12
             points_per_hour: 6
             show:
               labels: true
@@ -339,9 +339,9 @@ views:
               - value: 400
                 color: "#00ff00"
           
-          # Temperatur 8h
+          # Temperatur 12h
           - type: 'custom:mini-graph-card'
-            name: Temperatur (8h)
+            name: Temperatur (12h)
             icon: mdi:thermometer
             entities:
               - entity: sensor.netatmo_home_indoor_temperature
@@ -355,7 +355,7 @@ views:
             line_width: 4
             decimals: 1
             hour24: true
-            hours_to_show: 8
+            hours_to_show: 12
             points_per_hour: 6
             show:
               labels: true
@@ -370,9 +370,9 @@ views:
               - value: 15
                 color: "#0000ff"
           
-          # Feuchtigkeit 8h
+          # Feuchtigkeit 12h
           - type: 'custom:mini-graph-card'
-            name: Feuchtigkeit (8h)
+            name: Feuchtigkeit (12h)
             icon: mdi:water-percent
             entities:
               - entity: sensor.netatmo_home_indoor_humidity
@@ -385,7 +385,7 @@ views:
             height: 190
             line_width: 4
             hour24: true
-            hours_to_show: 8
+            hours_to_show: 12
             points_per_hour: 6
             tap_action:
               action: more-info
@@ -407,9 +407,9 @@ views:
       - type: vertical-stack
         cards:
 
-          # CO2 7d
+          # CO2 3d
           - type: 'custom:mini-graph-card'
-            name: CO² (7d)
+            name: CO² (3d)
             icon: mdi:molecule-co2
             entities:
               - entity: sensor.netatmo_home_indoor_co2
@@ -426,7 +426,7 @@ views:
             height: 190
             line_width: 4
             hour24: true
-            hours_to_show: 168
+            hours_to_show: 72
             points_per_hour: 1
             show:
               labels: true
@@ -439,9 +439,9 @@ views:
               - value: 400
                 color: "#00ff00"
 
-          # Temperatur 7d
+          # Temperatur 3d
           - type: 'custom:mini-graph-card'
-            name: Temperatur (7d)
+            name: Temperatur (3d)
             icon: mdi:thermometer
             entities:
               - entity: sensor.netatmo_home_indoor_aussen_temperature
@@ -456,7 +456,7 @@ views:
             line_width: 4
             decimals: 1
             hour24: true
-            hours_to_show: 168
+            hours_to_show: 72
             points_per_hour: 1
             show:
               labels: true
@@ -471,9 +471,9 @@ views:
               - value: 15
                 color: "#0000ff"
 
-          # Feuchtigkeit 7d
+          # Feuchtigkeit 3d
           - type: 'custom:mini-graph-card'
-            name: Feuchtigkeit (7d)
+            name: Feuchtigkeit (3d)
             icon: mdi:water-percent
             entities:
               - entity: sensor.netatmo_home_indoor_aussen_humidity
@@ -486,7 +486,7 @@ views:
             height: 190
             line_width: 4
             hour24: true
-            hours_to_show: 168
+            hours_to_show: 72
             points_per_hour: 1
             show:
               labels: true
@@ -725,6 +725,26 @@ views:
     path: settings
     icon: 'mdi:cog'
     cards:
+
+      ####################  Einstellungen  ####################
+      - type: entities
+        title: Einstellungen
+        show_header_toggle: false
+        entities:
+          - type: 'custom:multiple-entity-row'
+            entity: input_boolean.sunrise_enabled
+            name: Sunrise
+            show_state: false
+            entities:
+              - entity: input_datetime.sunrise_time
+                name: Zeit
+              - entity: input_boolean.sunrise_weekend
+                name: Wochenende
+                toggle: true
+              - entity: input_boolean.sunrise_enabled
+                name: Eingeschaltet
+                toggle: true
+
 
       ####################  Motion  ####################
       - type: entities

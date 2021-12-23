@@ -1,0 +1,33 @@
+- alias: Sunrise
+  trigger:
+    - platform: time
+      at: input_datetime.sunrise_time
+  condition:
+    - condition: state
+      entity_id: input_boolean.sunrise_enabled
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: input_boolean.sunrise_weekend
+        state: 'on'
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+  action:
+    service: script.wakeup
+
+
+- alias: Sunrise Update Time
+  trigger:
+    - platform: state
+      entity_id: sensor.florian_handy_next_alarm
+  action:
+    - service: input_datetime.set_datetime
+      entity_id: input_datetime.sunrise_time
+      data_template:
+        datetime: "{{ strptime(states('sensor.florian_handy_next_alarm'), '%Y-%m-%dT%H:%M:%S.%f%z') | as_local }}"

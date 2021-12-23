@@ -18,11 +18,3 @@
   action:
     service: switch.turn_off
     entity_id: switch.espresso
-
-
-- alias: Espresso ON Wakeup Alarm
-  trigger:
-    - platform: time
-      at: sensor.florian_handy_next_alarm
-  action:
-    service: script.wakeup
