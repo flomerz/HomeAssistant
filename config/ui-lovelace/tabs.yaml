@@ -1,0 +1,23 @@
+- badges: []
+  title: Home
+  path: home
+  icon: 'mdi:home'
+  cards: !include home/cards.yaml
+
+- badges: []
+  title: Klima
+  path: climate
+  icon: 'mdi:thermometer'
+  cards: !include climate/cards.yaml
+
+- badges: []
+  title: Pflanzen
+  path: plants
+  icon: mdi:flower
+  cards: !include plants/cards.yaml
+
+- badges: []
+  title: Einstellungen
+  path: settings
+  icon: 'mdi:cog'
+  cards: !include settings/cards.yaml

@@ -1,0 +1,192 @@
+- type: vertical-stack
+  cards:
+
+    # CO2 12h
+    - type: 'custom:mini-graph-card'
+      name: CO² (12h)
+      icon: mdi:molecule-co2
+      entities:
+        - entity: sensor.netatmo_home_indoor_co2
+          name: Wohnzimmer
+          show_state: true
+        - entity: sensor.netatmo_home_indoor_buro_co2
+          name: Büro
+          show_state: true
+      animate: true
+      height: 190
+      line_width: 4
+      hour24: true
+      hours_to_show: 12
+      points_per_hour: 6
+      show:
+        labels: true
+        icon_adaptive_color: true
+        extrema: true
+        average: true
+      color_thresholds:
+        - value: 1600
+          color: "#ff0000"
+        - value: 400
+          color: "#00ff00"
+    
+    # Temperatur 12h
+    - type: 'custom:mini-graph-card'
+      name: Temperatur (12h)
+      icon: mdi:thermometer
+      entities:
+        - entity: sensor.netatmo_home_indoor_temperature
+          name: Wohnzimmer
+          show_state: true
+        - entity: sensor.netatmo_home_indoor_buro_temperature
+          name: Büro
+          show_state: true
+      animate: true
+      height: 190
+      line_width: 4
+      decimals: 1
+      hour24: true
+      hours_to_show: 12
+      points_per_hour: 6
+      show:
+        labels: true
+        icon_adaptive_color: true
+        extrema: true
+        average: true
+      color_thresholds:
+        - value: 30
+          color: "#ff0000"
+        - value: 23
+          color: "#00ff00"
+        - value: 15
+          color: "#0000ff"
+    
+    # Feuchtigkeit 12h
+    - type: 'custom:mini-graph-card'
+      name: Feuchtigkeit (12h)
+      icon: mdi:water-percent
+      entities:
+        - entity: sensor.netatmo_home_indoor_humidity
+          name: Wohnzimmer
+          show_state: true
+        - entity: sensor.netatmo_home_indoor_buro_humidity
+          name: Büro
+          show_state: true
+      animate: true
+      height: 190
+      line_width: 4
+      hour24: true
+      hours_to_show: 12
+      points_per_hour: 6
+      tap_action:
+        action: more-info
+        entity: switch.humidifier
+      show:
+        labels: true
+        icon_adaptive_color: true
+        extrema: true
+        average: true
+      color_thresholds:
+        - value: 30
+          color: "#ff0000"
+        - value: 45
+          color: "#00ff00"
+        - value: 60
+          color: "#0000ff"
+
+
+- type: vertical-stack
+  cards:
+
+    # CO2 3d
+    - type: 'custom:mini-graph-card'
+      name: CO² (3d)
+      icon: mdi:molecule-co2
+      entities:
+        - entity: sensor.netatmo_home_indoor_co2
+          name: Wohnzimmer
+          show_state: true
+        - entity: sensor.netatmo_home_indoor_buro_co2
+          name: Büro
+          show_state: true
+        - entity: sensor.netatmo_home_indoor_pressure
+          name: Luftdruck
+          y_axis: secondary
+          color: red
+      animate: true
+      height: 190
+      line_width: 4
+      hour24: true
+      hours_to_show: 72
+      points_per_hour: 1
+      show:
+        labels: true
+        icon_adaptive_color: true
+        extrema: true
+        average: true
+      color_thresholds:
+        - value: 1600
+          color: "#ff0000"
+        - value: 400
+          color: "#00ff00"
+
+    # Temperatur 3d
+    - type: 'custom:mini-graph-card'
+      name: Temperatur (3d)
+      icon: mdi:thermometer
+      entities:
+        - entity: sensor.netatmo_home_indoor_aussen_temperature
+          name: Aussen
+          show_state: true
+        - entity: sensor.netatmo_home_indoor_temperature
+          name: Wohnzimmer
+        - entity: sensor.netatmo_home_indoor_buro_temperature
+          name: Büro
+      animate: true
+      height: 190
+      line_width: 4
+      decimals: 1
+      hour24: true
+      hours_to_show: 72
+      points_per_hour: 1
+      show:
+        labels: true
+        icon_adaptive_color: true
+        extrema: true
+        average: true
+      color_thresholds:
+        - value: 30
+          color: "#ff0000"
+        - value: 23
+          color: "#00ff00"
+        - value: 15
+          color: "#0000ff"
+
+    # Feuchtigkeit 3d
+    - type: 'custom:mini-graph-card'
+      name: Feuchtigkeit (3d)
+      icon: mdi:water-percent
+      entities:
+        - entity: sensor.netatmo_home_indoor_aussen_humidity
+          name: Aussen
+        - entity: sensor.netatmo_home_indoor_humidity
+          name: Wohnzimmer
+        - entity: sensor.netatmo_home_indoor_buro_humidity
+          name: Büro
+      animate: true
+      height: 190
+      line_width: 4
+      hour24: true
+      hours_to_show: 72
+      points_per_hour: 1
+      show:
+        labels: true
+        icon_adaptive_color: true
+        extrema: true
+        average: true
+      color_thresholds:
+        - value: 30
+          color: "#ff0000"
+        - value: 45
+          color: "#00ff00"
+        - value: 60
+          color: "#0000ff"

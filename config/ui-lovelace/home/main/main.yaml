@@ -1,0 +1,195 @@
+####################  States  ####################
+- type: buttons
+  entities: 
+    - entity: input_boolean.state_home
+      icon: 'mdi:home'
+    - entity: input_boolean.state_sleep
+      icon: 'mdi:sleep'
+    - entity: input_boolean.state_workroom
+      icon: 'mdi:desk'
+    - entity: input_boolean.state_fitnessroom
+      icon: 'mdi:weight-lifter'
+    - entity: input_boolean.state_media
+      icon: 'mdi:projector-screen'
+
+- type: section
+
+####################  Lights  ####################
+# Wohnzimmer
+- type: 'custom:multiple-entity-row'
+  entity: light.livingroom_rgbww
+  name: Wohnzimmer
+  icon: mdi:lightbulb-group
+  show_state: false
+  entities:
+    - entity: automation.livingroom_motion_off
+      name: Auto-OFF
+      toggle: true
+    - entity: input_select.state_livingroom_light
+      name: false
+- type: buttons
+  entities:
+    - entity: input_select.state_livingroom_light
+      icon: 'mdi:track-light'
+      tap_action:
+        action: call-service
+        service: input_select.select_option
+        service_data:
+          entity_id: input_select.state_livingroom_light
+          option: Hell
+    - entity: input_select.state_livingroom_light
+      icon: 'mdi:lightbulb-group'
+      tap_action:
+        action: call-service
+        service: input_select.select_option
+        service_data:
+          entity_id: input_select.state_livingroom_light
+          option: Normal
+    - entity: input_select.state_livingroom_light
+      icon: 'mdi:lightbulb-multiple'
+      tap_action:
+        action: call-service
+        service: input_select.select_option
+        service_data:
+          entity_id: input_select.state_livingroom_light
+          option: Chill
+    - entity: input_select.state_livingroom_light
+      icon: 'mdi:lightbulb'
+      tap_action:
+        action: call-service
+        service: input_select.select_option
+        service_data:
+          entity_id: input_select.state_livingroom_light
+          option: Beamer Hell
+    - entity: input_select.state_livingroom_light
+      icon: 'mdi:projector-screen'
+      tap_action:
+        action: call-service
+        service: input_select.select_option
+        service_data:
+          entity_id: input_select.state_livingroom_light
+          option: Beamer
+    - entity: input_select.state_livingroom_light
+      icon: 'mdi:movie-open'
+      tap_action:
+        action: call-service
+        service: input_select.select_option
+        service_data:
+          entity_id: input_select.state_livingroom_light
+          option: Film
+    - entity: input_select.state_livingroom_light
+      icon: 'mdi:lightbulb-group-off'
+      tap_action:
+        action: call-service
+        service: input_select.select_option
+        service_data:
+          entity_id: input_select.state_livingroom_light
+          option: Aus
+
+- type: section
+
+# Küche
+- type: 'custom:multiple-entity-row'
+  entity: light.kitchen
+  name: Küche
+  show_state: false
+  entities:
+    - entity: light.shelly_kitchen
+      name: Zeile
+      toggle: true
+    - entity: light.kitchen
+      name: Decke
+      toggle: true
+
+# Esstisch
+- entity: light.shelly_diningtable
+  name: Esstisch
+
+# Schlafzimmer
+- type: 'custom:slider-entity-row'
+  entity: light.light_bedroom_light
+  name: Schlafzimmer
+  toggle: true
+
+# Büro
+- type: 'custom:multiple-entity-row'
+  entity: light.light_workroom_light
+  name: Büro
+  show_state: false
+  entities:
+    - name: Kalt
+      icon: mdi:brightness-5
+      state_color: true
+      tap_action:
+        action: call-service
+        service: light.turn_on
+        service_data:
+          entity_id: light.light_workroom_light
+          color_temp: 250
+    - name: Normal
+      icon: mdi:brightness-6
+      state_color: true
+      tap_action:
+        action: call-service
+        service: light.turn_on
+        service_data:
+          entity_id: light.light_workroom_light
+          color_temp: 352
+    - name: Warm
+      icon: mdi:brightness-7
+      state_color: true
+      tap_action:
+        action: call-service
+        service: light.turn_on
+        service_data:
+          entity_id: light.light_workroom_light
+          color_temp: 454
+    - entity: light.workroom_salt_light
+      name: Salz
+      toggle: true
+    - entity: light.light_workroom_light
+      name: Licht
+      toggle: true
+
+# Fitnesszimmer
+- name: Fitnesszimmer
+  entity: light.shelly_fitnessroom
+
+# Eingang
+- type: 'custom:multiple-entity-row'
+  entity: light.floor
+  name: Eingang
+  show_state: false
+  entities:
+    - entity: light.light_door
+      name: Türe
+      toggle: true
+    - entity: light.floor
+      name: Gang
+      toggle: true
+
+# WC
+- type: 'custom:multiple-entity-row'
+  entity: light.shelly_wc
+  name: WC
+  show_state: false
+  entities:
+    - entity: light.wc
+      name: LED
+      toggle: true
+    - entity: light.shelly_wc
+      name: Lavabo
+      toggle: true
+
+# Badezimmer
+- type: 'custom:multiple-entity-row'
+  entity: light.shelly_bathroom
+  name: Badezimmer
+  show_state: false
+  entities:
+    - entity: light.bathroom_led
+      name: LED
+      toggle: true
+    - entity: light.shelly_bathroom
+      name: Lavabo
+      toggle: true

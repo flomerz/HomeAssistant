@@ -1,0 +1,68 @@
+####################  Einstellungen  ####################
+- type: entities
+  title: Einstellungen
+  show_header_toggle: false
+  entities:
+    - type: 'custom:multiple-entity-row'
+      entity: input_boolean.sunrise_enabled
+      name: Sunrise
+      show_state: false
+      entities:
+        - entity: input_datetime.sunrise_time
+          name: Zeit
+        - entity: input_boolean.sunrise_weekend
+          name: Wochenende
+          toggle: true
+        - entity: input_boolean.sunrise_enabled
+          name: Eingeschaltet
+          toggle: true
+
+
+####################  Motion  ####################
+- type: entities
+  title: Bewegung
+  entities:
+    - type: buttons
+      entities:
+        - entity: binary_sensor.motion_floor
+          icon: 'mdi:floor-plan'
+        - entity: binary_sensor.motion_livingroom_occupancy
+          icon: 'mdi:sofa'
+        - entity: binary_sensor.motion_kitchen
+          icon: 'mdi:pot-steam'
+        - entity: binary_sensor.motion_workroom_occupancy
+          icon: 'mdi:desk'
+        - entity: binary_sensor.motion_fitnessroom_occupancy
+          icon: 'mdi:weight-lifter'
+        - entity: binary_sensor.motion_bathroom_occupancy
+          icon: 'mdi:shower'
+        - entity: binary_sensor.motion_wc
+          icon: 'mdi:toilet'
+
+
+####################  Battery  ####################
+- type: custom:battery-state-card
+  name: Batterie
+  entities:
+    - entity: sensor.motion_livingroom_battery
+      name: Bewegung Wohnzimmer
+    - entity: sensor.motion_workroom_battery
+      name: Bewegung Büro
+    - entity: sensor.motion_fitnessroom_battery
+      name: Bewegung Fitnesszimmer
+    - entity: sensor.motion_bathroom_battery
+      name: Bewegung Bad
+    - entity: sensor.sensor_door_battery
+      name: Türe
+    - entity: sensor.switch_livingroom_battery
+      name: Schalter Wohnzimmer
+    - entity: sensor.switch_door_battery
+      name: Schalter Eingang
+    - entity: sensor.switch_bedroom_battery
+      name: Schalter Schlafzimmer
+    - entity: sensor.plant1_battery
+      name: Pflanze Busch
+    - entity: sensor.plant2_battery
+      name: Pflanze Baum
+    - entity: sensor.plant3_battery
+      name: Pflanze Rosmarin

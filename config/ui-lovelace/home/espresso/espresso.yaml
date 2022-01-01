@@ -1,0 +1,36 @@
+- type: 'custom:multiple-entity-row'
+  entity: switch.espresso
+  name: Espresso
+  icon: mdi:coffee
+  state_color: true
+  toggle: true
+  entities:
+    - entity: sensor.temperature_espresso
+      name: false
+# Chart
+- type: 'custom:mini-graph-card'
+  entities:
+    - entity: sensor.temperature_espresso
+      show_points: false
+  animate: true
+  height: 100
+  line_width: 1
+  decimals: 1
+  hour24: true
+  hours_to_show: 8
+  points_per_hour: 30
+  group: true
+  show:
+    name: false
+    icon: false
+    state: false
+    labels: true
+  color_thresholds:
+    - value: 0
+      color: '#0000ff'
+    - value: 50
+      color: '#0000ff'
+    - value: 55
+      color: '#ff0000'
+    - value: 65
+      color: '#ff0000'
