@@ -1,19 +1,23 @@
-- name: livingroom_off
+- name: livingroom_bright
   entities:
-    light.livingroom_front: off
-    light.livingroom_big: off
-    light.livingroom_sofatable: off
-    light.livingroom_led_rgb: off
+    light.livingroom_front: on
+    light.livingroom_big: on
+    light.livingroom_sofatable: on
+    light.livingroom_rgbww:
+      state: on
+      effect: rainbow
+      brightness: 255
     light.livingroom_led_white_front: off
     light.livingroom_led_white_back: off
-    light.christmas_light: off
+    light.shelly_diningtable: on
+    light.christmas_light: on
 
 - name: livingroom_ambient
   entities:
     light.livingroom_front: on
     light.livingroom_big: off
     light.livingroom_sofatable: on
-    light.livingroom_led_rgb:
+    light.livingroom_rgbww:
       state: on
       rgb_color: [255, 0, 0]
       brightness: 255
@@ -31,21 +35,7 @@
     light.livingroom_front: on
     light.livingroom_big: off
     light.livingroom_sofatable: on
-    light.livingroom_led_rgb:
-      state: on
-      effect: rainbow
-      brightness: 255
-    light.livingroom_led_white_front: off
-    light.livingroom_led_white_back: off
-    light.shelly_diningtable: on
-    light.christmas_light: on
-
-- name: livingroom_bright
-  entities:
-    light.livingroom_front: on
-    light.livingroom_big: on
-    light.livingroom_sofatable: on
-    light.livingroom_led_rgb:
+    light.livingroom_rgbww:
       state: on
       effect: rainbow
       brightness: 255
@@ -59,7 +49,7 @@
     light.livingroom_front: off
     light.livingroom_big: off
     light.livingroom_sofatable: on
-    light.livingroom_led_rgb:
+    light.livingroom_rgbww:
       state: on
       effect: rainbow
       brightness: 50
@@ -74,7 +64,7 @@
     light.livingroom_front: off
     light.livingroom_big: off
     light.livingroom_sofatable: off
-    light.livingroom_led_rgb:
+    light.livingroom_rgbww:
       state: on
       effect: rainbow
       brightness: 20
@@ -90,7 +80,7 @@
     light.livingroom_front: off
     light.livingroom_big: off
     light.livingroom_sofatable: off
-    light.livingroom_led_rgb:
+    light.livingroom_rgbww:
       state: on
       rgb_color: [255, 204, 0]
       brightness: 2
@@ -99,4 +89,14 @@
       state: on
       brightness: 1
     light.shelly_diningtable: off
+    light.christmas_light: off
+
+- name: livingroom_off
+  entities:
+    light.livingroom_front: off
+    light.livingroom_big: off
+    light.livingroom_sofatable: off
+    light.livingroom_rgbww: off
+    light.livingroom_led_white_front: off
+    light.livingroom_led_white_back: off
     light.christmas_light: off

@@ -30,7 +30,7 @@ entities:
     type: custom:slider-entity-row
     name: Esstisch
 
-  - entity: light.livingroom_led_rgb
+  - entity: light.livingroom_rgbww
     type: custom:multiple-entity-row
     name: Wohnzimmer
     show_state: false
@@ -57,7 +57,7 @@ entities:
             entity_id: input_select.state_livingroom_light
             option: Aus
 
-  - entity: light.livingroom_led_rgb
+  - entity: light.livingroom_rgbww
     type: custom:multiple-entity-row
     name: false
     icon: mdi

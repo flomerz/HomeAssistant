@@ -32,7 +32,7 @@ views:
           ####################  Lights  ####################
           # Wohnzimmer
           - type: 'custom:multiple-entity-row'
-            entity: light.livingroom_led_rgb
+            entity: light.livingroom_rgbww
             name: Wohnzimmer
             icon: mdi:lightbulb-group
             show_state: false
