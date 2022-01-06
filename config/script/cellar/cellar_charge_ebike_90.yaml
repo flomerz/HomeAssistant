@@ -1,0 +1,17 @@
+cellar_charge_ebike_90:
+  sequence:
+
+    - service: homeassistant.turn_off
+      entity_id: automation.cellar_charge_ebike_60
+
+    - service: switch.turn_on
+      entity_id: switch.mystrom_1
+
+    - delay:
+        minutes: 90
+
+    - service: switch.turn_off
+      entity_id: switch.mystrom_1
+
+    - service: homeassistant.turn_on
+      entity_id: automation.cellar_charge_ebike_60

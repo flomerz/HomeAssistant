@@ -8,6 +8,8 @@
   entities:
     - entity: sensor.mystrom_1_power
       name: false
+    - entity: script.cellar_charge_ebike_90
+      name: Full
     - entity: switch.mystrom_1
       name: E-Bike
       toggle: true
