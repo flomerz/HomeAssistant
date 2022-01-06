@@ -17,7 +17,7 @@ bedroom_light_wakeup:
       entity_id: light.light_bedroom_light
       data:
         brightness: 255
-        transition: 1200
+        transition: 900
 
     - delay:
         seconds: 1200
