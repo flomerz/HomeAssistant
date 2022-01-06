@@ -1,75 +1,57 @@
 - name: livingroom_bright
   entities:
     light.livingroom_front: on
-    light.livingroom_big: on
     light.livingroom_sofatable: on
     light.livingroom_rgbww:
       state: on
-      effect: rainbow
-      brightness: 255
-    light.livingroom_led_white_front: off
-    light.livingroom_led_white_back: off
+      brightness_pct: 100
+      effect: none
+      rgbww_color: [255, 255, 255, 255, 255]
     light.shelly_diningtable: on
     light.christmas_light: on
 
 - name: livingroom_ambient
   entities:
     light.livingroom_front: on
-    light.livingroom_big: off
     light.livingroom_sofatable: on
     light.livingroom_rgbww:
       state: on
-      rgb_color: [255, 0, 0]
-      brightness: 255
-    light.livingroom_led_white_front:
-      state: on
-      brightness: 255
-    light.livingroom_led_white_back:
-      state: on
-      brightness: 255
+      brightness_pct: 100
+      effect: none
+      rgbww_color: [255, 0, 0, 0, 255]
     light.shelly_diningtable: on
     light.christmas_light: on
 
 - name: livingroom_chill
   entities:
     light.livingroom_front: on
-    light.livingroom_big: off
     light.livingroom_sofatable: on
     light.livingroom_rgbww:
       state: on
-      effect: rainbow
-      brightness: 255
-    light.livingroom_led_white_front: off
-    light.livingroom_led_white_back: off
+      brightness_pct: 100
+      effect: rainbow_ww40
     light.shelly_diningtable: on
     light.christmas_light: on
 
 - name: livingroom_beamer_bright
   entities:
     light.livingroom_front: off
-    light.livingroom_big: off
     light.livingroom_sofatable: on
     light.livingroom_rgbww:
       state: on
-      effect: rainbow
-      brightness: 50
-    light.livingroom_led_white_front: off
-    light.livingroom_led_white_back:
-      state: on
-      brightness: 255
+      brightness_pct: 50
+      effect: none
+      rgbww_color: [0, 0, 0, 0, 255]
     light.christmas_light: on
 
 - name: livingroom_beamer
   entities:
     light.livingroom_front: off
-    light.livingroom_big: off
     light.livingroom_sofatable: off
     light.livingroom_rgbww:
       state: on
+      brightness_pct: 20
       effect: rainbow
-      brightness: 20
-    light.livingroom_led_white_front: off
-    light.livingroom_led_white_back: off
 
 - name: livingroom_film
   entities:
@@ -78,25 +60,18 @@
     light.floor: off
     light.light_door: off
     light.livingroom_front: off
-    light.livingroom_big: off
     light.livingroom_sofatable: off
     light.livingroom_rgbww:
       state: on
-      rgb_color: [255, 204, 0]
-      brightness: 2
-    light.livingroom_led_white_front: off
-    light.livingroom_led_white_back:
-      state: on
-      brightness: 1
+      brightness_pct: 20
+      effect: none
+      rgbww_color: [0, 0, 255, 0, 0]
     light.shelly_diningtable: off
     light.christmas_light: off
 
 - name: livingroom_off
   entities:
     light.livingroom_front: off
-    light.livingroom_big: off
     light.livingroom_sofatable: off
     light.livingroom_rgbww: off
-    light.livingroom_led_white_front: off
-    light.livingroom_led_white_back: off
     light.christmas_light: off
