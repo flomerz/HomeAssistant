@@ -4,7 +4,7 @@
       entity_id: binary_sensor.cellar_charger_button
       to: 'on'
   action:
-    - service: switch.turn_on
+    - service: switch.toggle
       entity_id: switch.cellar_charger_led
 
 
@@ -25,6 +25,10 @@
   action:
     - service: script.turn_off
       entity_id: script.cellar_charge
+    - service: switch.turn_off
+      entity_id: switch.mystrom_1
+    - service: switch.turn_off
+      entity_id: switch.cellar_charger
 
 
 - alias: cellar_charge_ebike_60

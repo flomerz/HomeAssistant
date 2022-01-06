@@ -6,6 +6,9 @@ cellar_charge:
     
     - service: switch.turn_on
       entity_id: switch.cellar_charger
+    
+    - service: switch.turn_on
+      entity_id: switch.mystrom_1
 
     - delay:
         hours: 5
