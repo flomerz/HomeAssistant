@@ -6,7 +6,3 @@
 - type: entities
   name: Espresso
   entities: !include espresso/espresso.yaml
-
-- type: entities
-  name: E-Bike
-  entities: !include ebike/ebike.yaml

@@ -17,6 +17,12 @@
   cards: !include plants/cards.yaml
 
 - badges: []
+  title: E-Bike
+  path: ebike
+  icon: 'mdi:bike'
+  cards: !include ebike/cards.yaml
+
+- badges: []
   title: Einstellungen
   path: settings
   icon: 'mdi:cog'
