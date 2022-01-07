@@ -18,7 +18,7 @@
       state: on
       brightness_pct: 100
       effect: none
-      rgbww_color: [255, 0, 0, 0, 255]
+      rgbww_color: [0, 0, 0, 0, 255]
     light.shelly_diningtable: on
     light.christmas_light: on
 
@@ -29,7 +29,7 @@
     light.livingroom_rgbww:
       state: on
       brightness_pct: 100
-      effect: rainbow_ww40
+      effect: rainbow-light
     light.shelly_diningtable: on
     light.christmas_light: on
 
