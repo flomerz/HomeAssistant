@@ -8,11 +8,11 @@
       entity_id: script.all_off
     # google
     - service: media_player.volume_set
-      entity_id: media_player.schlafzimmer_assistant
+      entity_id: media_player.schlafzimmer_assistent
       data:
         volume_level: 0.05
     - service: media_player.volume_set
-      entity_id: media_player.wohnzimmer_assistant
+      entity_id: media_player.wohnzimmer_assistent
       data:
         volume_level: 0
 
@@ -29,11 +29,11 @@
       entity_id: input_boolean.state_fitnessroom
     # google
     - service: media_player.volume_set
-      entity_id: media_player.schlafzimmer_assistant
+      entity_id: media_player.schlafzimmer_assistent
       data:
         volume_level: 0.1
     - service: media_player.volume_set
-      entity_id: media_player.wohnzimmer_assistant
+      entity_id: media_player.wohnzimmer_assistent
       data:
         volume_level: 0.5
     - service: input_select.select_option

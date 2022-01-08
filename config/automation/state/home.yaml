@@ -8,9 +8,9 @@
       entity_id: script.all_off
     # google
     - service: media_player.media_stop
-      entity_id: media_player.wohnzimmer_assistant
+      entity_id: media_player.wohnzimmer_assistent
     - service: media_player.media_stop
-      entity_id: media_player.schlafzimmer_assistant
+      entity_id: media_player.schlafzimmer_assistent
     - service: media_player.media_stop
       entity_id: media_player.home_group
     # vacuum
