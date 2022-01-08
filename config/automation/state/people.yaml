@@ -1,16 +1,14 @@
-not_home:
-  sequence:
-    # delay
-    - delay:
-        minutes: 15
-    # no people home
-    - condition: state
+- alias: people_not_home
+  trigger:
+    - platform: state
       entity_id: group.people
-      state: 'not_home'
-    # no sleep
+      to: 'not_home'
+      for:
+        minutes: 15
+  condition:
     - condition: state
       entity_id: input_boolean.state_sleep
       state: 'off'
-    # states
+  action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_home

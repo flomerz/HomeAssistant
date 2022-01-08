@@ -4,9 +4,8 @@
       entity_id: sensor.switch_door_click
       to: 'left'
   action:
-    - service: script.turn_off
-      entity_id: script.not_home
-    - service: script.home
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.state_home
     - service: light.turn_on
       entity_id: light.floor
     - service: light.turn_on

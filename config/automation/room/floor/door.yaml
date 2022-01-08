@@ -5,15 +5,12 @@
       entity_id: binary_sensor.sensor_door_contact
       to: 'on'
   action:
-    - service: script.turn_off
-      entity_id: script.not_home
-    - service: script.home
-
-
-- alias: Door Close
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.sensor_door_contact
-      to: 'off'
-  action:
-    - service: script.not_home
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.state_home
+    # light
+    - condition: and
+      conditions: !include ../../../condition/light_livingroom.yaml
+    - service: light.turn_on
+      entity_id: light.light_door
+    - service: light.turn_on
+      entity_id: light.floor
