@@ -4,8 +4,16 @@
       entity_id: input_select.state_livingroom_light
       to: 'Aus'
   action:
-    - service: scene.turn_on
-      entity_id: scene.livingroom_off
+    # lights
+    - service: light.turn_off
+      entity_id: light.livingroom_front
+    - service: light.turn_off
+      entity_id: light.livingroom_sofatable
+    - service: light.turn_off
+      entity_id: light.livingroom_rgbww
+    - service: light.turn_off
+      entity_id: light.christmas_light
+
 
 - alias: Light Film
   trigger:
@@ -17,8 +25,30 @@
       data_template:
         entity_id: input_select.mode_livingroom_light
         option: "{{ states('input_select.state_livingroom_light') }}"
-    - service: scene.turn_on
-      entity_id: scene.livingroom_film
+    # lights
+    - service: light.turn_off
+      entity_id: light.shelly_kitchen
+    - service: light.turn_off
+      entity_id: light.kitchen
+    - service: light.turn_off
+      entity_id: light.floor
+    - service: light.turn_off
+      entity_id: light.light_door
+    - service: light.turn_off
+      entity_id: light.livingroom_front
+    - service: light.turn_off
+      entity_id: light.livingroom_sofatable
+    - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data:
+        brightness_pct: 20
+        effect: none
+        rgbww_color: [0, 0, 255, 0, 0]
+    - service: light.turn_off
+      entity_id: light.shelly_diningtable
+    - service: light.turn_off
+      entity_id: light.christmas_light
+
 
 - alias: Light Beamer
   trigger:
@@ -30,8 +60,23 @@
       data_template:
         entity_id: input_select.mode_livingroom_light
         option: "{{ states('input_select.state_livingroom_light') }}"
-    - service: scene.turn_on
-      entity_id: scene.livingroom_beamer
+    # lights
+    - service: light.turn_off
+      entity_id: light.livingroom_front
+    - service: light.turn_off
+      entity_id: light.livingroom_sofatable
+    - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data:
+        brightness_pct: 20
+        effect: none
+        rgbww_color: [255, 0, 0, 0, 0]
+    - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data:
+        effect: rainbow
+    - service: light.turn_off
+      entity_id: light.christmas_light
 
 
 - alias: Light Beamer Bright
@@ -44,8 +89,20 @@
       data_template:
         entity_id: input_select.mode_livingroom_light
         option: "{{ states('input_select.state_livingroom_light') }}"
-    - service: scene.turn_on
-      entity_id: scene.livingroom_beamer_bright
+    # lights
+    - service: light.turn_off
+      entity_id: light.livingroom_front
+    - service: light.turn_on
+      entity_id: light.livingroom_sofatable
+    - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data:
+        brightness_pct: 30
+        effect: none
+        rgbww_color: [0, 0, 0, 0, 255]
+    - service: light.turn_on
+      entity_id: light.christmas_light
+
 
 - alias: Light Chill
   trigger:
@@ -57,8 +114,26 @@
       data_template:
         entity_id: input_select.mode_livingroom_light
         option: "{{ states('input_select.state_livingroom_light') }}"
-    - service: scene.turn_on
-      entity_id: scene.livingroom_chill
+    # lights
+    - service: light.turn_on
+      entity_id: light.livingroom_front
+    - service: light.turn_on
+      entity_id: light.livingroom_sofatable
+    - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data:
+        brightness_pct: 100
+        effect: none
+        rgbww_color: [255, 0, 0, 128, 128]
+    - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data:
+        effect: rainbow
+    - service: light.turn_on
+      entity_id: light.shelly_diningtable
+    - service: light.turn_on
+      entity_id: light.christmas_light
+
 
 - alias: Light Ambient
   trigger:
@@ -70,8 +145,22 @@
       data_template:
         entity_id: input_select.mode_livingroom_light
         option: "{{ states('input_select.state_livingroom_light') }}"
-    - service: scene.turn_on
-      entity_id: scene.livingroom_ambient
+    # lights
+    - service: light.turn_on
+      entity_id: light.livingroom_front
+    - service: light.turn_on
+      entity_id: light.livingroom_sofatable
+    - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data:
+        brightness_pct: 100
+        effect: none
+        rgbww_color: [0, 0, 0, 0, 255]
+    - service: light.turn_on
+      entity_id: light.shelly_diningtable
+    - service: light.turn_on
+      entity_id: light.christmas_light
+
 
 - alias: Light Hell
   trigger:
@@ -83,5 +172,18 @@
       data_template:
         entity_id: input_select.mode_livingroom_light
         option: "{{ states('input_select.state_livingroom_light') }}"
-    - service: scene.turn_on
-      entity_id: scene.livingroom_bright
+    # lights
+    - service: light.turn_on
+      entity_id: light.livingroom_front
+    - service: light.turn_on
+      entity_id: light.livingroom_sofatable
+    - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data:
+        brightness_pct: 100
+        effect: none
+        rgbww_color: [255, 255, 255, 255, 255]
+    - service: light.turn_on
+      entity_id: light.shelly_diningtable
+    - service: light.turn_on
+      entity_id: light.christmas_light
