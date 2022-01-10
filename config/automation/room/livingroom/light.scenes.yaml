@@ -68,7 +68,7 @@
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:
-        brightness_pct: 30
+        brightness_pct: 25
         effect: none
         rgbww_color: [255, 0, 0, 0, 0]
     - service: light.turn_on
@@ -99,8 +99,12 @@
       data:
         brightness_pct: 40
         effect: none
-        rgbww_color: [0, 0, 0, 0, 255]
+        rgbww_color: [255, 0, 0, 0, 255]
     - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data:
+        effect: rainbow
+    - service: light.turn_off
       entity_id: light.christmas_light
 
 
@@ -122,9 +126,9 @@
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:
-        brightness_pct: 50
+        brightness_pct: 100
         effect: none
-        rgbww_color: [0, 0, 0, 255, 255]
+        rgbww_color: [255, 0, 0, 0, 100]
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:
