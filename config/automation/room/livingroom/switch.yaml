@@ -6,6 +6,8 @@
   action:
     - service: input_select.select_previous
       entity_id: input_select.state_livingroom_light
+      data:
+        cycle: false
 
 - alias: Livingroom Switch RIGHT
   trigger:
@@ -15,6 +17,8 @@
   action:
     - service: input_select.select_next
       entity_id: input_select.state_livingroom_light
+      data:
+        cycle: false
 
 - alias: Livingroom Switch BOTH
   trigger:
