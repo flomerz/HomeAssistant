@@ -68,12 +68,9 @@ receiver_off:
     - service: script.turn_off
       entity_id: script.receiver_on
 
-    - service: script.ir_receiver_power
-    - delay:
-        seconds: 10
     - service: script.ir_receiver_tv
     - delay:
-        seconds: 10
+        seconds: 30
     - service: script.ir_receiver_power
 
 beamer_on:
