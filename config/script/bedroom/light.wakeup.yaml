@@ -1,6 +1,9 @@
 bedroom_light_wakeup:
   sequence:
 
+    - service: light.turn_off
+      entity_id: light.light_bedroom_light
+
     - service: light.turn_on
       entity_id: light.light_bedroom_light
     
@@ -21,6 +24,12 @@ bedroom_light_wakeup:
 
     - delay:
         seconds: 1200
+
+    - service: light.turn_off
+      entity_id: light.light_bedroom_light
+
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
 
     - service: light.turn_on
       entity_id: light.light_bedroom_light

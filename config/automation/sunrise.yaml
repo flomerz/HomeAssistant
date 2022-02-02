@@ -30,4 +30,4 @@
     - service: input_datetime.set_datetime
       entity_id: input_datetime.sunrise_time
       data_template:
-        datetime: "{{ strptime(states('sensor.florian_handy_next_alarm'), '%Y-%m-%dT%H:%M:%S.%f%z') | as_local }}"
+        datetime: "{{ strptime(states('sensor.florian_handy_next_alarm'), '%Y-%m-%dT%H:%M:%S.%f%z') | as_local - timedelta(minutes=30) }}"
