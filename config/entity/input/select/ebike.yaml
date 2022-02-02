@@ -1,0 +1,7 @@
+ebike_charging_limit:
+  name: E-Bike charging limit
+  options:
+    - 60%
+    - 90%
+    - 100%
+  initial: 60%

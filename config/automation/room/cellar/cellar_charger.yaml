@@ -31,31 +31,6 @@
       entity_id: switch.cellar_charger
 
 
-- alias: cellar_charge_ebike_60
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.mystrom_1_power
-      above: 170
-    - platform: state
-      entity_id: switch.mystrom_1
-      to: 'on'
-      for:
-        hours: 4
-  action:
-    - service: switch.turn_off
-      entity_id: switch.mystrom_1
-
-
-- alias: turn_on_cellar_charge_ebike_60
-  trigger:
-    - platform: state
-      entity_id: switch.mystrom_1
-      to: 'off'
-  action:
-    - service: homeassistant.turn_on
-      entity_id: automation.cellar_charge_ebike_60
-
-
 - alias: cellar_charger_done
   trigger:
     - platform: state

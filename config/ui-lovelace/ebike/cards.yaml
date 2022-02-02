@@ -1,10 +1,10 @@
 - type: entities
   name: E-Bike
   entities:
-    - type: 'custom:multiple-entity-row'
+    - type: custom:multiple-entity-row
       entity: switch.mystrom_1
       name: Ladestation
-      icon: mdi:battery-charging
+      icon: mdi:ev-station
       state_color: true
       toggle: false
       show_state: false
@@ -15,24 +15,29 @@
         - entity: switch.cellar_charger_led
           name: Laden
           toggle: true
-    - type: 'custom:multiple-entity-row'
-      entity: switch.mystrom_1
-      name: E-Bike
-      icon: mdi:bike
-      state_color: true
-      toggle: false
-      show_state: false
+    - type: custom:fold-entity-row
+      open: true
+      head:
+        type: custom:multiple-entity-row
+        entity: switch.mystrom_1
+        name: E-Bike
+        icon: mdi:bike
+        state_color: true
+        toggle: false
+        show_state: false
+        entities:
+          - entity: sensor.mystrom_1_power
+            name: false
+          - entity: switch.mystrom_1
+            name: E-Bike
+            toggle: true
       entities:
-        - entity: sensor.mystrom_1_power
-          name: false
-        - entity: switch.mystrom_1
-          name: E-Bike
-          toggle: true
-        - entity: script.cellar_charge_ebike_90
-          name: 90%
-          toggle: true
+        - entity: input_select.ebike_charging_limit
+          name: Limite
+          icon: mdi:battery-unknown
+
     # Chart
-    - type: 'custom:mini-graph-card'
+    - type: custom:mini-graph-card
       entities:
         - entity: sensor.mystrom_1_power
           show_points: false
