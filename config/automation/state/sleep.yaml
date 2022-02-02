@@ -42,6 +42,3 @@
       data:
         entity_id: input_select.mode_livingroom_light
         option: 'Chill'
-    # light
-    - service: light.turn_on
-      entity_id: light.shelly_diningtable
