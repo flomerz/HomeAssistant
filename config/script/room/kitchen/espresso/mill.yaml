@@ -8,7 +8,8 @@ espresso_mill_calibrate_single:
           {% set current_time = states('input_number.espresso_mill_time_single') | float %}
           {% set current_amount = states('input_number.espresso_mill_amount_measure_single') | float %}
           {% set target_amount = states('input_number.espresso_mill_amount_single') | float %}
-          {% set new_time = (0.5 * current_time) + (0.5 * current_time * target_amount / current_amount) %}
+          {% set target_time = current_time * target_amount / current_amount %}
+          {% set new_time = (0.35 * current_time) + (0.65 * target_time) %}
           {{ new_time | round(2) }}
     - service: input_number.set_value
       entity_id: input_number.espresso_mill_amount_measure_single
@@ -25,7 +26,8 @@ espresso_mill_calibrate_double:
           {% set current_time = states('input_number.espresso_mill_time_double') | float %}
           {% set current_amount = states('input_number.espresso_mill_amount_measure_double') | float %}
           {% set target_amount = states('input_number.espresso_mill_amount_double') | float %}
-          {% set new_time = (0.5 * current_time) + (0.5 * current_time * target_amount / current_amount) %}
+          {% set target_time = current_time * target_amount / current_amount %}
+          {% set new_time = (0.35 * current_time) + (0.65 * target_time) %}
           {{ new_time | round(2) }}
     - service: input_number.set_value
       entity_id: input_number.espresso_mill_amount_measure_double
