@@ -60,6 +60,7 @@ class ShellySwitch(ShellyDevice, SwitchEntity):
     def __init__(self, dev, instance):
         """Initialize an ShellySwitch."""
         ShellyDevice.__init__(self, dev, instance)
+        self.entity_id = "switch" + self.entity_id
         self._state = None
         self._master_unit = True
         self.update()
@@ -107,14 +108,18 @@ class ShellyFirmwareUpdate(ShellyBlock, SwitchEntity):
         return False
 
     @property
-    def name(self):
-        if self._beta:
-            return "Upgrade BETA firmware " + ShellyBlock.name.fget(self)
-        return "Upgrade firmware " + ShellyBlock.name.fget(self)
+    def icon(self):
+        return "mdi:download"
 
     @property
-    def device_state_attributes(self):
-        attrs = super().device_state_attributes
+    def name(self):
+        if self._beta:
+            return ShellyBlock.name.fget(self) + " - Download beta firmware"
+        return ShellyBlock.name.fget(self) + " - Download new firmware"
+
+    @property
+    def extra_state_attributes(self):
+        attrs = super().extra_state_attributes
         latest_key = ATTRIBUTE_LATEST_BETA_FW if self._beta else ATTRIBUTE_LATEST_FW
         attrs[latest_key] = \
             self._block.info_values[latest_key]

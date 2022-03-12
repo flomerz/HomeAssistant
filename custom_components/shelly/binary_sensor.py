@@ -65,7 +65,7 @@ class ShellySwitch(ShellyDevice, BinarySensorEntity):
         """Initialize an ShellySwitch."""
         ShellyDevice.__init__(self, dev, instance)
         self._unique_id += "_switch"
-        self.entity_id += "_switch"
+        self.entity_id = "binary_sensor" + self.entity_id + "_switch"
         self._state = None
         self._click_delay = 700
         self._last_state_change = 0
@@ -130,8 +130,8 @@ class ShellySwitch(ShellyDevice, BinarySensorEntity):
             self._last_event = event
 
     @property
-    def device_state_attributes(self):
-        attrs = super().device_state_attributes
+    def extra_state_attributes(self):
+        attrs = super().extra_state_attributes
         if self._last_event:
             attrs[ATTRIBUTE_CLICK_TYPE] = self._last_event
             attrs[ATTRIBUTE_CLICK_CNT] = self._event_cnt
@@ -145,7 +145,7 @@ class ShellyBinarySensor(ShellyDevice, BinarySensorEntity):
         self._sensor_cfg = SENSOR_TYPES_CFG[SENSOR_TYPE_DEFAULT]
         ShellyDevice.__init__(self, dev, instance)
         self._unique_id += "_" + sensor_name
-        self.entity_id += "_" + sensor_name
+        self.entity_id = "binary_sensor" + self.entity_id + "_" + sensor_name
         self._sensor_type = sensor_type
         self._sensor_name = sensor_name
         #self._battery = None
