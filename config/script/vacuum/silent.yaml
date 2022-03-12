@@ -1,0 +1,6 @@
+vacuum_silent:
+  sequence:
+    - service: vacuum.set_fan_speed
+      entity_id: vacuum.staubi
+      data:
+        fan_speed: Silent

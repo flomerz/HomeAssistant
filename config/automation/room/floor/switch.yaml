@@ -34,8 +34,7 @@
       entity_id: vacuum.staubi
       state: 'docked'
   action:
-    - service: vacuum.start
-      entity_id: vacuum.staubi
+    - service: script.vacuum_start
 
 - alias: Floor Switch BOTH Clean Stop
   trigger:
@@ -47,4 +46,4 @@
       entity_id: vacuum.staubi
       state: 'cleaning'
   action:
-    - service: script.vacuum_home_stop
+    - service: script.vacuum_stop

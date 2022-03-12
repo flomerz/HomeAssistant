@@ -1,0 +1,8 @@
+vacuum_start:
+  sequence:
+    - service: vacuum.set_fan_speed
+      entity_id: vacuum.staubi
+      data:
+        fan_speed: Turbo
+    - service: vacuum.start
+      entity_id: vacuum.staubi

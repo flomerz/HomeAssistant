@@ -23,8 +23,7 @@
     - service: media_player.media_stop
       entity_id: media_player.home_group
     # vacuum
-    - service: vacuum.start
-      entity_id: vacuum.staubi
+    - service: script.vacuum_start
 
 - alias: state_home_on
   trigger:
@@ -37,3 +36,5 @@
       data:
         entity_id: input_select.mode_livingroom_light
         option: 'Chill'
+    # vacuum
+    - service: script.vacuum_silent
