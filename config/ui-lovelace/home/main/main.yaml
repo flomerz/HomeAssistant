@@ -16,17 +16,30 @@
 
 ####################  Lights  ####################
 # Wohnzimmer
-- type: 'custom:multiple-entity-row'
-  entity: light.livingroom_rgbww
-  name: Wohnzimmer
-  icon: mdi:lightbulb-group
-  show_state: false
+- type: custom:fold-entity-row
+  head:
+    type: 'custom:multiple-entity-row'
+    entity: light.livingroom_rgbww
+    name: Wohnzimmer
+    icon: mdi:lightbulb-group
+    show_state: false
+    entities:
+      - entity: automation.livingroom_motion_off
+        name: Auto-OFF
+        toggle: true
+      - entity: input_select.state_livingroom_light
+        name: false
   entities:
-    - entity: automation.livingroom_motion_off
-      name: Auto-OFF
-      toggle: true
-    - entity: input_select.state_livingroom_light
-      name: false
+    - entity: light.shelly_diningtable
+      name: Esstisch
+    - entity: light.livingroom_rgbww
+      name: LED
+    - entity: light.livingroom_front
+      name: Vorne
+    - entity: light.livingroom_sofatable
+      name: Sofatisch
+    - entity: light.christmas_light
+      name: Weihnacht
 - type: buttons
   entities:
     - entity: input_select.state_livingroom_light
@@ -100,10 +113,6 @@
     - entity: light.kitchen
       name: Decke
       toggle: true
-
-# Esstisch
-- entity: light.shelly_diningtable
-  name: Esstisch
 
 # Schlafzimmer
 - type: 'custom:slider-entity-row'

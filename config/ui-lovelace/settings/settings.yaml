@@ -1,6 +1,6 @@
-####################  Einstellungen  ####################
+####################  Sunrise  ####################
 - type: entities
-  title: Einstellungen
+  title: Sunrise
   show_header_toggle: false
   entities:
     - type: 'custom:multiple-entity-row'
@@ -24,6 +24,7 @@
   entities:
     - type: buttons
       entities:
+        - entity: binary_sensor.sensor_door_contact
         - entity: binary_sensor.motion_floor
           icon: 'mdi:floor-plan'
         - entity: binary_sensor.motion_livingroom_occupancy
@@ -38,6 +39,18 @@
           icon: 'mdi:shower'
         - entity: binary_sensor.motion_wc
           icon: 'mdi:toilet'
+
+
+####################  Personen  ####################
+- type: entities
+  title: Personen
+  entities:
+    - type: buttons
+      entities:
+        - entity: device_tracker.florian
+          name: Florian
+        - entity: device_tracker.louisa
+          name: Louisa
 
 
 ####################  Battery  ####################

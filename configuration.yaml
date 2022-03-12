@@ -61,6 +61,7 @@ binary_sensor: !include_dir_merge_list config/entity/sensor/binary_sensor
 switch: !include_dir_merge_list config/entity/switch
 light: !include_dir_merge_list config/entity/light
 input_boolean: !include_dir_merge_named config/entity/input/boolean
+input_number: !include_dir_merge_named config/entity/input/number
 input_select: !include_dir_merge_named config/entity/input/select
 input_datetime: !include_dir_merge_named config/entity/input/datetime
 group: !include_dir_merge_named config/group

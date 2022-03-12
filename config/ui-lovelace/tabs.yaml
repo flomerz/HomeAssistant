@@ -1,29 +1,35 @@
 - badges: []
   title: Home
   path: home
-  icon: 'mdi:home'
-  cards: !include home/cards.yaml
+  icon: mdi:home
+  cards: !include home/home.yaml
+
+- badges: []
+  title: Espresso
+  path: espresso
+  icon: mdi:coffee
+  cards: !include espresso/espresso.yaml
 
 - badges: []
   title: Klima
   path: climate
-  icon: 'mdi:thermometer'
-  cards: !include climate/cards.yaml
+  icon: mdi:thermometer
+  cards: !include climate/climate.yaml
 
 - badges: []
   title: Pflanzen
   path: plants
   icon: mdi:flower
-  cards: !include plants/cards.yaml
+  cards: !include plants/plants.yaml
 
 - badges: []
   title: E-Bike
   path: ebike
-  icon: 'mdi:bike'
-  cards: !include ebike/cards.yaml
+  icon: mdi:bike
+  cards: !include ebike/ebike.yaml
 
 - badges: []
   title: Einstellungen
   path: settings
-  icon: 'mdi:cog'
-  cards: !include settings/cards.yaml
+  icon: mdi:cog
+  cards: !include settings/settings.yaml
