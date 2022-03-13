@@ -121,3 +121,5 @@
         - type: custom:slider-entity-row
           entity: input_number.espresso_mill_amount_measure_double
           full_row: true
+          min: 12.0
+          max: 16.0
