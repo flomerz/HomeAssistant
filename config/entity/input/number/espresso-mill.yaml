@@ -1,3 +1,10 @@
+espresso_mill_learning_rate:
+  name: Esprosso Mill Learning Rate
+  mode: slider
+  min: 0.5
+  max: 1.0
+  step: 0.1
+
 # Single
 espresso_mill_amount_single:
   name: Esprosso Mill Amount Single

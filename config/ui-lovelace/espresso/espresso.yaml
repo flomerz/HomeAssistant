@@ -43,6 +43,15 @@
   show_header_toggle: false
   name: Mühle
   entities:
+
+    - type: custom:fold-entity-row
+      head: switch.espresso_mill
+      entities:
+        - type: custom:slider-entity-row
+          entity: input_number.espresso_mill_learning_rate
+          name: Lernrate
+          grow: true
+    
     # Single
     - type: custom:fold-entity-row
       open: true
@@ -56,18 +65,18 @@
           - entity: input_number.espresso_mill_amount_measure_single
             name: Messung
             styles:
-              width: 40px
+              width: 45px
           - entity: input_number.espresso_mill_amount_single
             name: Menge
             styles:
-              width: 40px
+              width: 45px
           - entity: input_number.espresso_mill_time_single
             name: Zeit
             styles:
-              width: 40px
+              width: 45px
           - icon: mdi:sync
             styles:
-              width: 40px
+              width: 45px
             tap_action:
               action: call-service
               service: script.espresso_mill_calibrate_single
@@ -75,6 +84,8 @@
         - type: custom:slider-entity-row
           entity: input_number.espresso_mill_amount_measure_single
           full_row: true
+          min: 7.0
+          max: 11.0
 
     # Double
     - type: custom:fold-entity-row
@@ -89,18 +100,18 @@
           - entity: input_number.espresso_mill_amount_measure_double
             name: Messung
             styles:
-              width: 40px
+              width: 45px
           - entity: input_number.espresso_mill_amount_double
             name: Menge
             styles:
-              width: 40px
+              width: 45px
           - entity: input_number.espresso_mill_time_double
             name: Zeit
             styles:
-              width: 40px
+              width: 45px
           - icon: mdi:sync
             styles:
-              width: 40px
+              width: 45px
             tap_action:
               action: call-service
               service: script.espresso_mill_calibrate_double
