@@ -15,7 +15,7 @@
         message_say: 'diss handy isch ufglade'
 
 
-- alias: Notify Handy Charge 20 Florian
+- alias: Notify Handy Charge 30 Florian
   trigger:
     - platform: numeric_state
       entity_id: sensor.florian_handy_battery_level
