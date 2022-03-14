@@ -19,11 +19,14 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.florian_handy_battery_level
-      below: 20
+      below: 30
   condition:
     - condition: state
       entity_id: device_tracker.florian
       state: 'home'
+    - condition: state
+      entity_id: sensor.florian_handy_battery_state
+      state: 'discharging'
   action:
     - service: script.notify_google
       data:
