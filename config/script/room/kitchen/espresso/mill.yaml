@@ -35,3 +35,22 @@ espresso_mill_calibrate_double:
       entity_id: input_number.espresso_mill_amount_measure_double
       data_template:
         value: "{{ states('input_number.espresso_mill_amount_double') }}"
+
+# Tripple
+espresso_mill_calibrate_tripple:
+  sequence:
+    - service: input_number.set_value
+      entity_id: input_number.espresso_mill_time_tripple
+      data_template:
+        value: >
+          {% set learning_rate = states('input_number.espresso_mill_learning_rate') | float %}
+          {% set current_time = states('input_number.espresso_mill_time_tripple') | float %}
+          {% set current_amount = states('input_number.espresso_mill_amount_measure_tripple') | float %}
+          {% set target_amount = states('input_number.espresso_mill_amount_tripple') | float %}
+          {% set target_time = current_time * target_amount / current_amount %}
+          {% set new_time = (1 - learning_rate) * current_time + learning_rate * target_time %}
+          {{ new_time | round(2) }}
+    - service: input_number.set_value
+      entity_id: input_number.espresso_mill_amount_measure_tripple
+      data_template:
+        value: "{{ states('input_number.espresso_mill_amount_tripple') }}"

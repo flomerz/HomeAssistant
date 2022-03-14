@@ -54,3 +54,28 @@ espresso_mill_time_double:
   min: 1
   max: 20
   step: 0.01
+
+# Tripple
+espresso_mill_amount_tripple:
+  name: Esprosso Mill Amount Tripple
+  unit_of_measurement: g
+  mode: slider
+  min: 15
+  max: 21
+  step: 0.1
+
+espresso_mill_amount_measure_tripple:
+  name: Esprosso Mill Amount Measure Tripple
+  unit_of_measurement: g
+  mode: slider
+  min: 11
+  max: 25
+  step: 0.1
+
+espresso_mill_time_tripple:
+  name: Esprosso Mill Time Tripple
+  unit_of_measurement: s
+  mode: slider
+  min: 1
+  max: 30
+  step: 0.01
