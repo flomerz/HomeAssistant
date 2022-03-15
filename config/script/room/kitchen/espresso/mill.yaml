@@ -54,3 +54,69 @@ espresso_mill_calibrate_tripple:
       entity_id: input_number.espresso_mill_amount_measure_tripple
       data_template:
         value: "{{ states('input_number.espresso_mill_amount_tripple') }}"
+
+# Sync Single
+espresso_mill_sync_single:
+  sequence:
+    - service: input_number.set_value
+      entity_id: input_number.espresso_mill_amount_measure_double
+      data_template:
+        value: >
+          {% set amount_single = states('input_number.espresso_mill_amount_single') | float %}
+          {% set time_single = states('input_number.espresso_mill_time_single') | float %}
+          {% set time_double = states('input_number.espresso_mill_time_double') | float %}
+          {% set amount_measure_double = amount_single / time_single * time_double %}
+          {{ amount_measure_double | round(1) }}
+    - service: input_number.set_value
+      entity_id: input_number.espresso_mill_amount_measure_tripple
+      data_template:
+        value: >
+          {% set amount_single = states('input_number.espresso_mill_amount_single') | float %}
+          {% set time_single = states('input_number.espresso_mill_time_single') | float %}
+          {% set time_tripple = states('input_number.espresso_mill_time_tripple') | float %}
+          {% set amount_measure_tripple = amount_single / time_single * time_tripple %}
+          {{ amount_measure_tripple | round(1) }}
+
+# Sync Double
+espresso_mill_sync_double:
+  sequence:
+    - service: input_number.set_value
+      entity_id: input_number.espresso_mill_amount_measure_single
+      data_template:
+        value: >
+          {% set amount_double = states('input_number.espresso_mill_amount_double') | float %}
+          {% set time_double = states('input_number.espresso_mill_time_double') | float %}
+          {% set time_single = states('input_number.espresso_mill_time_single') | float %}
+          {% set amount_measure_single = amount_double / time_double * time_single %}
+          {{ amount_measure_single | round(1) }}
+    - service: input_number.set_value
+      entity_id: input_number.espresso_mill_amount_measure_tripple
+      data_template:
+        value: >
+          {% set amount_double = states('input_number.espresso_mill_amount_double') | float %}
+          {% set time_double = states('input_number.espresso_mill_time_double') | float %}
+          {% set time_tripple = states('input_number.espresso_mill_time_tripple') | float %}
+          {% set amount_measure_tripple = amount_double / time_double * time_tripple %}
+          {{ amount_measure_tripple | round(1) }}
+
+# Sync Tripple
+espresso_mill_sync_tripple:
+  sequence:
+    - service: input_number.set_value
+      entity_id: input_number.espresso_mill_amount_measure_single
+      data_template:
+        value: >
+          {% set amount_tripple = states('input_number.espresso_mill_amount_tripple') | float %}
+          {% set time_tripple = states('input_number.espresso_mill_time_tripple') | float %}
+          {% set time_single = states('input_number.espresso_mill_time_single') | float %}
+          {% set amount_measure_single = amount_tripple / time_tripple * time_single %}
+          {{ amount_measure_single | round(1) }}
+    - service: input_number.set_value
+      entity_id: input_number.espresso_mill_amount_measure_double
+      data_template:
+        value: >
+          {% set amount_tripple = states('input_number.espresso_mill_amount_tripple') | float %}
+          {% set time_tripple = states('input_number.espresso_mill_time_tripple') | float %}
+          {% set time_double = states('input_number.espresso_mill_time_double') | float %}
+          {% set amount_measure_double = amount_tripple / time_tripple * time_double %}
+          {{ amount_measure_double | round(1) }}
