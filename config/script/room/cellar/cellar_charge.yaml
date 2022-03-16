@@ -2,7 +2,9 @@ cellar_charge:
   sequence:
 
     - delay:
-        hours: 3
+        hours: 2
+
+    - wait_template: "{{ now().hour >= 20 or now().hour < 7 }}"
     
     - service: switch.turn_on
       entity_id: switch.cellar_charger
