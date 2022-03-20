@@ -1,7 +1,7 @@
 espresso_mill_learning_rate:
   name: Esprosso Mill Learning Rate
   mode: slider
-  min: 0.5
+  min: 0.0
   max: 1.0
   step: 0.1
 
@@ -55,25 +55,25 @@ espresso_mill_time_double:
   max: 20
   step: 0.01
 
-# Tripple
-espresso_mill_amount_tripple:
-  name: Esprosso Mill Amount Tripple
+# Triple
+espresso_mill_amount_triple:
+  name: Esprosso Mill Amount Triple
   unit_of_measurement: g
   mode: slider
   min: 15
   max: 21
   step: 0.1
 
-espresso_mill_amount_measure_tripple:
-  name: Esprosso Mill Amount Measure Tripple
+espresso_mill_amount_measure_triple:
+  name: Esprosso Mill Amount Measure Triple
   unit_of_measurement: g
   mode: slider
   min: 11
   max: 25
   step: 0.1
 
-espresso_mill_time_tripple:
-  name: Esprosso Mill Time Tripple
+espresso_mill_time_triple:
+  name: Esprosso Mill Time Triple
   unit_of_measurement: s
   mode: slider
   min: 1

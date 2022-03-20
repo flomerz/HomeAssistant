@@ -75,16 +75,10 @@
           - icon: mdi:target
             styles:
               margin-left: 10px
-              margin-right: 20px
-            tap_action:
-              action: call-service
-              service: script.espresso_mill_calibrate_single
-          - icon: mdi:sync
-            styles:
               margin-right: 10px
             tap_action:
               action: call-service
-              service: script.espresso_mill_sync_single
+              service: script.espresso_mill_calibrate_single
       entities:
         - type: custom:slider-entity-row
           entity: input_number.espresso_mill_amount_measure_single
@@ -113,16 +107,10 @@
           - icon: mdi:target
             styles:
               margin-left: 10px
-              margin-right: 20px
-            tap_action:
-              action: call-service
-              service: script.espresso_mill_calibrate_double
-          - icon: mdi:sync
-            styles:
               margin-right: 10px
             tap_action:
               action: call-service
-              service: script.espresso_mill_sync_double
+              service: script.espresso_mill_calibrate_double
       entities:
         - type: custom:slider-entity-row
           entity: input_number.espresso_mill_amount_measure_double
@@ -130,40 +118,34 @@
           min: 12.0
           max: 16.0
 
-    # Tripple
+    # Triple
     - type: custom:fold-entity-row
       open: true
       head:
         type: custom:multiple-entity-row
-        entity: input_number.espresso_mill_amount_measure_tripple
-        name: Tripple
+        entity: input_number.espresso_mill_amount_measure_triple
+        name: Triple
         icon: mdi:coffee-maker
         show_state: false
         entities:
-          - entity: input_number.espresso_mill_amount_tripple
+          - entity: input_number.espresso_mill_amount_triple
             name: Menge
             styles:
               width: 50px
-          - entity: input_number.espresso_mill_time_tripple
+          - entity: input_number.espresso_mill_time_triple
             name: Zeit
             styles:
               width: 50px
           - icon: mdi:target
             styles:
               margin-left: 10px
-              margin-right: 20px
-            tap_action:
-              action: call-service
-              service: script.espresso_mill_calibrate_tripple
-          - icon: mdi:sync
-            styles:
               margin-right: 10px
             tap_action:
               action: call-service
-              service: script.espresso_mill_sync_tripple
+              service: script.espresso_mill_calibrate_triple
       entities:
         - type: custom:slider-entity-row
-          entity: input_number.espresso_mill_amount_measure_tripple
+          entity: input_number.espresso_mill_amount_measure_triple
           full_row: true
           min: 14.0
           max: 18.0
