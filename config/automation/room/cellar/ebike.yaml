@@ -4,22 +4,22 @@
       value_template: >
         {% set
           power_map = {
-            '60%': [0, 170],
-            '90%': [120, 190],
-            '100%': [10, 200]
+            '60%': [140, 175],
+            '90%': [140, 200],
+            '100%': [0, 0]
           }
         %}
         {% set selected_pct = states('input_select.ebike_charging_limit') %}
         {% set power = power_map[selected_pct] if selected_pct in power_map else [1000, 0] %}
         {% set current_power = states('sensor.mystrom_1_power') %}
-        {{ int(current_power) < power[0] or int(current_power) >= power[1] }}
+        {{ int(current_power) <= power[0] or int(current_power) >= power[1] }}
       for:
         minutes: 5
     - platform: state
       entity_id: switch.mystrom_1
       to: 'on'
       for:
-        hours: 6
+        hours: 8
   action:
     - service: switch.turn_off
       entity_id: switch.mystrom_1

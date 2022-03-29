@@ -13,7 +13,7 @@ cellar_charge:
       entity_id: switch.mystrom_1
 
     - delay:
-        hours: 5
+        hours: "{{ states('input_number.cellar_charger_hours') }}"
 
     - service: switch.turn_off
       entity_id: switch.cellar_charger

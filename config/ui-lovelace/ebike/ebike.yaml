@@ -1,22 +1,7 @@
 - type: entities
   name: E-Bike
   entities:
-    - type: custom:multiple-entity-row
-      entity: switch.mystrom_1
-      name: Ladestation
-      icon: mdi:ev-station
-      state_color: true
-      toggle: false
-      show_state: false
-      entities:
-        - entity: switch.cellar_charger
-          name: Ladegeräte
-          toggle: true
-        - entity: switch.cellar_charger_led
-          name: Laden
-          toggle: true
     - type: custom:fold-entity-row
-      open: true
       head:
         type: custom:multiple-entity-row
         entity: switch.mystrom_1
@@ -31,10 +16,19 @@
           - entity: switch.mystrom_1
             name: E-Bike
             toggle: true
+          - entity: switch.cellar_charger
+            name: Ladegeräte
+            toggle: true
+          - entity: switch.cellar_charger_led
+            name: Laden
+            toggle: true
       entities:
         - entity: input_select.ebike_charging_limit
-          name: Limite
+          name: E-Bike Akku Limite
           icon: mdi:battery-unknown
+        - entity: input_number.cellar_charger_hours
+          name: Ladegeräte Stunden
+          icon: mdi:ev-station
 
     # Chart
     - type: custom:mini-graph-card
