@@ -22,10 +22,11 @@
     service: script.wakeup
 
 
-- alias: Sunrise Update State
+- alias: Sunrise Update State - ON
   trigger:
     - platform: state
-      entity_id: sensor.florian_handy_next_alarm
+      entity_id: input_boolean.state_sleep
+      to: 'on'
   condition:
     - condition: or
       conditions:
@@ -39,18 +40,28 @@
       entity_id: input_boolean.sunrise_enabled
 
 
-- alias: Sunrise Update Time
+- alias: Sunrise Update State - OFF
   trigger:
     - platform: state
-      entity_id: sensor.florian_handy_next_alarm
+      entity_id: input_boolean.state_sleep
+      to: 'on'
   condition:
     - condition: state
       entity_id: device_tracker.florian
       state: home
+    - condition: template
+      value_template: "{{ states('sensor.florian_handy_next_alarm') != 'unavailable' }}"
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.sunrise_enabled
+
+
+- alias: Sunrise Update Time
+  trigger:
+    - platform: state
+      entity_id: sensor.florian_handy_next_alarm
   action:
     - service: input_datetime.set_datetime
       entity_id: input_datetime.sunrise_time
       data_template:
         datetime: "{{ strptime(states('sensor.florian_handy_next_alarm'), '%Y-%m-%dT%H:%M:%S.%f%z') | as_local - timedelta(minutes=30) }}"
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.sunrise_enabled
