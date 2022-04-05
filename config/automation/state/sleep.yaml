@@ -16,12 +16,12 @@
     # google
     - service: media_player.volume_set
       entity_id: media_player.schlafzimmer_assistent
-      data:
-        volume_level: 0.05
+      data_template:
+        volume_level: "{{ states('input_number.schlafzimmer_assistent_volume_sleep') }}"
     - service: media_player.volume_set
       entity_id: media_player.wohnzimmer_assistent
-      data:
-        volume_level: 0
+      data_template:
+        volume_level: "{{ states('input_number.wohnzimmer_assistent_volume_sleep') }}"
 
 - alias: Sleep OFF
   trigger:
@@ -32,12 +32,12 @@
     # google
     - service: media_player.volume_set
       entity_id: media_player.schlafzimmer_assistent
-      data:
-        volume_level: 0.1
+      data_template:
+        volume_level: "{{ states('input_number.schlafzimmer_assistent_volume_awake') }}"
     - service: media_player.volume_set
       entity_id: media_player.wohnzimmer_assistent
-      data:
-        volume_level: 0.5
+      data_template:
+        volume_level: "{{ states('input_number.wohnzimmer_assistent_volume_awake') }}"
     - service: input_select.select_option
       data:
         entity_id: input_select.mode_livingroom_light

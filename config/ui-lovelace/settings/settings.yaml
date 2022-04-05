@@ -18,6 +18,28 @@
           toggle: true
 
 
+####################  Assistent Volume  ####################
+- type: entities
+  title: Assistent Lautstärke
+  entities:
+    - type: custom:slider-entity-row
+      entity: input_number.wohnzimmer_assistent_volume_awake
+      name: Wohnzimmer
+      grow: true
+    - type: custom:slider-entity-row
+      entity: input_number.schlafzimmer_assistent_volume_awake
+      name: Schlafzimmer
+      grow: true
+    - type: custom:slider-entity-row
+      entity: input_number.wohnzimmer_assistent_volume_sleep
+      name: Wohnzimmer (Nacht)
+      grow: true
+    - type: custom:slider-entity-row
+      entity: input_number.schlafzimmer_assistent_volume_sleep
+      name: Schlafzimmer (Nacht)
+      grow: true
+
+
 ####################  Motion  ####################
 - type: entities
   title: Bewegung
