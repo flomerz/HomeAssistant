@@ -2,7 +2,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
-      above: 1000
+      above: 1200
     - platform: state
       entity_id: binary_sensor.motion_workroom_occupancy
       to: 'on'
@@ -11,7 +11,7 @@
       conditions: !include ../../../condition/state_workroom.yaml
     - condition: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
-      above: 1000
+      above: 1200
     - condition: template
       value_template: >
         {% set motion = states.binary_sensor.motion_workroom_occupancy %}
@@ -26,7 +26,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_buro_co2
-      below: 800
+      below: 1000
   action:
     - service: light.turn_off
       entity_id: light.workroom_co2_light
