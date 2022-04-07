@@ -100,14 +100,14 @@
       minutes: '/30'
     - platform: numeric_state
       entity_id: sensor.netatmo_home_indoor_humidity
-      below: 35
+      below: 32
   condition:
     - condition: state
       entity_id: input_boolean.state_sleep
       state: 'off'
     - condition: numeric_state
       entity_id: sensor.netatmo_home_indoor_humidity
-      below: 35
+      below: 32
   action:
     - service: script.notify_google
       data:

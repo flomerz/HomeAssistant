@@ -1,6 +1,6 @@
 - type: entities
   show_header_toggle: false
-  name: Espresso
+  title: Espresso
   entities:
     - type: 'custom:multiple-entity-row'
       entity: switch.espresso
@@ -41,7 +41,7 @@
 
 - type: entities
   show_header_toggle: false
-  name: Mühle
+  title: Mühle
   entities:
 
     - type: custom:fold-entity-row
