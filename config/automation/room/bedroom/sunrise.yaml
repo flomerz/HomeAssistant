@@ -3,6 +3,12 @@
     - platform: time
       at: input_datetime.sunrise_time
   condition:
+    - condition: template
+      value_template: >
+        {% set device = states.device_tracker.florian %}
+        {% set isHome = not( device.state == 'not_home' and (now() - device.last_changed).total_seconds() <= 10*60*60 ) %}
+        {% set hasAlarm = states('sensor.florian_handy_next_alarm') != 'unavailable' %}
+        {{ hasAlarm and isHome }}
     - condition: state
       entity_id: input_boolean.sunrise_enabled
       state: 'on'
@@ -22,40 +28,6 @@
     service: script.wakeup
 
 
-- alias: Sunrise Update State - ON
-  trigger:
-    - platform: state
-      entity_id: input_boolean.state_sleep
-      to: 'on'
-  condition:
-    - condition: or
-      conditions:
-        - condition: template
-          value_template: "{{ states('sensor.florian_handy_next_alarm') == 'unavailable' }}"
-        - condition: state
-          entity_id: device_tracker.florian
-          state: not_home
-  action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.sunrise_enabled
-
-
-- alias: Sunrise Update State - OFF
-  trigger:
-    - platform: state
-      entity_id: input_boolean.state_sleep
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: device_tracker.florian
-      state: home
-    - condition: template
-      value_template: "{{ states('sensor.florian_handy_next_alarm') != 'unavailable' }}"
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.sunrise_enabled
-
-
 - alias: Sunrise Update Time
   trigger:
     - platform: state
@@ -65,3 +37,11 @@
       entity_id: input_datetime.sunrise_time
       data_template:
         datetime: "{{ strptime(states('sensor.florian_handy_next_alarm'), '%Y-%m-%dT%H:%M:%S.%f%z') | as_local - timedelta(minutes=30) }}"
+    - service: >
+        {% set weekday = (strptime(states('sensor.florian_handy_next_alarm'), '%Y-%m-%dT%H:%M:%S.%f%z') | as_local).weekday() %}
+        {% if weekday == 5 or weekday == 6 %}
+          input_boolean.turn_on
+        {% else %}
+          input_boolean.turn_off
+        {% endif %}
+      entity_id: input_boolean.sunrise_weekend

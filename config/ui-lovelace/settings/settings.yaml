@@ -6,16 +6,12 @@
     - type: 'custom:multiple-entity-row'
       entity: input_boolean.sunrise_enabled
       name: Sunrise
-      show_state: false
+      toggle: true
       entities:
         - entity: input_datetime.sunrise_time
           name: Zeit
         - entity: input_boolean.sunrise_weekend
           name: Wochenende
-          toggle: true
-        - entity: input_boolean.sunrise_enabled
-          name: Eingeschaltet
-          toggle: true
 
 
 ####################  Assistent Volume  ####################
