@@ -16,7 +16,7 @@
   action:
     - service: script.notify_google
       data:
-        language: ru
+        language: de
         message: 'schlächti luft'
         message_say: 'schlächti luft'
 
