@@ -6,7 +6,7 @@
     - condition: template
       value_template: >
         {% set device = states.device_tracker.florian %}
-        {% set isHome = not( device.state == 'not_home' and (now() - device.last_changed).total_seconds() <= 10*60*60 ) %}
+        {% set isHome = not( device.state == 'not_home' and (now() - device.last_changed).total_seconds() > 10*60*60 ) %}
         {% set hasAlarm = states('sensor.florian_handy_next_alarm') != 'unavailable' %}
         {{ hasAlarm and isHome }}
     - condition: state
@@ -36,7 +36,8 @@
     - service: input_datetime.set_datetime
       entity_id: input_datetime.sunrise_time
       data_template:
-        datetime: "{{ strptime(states('sensor.florian_handy_next_alarm'), '%Y-%m-%dT%H:%M:%S.%f%z') | as_local - timedelta(minutes=30) }}"
+        datetime: >
+          {{ (strptime(states('sensor.florian_handy_next_alarm'), '%Y-%m-%dT%H:%M:%S.%f%z') | as_local) - timedelta(minutes=30) }}
     - service: >
         {% set weekday = (strptime(states('sensor.florian_handy_next_alarm'), '%Y-%m-%dT%H:%M:%S.%f%z') | as_local).weekday() %}
         {% if weekday == 5 or weekday == 6 %}
