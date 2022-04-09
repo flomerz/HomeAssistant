@@ -3,8 +3,6 @@
     - platform: state
       entity_id: group.people
       to: 'not_home'
-      for:
-        minutes: 15
   condition:
     - condition: state
       entity_id: input_boolean.state_sleep
