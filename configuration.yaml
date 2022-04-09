@@ -151,13 +151,7 @@ google_assistant:
     input_boolean.state_sleep:
       expose: true
       room: '3 Schlafzimmer'
-    light.light_bedroom_light:
-      expose: true
-      room: '3 Schlafzimmer'
     # Scenes
-    script.bedroom_light_wakeup:
-      expose: true
-      name: Licht WakeUp
     script.vacuum_kitchen:
       expose: true
       name: Küche staubsaugen
