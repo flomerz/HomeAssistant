@@ -13,7 +13,8 @@ wakeup:
         minutes: 5
 
     - service: script.radio
-      media_player_entity_id: media_player.home_group
+      data:
+        media_player_entity_id: media_player.home_group
 
 
 wakeup_espresso:
