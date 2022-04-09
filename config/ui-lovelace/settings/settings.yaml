@@ -36,44 +36,9 @@
       grow: true
 
 
-####################  Motion  ####################
-- type: entities
-  title: Bewegung
-  entities:
-    - type: buttons
-      entities:
-        - entity: binary_sensor.sensor_door_contact
-        - entity: binary_sensor.motion_floor
-          icon: 'mdi:floor-plan'
-        - entity: binary_sensor.motion_livingroom_occupancy
-          icon: 'mdi:sofa'
-        - entity: binary_sensor.motion_kitchen
-          icon: 'mdi:pot-steam'
-        - entity: binary_sensor.motion_workroom_occupancy
-          icon: 'mdi:desk'
-        - entity: binary_sensor.motion_fitnessroom_occupancy
-          icon: 'mdi:weight-lifter'
-        - entity: binary_sensor.motion_bathroom_occupancy
-          icon: 'mdi:shower'
-        - entity: binary_sensor.motion_wc
-          icon: 'mdi:toilet'
-
-
-####################  Personen  ####################
-- type: entities
-  title: Personen
-  entities:
-    - type: buttons
-      entities:
-        - entity: device_tracker.florian
-          name: Florian
-        - entity: device_tracker.louisa
-          name: Louisa
-
-
 ####################  Battery  ####################
 - type: custom:battery-state-card
-  name: Batterie
+  title: Batterie
   entities:
     - entity: sensor.motion_livingroom_battery
       name: Bewegung Wohnzimmer
@@ -97,3 +62,10 @@
       name: Pflanze Baum
     - entity: sensor.plant3_battery
       name: Pflanze Rosmarin
+
+
+####################  Media  ####################
+- type: entities
+  title: Media
+  entities:
+    - entity: input_text.radio_srf4

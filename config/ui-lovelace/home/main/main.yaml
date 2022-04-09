@@ -202,3 +202,34 @@
     - entity: light.shelly_bathroom
       name: Lavabo
       toggle: true
+
+- type: section
+
+####################  Personen  ####################
+- type: buttons
+  entities:
+    - entity: device_tracker.florian
+      name: Florian
+    - entity: device_tracker.louisa
+      name: Louisa
+
+- type: section
+
+####################  Motion  ####################
+- type: buttons
+  entities:
+    - entity: binary_sensor.sensor_door_contact
+    - entity: binary_sensor.motion_floor
+      icon: 'mdi:floor-plan'
+    - entity: binary_sensor.motion_livingroom_occupancy
+      icon: 'mdi:sofa'
+    - entity: binary_sensor.motion_kitchen
+      icon: 'mdi:pot-steam'
+    - entity: binary_sensor.motion_workroom_occupancy
+      icon: 'mdi:desk'
+    - entity: binary_sensor.motion_fitnessroom_occupancy
+      icon: 'mdi:weight-lifter'
+    - entity: binary_sensor.motion_bathroom_occupancy
+      icon: 'mdi:shower'
+    - entity: binary_sensor.motion_wc
+      icon: 'mdi:toilet'

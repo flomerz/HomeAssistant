@@ -1,0 +1,3 @@
+radio_srf4:
+  name: Radio SRF4
+  initial: http://stream.srg-ssr.ch/m/drs4news/aacp_96

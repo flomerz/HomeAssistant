@@ -9,6 +9,15 @@ wakeup:
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
 
+    - delay:
+        minutes: 5
+
+    - service: media_player.play_media
+      entity_id: media_player.home_group
+      data_template:
+        media_content_id: "{{ states('input_text.radio_srf4') }}"
+        media_content_type: music
+
 
 wakeup_espresso:
   sequence:
