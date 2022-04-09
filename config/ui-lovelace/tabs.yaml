@@ -5,6 +5,12 @@
   cards: !include home/home.yaml
 
 - badges: []
+  title: Media
+  path: media
+  icon: mdi:cast-connected
+  cards: !include media/main.yaml
+
+- badges: []
   title: Espresso
   path: espresso
   icon: mdi:coffee

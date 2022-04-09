@@ -1,0 +1,67 @@
+- type: custom:mini-media-player
+  name: Youtube Music
+  entity: media_player.youtube_music
+  artwork: cover
+  hide:
+    shuffle: false
+    icon_state: false
+  shortcuts:
+    columns: 3
+    buttons:
+      - name: Shield
+        type: source
+        id: shield
+      - name: Wohnzimmer
+        type: source
+        id: wohnzimmer_assistent
+      - name: Schlafzimmer
+        type: source
+        id: schlafzimmer_assistent
+      - name: Chill
+        type: playlist
+        id: LM
+
+- type: entities
+  title: Wohnzimmer
+  entities:
+    - type: custom:mini-media-player
+      entity: media_player.shield_2
+      artwork: cover
+      hide:
+        volume_level: false
+    - type: custom:mini-media-player
+      entity: media_player.wohnzimmer_assistent
+      name: Assistent
+      artwork: cover
+      hide:
+        volume_level: false
+      shortcuts:
+        buttons:
+          - name: SRF4
+            type: script
+            id: script.radio
+            data:
+              media_player_entity_id: media_player.wohnzimmer_assistent
+
+- type: entities
+  title: Schlafzimmer
+  entities:
+    - type: custom:mini-media-player
+      entity: media_player.schlafzimmer_tv
+      name: TV
+      artwork: cover
+      hide:
+        volume_level: false
+    - type: custom:mini-media-player
+      entity: media_player.schlafzimmer_assistent
+      name: Assistent
+      artwork: cover
+      hide:
+        volume_level: false
+      shortcuts:
+        buttons:
+          - name: SRF4
+            type: script
+            id: script.radio
+            data:
+              media_player_entity_id: media_player.schlafzimmer_assistent
