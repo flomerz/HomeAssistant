@@ -12,11 +12,8 @@ wakeup:
     - delay:
         minutes: 5
 
-    - service: media_player.play_media
-      entity_id: media_player.home_group
-      data_template:
-        media_content_id: "{{ states('input_text.radio_srf4') }}"
-        media_content_type: music
+    - service: script.radio
+      media_player_entity_id: media_player.home_group
 
 
 wakeup_espresso:
