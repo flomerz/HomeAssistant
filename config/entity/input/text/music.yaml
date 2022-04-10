@@ -6,6 +6,10 @@ playlist_chill:
   name: Playlist Chill
   initial: RDCLAK5uy_nZJzoZEBYRptA2XXskbxGTvKkevapT_F4
 
+playlist_electro:
+  name: Playlist Electro
+  initial: PLHwn8cKeb1J159BvF06q5rl-pUf9xF0Lv
+
 playlist_charts:
   name: Playlist Charts
   initial: RDCLAK5uy_lYtgHVM7oTg3BIH26yXAAZnuU4_6-xFbE

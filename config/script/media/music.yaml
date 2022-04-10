@@ -14,6 +14,14 @@ youtube_music_playlist_chill:
         media_content_type: playlist
 
 
+youtube_music_playlist_electro:
+  sequence:
+    - service: script.youtube_music
+      data:
+        media_content_id: "{{ states('input_text.playlist_electro') }}"
+        media_content_type: playlist
+
+
 youtube_music_playlist_charts:
   sequence:
     - service: script.youtube_music

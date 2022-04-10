@@ -12,15 +12,27 @@
         buttons:
           - name: Chill
             type: script
-            id: script.music_playlist_chill
-          - name: Chill
+            id: script.youtube_music_playlist_chill
+          - name: Electro
             type: script
-            id: script.music_playlist_charts
-          - name: Radio
+            id: script.youtube_music_playlist_electro
+          - name: Charts
+            type: script
+            id: script.youtube_music_playlist_charts
+          - name: My Likes
+            type: playlist
+            id: LM
+          - name: Start Radio
             type: service
             id: ytube_music_player.start_radio
             data:
               entity_id: media_player.youtube_music
+          - name: Thumb UP
+            type: service
+            id: ytube_music_player.rate_track
+            data:
+              entity_id: media_player.youtube_music
+              rating: thumb_up
 
 
     - type: entities

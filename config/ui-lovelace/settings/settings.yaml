@@ -70,3 +70,5 @@
   entities:
     - entity: input_text.radio_srf4
     - entity: input_text.playlist_chill
+    - entity: input_text.playlist_electro
+    - entity: input_text.playlist_charts
