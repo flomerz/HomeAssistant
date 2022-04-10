@@ -1,16 +1,23 @@
 wakeup:
   sequence:
 
+    # async
     - service: script.turn_on
       entity_id:
         - script.wakeup_espresso
-        - script.bedroom_light_wakeup
+    
+    # sync
+    - service: script.bedroom_light_wakeup
+
+    - service: script.radio
+      data:
+        media_player_entity_id: media_player.schlafzimmer_assistent
+    
+    - delay:
+        minutes: 5
     
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
-
-    - delay:
-        minutes: 5
 
     - service: script.radio
       data:

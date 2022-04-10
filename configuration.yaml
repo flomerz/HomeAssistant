@@ -215,6 +215,9 @@ notify:
   - name: google
     platform: rest
     resource: http://localhost:5000/broadcast_message
+  - name: google_assistant
+    platform: rest
+    resource: http://localhost:5000/command
   - platform: html5
     name: browser
     vapid_pub_key: !secret html5_push_pub

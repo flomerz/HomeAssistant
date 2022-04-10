@@ -22,41 +22,49 @@
         rgb_color: [255, 0, 0] #red
         brightness: 168
 
-- alias: Bedroom Left/Right Hold
+
+- alias: Bedroom Left Hold
   trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
       to: 'arrow_left_hold'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_sleep
+    - service: switch.turn_on
+      entity_id: switch.espresso
+    - service: script.radio
+      data:
+        media_player_entity_id: media_player.home_group
+
+
+- alias: Bedroom Right Hold
+  trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
       to: 'arrow_right_hold'
   action:
-    - service: input_boolean.toggle
+    - service: media_player.media_stop
+      entity_id: media_player.wohnzimmer_assistent
+    - service: media_player.media_stop
+      entity_id: media_player.schlafzimmer_assistent
+    - service: media_player.media_stop
+      entity_id: media_player.home_group
+    - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
-    - service: script.espresso_not_sleep
+    - service: notify.google_assistant
+      data:
+        message: "turn off schlafzimmer tv"
+    - service: notify.google_assistant
+      data:
+        message: "play sleep for 2 hours on schlafzimmer assistent"
+
 
 - alias: switch_bedroom_toggle_on
   trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
       to: 'toggle'
-  condition:
-    - condition: state
-      entity_id: light.light_bedroom_light
-      state: 'off'
   action:
-    - service: light.turn_on
-      entity_id: light.light_bedroom_light
-
-- alias: switch_bedroom_toggle_off
-  trigger:
-    - platform: state
-      entity_id: sensor.switch_bedroom_action
-      to: 'toggle'
-  condition:
-    - condition: state
-      entity_id: light.light_bedroom_light
-      state: 'on'
-  action:
-    - service: light.turn_off
+    - service: light.toggle
       entity_id: light.light_bedroom_light
