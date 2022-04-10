@@ -69,3 +69,4 @@
   title: Media
   entities:
     - entity: input_text.radio_srf4
+    - entity: input_text.playlist_chill

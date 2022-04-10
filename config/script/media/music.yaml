@@ -1,0 +1,39 @@
+music_radio_srf4:
+  sequence:
+    - service: media_player.play_media
+      data_template:
+        entity_id: "{{ media_player_entity_id }}"
+        media_content_id: "{{ states('input_text.radio_srf4') }}"
+        media_content_type: music
+
+youtube_music_playlist_chill:
+  sequence:
+    - service: script.youtube_music
+      data:
+        media_content_id: "{{ states('input_text.playlist_chill') }}"
+        media_content_type: playlist
+
+
+youtube_music_playlist_charts:
+  sequence:
+    - service: script.youtube_music
+      data:
+        media_content_id: "{{ states('input_text.playlist_charts') }}"
+        media_content_type: playlist
+
+
+youtube_music:
+  sequence:
+    - service: media_player.select_source
+      data:
+        source: shield_cast
+        entity_id: media_player.youtube_music
+    - service: media_player.shuffle_set
+      data:
+        shuffle: true
+        entity_id: media_player.youtube_music
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.youtube_music
+        media_content_id: "{{ media_content_id }}"
+        media_content_type: "{{ media_content_type }}"

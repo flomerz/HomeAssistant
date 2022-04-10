@@ -1,3 +1,11 @@
 radio_srf4:
   name: Radio SRF4
   initial: http://stream.srg-ssr.ch/m/drs4news/aacp_96
+
+playlist_chill:
+  name: Playlist Chill
+  initial: RDCLAK5uy_nZJzoZEBYRptA2XXskbxGTvKkevapT_F4
+
+playlist_charts:
+  name: Playlist Charts
+  initial: RDCLAK5uy_lYtgHVM7oTg3BIH26yXAAZnuU4_6-xFbE

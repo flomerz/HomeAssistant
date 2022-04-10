@@ -9,7 +9,7 @@ wakeup:
     # sync
     - service: script.bedroom_light_wakeup
 
-    - service: script.radio
+    - service: script.music_radio_srf4
       data:
         media_player_entity_id: media_player.schlafzimmer_assistent
     
@@ -19,7 +19,7 @@ wakeup:
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
 
-    - service: script.radio
+    - service: script.music_radio_srf4
       data:
         media_player_entity_id: media_player.home_group
 

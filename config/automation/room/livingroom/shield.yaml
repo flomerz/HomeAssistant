@@ -1,7 +1,7 @@
 - alias: shield_on
   trigger:
     - platform: state
-      entity_id: media_player.shield
+      entity_id: media_player.shield_cast
       to: 'playing'
   action:
     - service: script.receiver_on
@@ -9,7 +9,7 @@
 - alias: shield_off
   trigger:
     - platform: state
-      entity_id: media_player.shield
+      entity_id: media_player.shield_cast
       to: 'off'
   condition:
     - condition: state
