@@ -22,6 +22,12 @@ wakeup:
     - service: script.music_radio_srf4
       data:
         media_player_entity_id: media_player.home_group
+    
+    - delay:
+        minutes: 30
+    
+    - service: media_player.media_stop
+      entity_id: media_player.home_group
 
 
 wakeup_espresso:
