@@ -62,13 +62,3 @@
       name: Pflanze Baum
     - entity: sensor.plant3_battery
       name: Pflanze Rosmarin
-
-
-####################  Media  ####################
-- type: entities
-  title: Media
-  entities:
-    - entity: input_text.radio_srf4
-    - entity: input_text.playlist_chill
-    - entity: input_text.playlist_electro
-    - entity: input_text.playlist_charts

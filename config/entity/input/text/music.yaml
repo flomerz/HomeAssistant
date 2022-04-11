@@ -4,12 +4,12 @@ radio_srf4:
 
 playlist_chill:
   name: Playlist Chill
-  initial: RDCLAK5uy_nZJzoZEBYRptA2XXskbxGTvKkevapT_F4
+  initial: PLkHV95tFzKkPwUaUldzX3vRjUEPqfveEm
 
-playlist_electro:
-  name: Playlist Electro
-  initial: PLHwn8cKeb1J159BvF06q5rl-pUf9xF0Lv
+playlist_florian:
+  name: Playlist Florian
+  initial: PLmC7UgTxNNfsoLI8YbXXW12OwWF9r1JAc
 
-playlist_charts:
-  name: Playlist Charts
-  initial: RDCLAK5uy_lYtgHVM7oTg3BIH26yXAAZnuU4_6-xFbE
+playlist_louisa:
+  name: Playlist Louisa
+  initial: PLoN1kBAAhLpxXSEfTwobEixoR8LvosB7l

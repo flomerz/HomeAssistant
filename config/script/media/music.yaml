@@ -1,3 +1,4 @@
+########## Radio ##########
 music_radio_srf4:
   sequence:
     - service: media_player.play_media
@@ -6,32 +7,27 @@ music_radio_srf4:
         media_content_id: "{{ states('input_text.radio_srf4') }}"
         media_content_type: music
 
+
+########## Playlist ##########
 youtube_music_playlist_chill:
   sequence:
-    - service: script.youtube_music
+    - service: script.youtube_music_add_to_playlist_from_entity_id
       data:
-        media_content_id: "{{ states('input_text.playlist_chill') }}"
+        playlist_entity_id: input_text.playlist_chill
+
+
+########## Youtube - Play ##########
+youtube_music_playlist_from_entity_id:
+  sequence:
+    - service: script.youtube_music_play
+      data_template:
+        media_content_id: "{{ states(playlist_entity_id) }}"
         media_content_type: playlist
 
-
-youtube_music_playlist_electro:
+youtube_music_play:
   sequence:
-    - service: script.youtube_music
-      data:
-        media_content_id: "{{ states('input_text.playlist_electro') }}"
-        media_content_type: playlist
-
-
-youtube_music_playlist_charts:
-  sequence:
-    - service: script.youtube_music
-      data:
-        media_content_id: "{{ states('input_text.playlist_charts') }}"
-        media_content_type: playlist
-
-
-youtube_music:
-  sequence:
+    - service: media_player.turn_off
+      entity_id: media_player.shield_cast
     - service: media_player.select_source
       data:
         source: shield_cast
@@ -45,3 +41,21 @@ youtube_music:
         entity_id: media_player.youtube_music
         media_content_id: "{{ media_content_id }}"
         media_content_type: "{{ media_content_type }}"
+
+
+########## Youtube - Add to playlist ##########
+youtube_music_add_to_playlist_from_entity_id:
+  sequence:
+    - service: ytube_music_player.add_to_playlist
+      data_template:
+        entity_id: media_player.youtube_music
+        playlist_id: "{{ states(playlist_entity_id) }}"
+
+
+########## Youtube - Remove from playlist ##########
+youtube_music_remove_from_playlist_from_entity_id:
+  sequence:
+    - service: ytube_music_player.remove_from_playlist
+      data_template:
+        entity_id: media_player.youtube_music
+        playlist_id: "{{ states(playlist_entity_id) }}"
