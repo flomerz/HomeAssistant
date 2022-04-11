@@ -37,4 +37,4 @@
         entity_id: input_select.mode_livingroom_light
         option: 'Chill'
     # vacuum
-    - service: script.vacuum_silent
+    - service: script.vacuum_stop
