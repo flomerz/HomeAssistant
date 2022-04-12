@@ -65,16 +65,11 @@
 
 
     - type: entities
-      title: Wohnzimmer
+      title: Player
       entities:
         - type: custom:mini-media-player
-          entity: media_player.shield_cast
-          artwork: cover
-          hide:
-            volume_level: false
-        - type: custom:mini-media-player
-          entity: media_player.wohnzimmer_assistent
-          name: Assistent
+          entity: media_player.home_group
+          name: Google Home
           artwork: cover
           hide:
             volume_level: false
@@ -85,26 +80,26 @@
                 id: script.music_radio_srf4
                 data:
                   media_player_entity_id: media_player.wohnzimmer_assistent
-
-    - type: entities
-      title: Schlafzimmer
-      entities:
+        - type: custom:mini-media-player
+          entity: media_player.shield_cast
+          artwork: cover
+          hide:
+            volume_level: false
+        - type: custom:mini-media-player
+          entity: media_player.wohnzimmer_assistent
+          name: Wohnzimmer Assistent
+          artwork: cover
+          hide:
+            volume_level: false
         - type: custom:mini-media-player
           entity: media_player.schlafzimmer_tv
-          name: TV
+          name: Schlafzimmer TV
           artwork: cover
           hide:
             volume_level: false
         - type: custom:mini-media-player
           entity: media_player.schlafzimmer_assistent
-          name: Assistent
+          name: Schlafzimmer Assistent
           artwork: cover
           hide:
             volume_level: false
-          shortcuts:
-            buttons:
-              - name: Radio SRF4
-                type: script
-                id: script.music_radio_srf4
-                data:
-                  media_player_entity_id: media_player.schlafzimmer_assistent
