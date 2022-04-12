@@ -11,7 +11,7 @@ music_radio_srf4:
 ########## Playlist ##########
 youtube_music_playlist_chill:
   sequence:
-    - service: script.youtube_music_add_to_playlist_from_entity_id
+    - service: script.youtube_music_playlist_from_entity_id
       data:
         playlist_entity_id: input_text.playlist_chill
 
