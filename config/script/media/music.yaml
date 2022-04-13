@@ -26,6 +26,8 @@ youtube_music_playlist_from_entity_id:
 
 youtube_music_play:
   sequence:
+    - service: script.turn_on
+      entity_id: script.receiver_on
     - service: media_player.turn_off
       entity_id: media_player.shield_cast
     - service: media_player.select_source

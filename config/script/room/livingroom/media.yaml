@@ -70,7 +70,7 @@ receiver_off:
 
     - service: script.ir_receiver_tv
     - delay:
-        seconds: 30
+        seconds: 10
     - service: script.ir_receiver_power
 
 beamer_on:
