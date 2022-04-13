@@ -15,13 +15,8 @@
       entity_id: input_boolean.state_fitnessroom
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_media
-    # google
-    - service: media_player.media_stop
-      entity_id: media_player.wohnzimmer_assistent
-    - service: media_player.media_stop
-      entity_id: media_player.schlafzimmer_assistent
-    - service: media_player.media_stop
-      entity_id: media_player.home_group
+    # music
+    - service: script.music_turn_off
     # vacuum
     - service: script.vacuum_start
 

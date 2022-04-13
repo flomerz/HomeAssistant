@@ -11,7 +11,7 @@ wakeup:
 
     - service: script.music_radio_srf4
       data:
-        media_player_entity_id: media_player.schlafzimmer_assistent
+        media_player_entity_id: media_player.home_group
     
     - delay:
         minutes: 5
@@ -19,12 +19,8 @@ wakeup:
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
 
-    - service: script.music_radio_srf4
-      data:
-        media_player_entity_id: media_player.home_group
-    
     - delay:
-        minutes: 30
+        minutes: 25
     
     - service: media_player.media_stop
       entity_id: media_player.home_group

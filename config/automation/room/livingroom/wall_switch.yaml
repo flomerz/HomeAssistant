@@ -14,8 +14,7 @@
               entity_id: media_player.shield_cast
               state: playing
           sequence:
-            - service: media_player.turn_off
-              entity_id: media_player.shield_cast
+            - service: script.music_turn_off
       default:
         - service: script.youtube_music_playlist_chill
         - service: media_player.volume_set
