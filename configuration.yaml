@@ -81,7 +81,7 @@ device_tracker:
     password: !secret ddwrt_password
     wireless_only: false
     interval_seconds: 5
-    consider_home: 00:10:00
+    consider_home: 00:15:00
     new_device_defaults:
       track_new_devices: false
 

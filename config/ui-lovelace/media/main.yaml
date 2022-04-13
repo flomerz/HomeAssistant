@@ -79,7 +79,7 @@
                 type: script
                 id: script.music_radio_srf4
                 data:
-                  media_player_entity_id: media_player.wohnzimmer_assistent
+                  media_player_entity_id: media_player.home_group
         - type: custom:mini-media-player
           entity: media_player.shield_cast
           artwork: cover

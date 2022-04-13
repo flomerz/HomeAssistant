@@ -20,7 +20,7 @@ wakeup:
       entity_id: input_boolean.state_sleep
 
     - delay:
-        minutes: 25
+        minutes: 35
     
     - service: media_player.media_stop
       entity_id: media_player.home_group
