@@ -3,13 +3,17 @@
     - type: custom:mini-media-player
       name: Youtube Music
       entity: media_player.youtube_music
-      artwork: cover
-      hide:
-        shuffle: false
-        icon_state: false
+      artwork: full-cover
+      toggle_power: true
       volume_stateless: true
+      hide:
+        icon_state: false
+        power_state: false
+        volume_level: false
+        shuffle: false
       shortcuts:
         columns: 3
+        column_height: 100
         buttons:
           - name: Chill
             type: script
@@ -64,42 +68,61 @@
               entity_id: media_player.youtube_music
 
 
+    - type: custom:mini-media-player
+      entity: media_player.home_group
+      name: Google Home
+      artwork: full-cover
+      toggle_power: true
+      volume_stateless: true
+      hide:
+        icon_state: false
+        power_state: false
+        volume_level: false
+      shortcuts:
+        column_height: 100
+        buttons:
+          - name: Radio SRF4
+            type: script
+            id: script.music_radio_srf4
+            data:
+              media_player_entity_id: media_player.home_group
+
+
     - type: entities
       title: Player
       entities:
         - type: custom:mini-media-player
-          entity: media_player.home_group
-          name: Google Home
-          artwork: cover
-          hide:
-            volume_level: false
-          shortcuts:
-            buttons:
-              - name: Radio SRF4
-                type: script
-                id: script.music_radio_srf4
-                data:
-                  media_player_entity_id: media_player.home_group
-        - type: custom:mini-media-player
           entity: media_player.shield_cast
           artwork: cover
+          toggle_power: true
           hide:
+            icon_state: false
+            power_state: false
             volume_level: false
         - type: custom:mini-media-player
           entity: media_player.wohnzimmer_assistent
           name: Wohnzimmer Assistent
           artwork: cover
+          toggle_power: true
           hide:
+            icon_state: false
+            power_state: false
             volume_level: false
         - type: custom:mini-media-player
           entity: media_player.schlafzimmer_tv
           name: Schlafzimmer TV
           artwork: cover
+          toggle_power: true
           hide:
+            icon_state: false
+            power_state: false
             volume_level: false
         - type: custom:mini-media-player
           entity: media_player.schlafzimmer_assistent
           name: Schlafzimmer Assistent
           artwork: cover
+          toggle_power: true
           hide:
+            icon_state: false
+            power_state: false
             volume_level: false
