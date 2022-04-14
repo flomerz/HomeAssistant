@@ -17,7 +17,7 @@
         buttons:
           - name: Chill
             type: script
-            id: script.youtube_music_playlist_from_entity_id
+            id: script.youtube_music_shield_playlist
             data:
               playlist_entity_id: input_text.playlist_chill
           - icon: mdi:playlist-plus
@@ -32,7 +32,7 @@
               playlist_entity_id: input_text.playlist_chill
           - name: Florian
             type: script
-            id: script.youtube_music_playlist_from_entity_id
+            id: script.youtube_music_shield_playlist
             data:
               playlist_entity_id: input_text.playlist_florian
           - icon: mdi:playlist-plus
@@ -47,7 +47,7 @@
               playlist_entity_id: input_text.playlist_florian
           - name: Louisa
             type: script
-            id: script.youtube_music_playlist_from_entity_id
+            id: script.youtube_music_shield_playlist
             data:
               playlist_entity_id: input_text.playlist_louisa
           - icon: mdi:playlist-plus

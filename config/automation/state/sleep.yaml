@@ -6,13 +6,6 @@
   action:
     - service: script.turn_on
       entity_id: script.all_off
-    # states
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_workroom
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_fitnessroom
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_media
     # google
     - service: media_player.volume_set
       entity_id: media_player.schlafzimmer_assistent

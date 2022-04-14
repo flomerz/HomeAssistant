@@ -5,9 +5,10 @@ wakeup:
     - service: script.turn_on
       entity_id:
         - script.wakeup_espresso
-    
-    # sync
-    - service: script.bedroom_light_wakeup
+        - script.bedroom_light_wakeup
+
+    - delay:
+        minutes: 30
 
     - service: script.music_radio_srf4
       data:

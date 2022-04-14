@@ -44,15 +44,12 @@
       entity_id: sensor.switch_bedroom_action
       to: 'arrow_right_hold'
   action:
-    - service: script.music_turn_off
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
     - service: notify.google_assistant
       data:
         message: "turn off schlafzimmer tv"
-    - service: notify.google_assistant
-      data:
-        message: "play sleep from youtube music for 2 hours on schlafzimmer assistent"
+    - service: script.youtube_music_playlist_sleep
 
 
 - alias: switch_bedroom_toggle_on

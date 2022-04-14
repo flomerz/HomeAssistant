@@ -6,6 +6,10 @@ playlist_chill:
   name: Playlist Chill
   initial: PLkHV95tFzKkPwUaUldzX3vRjUEPqfveEm
 
+playlist_sleep:
+  name: Playlist Sleep
+  initial: PLkHV95tFzKkNcuCOdREG_PncHKLFOjpNI
+
 playlist_florian:
   name: Playlist Florian
   initial: PLmC7UgTxNNfsoLI8YbXXW12OwWF9r1JAc

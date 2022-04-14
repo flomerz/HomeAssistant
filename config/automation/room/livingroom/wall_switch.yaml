@@ -16,7 +16,7 @@
           sequence:
             - service: script.music_turn_off
       default:
-        - service: script.youtube_music_playlist_chill
+        - service: script.youtube_music_shield_playlist_chill
         - service: media_player.volume_set
           entity_id: media_player.shield_cast
           data:

@@ -37,6 +37,3 @@ bedroom_light_wakeup:
         rgb_color: [255, 226, 145]
         brightness: 255
         transition: 600
-
-    - delay:
-        seconds: 600
