@@ -38,8 +38,8 @@
       name: Vorne
     - entity: light.livingroom_sofatable
       name: Sofatisch
-    - entity: light.christmas_light
-      name: Weihnacht
+    # - entity: light.christmas_light
+    #   name: Weihnacht
 - type: buttons
   entities:
     - entity: input_select.state_livingroom_light

@@ -7,14 +7,15 @@ cellar_charge:
     - wait_template: "{{ now().hour >= 20 or now().hour < 7 }}"
     
     - service: switch.turn_on
-      entity_id: switch.cellar_charger
+      entity_id:
+        - switch.cellar_charger
+        - switch.mystrom_1
     
-    - service: switch.turn_on
-      entity_id: switch.mystrom_1
-
     - delay:
         hours: "{{ states('input_number.cellar_charger_hours') }}"
 
-    - service: switch.turn_off
-      entity_id: switch.cellar_charger
+    - service: script.turn_off
+      entity_id: 
+        - script.cellar_charge
+        - switch.mystrom_1
     

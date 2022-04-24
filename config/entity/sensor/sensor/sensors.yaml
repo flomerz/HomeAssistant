@@ -22,8 +22,22 @@
   qos: 0
   unit_of_measurement: "%"
 
+- platform: rest
+  name: mystrom_1_report
+  resource: !secret mystrom-1_report
+  scan_interval: 60
+  json_attributes:
+    - power
+    - temperature
+  value_template: "OK"
+
 - platform: template
   sensors:
+    mystrom_1_temperature:
+      value_template: "{{ state_attr('sensor.mystrom_1_report', 'temperature') }}"
+      device_class: temperature
+      unit_of_measurement: "°C"
     mystrom_1_power:
+      value_template: "{{ state_attr('sensor.mystrom_1_report', 'power') }}"
+      device_class: power
       unit_of_measurement: "W"
-      value_template: "{{ state_attr('switch.mystrom_1', 'current_power_w') }}"

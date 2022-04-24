@@ -24,11 +24,10 @@
       to: 'off'
   action:
     - service: script.turn_off
-      entity_id: script.cellar_charge
-    - service: switch.turn_off
-      entity_id: switch.mystrom_1
-    - service: switch.turn_off
-      entity_id: switch.cellar_charger
+      entity_id: 
+        - script.cellar_charge
+        - switch.cellar_charger
+        - switch.mystrom_1
 
 
 - alias: cellar_charger_done
