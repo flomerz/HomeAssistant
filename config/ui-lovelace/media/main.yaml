@@ -72,7 +72,7 @@
       entity: media_player.home_group
       name: Google Home
       artwork: full-cover
-      toggle_power: true
+      toggle_power: false
       volume_stateless: true
       hide:
         icon_state: false
@@ -95,6 +95,7 @@
           entity: media_player.shield_cast
           artwork: cover
           toggle_power: true
+          volume_stateless: true
           hide:
             icon_state: false
             power_state: false
@@ -104,6 +105,7 @@
           name: Wohnzimmer Assistent
           artwork: cover
           toggle_power: true
+          volume_stateless: true
           hide:
             icon_state: false
             power_state: false
@@ -113,6 +115,7 @@
           name: Schlafzimmer TV
           artwork: cover
           toggle_power: true
+          volume_stateless: true
           hide:
             icon_state: false
             power_state: false
@@ -122,6 +125,7 @@
           name: Schlafzimmer Assistent
           artwork: cover
           toggle_power: true
+          volume_stateless: true
           hide:
             icon_state: false
             power_state: false

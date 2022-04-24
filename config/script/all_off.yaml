@@ -18,3 +18,7 @@ all_off:
       entity_id: input_boolean.state_media
     # music
     - service: script.music_turn_off
+    # tv off
+    - service: notify.google_assistant
+      data:
+        message: "turn off schlafzimmer tv"

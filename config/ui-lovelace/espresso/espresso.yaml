@@ -44,15 +44,10 @@
   title: Mühle
   entities:
 
-    - type: custom:fold-entity-row
-      head:
-        entity: switch.espresso_mill
-        name: Mühle
-      entities:
-        - type: custom:slider-entity-row
-          entity: input_number.espresso_mill_learning_rate
-          name: Lernrate
-          grow: true
+    - type: custom:slider-entity-row
+      entity: input_number.espresso_mill_learning_rate
+      name: Lernrate
+      grow: true
     
     # Single
     - type: custom:fold-entity-row

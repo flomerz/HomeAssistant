@@ -208,9 +208,9 @@
 ####################  Personen  ####################
 - type: buttons
   entities:
-    - entity: device_tracker.florian
+    - entity: person.florian
       name: Florian
-    - entity: device_tracker.louisa
+    - entity: person.louisa
       name: Louisa
 
 - type: section

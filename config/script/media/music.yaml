@@ -6,6 +6,13 @@ music_radio_srf4:
         entity_id: "{{ media_player_entity_id }}"
         media_content_id: "{{ states('input_text.radio_srf4') }}"
         media_content_type: music
+    - delay:
+        seconds: 10
+    - service: media_player.play_media
+      data_template:
+        entity_id: "{{ media_player_entity_id }}"
+        media_content_id: "{{ states('input_text.radio_srf4') }}"
+        media_content_type: music
 
 
 ########## Playlist ##########
