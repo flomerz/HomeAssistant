@@ -39,6 +39,7 @@
 
 
 - alias: Bedroom Right Hold
+  mode: restart
   trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
@@ -46,6 +47,10 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
+    # tv off
+    - service: notify.google_assistant
+      data:
+        message: "turn off schlafzimmer tv"
     # sleep music
     - service: script.youtube_music_playlist_sleep
     - delay:
