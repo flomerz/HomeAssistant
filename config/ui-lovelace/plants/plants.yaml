@@ -1,9 +1,9 @@
 - type: vertical-stack
   cards:
 
-    # Wasser (30d)
+    # Wasser (7d)
     - type: 'custom:mini-graph-card'
-      name: Wasser (30d)
+      name: Wasser (7d)
       entities:
         - entity: sensor.plant1_moisture
           name: Busch
@@ -16,7 +16,7 @@
       line_width: 4
       decimals: 0
       hour24: true
-      hours_to_show: 720
+      hours_to_show: 168
       points_per_hour: 0.1
       lower_bound: 0
       upper_bound: 100
@@ -32,11 +32,11 @@
         - value: 60
           color: '#00ff00'
         - value: 80
-          color: '#ff9800'
+          color: '#0000ff'
 
-    # Dünger (30d)
+    # Dünger (7d)
     - type: 'custom:mini-graph-card'
-      name: Dünger (30d)
+      name: Dünger (7d)
       entities:
         - entity: sensor.plant1_conductivity
           name: Busch
@@ -49,7 +49,7 @@
       line_width: 4
       decimals: 0
       hour24: true
-      hours_to_show: 720
+      hours_to_show: 168
       points_per_hour: 0.1
       lower_bound: 0
       upper_bound: 3000
@@ -65,4 +65,4 @@
         - value: 2000
           color: '#00ff00'
         - value: 2500
-          color: '#ff9800'
+          color: '#0000ff'

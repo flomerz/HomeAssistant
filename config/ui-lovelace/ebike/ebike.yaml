@@ -2,6 +2,7 @@
   name: E-Bike
   entities:
     - type: custom:fold-entity-row
+      open: true
       head:
         type: custom:multiple-entity-row
         entity: switch.mystrom_1
@@ -30,27 +31,56 @@
           name: Ladegeräte Stunden
           icon: mdi:ev-station
 
-    # Chart
-    - type: custom:mini-graph-card
-      entities:
-        - entity: sensor.mystrom_1_power
-          show_points: false
-      animate: true
-      height: 100
-      line_width: 1
-      decimals: 1
-      hour24: true
-      hours_to_show: 24
-      points_per_hour: 30
-      group: true
-      show:
-        name: false
-        icon: false
-        state: false
-        labels: true
-      color_thresholds:
-        - value: 0
-          color: '#00ff00'
-        - value: 150
-          color: '#ff0000'
-
+# Charts
+- type: custom:mini-graph-card
+  entities:
+    - entity: sensor.mystrom_1_power
+      name: Power
+      show_points: false
+  animate: true
+  height: 100
+  line_width: 1
+  decimals: 1
+  hour24: true
+  hours_to_show: 168
+  points_per_hour: 4
+  show:
+    name: true
+    icon: true
+    state: true
+    labels: true
+    icon_adaptive_color: true
+    extrema: true
+    average: true
+  color_thresholds:
+    - value: 0
+      color: '#00ff00'
+    - value: 150
+      color: '#ff0000'
+- type: custom:mini-graph-card
+  entities:
+    - entity: sensor.mystrom_1_temperature
+      name: Temperatur
+      show_points: false
+  animate: true
+  height: 100
+  line_width: 1
+  decimals: 1
+  hour24: true
+  hours_to_show: 168
+  points_per_hour: 4
+  show:
+    name: true
+    icon: true
+    state: true
+    labels: true
+    icon_adaptive_color: true
+    extrema: true
+    average: true
+  color_thresholds:
+    - value: 10
+      color: '#0000ff'
+    - value: 15
+      color: '#00ff00'
+    - value: 25
+      color: '#ff0000'

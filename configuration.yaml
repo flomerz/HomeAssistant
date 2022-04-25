@@ -29,37 +29,25 @@ http:
 # updater:
 
 recorder:
-  db_url: sqlite:///usb/home-assistant_v2.db
-  purge_keep_days: 30
-  # include:
-  #   entity_globs:
-  #     - sensor.temperature_espresso
-  #     - sensor.netatmo_home_*_co2
-  #     - sensor.netatmo_home_*_temperature
-  #     - sensor.netatmo_home_*_humidity
-  #     - sensor.netatmo_home_indoor_pressure
-  #     - sensor.mystrom_1_power
-  #     - sensor.mystrom_1_temperature
-  #     - sensor.plant*_moisture
-  #     - sensor.plant*_conductivity
-  #     - device_tracker.florian
-  #     - device_tracker.louisa
-    # domains:
-    #   - light
-    #   - switch
-    #   - input_boolean
-    #   - sensor
-    # entities:
-    #   - sensor.plant1_moisture
-    #   - sensor.plant1_conductivity
-    #   - sensor.plant2_moisture
-    #   - sensor.plant2_conductivity
-    #   - sensor.plant3_moisture
-    #   - sensor.plant3_conductivity
-    #   - sensor.temperature_espresso
-    #   - sensor.humidity_espresso
-    #   - sensor.temperature_livingroom
-    #   - sensor.humidity_livingroom
+  db_url: sqlite:///usb/home-assistant.db
+  purge_keep_days: 7
+  commit_interval: 60
+  include:
+    entity_globs:
+      - input_boolean.state_*
+      - sensor.temperature_espresso
+      - sensor.netatmo_home_*_co2
+      - sensor.netatmo_home_*_temperature
+      - sensor.netatmo_home_*_humidity
+      - sensor.netatmo_home_indoor_pressure
+      - sensor.mystrom_1_power
+      - sensor.mystrom_1_temperature
+      - sensor.plant*_moisture
+      - sensor.plant*_conductivity
+      - device_tracker.florian
+      - device_tracker.louisa
+    domains:
+      - person
 
 history:
 
