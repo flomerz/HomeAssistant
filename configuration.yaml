@@ -44,8 +44,6 @@ recorder:
       - sensor.mystrom_1_temperature
       - sensor.plant*_moisture
       - sensor.plant*_conductivity
-      - device_tracker.florian
-      - device_tracker.louisa
     domains:
       - person
 

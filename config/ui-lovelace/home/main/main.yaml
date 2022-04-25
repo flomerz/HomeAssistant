@@ -29,8 +29,6 @@
       - entity: automation.livingroom_motion_off
         name: Auto-OFF
         toggle: true
-      - entity: input_select.state_livingroom_light
-        name: false
   entities:
     - entity: light.shelly_diningtable
       name: Esstisch
@@ -44,9 +42,17 @@
     #   name: Weihnacht
 - type: custom:paper-buttons-row
   base_config:
-    name: false
+    layout: icon
+    styles:
+        button:
+          color: >-
+            {% if is_state('input_select.state_livingroom_light', config.name) %}
+              var(--paper-item-icon-active-color)
+            {% else%}
+              var(--paper-item-icon-color)
+            {% endif %}
   buttons:
-    - entity: input_select.state_livingroom_light
+    - name: Hell
       icon: 'mdi:track-light'
       tap_action:
         action: call-service
@@ -54,7 +60,7 @@
         service_data:
           entity_id: input_select.state_livingroom_light
           option: Hell
-    - entity: input_select.state_livingroom_light
+    - name: Normal
       icon: 'mdi:lightbulb-group'
       tap_action:
         action: call-service
@@ -62,7 +68,7 @@
         service_data:
           entity_id: input_select.state_livingroom_light
           option: Normal
-    - entity: input_select.state_livingroom_light
+    - name: Chill
       icon: 'mdi:lightbulb-multiple'
       tap_action:
         action: call-service
@@ -70,7 +76,7 @@
         service_data:
           entity_id: input_select.state_livingroom_light
           option: Chill
-    - entity: input_select.state_livingroom_light
+    - name: Beamer Hell
       icon: 'mdi:lightbulb'
       tap_action:
         action: call-service
@@ -78,7 +84,7 @@
         service_data:
           entity_id: input_select.state_livingroom_light
           option: Beamer Hell
-    - entity: input_select.state_livingroom_light
+    - name: Beamer
       icon: 'mdi:projector-screen'
       tap_action:
         action: call-service
@@ -86,7 +92,7 @@
         service_data:
           entity_id: input_select.state_livingroom_light
           option: Beamer
-    - entity: input_select.state_livingroom_light
+    - name: Film
       icon: 'mdi:movie-open'
       tap_action:
         action: call-service
@@ -94,7 +100,7 @@
         service_data:
           entity_id: input_select.state_livingroom_light
           option: Film
-    - entity: input_select.state_livingroom_light
+    - name: Aus
       icon: 'mdi:lightbulb-group-off'
       tap_action:
         action: call-service
