@@ -1,6 +1,8 @@
 ####################  States  ####################
-- type: buttons
-  entities: 
+- type: custom:paper-buttons-row
+  base_config:
+      name: false
+  buttons: 
     - entity: input_boolean.state_home
       icon: 'mdi:home'
     - entity: input_boolean.state_sleep
@@ -40,8 +42,10 @@
       name: Sofatisch
     # - entity: light.christmas_light
     #   name: Weihnacht
-- type: buttons
-  entities:
+- type: custom:paper-buttons-row
+  base_config:
+    name: false
+  buttons:
     - entity: input_select.state_livingroom_light
       icon: 'mdi:track-light'
       tap_action:
@@ -206,8 +210,17 @@
 - type: section
 
 ####################  Personen  ####################
-- type: buttons
-  entities:
+- type: custom:paper-buttons-row
+  base_config:
+    layout: icon_name
+    state_styles:
+        "home":
+          button:
+            color: var(--paper-item-icon-active-color)
+        "not_home":
+          button:
+            color: var(--paper-item-icon-color)
+  buttons:
     - entity: person.florian
       name: Florian
     - entity: person.louisa
@@ -216,9 +229,14 @@
 - type: section
 
 ####################  Motion  ####################
-- type: buttons
-  entities:
+- type: custom:paper-buttons-row
+  base_config:
+    name: false
+  buttons:
     - entity: binary_sensor.sensor_door_contact
+      state_icons:
+          "off": "mdi:door-closed"
+          "on": "mdi:door-open"
     - entity: binary_sensor.motion_floor
       icon: 'mdi:floor-plan'
     - entity: binary_sensor.motion_livingroom_occupancy
