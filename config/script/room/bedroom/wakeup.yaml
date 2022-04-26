@@ -26,8 +26,7 @@ wakeup:
     - service: light.turn_off
       entity_id: light.light_bedroom_light
 
-    - service: media_player.media_stop
-      entity_id: media_player.home_group
+    - service: script.music_turn_off
 
 
 wakeup_espresso:
