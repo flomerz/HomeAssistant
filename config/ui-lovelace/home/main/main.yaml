@@ -2,16 +2,22 @@
 - type: custom:paper-buttons-row
   base_config:
       name: false
+      layout: icon_name
   buttons: 
     - entity: input_boolean.state_home
+      name: "{{ states.input_boolean.state_home.last_changed | as_local | relative_time }}"
       icon: 'mdi:home'
     - entity: input_boolean.state_sleep
+      name: "{{ states.input_boolean.state_sleep.last_changed | as_local | relative_time }}"
       icon: 'mdi:sleep'
     - entity: input_boolean.state_workroom
+      name: "{{ states.input_boolean.state_workroom.last_changed | as_local | relative_time }}"
       icon: 'mdi:desk'
     - entity: input_boolean.state_fitnessroom
+      name: "{{ states.input_boolean.state_fitnessroom.last_changed | as_local | relative_time }}"
       icon: 'mdi:weight-lifter'
     - entity: input_boolean.state_media
+      name: "{{ states.input_boolean.state_media.last_changed | as_local | relative_time }}"
       icon: 'mdi:projector-screen'
 
 - type: section
@@ -228,9 +234,9 @@
             color: var(--paper-item-icon-color)
   buttons:
     - entity: person.florian
-      name: Florian
+      name: Florian ({{ states.person.florian.last_changed | as_local | relative_time }})
     - entity: person.louisa
-      name: Louisa
+      name: Louisa ({{ states.person.louisa.last_changed | as_local | relative_time }})
 
 - type: section
 
