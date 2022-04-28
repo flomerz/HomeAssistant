@@ -1,19 +1,15 @@
 ########## Radio ##########
 music_radio_srf4:
   sequence:
+    - service: media_player.turn_on
+      entity_id:
+        - media_player.schlafzimmer_assistent
+        - media_player.wohnzimmer_assistent
+    - delay:
+        seconds: 10
     - service: media_player.play_media
+      entity_id: media_player.home_group
       data_template:
-        entity_id: media_player.schlafzimmer_assistent
-        media_content_id: "{{ states('input_text.radio_srf4') }}"
-        media_content_type: music
-    - service: media_player.play_media
-      data_template:
-        entity_id: media_player.wohnzimmer_assistent
-        media_content_id: "{{ states('input_text.radio_srf4') }}"
-        media_content_type: music
-    - service: media_player.play_media
-      data_template:
-        entity_id: media_player.home_group
         media_content_id: "{{ states('input_text.radio_srf4') }}"
         media_content_type: music
 

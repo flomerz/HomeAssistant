@@ -10,9 +10,8 @@ wakeup:
     - delay:
         minutes: 30
 
-    - service: script.music_radio_srf4
-      data:
-        media_player_entity_id: media_player.home_group
+    - service: script.turn_on
+      entity_id: script.music_radio_srf4
     
     - delay:
         minutes: 5

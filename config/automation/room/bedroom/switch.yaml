@@ -34,8 +34,6 @@
     - service: switch.turn_on
       entity_id: switch.espresso
     - service: script.music_radio_srf4
-      data:
-        media_player_entity_id: media_player.home_group
 
 
 - alias: Bedroom Right Hold
