@@ -5,16 +5,16 @@
       open: true
       head:
         type: custom:multiple-entity-row
-        entity: switch.mystrom_1
+        entity: switch.ebike
         name: E-Bike
         icon: mdi:bike
         state_color: true
         toggle: false
         show_state: false
         entities:
-          - entity: sensor.mystrom_1_power
+          - entity: sensor.ebike_power
             name: false
-          - entity: switch.mystrom_1
+          - entity: switch.ebike
             name: E-Bike
             toggle: true
           - entity: switch.cellar_charger
@@ -34,7 +34,7 @@
 # Charts
 - type: custom:mini-graph-card
   entities:
-    - entity: sensor.mystrom_1_power
+    - entity: sensor.ebike_power
       name: Power
       show_points: false
   animate: true
@@ -43,7 +43,7 @@
   decimals: 1
   hour24: true
   hours_to_show: 168
-  points_per_hour: 4
+  points_per_hour: 12
   show:
     name: true
     icon: true
@@ -54,12 +54,12 @@
     average: true
   color_thresholds:
     - value: 0
-      color: '#00ff00'
-    - value: 150
       color: '#ff0000'
+    - value: 140
+      color: '#00ff00'
 - type: custom:mini-graph-card
   entities:
-    - entity: sensor.mystrom_1_temperature
+    - entity: sensor.ebike_temperature
       name: Temperatur
       show_points: false
   animate: true
@@ -68,7 +68,7 @@
   decimals: 1
   hour24: true
   hours_to_show: 168
-  points_per_hour: 4
+  points_per_hour: 2
   show:
     name: true
     icon: true

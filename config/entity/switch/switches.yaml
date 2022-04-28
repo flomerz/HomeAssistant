@@ -23,5 +23,5 @@
   retain: true
 
 - platform: mystrom
-  name: mystrom_1
-  host: !secret mystrom-1_ip
+  name: ebike
+  host: !secret ebike_ip

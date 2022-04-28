@@ -27,7 +27,7 @@
       entity_id: 
         - script.cellar_charge
         - switch.cellar_charger
-        - switch.mystrom_1
+        - switch.ebike
 
 
 - alias: cellar_charger_done
@@ -36,14 +36,14 @@
       entity_id: switch.cellar_charger
       to: 'off'
     - platform: state
-      entity_id: switch.mystrom_1
+      entity_id: switch.ebike
       to: 'off'
   condition:
     - condition: state
       entity_id: switch.cellar_charger
       state: 'off'
     - condition: state
-      entity_id: switch.mystrom_1
+      entity_id: switch.ebike
       state: 'off'
   action:
     - service: switch.turn_off

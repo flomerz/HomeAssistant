@@ -40,8 +40,8 @@ recorder:
       - sensor.netatmo_home_*_temperature
       - sensor.netatmo_home_*_humidity
       - sensor.netatmo_home_indoor_pressure
-      - sensor.mystrom_1_power
-      - sensor.mystrom_1_temperature
+      - sensor.ebike_power
+      - sensor.ebike_temperature
       - sensor.plant*_moisture
       - sensor.plant*_conductivity
     domains:

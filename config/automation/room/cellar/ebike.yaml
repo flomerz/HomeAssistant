@@ -1,42 +1,47 @@
 - alias: ebike_charge_turn_off_power
   trigger:
-    - platform: template
-      value_template: >
-        {% set
-          power_map = {
-            '60%': [140, 170],
-            '90%': [140, 200],
-            '100%': [1, 200]
-          }
-        %}
-        {% set selected_pct = states('input_select.ebike_charging_limit') %}
-        {% set power = power_map[selected_pct] if selected_pct in power_map else [1000, 0] %}
-        {% set current_power = states('sensor.mystrom_1_power') %}
-        {% set current_power = current_power if current_power != 'unknown' else 0 %}
-        {{ int(current_power) <= power[0] or int(current_power) >= power[1] }}
+    - platform: state
+      entity_id: switch.ebike
+      to: 'on'
       for:
-        minutes: 3
+        minutes: 1
+    - platform: state
+      entity_id: binary_sensor.ebike_power_outside_range
+      to: 'on'
+      for:
+        minutes: 1
+  condition:
+    - condition: state
+      entity_id: switch.ebike
+      state: 'on'
+      for:
+        minutes: 1
+    - condition: state
+      entity_id: binary_sensor.ebike_power_outside_range
+      state: 'on'
+      for:
+        minutes: 1
   action:
     - service: switch.turn_off
-      entity_id: switch.mystrom_1
+      entity_id: switch.ebike
 
 
 - alias: ebike_charge_turn_off_time
   trigger:
     - platform: state
-      entity_id: switch.mystrom_1
+      entity_id: switch.ebike
       to: 'on'
       for:
         hours: "{{ states('input_number.cellar_charger_hours') }}"
   action:
     - service: switch.turn_off
-      entity_id: switch.mystrom_1
+      entity_id: switch.ebike
 
 
 - alias: ebike_charge_reset_60_on_turn_off
   trigger:
     - platform: state
-      entity_id: switch.mystrom_1
+      entity_id: switch.ebike
       to: 'off'
   action:
     - service: input_select.select_option

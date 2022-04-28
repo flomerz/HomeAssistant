@@ -9,7 +9,7 @@ cellar_charge:
     - service: switch.turn_on
       entity_id:
         - switch.cellar_charger
-        - switch.mystrom_1
+        - switch.ebike
     
     - delay:
         hours: "{{ states('input_number.cellar_charger_hours') }}"
@@ -17,5 +17,5 @@ cellar_charge:
     - service: script.turn_off
       entity_id: 
         - script.cellar_charge
-        - switch.mystrom_1
+        - switch.ebike
     
