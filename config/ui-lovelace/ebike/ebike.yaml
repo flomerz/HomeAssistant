@@ -12,8 +12,6 @@
         toggle: false
         show_state: false
         entities:
-          - entity: sensor.ebike_power
-            name: false
           - entity: switch.ebike
             name: E-Bike
             toggle: true

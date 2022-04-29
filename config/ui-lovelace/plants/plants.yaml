@@ -7,10 +7,13 @@
       entities:
         - entity: sensor.plant1_moisture
           name: Busch
+          show_points: false
         - entity: sensor.plant2_moisture
           name: Baum
+          show_points: false
         - entity: sensor.plant3_moisture
           name: Rosmarin
+          show_points: false
       animate: true
       height: 190
       line_width: 4
@@ -40,10 +43,13 @@
       entities:
         - entity: sensor.plant1_conductivity
           name: Busch
+          show_points: false
         - entity: sensor.plant2_conductivity
           name: Baum
+          show_points: false
         - entity: sensor.plant3_conductivity
           name: Rosmarin
+          show_points: false
       animate: true
       height: 190
       line_width: 4
