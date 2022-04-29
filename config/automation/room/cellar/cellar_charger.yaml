@@ -1,4 +1,4 @@
-- alias: cellar_charger_start
+- alias: cellar_charger_button_toggle
   trigger:
     - platform: state
       entity_id: binary_sensor.cellar_charger_button
@@ -48,3 +48,15 @@
   action:
     - service: switch.turn_off
       entity_id: switch.cellar_charger_led
+
+
+- alias: cellar_charger_turn_off_time
+  trigger:
+    - platform: state
+      entity_id: switch.cellar_charger
+      to: 'on'
+      for:
+        hours: "{{ states('input_number.cellar_charger_hours') }}"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.cellar_charger

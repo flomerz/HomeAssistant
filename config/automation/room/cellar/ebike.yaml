@@ -48,3 +48,7 @@
       data:
         entity_id: input_select.ebike_charging_limit
         option: 60%
+    - service: input_number.set_value
+      entity_id: input_number.cellar_charger_hours
+      data:
+        value: 2

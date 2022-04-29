@@ -2,7 +2,7 @@ cellar_charge:
   sequence:
 
     - delay:
-        hours: 2
+        hours: 1
 
     - wait_template: "{{ now().hour >= 20 or now().hour < 7 }}"
     
@@ -10,12 +10,3 @@ cellar_charge:
       entity_id:
         - switch.cellar_charger
         - switch.ebike
-    
-    - delay:
-        hours: "{{ states('input_number.cellar_charger_hours') }}"
-
-    - service: script.turn_off
-      entity_id: 
-        - script.cellar_charge
-        - switch.ebike
-    
