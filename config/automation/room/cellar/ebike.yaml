@@ -4,23 +4,23 @@
       entity_id: switch.ebike
       to: 'on'
       for:
-        minutes: 1
+        minutes: 3
     - platform: state
       entity_id: binary_sensor.ebike_power_outside_range
       to: 'on'
       for:
-        minutes: 1
+        minutes: 3
   condition:
     - condition: state
       entity_id: switch.ebike
       state: 'on'
       for:
-        minutes: 1
+        minutes: 3
     - condition: state
       entity_id: binary_sensor.ebike_power_outside_range
       state: 'on'
       for:
-        minutes: 1
+        minutes: 3
   action:
     - service: switch.turn_off
       entity_id: switch.ebike

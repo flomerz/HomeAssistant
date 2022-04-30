@@ -44,6 +44,8 @@ recorder:
       - sensor.ebike_temperature
       - sensor.plant*_moisture
       - sensor.plant*_conductivity
+      - switch.cellar_charger
+      - switch.ebike
     domains:
       - person
 
