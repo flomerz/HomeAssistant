@@ -49,3 +49,13 @@ cellar_charge_stop:
     # turn off led
     - service: switch.turn_off
       entity_id: switch.cellar_charger_led
+
+
+ebike_charge:
+  sequence:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.ebike_charging_limit
+        option: "{{ ebike_charging_limit }}"
+    - service: switch.turn_on
+      entity_id: switch.ebike

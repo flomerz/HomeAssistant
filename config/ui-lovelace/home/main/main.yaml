@@ -30,6 +30,7 @@
     entity: light.livingroom_rgbww
     name: Wohnzimmer
     icon: mdi:lightbulb-group
+    secondary_info: last-changed
     show_state: false
     entities:
       - entity: automation.livingroom_motion_off
@@ -121,6 +122,7 @@
 - type: 'custom:multiple-entity-row'
   entity: light.kitchen
   name: Küche
+  secondary_info: last-changed
   show_state: false
   entities:
     - entity: light.shelly_kitchen
@@ -134,12 +136,14 @@
 - type: 'custom:slider-entity-row'
   entity: light.light_bedroom_light
   name: Schlafzimmer
+  secondary_info: last-changed
   toggle: true
 
 # Büro
 - type: 'custom:multiple-entity-row'
   entity: light.light_workroom_light
   name: Büro
+  secondary_info: last-changed
   show_state: false
   entities:
     - name: Kalt
@@ -179,11 +183,13 @@
 # Fitnesszimmer
 - name: Fitnesszimmer
   entity: light.shelly_fitnessroom
+  secondary_info: last-changed
 
 # Eingang
 - type: 'custom:multiple-entity-row'
   entity: light.floor
   name: Eingang
+  secondary_info: last-changed
   show_state: false
   entities:
     - entity: light.light_door
@@ -197,6 +203,7 @@
 - type: 'custom:multiple-entity-row'
   entity: light.shelly_wc
   name: WC
+  secondary_info: last-changed
   show_state: false
   entities:
     - entity: light.wc
@@ -210,6 +217,7 @@
 - type: 'custom:multiple-entity-row'
   entity: light.shelly_bathroom
   name: Badezimmer
+  secondary_info: last-changed
   show_state: false
   entities:
     - entity: light.bathroom_led
