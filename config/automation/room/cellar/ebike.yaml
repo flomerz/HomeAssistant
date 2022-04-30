@@ -1,3 +1,35 @@
+- alias: cellar_charger_button_toggle
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.cellar_charger_button
+      to: 'on'
+  action:
+    - service: script.toggle
+      entity_id: script.cellar_charge
+
+
+- alias: cellar_charger_stop
+  trigger:
+    - platform: state
+      entity_id: script.cellar_charge
+      to: 'off'
+  action:
+    - service: script.turn_on
+      entity_id: script.cellar_charge_stop
+
+
+- alias: cellar_charger_turn_off_time
+  trigger:
+    - platform: state
+      entity_id: switch.cellar_charger
+      to: 'on'
+      for:
+        hours: "{{ states('input_number.cellar_charger_hours') }}"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.cellar_charger
+
+
 - alias: ebike_charge_turn_off_power
   trigger:
     - platform: state
@@ -24,31 +56,3 @@
   action:
     - service: switch.turn_off
       entity_id: switch.ebike
-
-
-- alias: ebike_charge_turn_off_time
-  trigger:
-    - platform: state
-      entity_id: switch.ebike
-      to: 'on'
-      for:
-        hours: "{{ states('input_number.cellar_charger_hours') }}"
-  action:
-    - service: switch.turn_off
-      entity_id: switch.ebike
-
-
-- alias: ebike_charge_reset_60_on_turn_off
-  trigger:
-    - platform: state
-      entity_id: switch.ebike
-      to: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.ebike_charging_limit
-        option: 60%
-    - service: input_number.set_value
-      entity_id: input_number.cellar_charger_hours
-      data:
-        value: 2

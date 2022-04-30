@@ -1,33 +1,29 @@
 - type: entities
-  name: E-Bike
   entities:
     - type: custom:fold-entity-row
       open: true
       head:
-        type: custom:multiple-entity-row
-        entity: switch.ebike
-        name: E-Bike
-        icon: mdi:bike
-        state_color: true
-        toggle: false
-        show_state: false
-        entities:
-          - entity: switch.ebike
-            name: E-Bike
-            toggle: true
-          - entity: switch.cellar_charger
-            name: Ladegeräte
-            toggle: true
-          - entity: switch.cellar_charger_led
-            name: Laden
-            toggle: true
+        entity: script.cellar_charge
+        name: Ladestation
       entities:
-        - entity: input_select.ebike_charging_limit
-          name: E-Bike Akku Limite
-          icon: mdi:battery-unknown
-        - entity: input_number.cellar_charger_hours
-          name: Ladegeräte Stunden
-          icon: mdi:ev-station
+        - type: custom:fold-entity-row
+          open: true
+          head:
+            entity: switch.ebike
+            name: E-Bike
+          entities:
+            - entity: input_select.ebike_charging_limit
+              name: E-Bike Akku Limite
+              icon: mdi:battery-unknown
+        - type: custom:fold-entity-row
+          open: true
+          head:
+            entity: switch.cellar_charger
+            name: Ladegeräte
+          entities:
+            - entity: input_number.cellar_charger_hours
+              name: Ladegeräte Stunden
+              icon: mdi:battery-unknown
 
 # Charts
 - type: custom:mini-graph-card
