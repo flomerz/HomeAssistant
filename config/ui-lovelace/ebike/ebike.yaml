@@ -34,8 +34,10 @@
                   service_data:
                     ebike_charging_limit: 100%
           entities:
+            - entity: input_datetime.ebike_charge
+              name: Zeitpunkt
             - entity: input_select.ebike_charging_limit
-              name: E-Bike Akku Limite
+              name: Limite
               icon: mdi:battery-unknown
         - type: custom:fold-entity-row
           open: true
@@ -46,7 +48,7 @@
             secondary_info: last-changed
           entities:
             - entity: input_number.cellar_charger_hours
-              name: Ladegeräte Stunden
+              name: Dauer (Stunden)
               icon: mdi:battery-unknown
 
 # Charts

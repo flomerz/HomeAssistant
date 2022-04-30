@@ -56,3 +56,12 @@
   action:
     - service: switch.turn_off
       entity_id: switch.ebike
+
+
+- alias: E-Bike Laden Zeitpunkt
+  trigger:
+    - platform: time
+      at: input_datetime.ebike_charge
+  action:
+    - service: switch.turn_on
+      entity_id: switch.ebike

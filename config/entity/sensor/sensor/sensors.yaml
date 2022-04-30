@@ -21,23 +21,3 @@
   state_topic: "homie/espresso/sensor/humidity"
   qos: 0
   unit_of_measurement: "%"
-
-- platform: rest
-  name: ebike_report
-  resource: !secret ebike_report_url
-  scan_interval: 30
-  json_attributes:
-    - power
-    - temperature
-  value_template: "OK"
-
-- platform: template
-  sensors:
-    ebike_temperature:
-      value_template: "{{ state_attr('sensor.ebike_report', 'temperature') }}"
-      device_class: temperature
-      unit_of_measurement: "°C"
-    ebike_power:
-      value_template: "{{ state_attr('sensor.ebike_report', 'power') }}"
-      device_class: power
-      unit_of_measurement: "W"
