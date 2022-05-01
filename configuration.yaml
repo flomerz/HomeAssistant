@@ -35,6 +35,8 @@ recorder:
   include:
     entity_globs:
       - input_boolean.state_*
+      - binary_sensor.motion_*
+      - binary_sensor.sensor_door_contact
       - sensor.temperature_espresso
       - sensor.netatmo_home_*_co2
       - sensor.netatmo_home_*_temperature
