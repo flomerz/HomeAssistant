@@ -4,4 +4,3 @@ ebike_charging_limit:
     - 60%
     - 90%
     - 100%
-  initial: 60%
