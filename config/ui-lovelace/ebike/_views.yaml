@@ -1,0 +1,6 @@
+views:
+  - badges: []
+    title: E-Bike
+    path: ebike
+    icon: mdi:bike
+    cards: !include ebike.yaml

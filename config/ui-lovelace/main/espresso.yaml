@@ -7,6 +7,7 @@
       name: Espresso
       icon: mdi:coffee
       state_color: true
+      secondary_info: last-changed
       toggle: true
       entities:
         - entity: sensor.temperature_espresso

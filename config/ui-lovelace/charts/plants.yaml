@@ -20,7 +20,7 @@
       decimals: 0
       hour24: true
       hours_to_show: 168
-      points_per_hour: 0.1
+      points_per_hour: 0.5
       lower_bound: 0
       upper_bound: 100
       show:
@@ -56,7 +56,7 @@
       decimals: 0
       hour24: true
       hours_to_show: 168
-      points_per_hour: 0.1
+      points_per_hour: 0.5
       lower_bound: 0
       upper_bound: 3000
       show:

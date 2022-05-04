@@ -1,0 +1,4 @@
+views:
+  - title: Einstellungen
+    path: settings
+    cards: !include settings.yaml

@@ -1,1 +1,1 @@
-views: !include config/ui-lovelace/tabs.yaml
+!include config/ui-lovelace/main/_views.yaml

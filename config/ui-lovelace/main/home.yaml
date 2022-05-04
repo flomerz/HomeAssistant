@@ -1,0 +1,290 @@
+- type: entities
+  show_header_toggle: false
+  entities:
+    ####################  States  ####################
+    - type: custom:paper-buttons-row
+      base_config:
+          name: false
+          layout: icon_name
+      buttons: 
+        - entity: input_boolean.state_home
+          name: "{{ (states.input_boolean.state_home.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:home'
+        - entity: input_boolean.state_sleep
+          name: "{{ (states.input_boolean.state_sleep.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:sleep'
+        - entity: input_boolean.state_workroom
+          name: "{{ (states.input_boolean.state_workroom.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:desk'
+        - entity: input_boolean.state_fitnessroom
+          name: "{{ (states.input_boolean.state_fitnessroom.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:weight-lifter'
+        - entity: input_boolean.state_media
+          name: "{{ (states.input_boolean.state_media.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:projector-screen'
+
+    - type: section
+
+    ####################  Lights  ####################
+    # Wohnzimmer
+    - type: custom:fold-entity-row
+      head:
+        type: 'custom:multiple-entity-row'
+        entity: light.livingroom_rgbww
+        name: Wohnzimmer
+        icon: mdi:lightbulb-group
+        secondary_info: last-changed
+        show_state: false
+        entities:
+          - entity: automation.livingroom_motion_off
+            name: Auto-OFF
+            toggle: true
+      entities:
+        - entity: light.shelly_diningtable
+          name: Esstisch
+        - entity: light.livingroom_rgbww
+          name: LED
+        - entity: light.livingroom_front
+          name: Vorne
+        - entity: light.livingroom_sofatable
+          name: Sofatisch
+        # - entity: light.christmas_light
+        #   name: Weihnacht
+    - type: custom:paper-buttons-row
+      base_config:
+        layout: icon
+        styles:
+            button:
+              color: >-
+                {% if is_state('input_select.state_livingroom_light', config.name) %}
+                  var(--paper-item-icon-active-color)
+                {% else%}
+                  var(--paper-item-icon-color)
+                {% endif %}
+      buttons:
+        - name: Hell
+          icon: 'mdi:track-light'
+          tap_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.state_livingroom_light
+              option: Hell
+        - name: Normal
+          icon: 'mdi:lightbulb-group'
+          tap_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.state_livingroom_light
+              option: Normal
+        - name: Chill
+          icon: 'mdi:lightbulb-multiple'
+          tap_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.state_livingroom_light
+              option: Chill
+        - name: Beamer Hell
+          icon: 'mdi:lightbulb'
+          tap_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.state_livingroom_light
+              option: Beamer Hell
+        - name: Beamer
+          icon: 'mdi:projector-screen'
+          tap_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.state_livingroom_light
+              option: Beamer
+        - name: Film
+          icon: 'mdi:movie-open'
+          tap_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.state_livingroom_light
+              option: Film
+        - name: Aus
+          icon: 'mdi:lightbulb-group-off'
+          tap_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.state_livingroom_light
+              option: Aus
+
+    - type: section
+
+    # Küche
+    - type: 'custom:multiple-entity-row'
+      entity: light.kitchen
+      name: Küche
+      secondary_info: last-changed
+      show_state: false
+      entities:
+        - entity: light.shelly_kitchen
+          name: Zeile
+          toggle: true
+        - entity: light.kitchen
+          name: Decke
+          toggle: true
+
+    # Schlafzimmer
+    - type: 'custom:slider-entity-row'
+      entity: light.light_bedroom_light
+      name: Schlafzimmer
+      secondary_info: last-changed
+      toggle: true
+
+    # Büro
+    - type: 'custom:multiple-entity-row'
+      entity: light.light_workroom_light
+      name: Büro
+      secondary_info: last-changed
+      show_state: false
+      entities:
+        - name: Kalt
+          icon: mdi:brightness-5
+          state_color: true
+          tap_action:
+            action: call-service
+            service: light.turn_on
+            service_data:
+              entity_id: light.light_workroom_light
+              color_temp: 250
+        - name: Normal
+          icon: mdi:brightness-6
+          state_color: true
+          tap_action:
+            action: call-service
+            service: light.turn_on
+            service_data:
+              entity_id: light.light_workroom_light
+              color_temp: 352
+        - name: Warm
+          icon: mdi:brightness-7
+          state_color: true
+          tap_action:
+            action: call-service
+            service: light.turn_on
+            service_data:
+              entity_id: light.light_workroom_light
+              color_temp: 454
+        - entity: light.workroom_salt_light
+          name: Salz
+          toggle: true
+        - entity: light.light_workroom_light
+          name: Licht
+          toggle: true
+
+    # Fitnesszimmer
+    - name: Fitnesszimmer
+      entity: light.shelly_fitnessroom
+      secondary_info: last-changed
+
+    # Eingang
+    - type: 'custom:multiple-entity-row'
+      entity: light.floor
+      name: Eingang
+      secondary_info: last-changed
+      show_state: false
+      entities:
+        - entity: light.light_door
+          name: Türe
+          toggle: true
+        - entity: light.floor
+          name: Gang
+          toggle: true
+
+    # WC
+    - type: 'custom:multiple-entity-row'
+      entity: light.shelly_wc
+      name: WC
+      secondary_info: last-changed
+      show_state: false
+      entities:
+        - entity: light.wc
+          name: LED
+          toggle: true
+        - entity: light.shelly_wc
+          name: Lavabo
+          toggle: true
+
+    # Badezimmer
+    - type: 'custom:multiple-entity-row'
+      entity: light.shelly_bathroom
+      name: Badezimmer
+      secondary_info: last-changed
+      show_state: false
+      entities:
+        - entity: light.bathroom_led
+          name: LED
+          toggle: true
+        - entity: light.shelly_bathroom
+          name: Lavabo
+          toggle: true
+
+    - type: section
+
+    ####################  Personen  ####################
+    - type: custom:paper-buttons-row
+      base_config:
+        layout: icon_name
+        state_styles:
+            "home":
+              button:
+                color: var(--paper-item-icon-active-color)
+            "not_home":
+              button:
+                color: var(--paper-item-icon-color)
+      buttons:
+        - entity: person.florian
+          name: Florian ({{ (states.person.florian.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }})
+          tap_action:
+            action: navigate
+            navigation_path: /lovelace-map
+        - entity: person.louisa
+          name: Louisa ({{ (states.person.louisa.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }})
+          tap_action:
+            action: navigate
+            navigation_path: /lovelace-map
+
+    - type: section
+
+    ####################  Motion  ####################
+    - type: custom:paper-buttons-row
+      base_config:
+        layout: icon_name
+      buttons:
+        - entity: binary_sensor.sensor_door_contact
+          name: "{{ (states.binary_sensor.sensor_door_contact.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          state_icons:
+              "off": "mdi:door-closed"
+              "on": "mdi:door-open"
+        - entity: binary_sensor.motion_floor
+          name: "{{ (states.binary_sensor.motion_floor.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:floor-plan'
+        - entity: binary_sensor.motion_livingroom_occupancy
+          name: "{{ (states.binary_sensor.motion_livingroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:sofa'
+        - entity: binary_sensor.motion_kitchen
+          name: "{{ (states.binary_sensor.motion_kitchen.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:pot-steam'
+        - entity: binary_sensor.motion_workroom_occupancy
+          name: "{{ (states.binary_sensor.motion_workroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:desk'
+        - entity: binary_sensor.motion_fitnessroom_occupancy
+          name: "{{ (states.binary_sensor.motion_fitnessroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:weight-lifter'
+        - entity: binary_sensor.motion_bathroom_occupancy
+          name: "{{ (states.binary_sensor.motion_bathroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:shower'
+        - entity: binary_sensor.motion_wc
+          name: "{{ (states.binary_sensor.motion_wc.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          icon: 'mdi:toilet'

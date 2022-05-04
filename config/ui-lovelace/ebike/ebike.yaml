@@ -55,15 +55,15 @@
 - type: custom:mini-graph-card
   entities:
     - entity: sensor.ebike_power
-      name: Power
+      name: Power (24h)
       show_points: false
   animate: true
   height: 100
   line_width: 1
   decimals: 1
   hour24: true
-  hours_to_show: 168
-  points_per_hour: 12
+  hours_to_show: 24
+  points_per_hour: 60
   show:
     name: true
     icon: true
@@ -75,12 +75,16 @@
   color_thresholds:
     - value: 0
       color: '#ff0000'
-    - value: 140
+    - value: 50
+      color: '#0000ff'
+    - value: 175
+      color: '#0000ff'
+    - value: 180
       color: '#00ff00'
 - type: custom:mini-graph-card
   entities:
     - entity: sensor.ebike_temperature
-      name: Temperatur
+      name: Temperatur (7d)
       show_points: false
   animate: true
   height: 100
