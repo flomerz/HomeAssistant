@@ -6,7 +6,6 @@ cellar_charge:
       entity_id: input_number.cellar_charger_hours
       data:
         value: 3
-
     - service: input_select.select_option
       data:
         entity_id: input_select.ebike_charging_limit
@@ -19,15 +18,17 @@ cellar_charge:
     # wait
     - delay:
         hours: 1
-
     - wait_template: "{{ now().hour >= 22 or now().hour < 7 }}"
 
     # turn on chargers
     - service: switch.turn_on
       entity_id: switch.cellar_charger
-    
     - service: switch.turn_on
       entity_id: switch.ebike
+
+    # wait
+    - delay:
+        minutes: 1
 
     # wait for chargers done
     - wait_template: "{{ is_state('switch.cellar_charger', 'off') }}"
@@ -38,14 +39,11 @@ cellar_charge:
 
 cellar_charge_stop:
   sequence:
-
     # turn off chargers
     - service: switch.turn_off
       entity_id: switch.cellar_charger
-    
     - service: switch.turn_off
       entity_id: switch.ebike
-
     # turn off led
     - service: switch.turn_off
       entity_id: switch.cellar_charger_led

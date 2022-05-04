@@ -1,7 +1,7 @@
 - platform: rest
   name: ebike_report
   resource: !secret ebike_report_url
-  scan_interval: 20
+  scan_interval: 10
   json_attributes:
     - power
     - temperature
