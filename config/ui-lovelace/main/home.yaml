@@ -31,6 +31,8 @@
       head:
         type: custom:config-template-card
         entities:
+          - light.livingroom_rgbww
+          - automation.livingroom_motion_off
           - sensor.netatmo_home_indoor_temperature
           - sensor.netatmo_home_indoor_co2
         variables:
@@ -158,6 +160,8 @@
     # Büro
     - type: custom:config-template-card
       entities:
+        - light.light_workroom_light
+        - light.workroom_salt_light
         - sensor.netatmo_home_indoor_buro_temperature
         - sensor.netatmo_home_indoor_buro_co2
       variables:
