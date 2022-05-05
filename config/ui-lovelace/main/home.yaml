@@ -29,16 +29,29 @@
     # Wohnzimmer
     - type: custom:fold-entity-row
       head:
-        type: 'custom:multiple-entity-row'
-        entity: light.livingroom_rgbww
-        name: Wohnzimmer
-        icon: mdi:lightbulb-group
-        secondary_info: last-changed
-        show_state: false
+        type: custom:config-template-card
         entities:
-          - entity: automation.livingroom_motion_off
-            name: Auto-OFF
-            toggle: true
+          - sensor.netatmo_home_indoor_temperature
+          - sensor.netatmo_home_indoor_co2
+        variables:
+          getName: |
+            () => {
+              const name = 'Wohnzimmer';
+              const temperature = states['sensor.netatmo_home_indoor_temperature'].state + '°';
+              const co2 = states['sensor.netatmo_home_indoor_co2'].state + 'ppm';
+              return name + ' (' + temperature + ', ' + co2 + ')';
+            }
+        card:
+          type: custom:multiple-entity-row
+          entity: light.livingroom_rgbww
+          name: "${ getName() }"
+          icon: mdi:lightbulb-group
+          secondary_info: last-changed
+          show_state: false
+          entities:
+            - entity: automation.livingroom_motion_off
+              name: Auto-OFF
+              toggle: true
       entities:
         - entity: light.shelly_diningtable
           name: Esstisch
@@ -143,45 +156,58 @@
       toggle: true
 
     # Büro
-    - type: 'custom:multiple-entity-row'
-      entity: light.light_workroom_light
-      name: Büro
-      secondary_info: last-changed
-      show_state: false
+    - type: custom:config-template-card
       entities:
-        - name: Kalt
-          icon: mdi:brightness-5
-          state_color: true
-          tap_action:
-            action: call-service
-            service: light.turn_on
-            service_data:
-              entity_id: light.light_workroom_light
-              color_temp: 250
-        - name: Normal
-          icon: mdi:brightness-6
-          state_color: true
-          tap_action:
-            action: call-service
-            service: light.turn_on
-            service_data:
-              entity_id: light.light_workroom_light
-              color_temp: 352
-        - name: Warm
-          icon: mdi:brightness-7
-          state_color: true
-          tap_action:
-            action: call-service
-            service: light.turn_on
-            service_data:
-              entity_id: light.light_workroom_light
-              color_temp: 454
-        - entity: light.workroom_salt_light
-          name: Salz
-          toggle: true
-        - entity: light.light_workroom_light
-          name: Licht
-          toggle: true
+        - sensor.netatmo_home_indoor_buro_temperature
+        - sensor.netatmo_home_indoor_buro_co2
+      variables:
+        getName: |
+            () => {
+              const name = 'Büro';
+              const temperature = states['sensor.netatmo_home_indoor_buro_temperature'].state + '°';
+              const co2 = states['sensor.netatmo_home_indoor_buro_co2'].state + 'ppm';
+              return name + ' (' + temperature + ', ' + co2 + ')';
+            }
+      card:
+        type: 'custom:multiple-entity-row'
+        entity: light.light_workroom_light
+        name: "${ getName() }"
+        secondary_info: last-changed
+        show_state: false
+        entities:
+          - name: Kalt
+            icon: mdi:brightness-5
+            state_color: true
+            tap_action:
+              action: call-service
+              service: light.turn_on
+              service_data:
+                entity_id: light.light_workroom_light
+                color_temp: 250
+          - name: Normal
+            icon: mdi:brightness-6
+            state_color: true
+            tap_action:
+              action: call-service
+              service: light.turn_on
+              service_data:
+                entity_id: light.light_workroom_light
+                color_temp: 352
+          - name: Warm
+            icon: mdi:brightness-7
+            state_color: true
+            tap_action:
+              action: call-service
+              service: light.turn_on
+              service_data:
+                entity_id: light.light_workroom_light
+                color_temp: 454
+          - entity: light.workroom_salt_light
+            name: Salz
+            toggle: true
+          - entity: light.light_workroom_light
+            name: Licht
+            toggle: true
 
     # Fitnesszimmer
     - name: Fitnesszimmer
