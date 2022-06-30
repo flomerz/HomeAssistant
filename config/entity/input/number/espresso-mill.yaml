@@ -2,7 +2,7 @@ espresso_mill_learning_rate:
   name: Esprosso Mill Learning Rate
   mode: slider
   min: 0.0
-  max: 1.0
+  max: 5.0
   step: 0.1
 
 # Single
@@ -11,7 +11,7 @@ espresso_mill_amount_single:
   unit_of_measurement: g
   mode: slider
   min: 7
-  max: 11
+  max: 10
   step: 0.1
 
 espresso_mill_amount_measure_single:
@@ -19,7 +19,7 @@ espresso_mill_amount_measure_single:
   unit_of_measurement: g
   mode: slider
   min: 3
-  max: 15
+  max: 14
   step: 0.1
 
 espresso_mill_time_single:
@@ -27,7 +27,7 @@ espresso_mill_time_single:
   unit_of_measurement: s
   mode: slider
   min: 1
-  max: 20
+  max: 30
   step: 0.01
 
 # Double
@@ -52,7 +52,7 @@ espresso_mill_time_double:
   unit_of_measurement: s
   mode: slider
   min: 1
-  max: 20
+  max: 30
   step: 0.01
 
 # Triple

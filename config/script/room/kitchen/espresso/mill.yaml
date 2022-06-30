@@ -78,7 +78,9 @@ espresso_mill_update:
           {% set current_time = states(time_entity_id) | float %}
           {% set target_amount = states(amount_entity_id) | float %}
           {% set target_time = target_amount * amount_time %}
-          {% set new_time = (1 - learning_rate) * current_time + learning_rate * target_time %}
+          {% set time_error = (target_time - current_time) | abs %}
+          {% set learning_ratio = 1/e**(time_error*e*learning_rate) %}
+          {% set new_time = learning_ratio*current_time + (1-learning_ratio)*target_time %}
           {{ new_time | round(2) }}
     - service: input_number.set_value
       data_template:
