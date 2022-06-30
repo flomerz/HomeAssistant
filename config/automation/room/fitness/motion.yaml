@@ -15,7 +15,7 @@
           conditions: !include ../../../condition/night.yaml
         - condition: numeric_state
           entity_id: sensor.motion_fitnessroom_illuminance
-          below: 60
+          below: 50
   action:
     - service: light.turn_on
       entity_id: light.shelly_fitnessroom
