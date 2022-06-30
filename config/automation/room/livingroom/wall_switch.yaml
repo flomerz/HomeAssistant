@@ -6,8 +6,6 @@
         entity_id: binary_sensor.shelly_diningtable_switch
         click_cnt: 1
   action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_media
     - choose:
         - conditions:
             - condition: state
@@ -21,6 +19,8 @@
           entity_id: media_player.shield_cast
           data:
             volume_level: 0.5
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_media
 
 
 - alias: livingroom_wall_switch_click_2
