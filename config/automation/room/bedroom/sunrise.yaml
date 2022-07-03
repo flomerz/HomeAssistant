@@ -5,7 +5,7 @@
   condition:
     - condition: template
       value_template: >
-        {% set device = states.device_tracker.florian %}
+        {% set device = states.person.florian %}
         {% set isHome = not( device.state == 'not_home' and (now() - device.last_changed).total_seconds() > 10*60*60 ) %}
         {% set hasAlarm = states('sensor.florian_handy_next_alarm') != 'unavailable' %}
         {{ hasAlarm and isHome }}

@@ -5,7 +5,7 @@
       above: 80
   condition:
     - condition: state
-      entity_id: device_tracker.florian
+      entity_id: person.florian
       state: 'home'
   action:
     - service: script.notify_google
@@ -22,7 +22,7 @@
       below: 30
   condition:
     - condition: state
-      entity_id: device_tracker.florian
+      entity_id: person.florian
       state: 'home'
     - condition: state
       entity_id: sensor.florian_handy_battery_state
