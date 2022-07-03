@@ -9,7 +9,7 @@ cellar_charge:
     - service: input_select.select_option
       data:
         entity_id: input_select.ebike_charging_limit
-        option: 60%
+        option: 70%
 
     # turn on led
     - service: switch.turn_on
