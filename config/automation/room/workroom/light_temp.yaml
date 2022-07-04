@@ -1,0 +1,14 @@
+- alias: workroom_light_temp
+  trigger:
+    - platform: time_pattern
+      minutes: /5
+  condition:
+    - condition: state
+      entity_id: light.light_workroom_light
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.light_workroom_light
+      data_template:
+        color_temp: "{{ states('sensor.workroom_light_temp') }}"
+        transition: 60

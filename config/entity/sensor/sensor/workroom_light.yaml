@@ -1,0 +1,26 @@
+- platform: template
+  sensors:
+    workroom_light_temp:
+      value_template: >
+        {% set coldLightTemp = 250 %}
+        {% set warmLightTemp = 454 %}
+        {% set risingDatetime = as_datetime(state_attr('sun.sun', 'next_rising')) %}
+        {% set settingDatetime = as_datetime(state_attr('sun.sun', 'next_setting')) %}
+        {% set duskDatetime = as_datetime(state_attr('sun.sun', 'next_dusk')) %}
+        {% set nowDatetime = utcnow() %}
+
+        {% set timeToRising = risingDatetime - nowDatetime %}
+        {% set timeToSetting = settingDatetime - nowDatetime %}
+        {% set timeToDusk = duskDatetime- nowDatetime %}
+
+        {% if timeToRising < timeToSetting and timeToRising < timeToDusk %}
+            {% set lightTemp = warmLightTemp %}
+        {% elif timeToSetting < timeToDusk %}
+            {% set lightTemp = coldLightTemp %}
+        {% else %}
+            {% set coldWarmLightTempDiff = warmLightTemp - coldLightTemp %}
+            {% set settingToDuskDatetimeDiff = duskDatetime - settingDatetime + timedelta(days=1) %}
+            {% set timeToDuskRatio = 1 - (timeToDusk / settingToDuskDatetimeDiff) %}
+            {% set lightTemp = coldLightTemp + int(timeToDuskRatio * coldWarmLightTempDiff) %}
+        {% endif %}
+        {{ lightTemp }}
