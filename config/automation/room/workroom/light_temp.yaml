@@ -6,6 +6,8 @@
     - condition: state
       entity_id: light.light_workroom_light
       state: 'on'
+    - condition: template
+      value_template: "{{ state_attr('light.light_workroom_light', 'color_temp') | int != states('sensor.workroom_light_temp') | int}}"
   action:
     - service: light.turn_on
       entity_id: light.light_workroom_light
