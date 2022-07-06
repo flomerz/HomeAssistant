@@ -173,47 +173,18 @@
               return name + ' (' + temperature + ', ' + co2 + ')';
             }
       card:
-        type: custom:fold-entity-row
-        head:
-          type: 'custom:multiple-entity-row'
-          entity: light.light_workroom_light
-          name: "${ getName() }"
-          secondary_info: last-changed
-          show_state: false
-          entities:
-            - entity: light.workroom_salt_light
-              name: Salz
-              toggle: true
-            - entity: light.light_workroom_light
-              name: Licht
-              toggle: true
+        type: 'custom:multiple-entity-row'
+        entity: light.light_workroom_light
+        name: "${ getName() }"
+        secondary_info: last-changed
+        show_state: false
         entities:
-          - type: custom:paper-buttons-row
-            buttons:
-              - name: Kalt
-                icon: mdi:brightness-7
-                tap_action:
-                  action: call-service
-                  service: light.turn_on
-                  service_data:
-                    entity_id: light.light_workroom_light
-                    color_temp: 250
-              - name: Normal
-                icon: mdi:brightness-6
-                tap_action:
-                  action: call-service
-                  service: light.turn_on
-                  service_data:
-                    entity_id: light.light_workroom_light
-                    color_temp: 352
-              - name: Warm
-                icon: mdi:brightness-5
-                tap_action:
-                  action: call-service
-                  service: light.turn_on
-                  service_data:
-                    entity_id: light.light_workroom_light
-                    color_temp: 454
+          - entity: light.workroom_salt_light
+            name: Salz
+            toggle: true
+          - entity: light.light_workroom_light
+            name: Licht
+            toggle: true
 
 
     # Fitnesszimmer

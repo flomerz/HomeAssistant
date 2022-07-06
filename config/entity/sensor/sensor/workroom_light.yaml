@@ -5,7 +5,7 @@
         {% set coldLightTemp = 250 %}
         {% set warmLightTemp = 454 %}
         {% set risingDatetime = as_datetime(state_attr('sun.sun', 'next_rising')) %}
-        {% set settingDatetime = as_datetime(state_attr('sun.sun', 'next_setting')) %}
+        {% set settingDatetime = as_datetime(state_attr('sun.sun', 'next_setting')) - timedelta(hours=1) %}
         {% set duskDatetime = as_datetime(state_attr('sun.sun', 'next_dusk')) %}
         {% set nowDatetime = utcnow() %}
 
