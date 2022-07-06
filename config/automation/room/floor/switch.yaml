@@ -1,8 +1,8 @@
 - alias: Floor Switch LEFT
   trigger:
     - platform: state
-      entity_id: sensor.switch_door_click
-      to: 'left'
+      entity_id: sensor.switch_door_action
+      to: 'single_left'
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_home
@@ -17,8 +17,8 @@
 - alias: Floor Switch RIGHT
   trigger:
     - platform: state
-      entity_id: sensor.switch_door_click
-      to: 'right'
+      entity_id: sensor.switch_door_action
+      to: 'single_right'
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
@@ -27,8 +27,8 @@
 - alias: Floor Switch BOTH Clean
   trigger:
     - platform: state
-      entity_id: sensor.switch_door_click
-      to: 'both'
+      entity_id: sensor.switch_door_action
+      to: 'single_both'
   condition:
     - condition: state
       entity_id: vacuum.staubi
@@ -39,8 +39,8 @@
 - alias: Floor Switch BOTH Clean Stop
   trigger:
     - platform: state
-      entity_id: sensor.switch_door_click
-      to: 'both'
+      entity_id: sensor.switch_door_action
+      to: 'single_both'
   condition:
     - condition: state
       entity_id: vacuum.staubi

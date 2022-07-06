@@ -1,8 +1,8 @@
 - alias: Livingroom Switch LEFT
   trigger:
     - platform: state
-      entity_id: sensor.switch_livingroom_click
-      to: 'left'
+      entity_id: sensor.switch_livingroom_action
+      to: 'single_left'
   action:
     - service: input_select.select_previous
       entity_id: input_select.state_livingroom_light
@@ -12,8 +12,8 @@
 - alias: Livingroom Switch RIGHT
   trigger:
     - platform: state
-      entity_id: sensor.switch_livingroom_click
-      to: 'right'
+      entity_id: sensor.switch_livingroom_action
+      to: 'single_right'
   action:
     - service: input_select.select_next
       entity_id: input_select.state_livingroom_light
@@ -23,8 +23,8 @@
 - alias: Livingroom Switch BOTH
   trigger:
     - platform: state
-      entity_id: sensor.switch_livingroom_click
-      to: 'both'
+      entity_id: sensor.switch_livingroom_action
+      to: 'single_both'
   action:
     - service: input_boolean.toggle
       entity_id: input_boolean.state_media
