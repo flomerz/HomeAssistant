@@ -2,6 +2,9 @@
   trigger:
     - platform: time_pattern
       minutes: /1
+    - platform: state
+      entity_id: light.light_workroom_light
+      to: 'on'
   condition:
     - condition: state
       entity_id: light.light_workroom_light

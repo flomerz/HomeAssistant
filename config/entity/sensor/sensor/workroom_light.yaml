@@ -4,23 +4,20 @@
       value_template: >
         {% set coldLightTemp = 250 %}
         {% set warmLightTemp = 454 %}
-        {% set risingDatetime = as_datetime(state_attr('sun.sun', 'next_rising')) %}
-        {% set settingDatetime = as_datetime(state_attr('sun.sun', 'next_setting')) - timedelta(hours=1) %}
-        {% set duskDatetime = as_datetime(state_attr('sun.sun', 'next_dusk')) %}
-        {% set nowDatetime = utcnow() %}
+        {% set risingTime = as_datetime(state_attr('sun.sun', 'next_rising')).replace(year=1, month=1, day=1) %}
+        {% set settingTime = as_datetime(state_attr('sun.sun', 'next_setting')).replace(year=1, month=1, day=1) - timedelta(hours=1) %}
+        {% set duskTime = as_datetime(state_attr('sun.sun', 'next_dusk')).replace(year=1, month=1, day=1) %}
+        {% set nowTime = utcnow().replace(year=1, month=1, day=1) %}
 
-        {% set timeToRising = risingDatetime - nowDatetime %}
-        {% set timeToSetting = settingDatetime - nowDatetime %}
-        {% set timeToDusk = duskDatetime- nowDatetime %}
-
-        {% if timeToRising < timeToSetting and timeToRising < timeToDusk %}
+        {% if nowTime < risingTime or nowTime > duskTime %}
             {% set lightTemp = warmLightTemp %}
-        {% elif timeToSetting < timeToDusk %}
+        {% elif nowTime < settingTime %}
             {% set lightTemp = coldLightTemp %}
         {% else %}
             {% set coldWarmLightTempDiff = warmLightTemp - coldLightTemp %}
-            {% set settingToDuskDatetimeDiff = duskDatetime - settingDatetime + timedelta(days=1) %}
-            {% set timeToDuskRatio = 1 - (timeToDusk / settingToDuskDatetimeDiff) %}
+            {% set settingToDuskTimeDiff = duskTime - settingTime %}
+            {% set timeToDusk = duskTime - nowTime%}
+            {% set timeToDuskRatio = 1 - (timeToDusk / settingToDuskTimeDiff) %}
             {% set lightTemp = coldLightTemp + int(timeToDuskRatio * coldWarmLightTempDiff) %}
         {% endif %}
         {{ lightTemp }}
