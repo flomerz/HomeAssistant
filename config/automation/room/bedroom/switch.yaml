@@ -1,33 +1,8 @@
-- alias: Bedroom Color Right
+- alias: switch_bedroom_left
   trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
-      to: 'arrow_right_click'
-  action:
-    - service: light.turn_on
-      entity_id: light.light_bedroom_light
-      data:
-        rgb_color: [255, 100, 1] #orange
-        brightness: 168
-
-- alias: Bedroom Color Left
-  trigger:
-    - platform: state
-      entity_id: sensor.switch_bedroom_action
-      to: 'arrow_left_click'
-  action:
-    - service: light.turn_on
-      entity_id: light.light_bedroom_light
-      data:
-        rgb_color: [255, 0, 0] #red
-        brightness: 168
-
-
-- alias: Bedroom Left Hold
-  trigger:
-    - platform: state
-      entity_id: sensor.switch_bedroom_action
-      to: 'arrow_left_hold'
+      to: 'single_left'
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
@@ -35,13 +10,12 @@
       entity_id: switch.espresso
     - service: script.music_radio_srf4
 
-
-- alias: Bedroom Right Hold
+- alias: switch_bedroom_right
   mode: restart
   trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
-      to: 'arrow_right_hold'
+      to: 'single_right'
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
@@ -55,12 +29,11 @@
         hours: 2
     - service: script.all_off
 
-
-- alias: switch_bedroom_toggle_on
+- alias: switch_bedroom_both
   trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
-      to: 'toggle'
+      to: 'single_both'
   action:
-    - service: light.toggle
-      entity_id: light.light_bedroom_light
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.state_sleep
