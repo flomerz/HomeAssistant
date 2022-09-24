@@ -1,0 +1,14 @@
+- alias: Fitnesszimmer Ventilator
+  trigger:
+    - platform: state
+      entity_id: sensor.dimmer_brightness
+  condition:
+    - condition: state
+      entity_id: binary_sensor.shelly_fan_switch
+      state: 'on'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.shelly_fan
+        brightness: "{{ states('sensor.dimmer_brightness') }}"
+

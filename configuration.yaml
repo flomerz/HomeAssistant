@@ -136,6 +136,9 @@ shelly:
       name: Licht Esstisch
       entity_id: diningtable
       light_switch: true
+    - id: "F3C4C0"
+      name: Ventilator
+      entity_id: fan
 
 netatmo:
   client_id: !secret netatmo_client_id
