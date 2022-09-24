@@ -15,7 +15,7 @@
       entity_id: binary_sensor.motion_wc
       to: 'off'
       for:
-        minutes: 2
+        minutes: 5
   action:
     service: light.turn_off
     entity_id: light.wc

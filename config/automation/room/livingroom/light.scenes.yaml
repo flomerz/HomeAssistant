@@ -99,7 +99,7 @@
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:
-        brightness_pct: 50
+        brightness_pct: 20
         effect: none
         rgbww_color: [255, 0, 0, 0, 255]
     - service: light.turn_on
@@ -193,3 +193,13 @@
       entity_id: light.shelly_diningtable
     - service: light.turn_on
       entity_id: light.christmas_light
+
+- alias: Dimmer
+  trigger:
+    - platform: state
+      entity_id: sensor.dimmer_brightness
+  action:
+    - service: light.turn_on
+      entity_id: light.livingroom_rgbww
+      data_template:
+        brightness: "{{ states('sensor.dimmer_brightness') }}"

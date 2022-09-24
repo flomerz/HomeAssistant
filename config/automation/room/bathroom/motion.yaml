@@ -10,7 +10,7 @@
           conditions: !include ../../../condition/night.yaml
         - condition: numeric_state
           entity_id: sensor.motion_bathroom_illuminance
-          below: 30
+          below: 20
   action:
     service: light.turn_on
     entity_id: light.bathroom_led
@@ -21,7 +21,7 @@
       entity_id: binary_sensor.motion_bathroom_occupancy
       to: 'off'
       for:
-        minutes: 1
+        minutes: 5
   action:
     - service: light.turn_off
       entity_id: light.bathroom_led
