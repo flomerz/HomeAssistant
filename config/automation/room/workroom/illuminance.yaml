@@ -2,7 +2,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.motion_workroom_illuminance
-      above: 20
+      above: 30
   action:
     - service: light.turn_off
       entity_id: light.light_workroom_light
