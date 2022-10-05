@@ -39,4 +39,31 @@ bedroom_light_wakeup:
       data:
         rgb_color: [255, 226, 145]
         brightness: 255
+        transition: 290
+
+    - delay:
+        seconds: 300
+    
+    # keep on (1h auto off)
+    - service: light.turn_off
+      entity_id: light.light_bedroom_light
+
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
+
+    - delay:
+        seconds: 300
+
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
+      data:
+        rgb_color: [255, 100, 1] #orange
+        brightness: 255
         transition: 300
+
+    # keep on (1h auto off)
+    - service: light.turn_off
+      entity_id: light.light_bedroom_light
+
+    - service: light.turn_on
+      entity_id: light.light_bedroom_light
