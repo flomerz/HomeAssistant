@@ -1,6 +1,9 @@
 wakeup:
   sequence:
 
+    - service: automation.turn_off
+      entity_id: automation.bedroom_light_autooff
+
     # async
     - service: script.turn_on
       entity_id:
@@ -13,17 +16,17 @@ wakeup:
     - service: script.turn_on
       entity_id: script.music_radio_srf4
     
-    - delay:
-        minutes: 5
-    
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
 
     - delay:
-        minutes: 55
+        minutes: 90
     
     - service: light.turn_off
       entity_id: light.light_bedroom_light
+
+    - service: automation.turn_on
+      entity_id: automation.bedroom_light_autooff
 
     - service: script.music_turn_off
 
