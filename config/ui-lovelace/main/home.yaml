@@ -29,31 +29,16 @@
     # Wohnzimmer
     - type: custom:fold-entity-row
       head:
-        type: custom:config-template-card
+        type: custom:multiple-entity-row
+        entity: light.livingroom_rgbww
+        name: Wohnzimmer
+        icon: mdi:lightbulb-group
+        secondary_info: last-changed
+        show_state: false
         entities:
-          - light.livingroom_rgbww
-          - automation.livingroom_motion_off
-          - sensor.netatmo_home_indoor_temperature
-          - sensor.netatmo_home_indoor_co2
-        variables:
-          getName: |
-            () => {
-              const name = 'Wohnzimmer';
-              const temperature = states['sensor.netatmo_home_indoor_temperature'].state + '°';
-              const co2 = states['sensor.netatmo_home_indoor_co2'].state + 'ppm';
-              return name + ' (' + temperature + ', ' + co2 + ')';
-            }
-        card:
-          type: custom:multiple-entity-row
-          entity: light.livingroom_rgbww
-          name: "${ getName() }"
-          icon: mdi:lightbulb-group
-          secondary_info: last-changed
-          show_state: false
-          entities:
-            - entity: automation.livingroom_motion_off
-              name: Auto-OFF
-              toggle: true
+          - entity: automation.livingroom_motion_off
+            name: Auto-OFF
+            toggle: true
       entities:
         - entity: light.shelly_diningtable
           name: Esstisch
