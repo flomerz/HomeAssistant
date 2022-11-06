@@ -9,7 +9,7 @@
         - condition: and
           conditions: !include ../../../condition/night.yaml
         - condition: numeric_state
-          entity_id: sensor.motion_bathroom_illuminance
+          entity_id: sensor.motion_bathroom_illuminance_lux
           below: 20
   action:
     service: light.turn_on

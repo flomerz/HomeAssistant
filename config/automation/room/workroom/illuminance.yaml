@@ -1,7 +1,7 @@
 - alias: workroom_illuminance_high
   trigger:
     - platform: numeric_state
-      entity_id: sensor.motion_workroom_illuminance
+      entity_id: sensor.motion_workroom_illuminance_lux
       above: 30
   action:
     - service: light.turn_off
