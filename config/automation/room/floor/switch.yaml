@@ -24,26 +24,11 @@
       entity_id: input_boolean.state_sleep
 
 
-- alias: Floor Switch BOTH Clean
+- alias: Floor Switch BOTH
   trigger:
     - platform: state
       entity_id: sensor.switch_door_action
       to: 'single_both'
-  condition:
-    - condition: state
-      entity_id: vacuum.staubi
-      state: 'docked'
   action:
-    - service: script.vacuum_start
-
-- alias: Floor Switch BOTH Clean Stop
-  trigger:
-    - platform: state
-      entity_id: sensor.switch_door_action
-      to: 'single_both'
-  condition:
-    - condition: state
-      entity_id: vacuum.staubi
-      state: 'cleaning'
-  action:
-    - service: script.vacuum_stop
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_home

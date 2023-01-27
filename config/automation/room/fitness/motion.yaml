@@ -1,49 +1,10 @@
-- alias: fitnessroom_motion_on
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_fitnessroom_occupancy
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: input_boolean.state_fitnessroom
-      state: 'off'
-    - condition: and
-      conditions: !include ../../../condition/awake.yaml
-    - condition: or
-      conditions:
-        - condition: and
-          conditions: !include ../../../condition/night.yaml
-        - condition: numeric_state
-          entity_id: sensor.motion_fitnessroom_illuminance_lux
-          below: 20
-  action:
-    - service: light.turn_on
-      entity_id: light.shelly_fitnessroom
-
-
-- alias: fitnessroom_motion_off
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_fitnessroom_occupancy
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: input_boolean.state_fitnessroom
-      state: 'off'
-      for:
-        minutes: 5
-  action:
-    - service: light.turn_off
-      entity_id: light.shelly_fitnessroom
-
-
 - alias: fitnessroom_motion_off_long
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_fitnessroom_occupancy
       to: 'off'
       for:
-        minutes: 90
+        minutes: 120
   action:
     - service: light.turn_off
       entity_id: light.shelly_fitnessroom
