@@ -4,12 +4,12 @@
       entity_id: media_player.wohnzimmer_tv
       to: 'on'
   action:
-    - service: script.receiver_on
     # scene beamer
     - service: input_select.select_option
       data:
         entity_id: input_select.state_livingroom_light
         option: Beamer
+    - service: script.receiver_on
 
 - alias: wohnzimmer_tv_off
   trigger:
@@ -17,10 +17,10 @@
       entity_id: media_player.wohnzimmer_tv
       to: 'off'
   action:
-    - service: script.receiver_off
     # scene
     - service: input_select.select_option
       data:
         entity_id: input_select.state_livingroom_light
         option: Chill
+    - service: script.receiver_off
 
