@@ -1,19 +1,19 @@
-- alias: shield_on
-  trigger:
-    - platform: state
-      entity_id: media_player.shield_cast
-      to: 'playing'
-  action:
-    - service: script.receiver_on
+# - alias: shield_on
+#   trigger:
+#     - platform: state
+#       entity_id: media_player.shield_cast
+#       to: 'playing'
+#   action:
+#     - service: script.receiver_on
 
-- alias: shield_off
-  trigger:
-    - platform: state
-      entity_id: media_player.shield_cast
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: input_boolean.state_media
-      state: 'off'
-  action:
-    - service: script.receiver_off
+# - alias: shield_off
+#   trigger:
+#     - platform: state
+#       entity_id: media_player.shield_cast
+#       to: 'off'
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.state_media
+#       state: 'off'
+#   action:
+#     - service: script.receiver_off

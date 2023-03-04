@@ -40,14 +40,16 @@
             name: Auto-OFF
             toggle: true
       entities:
-        - entity: light.shelly_diningtable
-          name: Esstisch
+        - entity: light.wohnzimmer_tv_ambilight
+          name: TV
         - entity: light.livingroom_rgbww
           name: LED
         - entity: light.livingroom_front
           name: Vorne
         - entity: light.livingroom_sofatable
           name: Sofatisch
+        - entity: light.shelly_diningtable
+          name: Esstisch
         # - entity: light.christmas_light
         #   name: Weihnacht
     - type: custom:paper-buttons-row

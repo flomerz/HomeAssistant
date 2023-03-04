@@ -1,0 +1,15 @@
+- alias: wohnzimmer_tv_on
+  trigger:
+    - platform: state
+      entity_id: media_player.wohnzimmer_tv
+      to: 'on'
+  action:
+    - service: script.receiver_on
+
+- alias: wohnzimmer_tv_off
+  trigger:
+    - platform: state
+      entity_id: media_player.wohnzimmer_tv
+      to: 'off'
+  action:
+    - service: script.receiver_off

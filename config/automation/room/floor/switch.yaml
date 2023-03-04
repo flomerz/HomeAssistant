@@ -4,15 +4,8 @@
       entity_id: sensor.switch_door_action
       to: 'single_left'
   action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.state_home
     - service: input_boolean.turn_off
-      entity_id: input_boolean.state_sleep
-    - service: light.turn_on
-      entity_id: light.floor
-    - service: light.turn_on
-      entity_id: light.light_door
-
+      entity_id: input_boolean.state_home
 
 - alias: Floor Switch RIGHT
   trigger:
@@ -22,13 +15,3 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
-
-
-- alias: Floor Switch BOTH
-  trigger:
-    - platform: state
-      entity_id: sensor.switch_door_action
-      to: 'single_both'
-  action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_home
