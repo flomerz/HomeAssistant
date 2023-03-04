@@ -99,7 +99,7 @@
       data:
         brightness_pct: 80
         effect: none
-        rgbww_color: [255, 0, 0, 0, 255]
+        rgbww_color: [255, 0, 0, 0, 150]
     - service: light.turn_off
       entity_id: light.christmas_light
 
@@ -124,7 +124,7 @@
       data:
         brightness_pct: 100
         effect: none
-        rgbww_color: [255, 0, 0, 0, 100]
+        rgbww_color: [255, 0, 0, 0, 150]
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:
