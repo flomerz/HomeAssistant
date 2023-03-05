@@ -24,6 +24,9 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Film'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -52,6 +55,10 @@
       entity_id: light.shelly_diningtable
     - service: light.turn_off
       entity_id: light.christmas_light
+    - service: light.turn_on
+      entity_id: light.wohnzimmer_tv_ambilight
+      data:
+        effect: 'FOLLOW_VIDEO: STANDARD'
 
 
 - alias: Light Beamer
@@ -59,6 +66,9 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Beamer'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -77,6 +87,10 @@
         rgbww_color: [0, 0, 255, 0, 150]
     - service: light.turn_off
       entity_id: light.christmas_light
+    - service: light.turn_on
+      entity_id: light.wohnzimmer_tv_ambilight
+      data:
+        effect: 'FOLLOW_VIDEO: STANDARD'
 
 
 - alias: Light Beamer Bright
@@ -84,6 +98,9 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Beamer Hell'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -102,6 +119,10 @@
         rgbww_color: [255, 0, 0, 0, 150]
     - service: light.turn_off
       entity_id: light.christmas_light
+    - service: light.turn_on
+      entity_id: light.wohnzimmer_tv_ambilight
+      data:
+        effect: 'FOLLOW_VIDEO: STANDARD'
 
 
 - alias: Light Chill
@@ -109,6 +130,9 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Chill'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -133,6 +157,12 @@
       entity_id: light.shelly_diningtable
     - service: light.turn_on
       entity_id: light.christmas_light
+    - service: light.turn_on
+      entity_id: light.wohnzimmer_tv_ambilight
+      data:
+        brightness_pct: 30
+        rgb_color: [255, 0, 255]
+        effect: 'Mode: manual'
 
 
 - alias: Light Ambient
@@ -140,6 +170,9 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Normal'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -160,6 +193,12 @@
       entity_id: light.shelly_diningtable
     - service: light.turn_on
       entity_id: light.christmas_light
+    - service: light.turn_on
+      entity_id: light.wohnzimmer_tv_ambilight
+      data:
+        brightness_pct: 30
+        rgb_color: [255, 0, 255]
+        effect: 'Mode: manual'
 
 
 - alias: Light Hell
@@ -167,6 +206,9 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Hell'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -187,38 +229,19 @@
       entity_id: light.shelly_diningtable
     - service: light.turn_on
       entity_id: light.christmas_light
-
-- alias: Dimmer
-  trigger:
-    - platform: state
-      entity_id: sensor.dimmer_brightness
-  action:
-    - service: light.turn_on
-      entity_id: light.livingroom_rgbww
-      data_template:
-        brightness: "{{ states('sensor.dimmer_brightness') }}"
-
-
-- alias: Light TV OFF
-  trigger:
-    - platform: state
-      entity_id: input_select.state_livingroom_light
-    - platform: state
-      entity_id: media_player.wohnzimmer_tv
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: media_player.wohnzimmer_tv
-      state: 'off'
-    - condition: not
-      conditions:
-      - condition: state
-        entity_id: input_select.state_livingroom_light
-        state: 'Aus'
-  action:
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
         brightness_pct: 30
         rgb_color: [255, 0, 255]
         effect: 'Mode: manual'
+
+# - alias: Dimmer
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.dimmer_brightness
+#   action:
+#     - service: light.turn_on
+#       entity_id: light.livingroom_rgbww
+#       data_template:
+#         brightness: "{{ states('sensor.dimmer_brightness') }}"
