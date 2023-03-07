@@ -48,9 +48,9 @@
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:
-        brightness_pct: 20
+        brightness_pct: 60
         effect: none
-        rgbww_color: [0, 0, 255, 0, 150]
+        rgbww_color: [0, 0, 255, 0, 0]
     - service: light.turn_off
       entity_id: light.shelly_diningtable
     - service: light.turn_off
@@ -82,9 +82,9 @@
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:
-        brightness_pct: 60
+        brightness_pct: 80
         effect: none
-        rgbww_color: [0, 0, 255, 0, 150]
+        rgbww_color: [0, 0, 255, 0, 0]
     - service: light.turn_off
       entity_id: light.christmas_light
     - service: light.turn_on
@@ -114,9 +114,9 @@
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:
-        brightness_pct: 80
+        brightness_pct: 100
         effect: none
-        rgbww_color: [255, 0, 0, 0, 150]
+        rgbww_color: [0, 0, 0, 0, 150]
     - service: light.turn_off
       entity_id: light.christmas_light
     - service: light.turn_on
@@ -148,7 +148,7 @@
       data:
         brightness_pct: 100
         effect: none
-        rgbww_color: [255, 0, 0, 0, 150]
+        rgbww_color: [255, 0, 0, 0, 100]
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:

@@ -7,7 +7,7 @@
     - condition: and
       conditions: !include ../../../condition/light_livingroom.yaml
     - condition: state
-      entity_id: input_boolean.state_media
+      entity_id: media_player.wohnzimmer_tv
       state: 'off'
   action:
     - service: input_select.select_option
@@ -27,7 +27,7 @@
       entity_id: binary_sensor.motion_livingroom_occupancy
       state: 'off'
     - condition: state
-      entity_id: input_boolean.state_media
+      entity_id: media_player.wohnzimmer_tv
       state: 'off'
   action:
     - service: input_select.select_option
