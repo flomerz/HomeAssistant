@@ -58,6 +58,7 @@
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
+        brightness_pct: 50
         effect: 'FOLLOW_VIDEO: STANDARD'
 
 
@@ -82,14 +83,15 @@
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
       data:
-        brightness_pct: 80
+        brightness_pct: 100
         effect: none
-        rgbww_color: [0, 0, 255, 0, 0]
+        rgbww_color: [191, 0, 255, 0, 0]
     - service: light.turn_off
       entity_id: light.christmas_light
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
+        brightness_pct: 100
         effect: 'FOLLOW_VIDEO: STANDARD'
 
 
@@ -122,7 +124,8 @@
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
-        effect: 'FOLLOW_VIDEO: STANDARD'
+        brightness_pct: 100
+        effect: 'FOLLOW_VIDEO: VIVID'
 
 
 - alias: Light Chill
@@ -160,7 +163,7 @@
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
-        brightness_pct: 30
+        brightness_pct: 50
         rgb_color: [255, 0, 255]
         effect: 'Mode: manual'
 
@@ -196,7 +199,7 @@
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
-        brightness_pct: 30
+        brightness_pct: 100
         rgb_color: [255, 0, 255]
         effect: 'Mode: manual'
 
@@ -232,8 +235,8 @@
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
-        brightness_pct: 30
-        rgb_color: [255, 0, 255]
+        brightness_pct: 100
+        rgb_color: [255, 255, 255]
         effect: 'Mode: manual'
 
 # - alias: Dimmer

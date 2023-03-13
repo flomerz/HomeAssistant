@@ -6,9 +6,14 @@
   condition:
     - condition: and
       conditions: !include ../../../condition/light_livingroom.yaml
-    - condition: state
-      entity_id: media_player.wohnzimmer_tv
-      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: media_player.wohnzimmer_tv
+        state: 'off'
+      - condition: state
+        entity_id: input_select.state_livingroom_light
+        state: 'Aus'
   action:
     - service: input_select.select_option
       data_template:
