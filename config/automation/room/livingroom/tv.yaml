@@ -5,10 +5,9 @@
       to: 'on'
   action:
     # scene beamer
-    - service: input_select.select_option
+    - service: script.livingroom_light
       data:
-        entity_id: input_select.state_livingroom_light
-        option: Beamer
+        mode: Beamer
     - service: script.receiver_on
 
 - alias: wohnzimmer_tv_off
@@ -18,9 +17,8 @@
       to: 'off'
   action:
     # scene
-    - service: input_select.select_option
+    - service: script.livingroom_light
       data:
-        entity_id: input_select.state_livingroom_light
-        option: Chill
+        mode: Chill
     - service: script.receiver_off
 

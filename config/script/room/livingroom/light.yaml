@@ -1,0 +1,8 @@
+livingroom_light:
+  sequence:
+    - condition: and
+      conditions: !include ../../../condition/light_livingroom.yaml
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.state_livingroom_light
+        option: '{{ mode }}'

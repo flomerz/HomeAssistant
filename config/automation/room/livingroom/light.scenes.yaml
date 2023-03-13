@@ -24,9 +24,6 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Film'
-  condition:
-    - condition: and
-      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -67,9 +64,6 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Beamer'
-  condition:
-    - condition: and
-      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -100,9 +94,6 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Beamer Hell'
-  condition:
-    - condition: and
-      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -133,9 +124,6 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Chill'
-  condition:
-    - condition: and
-      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -173,9 +161,6 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Normal'
-  condition:
-    - condition: and
-      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:
@@ -209,9 +194,6 @@
     - platform: state
       entity_id: input_select.state_livingroom_light
       to: 'Hell'
-  condition:
-    - condition: and
-      conditions: !include ../../../condition/light_livingroom.yaml
   action:
     - service: input_select.select_option
       data_template:

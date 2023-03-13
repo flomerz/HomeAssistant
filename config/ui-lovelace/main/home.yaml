@@ -81,7 +81,7 @@
               entity_id: input_select.state_livingroom_light
               option: Normal
         - name: Chill
-          icon: 'mdi:lightbulb-multiple'
+          icon: 'mdi:palette'
           tap_action:
             action: call-service
             service: input_select.select_option
@@ -89,7 +89,7 @@
               entity_id: input_select.state_livingroom_light
               option: Chill
         - name: Beamer Hell
-          icon: 'mdi:lightbulb'
+          icon: 'mdi:food-fork-drink'
           tap_action:
             action: call-service
             service: input_select.select_option
@@ -97,7 +97,7 @@
               entity_id: input_select.state_livingroom_light
               option: Beamer Hell
         - name: Beamer
-          icon: 'mdi:projector-screen'
+          icon: 'mdi:television'
           tap_action:
             action: call-service
             service: input_select.select_option

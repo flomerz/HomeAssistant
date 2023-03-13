@@ -4,8 +4,6 @@
       entity_id: binary_sensor.motion_livingroom_occupancy
       to: 'on'
   condition:
-    - condition: and
-      conditions: !include ../../../condition/light_livingroom.yaml
     - condition: or
       conditions:
       - condition: state
@@ -15,10 +13,9 @@
         entity_id: input_select.state_livingroom_light
         state: 'Aus'
   action:
-    - service: input_select.select_option
+    - service: script.livingroom_light
       data_template:
-        entity_id: input_select.state_livingroom_light
-        option: "{{ states('input_select.mode_livingroom_light') }}"
+        mode: "{{ states('input_select.mode_livingroom_light') }}"
 
 - alias: Livingroom Motion OFF
   trigger:

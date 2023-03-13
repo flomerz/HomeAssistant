@@ -1,52 +1,52 @@
-media_power_on:
-  sequence:
-    # disable off script
-    - service: script.turn_off
-      entity_id: script.media_power_off
+# media_power_on:
+#   sequence:
+#     # disable off script
+#     - service: script.turn_off
+#       entity_id: script.media_power_off
     
-    # scene beamer bright
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.state_livingroom_light
-        option: Beamer Hell
+#     # scene beamer bright
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.state_livingroom_light
+#         option: Beamer Hell
     
-    # turn on devices
-    - service: script.turn_on
-      entity_id:
-        - script.receiver_on
-        - script.beamer_on
+#     # turn on devices
+#     - service: script.turn_on
+#       entity_id:
+#         - script.receiver_on
+#         - script.beamer_on
 
-    - delay:
-        seconds: 30
+#     - delay:
+#         seconds: 30
     
-    # scene beamer
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.state_livingroom_light
-        option: Beamer
+#     # scene beamer
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.state_livingroom_light
+#         option: Beamer
 
 
-media_power_off:
-  sequence:
-    # disable off script
-    - service: script.turn_off
-      entity_id: script.media_power_on
+# media_power_off:
+#   sequence:
+#     # disable off script
+#     - service: script.turn_off
+#       entity_id: script.media_power_on
 
-    # scene
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.state_livingroom_light
-        option: Chill
+#     # scene
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.state_livingroom_light
+#         option: Chill
 
-    # turn off devices
-    - service: media_player.turn_off
-      entity_id: media_player.playstation_4
-    - service: media_player.turn_off
-      entity_id: media_player.shield_cast
-    - service: script.turn_on
-      entity_id:
-        - script.receiver_off
-        - script.beamer_off
+#     # turn off devices
+#     - service: media_player.turn_off
+#       entity_id: media_player.playstation_4
+#     - service: media_player.turn_off
+#       entity_id: media_player.shield_cast
+#     - service: script.turn_on
+#       entity_id:
+#         - script.receiver_off
+#         - script.beamer_off
 
 receiver_on:
   sequence:
