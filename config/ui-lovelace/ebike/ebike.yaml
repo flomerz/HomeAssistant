@@ -14,7 +14,6 @@
             type: custom:multiple-entity-row
             entity: switch.ebike
             name: E-Bike
-            secondary_info: last-changed
             show_state: true
             state_color: true
             toggle: true
@@ -45,7 +44,6 @@
             entity: switch.cellar_charger
             name: Ladegeräte
             state_color: true
-            secondary_info: last-changed
           entities:
             - entity: input_number.cellar_charger_hours
               name: Dauer (Stunden)

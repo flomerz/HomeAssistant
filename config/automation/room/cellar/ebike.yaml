@@ -23,9 +23,9 @@
     - platform: state
       entity_id: switch.cellar_charger
       to: 'on'
-      for:
-        hours: "{{ states('input_number.cellar_charger_hours') }}"
   action:
+    - delay:
+        hours: "{{ states('input_number.cellar_charger_hours') }}"
     - service: switch.turn_off
       entity_id: switch.cellar_charger
 
