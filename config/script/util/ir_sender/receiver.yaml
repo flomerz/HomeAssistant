@@ -16,13 +16,13 @@ ir_receiver_vol_down:
       data:
         payload: "{'type': 'sony', 'data': '25612', 'nbits': '15'}"
 
-ir_receiver_tv:
+ir_receiver_hdmi:
   sequence:
     - service: script.ir_send
       data:
         payload: "{'type': 'sony', 'data': '24332', 'nbits': '15'}"
 
-ir_receiver_ps3:
+ir_receiver_tv:
   sequence:
     - service: script.ir_send
       data:
