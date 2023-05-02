@@ -108,7 +108,7 @@ shelly:
   sensors:
     - switch
   devices:
-    - id: "8CAAB505F04A"
+    - id: "E098068CC7E3"
       name: Lichtschalter Schlafzimmer
       entity_id: bedroom
       light_switch: false
@@ -124,7 +124,7 @@ shelly:
       name: Licht Badzimmer
       entity_id: bathroom
       light_switch: true
-    - id: "E098068CC7E3"
+    - id: "8CAAB505F04A"
       name: Lichtschalter Büro
       entity_id: workroom
       light_switch: false

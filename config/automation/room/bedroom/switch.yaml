@@ -8,9 +8,8 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
     # tv off
-    - service: notify.google_assistant
-      data:
-        message: "turn off schlafzimmer tv"
+    - service: media_player.turn_off
+      entity_id: media_player.shield
     # sleep music
     - service: script.youtube_music_playlist_sleep
     - delay:
@@ -45,9 +44,8 @@
     - delay:
         hours: 1
     # tv off
-    - service: notify.google_assistant
-      data:
-        message: "turn off schlafzimmer tv"
+    - service: media_player.turn_off
+      entity_id: media_player.shield
     # sleep music
     - service: script.youtube_music_playlist_sleep
     - delay:

@@ -99,7 +99,7 @@
             power_state: false
             volume_level: false
         - type: custom:mini-media-player
-          entity: media_player.shield_cast
+          entity: media_player.shield
           artwork: cover
           toggle_power: true
           volume_stateless: true
