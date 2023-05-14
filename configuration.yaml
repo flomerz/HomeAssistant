@@ -165,15 +165,9 @@ google_assistant:
       expose: true
       room: '3 Schlafzimmer'
     # Scenes
-    script.vacuum_kitchen:
+    script.vacuum_start_room_kitchen:
       expose: true
       name: Küche staubsaugen
-    script.vacuum_livingroom:
-      expose: true
-      name: Wohnzimmer staubsaugen
-    script.vacuum_livingroom_table:
-      expose: true
-      name: Sofatisch staubsaugen
 
 plant:
   plant1:

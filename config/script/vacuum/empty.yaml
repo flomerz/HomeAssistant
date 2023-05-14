@@ -1,0 +1,11 @@
+vacuum_empty:
+  sequence:
+    - service: vacuum.stop
+      entity_id: vacuum.staubi
+    - delay:
+        seconds: 3
+    - service: xiaomi_miio.vacuum_goto
+      entity_id: vacuum.staubi
+      data:
+        x_coord: '32300'
+        y_coord: '26750'

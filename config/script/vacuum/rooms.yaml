@@ -1,0 +1,13 @@
+vacuum_start_room:
+  sequence:
+    - service: xiaomi_miio.vacuum_clean_segment
+      entity_id: vacuum.staubi
+      data:
+        segments:
+          - "{{ states('input_number.vacuum_room_'+room) | int }}"
+
+vacuum_start_room_kitchen:
+  sequence:
+    - service: script.vacuum_start_room
+      data:
+        room: kitchen

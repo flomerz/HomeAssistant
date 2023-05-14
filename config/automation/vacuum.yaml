@@ -1,8 +1,0 @@
-- alias: Vacuum Start
-  trigger:
-    - platform: state
-      entity_id: vacuum.staubi
-      from: 'docked'
-      to: 'cleaning'
-  action:
-    - service: script.vacuum_start
