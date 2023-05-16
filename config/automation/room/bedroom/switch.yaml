@@ -7,14 +7,11 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
+    - delay:
+        hours: 1
     # tv off
     - service: media_player.turn_off
       entity_id: media_player.shield
-    # sleep music
-    - service: script.youtube_music_playlist_sleep
-    - delay:
-        hours: 2
-    - service: script.all_off
 
 - alias: switch_bedroom_right
   mode: restart
@@ -31,23 +28,3 @@
     - delay:
         hours: 1
     - service: script.music_turn_off
-
-- alias: switch_bedroom_both
-  mode: restart
-  trigger:
-    - platform: state
-      entity_id: sensor.switch_bedroom_action
-      to: 'single_both'
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.state_sleep
-    - delay:
-        hours: 1
-    # tv off
-    - service: media_player.turn_off
-      entity_id: media_player.shield
-    # sleep music
-    - service: script.youtube_music_playlist_sleep
-    - delay:
-        hours: 2
-    - service: script.all_off
