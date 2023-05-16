@@ -165,9 +165,46 @@ google_assistant:
       expose: true
       room: '3 Schlafzimmer'
     # Scenes
-    script.vacuum_start_room_kitchen:
+    script.vacuum_start:
       expose: true
-      name: Küche staubsaugen
+      name: Staubi start
+      room: '0 Allgemein'
+    script.vacuum_stop:
+      expose: true
+      name: Staubi stop
+      room: '0 Allgemein'
+    script.vacuum_point_kitchen:
+      expose: true
+      name: Staubi nach Küche
+      room: '0 Allgemein'
+    script.vacuum_room_kitchen:
+      expose: true
+      name: Küche putzen
+      room: '0 Allgemein'
+    script.vacuum_room_workroom:
+      expose: true
+      name: Büro putzen
+      room: '0 Allgemein'
+    script.vacuum_room_bedroom:
+      expose: true
+      name: Schlafzimmer putzen
+      room: '0 Allgemein'
+    script.vacuum_room_entrance:
+      expose: true
+      name: Eingang putzen
+      room: '0 Allgemein'
+    script.vacuum_room_sofa:
+      expose: true
+      name: Sofa putzen
+      room: '0 Allgemein'
+    script.vacuum_room_livingarea:
+      expose: true
+      name: Wohnbereich putzen
+      room: '0 Allgemein'
+    script.vacuum_room_wc_bath:
+      expose: true
+      name: WC Bad putzen
+      room: '0 Allgemein'
 
 plant:
   plant1:

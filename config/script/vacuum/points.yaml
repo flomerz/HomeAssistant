@@ -1,4 +1,4 @@
-vacuum_empty:
+vacuum_point_kitchen:
   sequence:
     - service: vacuum.stop
       entity_id: vacuum.staubi
@@ -8,4 +8,4 @@ vacuum_empty:
       entity_id: vacuum.staubi
       data:
         x_coord: '32300'
-        y_coord: '26750'
+        y_coord: '26550'

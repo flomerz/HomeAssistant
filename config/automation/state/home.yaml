@@ -24,4 +24,4 @@
         entity_id: input_select.mode_livingroom_light
         option: 'Chill'
     # vacuum
-    - service: script.vacuum_empty
+    - service: script.vacuum_point_kitchen

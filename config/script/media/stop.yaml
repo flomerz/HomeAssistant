@@ -6,5 +6,3 @@ music_turn_off:
       entity_id: media_player.schlafzimmer_assistent
     - service: media_player.turn_off
       entity_id: media_player.home_group
-    - service: media_player.turn_off
-      entity_id: media_player.shield_cast

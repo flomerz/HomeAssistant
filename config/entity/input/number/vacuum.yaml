@@ -34,13 +34,13 @@ vacuum_room_kitchen:
   max: 100
   initial: 17
 
-vacuum_room_livingroom:
+vacuum_room_sofa:
   mode: box
   min: 1
   max: 100
   initial: 24
 
-vacuum_room_livingroom_table:
+vacuum_room_dinning_table:
   mode: box
   min: 1
   max: 100
