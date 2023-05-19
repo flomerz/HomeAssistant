@@ -1,10 +1,7 @@
 vacuum_room:
   mode: restart
   sequence:
-    - service: vacuum.stop
-      entity_id: vacuum.staubi
-    - delay:
-        seconds: 3
+    - service: script.vacuum_ensure_notcleaning
     - service: vacuum.send_command
       entity_id: vacuum.staubi
       data:
@@ -16,25 +13,8 @@ vacuum_room:
                 {% set segmentIds.x = segmentIds.x + [states('input_number.vacuum_room_'+room) | int] %}
               {% endfor %}
               {{segmentIds.x}}
-            repeat: "{{ repeat }}"
-
-vacuum_room_wet:
-  mode: restart
-  sequence:
-    - service: script.turn_on
-      entity_id: script.vacuum_point_kitchen
-    - delay:
-        seconds: 30
-    - wait_for_trigger:
-      - platform: state
-        entity_id: vacuum.staubi
-        from: 'idle'
-    - service: script.turn_on
-      entity_id: script.vacuum_room
-      data:
-        rooms: >
-          {{ rooms }}
-        repeat: "{{ repeat }}"
+            repeat: >
+              {{ repeat }}
 
 vacuum_room_kitchen:
   mode: restart
@@ -43,62 +23,4 @@ vacuum_room_kitchen:
       data:
         rooms:
           - kitchen
-        repeat: 10
-
-vacuum_room_workroom:
-  mode: restart
-  sequence:
-    - service: script.vacuum_room
-      data:
-        rooms:
-          - workroom
-        repeat: 3
-
-vacuum_room_bedroom:
-  mode: restart
-  sequence:
-    - service: script.vacuum_room
-      data:
-        rooms:
-          - bedroom
-        repeat: 3
-
-vacuum_room_entrance:
-  mode: restart
-  sequence:
-    - service: script.vacuum_room
-      data:
-        rooms:
-          - entrance
-        repeat: 3
-
-vacuum_room_sofa:
-  mode: restart
-  sequence:
-    - service: script.vacuum_room
-      data:
-        rooms:
-          - sofa
-        repeat: 3
-
-vacuum_room_livingarea:
-  mode: restart
-  sequence:
-    - service: script.vacuum_room
-      data:
-        rooms:
-          - entrance
-          - kitchen
-          - sofa
-          - dinning_table
-        repeat: 3
-
-vacuum_room_wc_bath:
-  mode: restart
-  sequence:
-    - service: script.vacuum_room
-      data:
-        rooms:
-          - wc
-          - bathroom
-        repeat: 10
+        repeat: 2

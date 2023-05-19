@@ -1,4 +1,6 @@
 vacuum_start:
+  mode: restart
   sequence:
+    - service: script.vacuum_ensure_notcleaning
     - service: vacuum.start
       entity_id: vacuum.staubi

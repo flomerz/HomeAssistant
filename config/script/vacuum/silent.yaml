@@ -1,4 +1,5 @@
 vacuum_silent:
+  mode: restart
   sequence:
     - service: vacuum.set_fan_speed
       entity_id: vacuum.staubi

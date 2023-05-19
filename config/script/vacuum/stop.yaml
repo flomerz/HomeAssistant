@@ -1,8 +1,6 @@
 vacuum_stop:
+  mode: restart
   sequence:
-    - service: vacuum.stop
-      entity_id: vacuum.staubi
-    - delay:
-        seconds: 3
+    - service: script.vacuum_ensure_notcleaning
     - service: vacuum.return_to_base
       entity_id: vacuum.staubi

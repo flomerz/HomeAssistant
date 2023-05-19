@@ -175,35 +175,11 @@ google_assistant:
       room: '0 Allgemein'
     script.vacuum_point_kitchen:
       expose: true
-      name: Staubi nach Küche
+      name: Staubi putzen
       room: '0 Allgemein'
     script.vacuum_room_kitchen:
       expose: true
       name: Küche putzen
-      room: '0 Allgemein'
-    script.vacuum_room_workroom:
-      expose: true
-      name: Büro putzen
-      room: '0 Allgemein'
-    script.vacuum_room_bedroom:
-      expose: true
-      name: Schlafzimmer putzen
-      room: '0 Allgemein'
-    script.vacuum_room_entrance:
-      expose: true
-      name: Eingang putzen
-      room: '0 Allgemein'
-    script.vacuum_room_sofa:
-      expose: true
-      name: Sofa putzen
-      room: '0 Allgemein'
-    script.vacuum_room_livingarea:
-      expose: true
-      name: Wohnbereich putzen
-      room: '0 Allgemein'
-    script.vacuum_room_wc_bath:
-      expose: true
-      name: WC Bad putzen
       room: '0 Allgemein'
 
 plant:

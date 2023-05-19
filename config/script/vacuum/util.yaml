@@ -1,0 +1,12 @@
+vacuum_ensure_notcleaning:
+  mode: restart
+  sequence:
+    - if:
+        - condition: state
+          entity_id: vacuum.staubi
+          state: 'cleaning'
+      then:
+        - service: vacuum.stop
+          entity_id: vacuum.staubi
+        - delay:
+            seconds: 3
