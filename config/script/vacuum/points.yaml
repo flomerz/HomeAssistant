@@ -1,5 +1,16 @@
 vacuum_point:
   mode: restart
+  fields:
+    x:
+      required: true
+      default: 32300
+      selector:
+        text:
+    y:
+      required: true
+      default: 26550
+      selector:
+        text:
   sequence:
     - service: script.vacuum_ensure_notcleaning
     - service: xiaomi_miio.vacuum_goto

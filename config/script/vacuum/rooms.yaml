@@ -1,5 +1,30 @@
 vacuum_room:
   mode: restart
+  fields:
+    rooms:
+      required: true
+      default:
+        - kitchen
+      selector:
+        select:
+          multiple: true
+          options:
+            - entrance
+            - floor
+            - wc
+            - bathroom
+            - workroom
+            - kitchen
+            - sofa
+            - dinning_table
+            - bedroom
+    repeat:
+      required: true
+      default: 3
+      selector:
+        number:
+          min: 1
+          max: 10
   sequence:
     - service: script.vacuum_ensure_notcleaning
     - service: vacuum.send_command
