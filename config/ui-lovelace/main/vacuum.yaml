@@ -7,6 +7,14 @@
     camera: true
   map_locked: true
   two_finger_pan: false
+  append_tiles: true
+  tiles:
+    - label: Letzte Dauer
+      entity: sensor.staubi_last_clean_duration
+      icon: mdi:timer
+      multiplier: 0.017
+      precision: 1
+      unit: min
   map_modes:
     - template: vacuum_clean_segment
       max_repeats: 10
@@ -116,3 +124,4 @@
     - template: vacuum_clean_zone
       max_repeats: 10
     - template: vacuum_goto
+    - template: vacuum_follow_path

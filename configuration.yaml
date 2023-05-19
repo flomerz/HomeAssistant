@@ -264,7 +264,7 @@ camera:
     username: !secret xiaomi_cloud_username
     password: !secret xiaomi_cloud_password
     country: de
-    scan_interval: 3
+    scan_interval: 5
     map_transformation:
       trim:
         left: 24
@@ -274,7 +274,6 @@ camera:
     draw: ['all']
     attributes:
       - calibration_points
-      - room_numbers
       - rooms
     colors:
       color_path: [255,0,0]
