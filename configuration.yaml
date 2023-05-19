@@ -11,6 +11,9 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Zurich
 
+logger:
+  default: error
+
 system_health:
 
 frontend:
@@ -253,3 +256,26 @@ panel_iframe:
     title: 'ZigBee'
     url: '/local/community/zigbee2mqtt_networkmap/map.html'
     icon: 'mdi:graphql'
+
+camera:
+  - platform: xiaomi_cloud_map_extractor
+    host: !secret xiaomi_vacuum_host
+    token: !secret xiaomi_vacuum_token
+    username: !secret xiaomi_cloud_username
+    password: !secret xiaomi_cloud_password
+    country: de
+    scan_interval: 3
+    map_transformation:
+      trim:
+        left: 24
+        right: 24
+        top: 22
+        bottom: 24
+    draw: ['all']
+    attributes:
+      - calibration_points
+      - room_numbers
+      - rooms
+    colors:
+      color_path: [255,0,0]
+      color_predicted_path: [0,255,0] 
