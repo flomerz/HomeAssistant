@@ -17,12 +17,45 @@
           entity_id: camera.xiaomi_cloud_map_extractor
   append_tiles: true
   tiles:
+    - label: Aktuelle Fläche
+      entity: sensor.staubi_current_clean_area
+      icon: mdi:broom
+      precision: 0
+      unit: m²
+    - label: Aktuelle Dauer
+      entity: sensor.staubi_current_clean_duration
+      icon: mdi:timer
+      multiplier: 0.016666667
+      precision: 1
+      unit: min
+    - label: Letzte Fläche
+      entity: sensor.staubi_last_clean_area
+      icon: mdi:broom
+      precision: 0
+      unit: m²
     - label: Letzte Dauer
       entity: sensor.staubi_last_clean_duration
       icon: mdi:timer
-      multiplier: 0.017
+      multiplier: 0.016666667
       precision: 1
       unit: min
+    - label: Totale Fläche
+      entity: sensor.staubi_total_clean_area
+      icon: mdi:broom
+      precision: 0
+      unit: m²
+    - label: Totale Dauer
+      entity: sensor.staubi_total_duration
+      icon: mdi:timer-sand
+      multiplier: 0.000277778
+      precision: 0
+      unit: h
+    - label: Letzer Start
+      entity: sensor.staubi_last_clean_start
+      icon: mdi:clock-time-twelve
+    - label: Letzers Ende
+      entity: sensor.staubi_last_clean_end
+      icon: mdi:clock-time-twelve
   map_modes:
     - template: vacuum_clean_segment
       max_repeats: 10
