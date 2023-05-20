@@ -7,6 +7,14 @@
     camera: true
   map_locked: true
   two_finger_pan: false
+  append_icons: true
+  icons:
+    - icon: mdi:sync
+      tap_action:
+        action: call-service
+        service: homeassistant.update_entity
+        service_data:
+          entity_id: camera.xiaomi_cloud_map_extractor
   append_tiles: true
   tiles:
     - label: Letzte Dauer
