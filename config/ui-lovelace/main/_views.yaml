@@ -6,12 +6,6 @@ views:
     cards: !include home.yaml
 
   - badges: []
-    title: Espresso
-    path: espresso
-    icon: mdi:coffee
-    cards: !include espresso.yaml
-
-  - badges: []
     title: Staubi
     path: vacuum
     icon: mdi:vacuum
