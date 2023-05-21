@@ -2,13 +2,13 @@ bedroom_light_wakeup:
   sequence:
 
     - service: light.turn_off
-      entity_id: light.light_bedroom_light
+      entity_id: light.light_bedroom
 
     - service: light.turn_on
-      entity_id: light.light_bedroom_light
+      entity_id: light.light_bedroom
     
     - service: light.turn_on
-      entity_id: light.light_bedroom_light
+      entity_id: light.light_bedroom
       data:
         rgb_color: [255, 100, 1]
         brightness: 1
@@ -17,7 +17,7 @@ bedroom_light_wakeup:
         seconds: 10
 
     - service: light.turn_on
-      entity_id: light.light_bedroom_light
+      entity_id: light.light_bedroom
       data:
         brightness: 100
         transition: 1190
@@ -26,7 +26,7 @@ bedroom_light_wakeup:
         seconds: 1200
 
     - service: light.turn_on
-      entity_id: light.light_bedroom_light
+      entity_id: light.light_bedroom
       data:
         brightness: 255
         transition: 290
@@ -35,7 +35,7 @@ bedroom_light_wakeup:
         seconds: 300
 
     - service: light.turn_on
-      entity_id: light.light_bedroom_light
+      entity_id: light.light_bedroom
       data:
         rgb_color: [255, 226, 145]
         brightness: 255
@@ -46,16 +46,16 @@ bedroom_light_wakeup:
     
     # keep on (1h auto off)
     - service: light.turn_off
-      entity_id: light.light_bedroom_light
+      entity_id: light.light_bedroom
 
     - service: light.turn_on
-      entity_id: light.light_bedroom_light
+      entity_id: light.light_bedroom
 
     - delay:
         seconds: 300
 
     - service: light.turn_on
-      entity_id: light.light_bedroom_light
+      entity_id: light.light_bedroom
       data:
         rgb_color: [255, 100, 1] #orange
         brightness: 255

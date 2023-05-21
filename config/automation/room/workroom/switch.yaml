@@ -7,7 +7,7 @@
         click_cnt: 1
   action:
     - service: light.toggle
-      entity_id: light.light_workroom_light
+      entity_id: light.light_workroom
 
 
 - alias: workroom_switch_2

@@ -5,6 +5,6 @@
       above: 30
   action:
     - service: light.turn_off
-      entity_id: light.light_workroom_light
+      entity_id: light.light_workroom
     - service: light.turn_off
       entity_id: light.workroom_salt_light

@@ -139,7 +139,7 @@
 
     # Schlafzimmer
     - type: 'custom:slider-entity-row'
-      entity: light.light_bedroom_light
+      entity: light.light_bedroom
       name: Schlafzimmer
       secondary_info: last-changed
       toggle: true
@@ -147,7 +147,7 @@
     # Büro
     - type: custom:config-template-card
       entities:
-        - light.light_workroom_light
+        - light.light_workroom
         - light.workroom_salt_light
         - sensor.netatmo_home_indoor_buro_temperature
         - sensor.netatmo_home_indoor_buro_co2
@@ -161,7 +161,7 @@
             }
       card:
         type: 'custom:multiple-entity-row'
-        entity: light.light_workroom_light
+        entity: light.light_workroom
         name: "${ getName() }"
         secondary_info: last-changed
         show_state: false
@@ -169,7 +169,7 @@
           - entity: light.workroom_salt_light
             name: Salz
             toggle: true
-          - entity: light.light_workroom_light
+          - entity: light.light_workroom
             name: Licht
             toggle: true
 

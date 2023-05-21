@@ -3,16 +3,16 @@
     - platform: time_pattern
       minutes: /1
     - platform: state
-      entity_id: light.light_workroom_light
+      entity_id: light.light_workroom
       to: 'on'
   condition:
     - condition: state
-      entity_id: light.light_workroom_light
+      entity_id: light.light_workroom
       state: 'on'
     - condition: template
-      value_template: "{{ state_attr('light.light_workroom_light', 'color_temp') | int != states('sensor.workroom_light_temp') | int}}"
+      value_template: "{{ state_attr('light.light_workroom', 'color_temp') | int != states('sensor.workroom_light_temp') | int}}"
   action:
     - service: light.turn_on
-      entity_id: light.light_workroom_light
+      entity_id: light.light_workroom
       data_template:
         color_temp: "{{ states('sensor.workroom_light_temp') }}"

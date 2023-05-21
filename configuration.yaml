@@ -22,22 +22,7 @@ frontend:
 lovelace:
   mode: yaml
   resources: !include ui-lovelace-resources.yaml
-  dashboards:
-    lovelace-charts:
-      mode: yaml
-      filename: config/ui-lovelace/charts/_views.yaml
-      title: Charts
-      icon: mdi:chart-line
-    lovelace-bike:
-      mode: yaml
-      filename: config/ui-lovelace/ebike/_views.yaml
-      title: E-Bike
-      icon: mdi:bicycle-electric
-    lovelace-settings:
-      mode: yaml
-      filename: config/ui-lovelace/settings/_views.yaml
-      title: Einstellungen
-      icon: mdi:cog
+  dashboards: !include ui-lovelace-dashboards.yaml
 
 http:
   use_x_forwarded_for: true
