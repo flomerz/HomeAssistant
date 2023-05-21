@@ -249,8 +249,9 @@ camera:
     username: !secret xiaomi_cloud_username
     password: !secret xiaomi_cloud_password
     country: de
-    scan_interval:
-      minutes: 10
+    auto_update: false
+    # scan_interval:
+    #   minutes: 10
     map_transformation:
       trim:
         left: 24
