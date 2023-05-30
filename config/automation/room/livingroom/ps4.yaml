@@ -1,19 +1,12 @@
-# - alias: ps4_on
-#   trigger:
-#     - platform: state
-#       entity_id: media_player.playstation_4
-#       to: 'idle'
-#   action:
-#     - service: script.receiver_on
-
-# - alias: ps4_off
-#   trigger:
-#     - platform: state
-#       entity_id: media_player.playstation_4
-#       to: 'standby'
-#   condition:
-#     - condition: state
-#       entity_id: input_boolean.state_media
-#       state: 'off'
-#   action:
-#     - service: script.receiver_off
+- alias: ps4_on
+  trigger:
+    - platform: state
+      entity_id: media_player.playstation_4
+      to: 'idle'
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.wohnzimmer_tv
+    - service: media_player.select_source
+      entity_id: media_player.wohnzimmer_tv
+      data:
+        source: HDMI 1
