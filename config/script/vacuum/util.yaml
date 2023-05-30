@@ -2,9 +2,10 @@ vacuum_ensure_notcleaning:
   mode: restart
   sequence:
     - if:
-        - condition: state
-          entity_id: vacuum.staubi
-          state: 'cleaning'
+        - not:
+          - condition: state
+            entity_id: vacuum.staubi
+            state: 'docked'
       then:
         - service: vacuum.stop
           entity_id: vacuum.staubi
