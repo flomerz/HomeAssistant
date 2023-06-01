@@ -1,0 +1,20 @@
+receiver_on:
+  mode: restart
+  sequence:
+    # disable off script
+    - service: script.turn_off
+      entity_id: script.receiver_off
+
+    - service: script.ir_receiver_tv
+
+receiver_off:
+  mode: restart
+  sequence:
+    # disable on script
+    - service: script.turn_off
+      entity_id: script.receiver_on
+
+    - service: script.ir_receiver_tv
+    - delay:
+        seconds: 10
+    - service: script.ir_receiver_power

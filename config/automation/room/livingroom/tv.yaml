@@ -16,9 +16,11 @@
       entity_id: media_player.wohnzimmer_tv
       to: 'off'
   action:
-    # scene
+    # scene chill
     - service: script.livingroom_light
       data:
         mode: Chill
-    - service: script.receiver_off
-
+    - service: script.turn_on
+      entity_id: script.receiver_off
+    - service: media_player.turn_off
+      entity_id: media_player.playstation_4
