@@ -3,6 +3,9 @@
     - platform: state
       entity_id: media_player.wohnzimmer_tv
       to: 'on'
+    - platform: state
+      entity_id: media_player.wohnzimmer_tv_cast
+      from: 'off'
   action:
     # scene beamer
     - service: script.livingroom_light
@@ -14,6 +17,9 @@
   trigger:
     - platform: state
       entity_id: media_player.wohnzimmer_tv
+      to: 'off'
+    - platform: state
+      entity_id: media_player.wohnzimmer_tv_cast
       to: 'off'
   action:
     # scene chill
