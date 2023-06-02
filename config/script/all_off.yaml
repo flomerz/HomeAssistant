@@ -14,7 +14,5 @@ all_off:
       entity_id: input_boolean.state_workroom
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_fitnessroom
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.state_media
     # music
     - service: script.music_turn_off

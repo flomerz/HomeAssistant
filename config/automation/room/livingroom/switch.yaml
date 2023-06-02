@@ -26,8 +26,7 @@
       entity_id: sensor.switch_livingroom_action
       to: 'toggle'
   action:
-    - service: input_boolean.toggle
-      entity_id: input_boolean.state_media
+    - service: script.vacuum_room_kitchen
 
 - alias: switch_livingroom_arrow_left_click
   trigger:

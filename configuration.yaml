@@ -138,12 +138,6 @@ google_assistant:
   expose_by_default: false
   entity_config:
     # 1 Wohnzimmer
-    input_boolean.state_media:
-      expose: true
-      name: Media
-      room: '1 Wohnzimmer'
-      aliases:
-        - Beamer
     # 2 Küche
     switch.espresso:
       expose: true

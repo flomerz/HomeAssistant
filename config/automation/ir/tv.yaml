@@ -1,7 +1,0 @@
-- alias: ir_tv_power
-  trigger:
-    platform: mqtt
-    topic: 'lirc/TV/KEY_POWER'
-  action:
-    service: input_boolean.toggle
-    entity_id: input_boolean.state_media
