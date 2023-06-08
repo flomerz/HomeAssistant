@@ -1,4 +1,4 @@
-- alias: state_home_off
+- alias: state_home_off_power
   trigger:
     - platform: state
       entity_id: input_boolean.state_home
@@ -6,22 +6,47 @@
   action:
     - service: script.turn_on
       entity_id: script.all_off
-    # states
+
+- alias: state_home_off_states
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_home
+      to: 'off'
+  action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
-    # vacuum
+
+- alias: state_home_off_vacuum
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_home
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.toggle_vacuum
+      state: 'on'
+  action:
     - service: script.vacuum_start
 
-- alias: state_home_on
+- alias: state_home_on_light
   trigger:
     - platform: state
       entity_id: input_boolean.state_home
       to: 'on'
   action:
-    # light
     - service: input_select.select_option
       data:
         entity_id: input_select.mode_livingroom_light
         option: 'Chill'
-    # vacuum
+
+- alias: state_home_on_vacuum
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_home
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.toggle_vacuum
+      state: 'on'
+  action:
     - service: script.vacuum_point_kitchen

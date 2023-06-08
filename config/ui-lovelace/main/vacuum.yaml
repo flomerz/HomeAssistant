@@ -1,3 +1,7 @@
+- type: entities
+  entities:
+    - name: Automatisch
+      entity: input_boolean.toggle_vacuum
 - type: custom:xiaomi-vacuum-map-card
   entity: vacuum.staubi
   vacuum_platform: default
