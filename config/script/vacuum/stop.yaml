@@ -1,6 +1,6 @@
-vacuum_stop:
-  mode: restart
-  sequence:
-    - service: script.vacuum_ensure_notcleaning
-    - service: vacuum.return_to_base
-      entity_id: vacuum.staubi
+# vacuum_stop:
+#   mode: restart
+#   sequence:
+#     - service: script.vacuum_ensure_notcleaning
+#     - service: vacuum.return_to_base
+#       entity_id: vacuum.staubi

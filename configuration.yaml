@@ -13,6 +13,8 @@ homeassistant:
 
 logger:
   default: error
+  # logs:
+    # custom_components.dreame_vacuum: debug
 
 system_health:
 
@@ -236,26 +238,26 @@ panel_iframe:
     url: '/local/community/zigbee2mqtt_networkmap/map.html'
     icon: 'mdi:graphql'
 
-camera:
-  - platform: xiaomi_cloud_map_extractor
-    host: !secret xiaomi_vacuum_host
-    token: !secret xiaomi_vacuum_token
-    username: !secret xiaomi_cloud_username
-    password: !secret xiaomi_cloud_password
-    country: de
-    auto_update: false
-    # scan_interval:
-    #   minutes: 10
-    map_transformation:
-      trim:
-        left: 24
-        right: 24
-        top: 22
-        bottom: 24
-    draw: ['all']
-    attributes:
-      - calibration_points
-      - rooms
-    colors:
-      color_path: [255,0,0]
-      color_predicted_path: [0,255,0] 
+# camera:
+#   - platform: xiaomi_cloud_map_extractor
+#     host: !secret xiaomi_vacuum_host
+#     token: !secret xiaomi_vacuum_token
+#     username: !secret xiaomi_cloud_username
+#     password: !secret xiaomi_cloud_password
+#     country: de
+#     auto_update: false
+#     # scan_interval:
+#     #   minutes: 10
+#     map_transformation:
+#       trim:
+#         left: 24
+#         right: 24
+#         top: 22
+#         bottom: 24
+#     draw: ['all']
+#     attributes:
+#       - calibration_points
+#       - rooms
+#     colors:
+#       color_path: [255,0,0]
+#       color_predicted_path: [0,255,0] 

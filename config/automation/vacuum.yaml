@@ -1,7 +1,7 @@
-- alias: vacuum docked - set speed max
-  trigger:
-    - platform: state
-      entity_id: vacuum.staubi
-      to: 'docked'
-  action:
-    - service: script.vacuum_speed_max
+# - alias: vacuum docked - set speed max
+#   trigger:
+#     - platform: state
+#       entity_id: vacuum.staubi
+#       to: 'docked'
+#   action:
+#     - service: script.vacuum_speed_max

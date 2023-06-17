@@ -5,11 +5,11 @@ views:
     icon: mdi:home
     cards: !include home.yaml
 
-  - badges: []
-    title: Staubi
-    path: vacuum
-    icon: mdi:vacuum
-    cards: !include vacuum.yaml
+  # - badges: []
+  #   title: Staubi
+  #   path: vacuum
+  #   icon: mdi:vacuum
+  #   cards: !include vacuum.yaml
 
   - badges: []
     title: E-Bike

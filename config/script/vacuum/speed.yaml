@@ -1,15 +1,15 @@
-vacuum_speed_silent:
-  mode: restart
-  sequence:
-    - service: vacuum.set_fan_speed
-      entity_id: vacuum.staubi
-      data:
-        fan_speed: Silent
+# vacuum_speed_silent:
+#   mode: restart
+#   sequence:
+#     - service: vacuum.set_fan_speed
+#       entity_id: vacuum.staubi
+#       data:
+#         fan_speed: Silent
 
-vacuum_speed_max:
-  mode: restart
-  sequence:
-    - service: vacuum.set_fan_speed
-      entity_id: vacuum.staubi
-      data:
-        fan_speed: Turbo
+# vacuum_speed_max:
+#   mode: restart
+#   sequence:
+#     - service: vacuum.set_fan_speed
+#       entity_id: vacuum.staubi
+#       data:
+#         fan_speed: Turbo
