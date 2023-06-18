@@ -1,9 +1,0 @@
-- platform: mqtt
-  name: livingroom_front
-  state_topic: "homie/livingroom-light-front/switch/state"
-  command_topic: "homie/livingroom-light-front/switch/state/set"
-
-- platform: mqtt
-  name: livingroom_sofatable
-  state_topic: "homie/livingroom-light-back-small/switch/state"
-  command_topic: "homie/livingroom-light-back-small/switch/state/set"

@@ -1,0 +1,19 @@
+- name: temperature_livingroom
+  state_topic: "homie/livingroom-climate/sensor/temperature"
+  qos: 0
+  unit_of_measurement: "°C"
+
+- name: humidity_livingroom
+  state_topic: "homie/livingroom-climate/sensor/humidity"
+  qos: 0
+  unit_of_measurement: "%"
+
+- name: temperature_espresso
+  state_topic: "homie/espresso/sensor/temperature"
+  qos: 0
+  unit_of_measurement: "°C"
+
+- name: humidity_espresso
+  state_topic: "homie/espresso/sensor/humidity"
+  qos: 0
+  unit_of_measurement: "%"

@@ -1,0 +1,15 @@
+- name: floor
+  state_topic: "homie/floor-light/switch/state"
+  command_topic: "homie/floor-light/switch/state/set"
+
+- name: kitchen
+  state_topic: "homie/kitchen-light/switch/state"
+  command_topic: "homie/kitchen-light/switch/state/set"
+
+- name: wc
+  state_topic: "homie/wc-light/switch/state"
+  command_topic: "homie/wc-light/switch/state/set"
+
+- name: bathroom_led
+  state_topic: "homie/badroom-light/switch/state"
+  command_topic: "homie/badroom-light/switch/state/set"

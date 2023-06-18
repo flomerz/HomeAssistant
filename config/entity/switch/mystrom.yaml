@@ -1,0 +1,3 @@
+- platform: mystrom
+  name: ebike
+  host: !secret ebike_ip

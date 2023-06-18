@@ -1,15 +1,14 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home Assistant
-  # Location required to calculate the time the sun rises and set
   latitude: !secret home_latitude
   longitude: !secret home_longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: !secret home_elevation
-  # metric for Metric, imperial for Imperial
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  currency: CHF
+  country: CH
   time_zone: Europe/Zurich
+  external_url: !secret external_url
+  internal_url: !secret internal_url
 
 logger:
   default: error
@@ -91,6 +90,12 @@ sun:
 #       track_new_devices: false
 
 mobile_app:
+
+mqtt:
+  sensor: !include_dir_merge_list config/entity/mqtt/sensor/sensor
+  binary_sensor: !include_dir_merge_list config/entity/mqtt/sensor/binary_sensor
+  switch: !include_dir_merge_list config/entity/mqtt/switch
+  light: !include_dir_merge_list config/entity/mqtt/light
 
 shelly:
   discovery: false
