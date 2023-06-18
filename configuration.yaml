@@ -25,6 +25,12 @@ lovelace:
   resources: !include ui-lovelace-resources.yaml
   dashboards: !include ui-lovelace-dashboards.yaml
 
+panel_custom:
+  - name: config/logs
+    sidebar_title: Logs
+    sidebar_icon: mdi:math-log
+    module_url: any text
+
 http:
   use_x_forwarded_for: true
   trusted_proxies:
