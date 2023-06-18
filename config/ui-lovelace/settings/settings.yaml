@@ -36,6 +36,14 @@
       grow: true
 
 
+####################  Wartung  ####################
+- type: entities
+  title: Wartung
+  show_header_toggle: false
+  entities:
+    - entity: script.entkalken
+      name: Espresso Entkalken
+
 ####################  Battery  ####################
 - type: custom:battery-state-card
   title: Batterie

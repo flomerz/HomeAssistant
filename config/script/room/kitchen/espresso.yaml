@@ -1,0 +1,16 @@
+entkalken:
+  mode: restart
+  sequence:
+    - repeat:
+        while:
+          - condition: template
+            value_template: true
+        sequence:
+          - service: switch.turn_on
+            entity_id: switch.espresso
+          - delay:
+              minutes: 1
+          - service: switch.turn_off
+            entity_id: switch.espresso
+          - delay:
+              minutes: 1
