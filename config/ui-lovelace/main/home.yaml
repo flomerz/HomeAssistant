@@ -231,6 +231,7 @@
       entities:
         - entity: sensor.temperature_espresso
           name: false
+
     # Charts
     - type: 'custom:mini-graph-card'
       entities:
