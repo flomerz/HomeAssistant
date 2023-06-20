@@ -2,56 +2,118 @@
   cards:
     # CO2
     - type: custom:apexcharts-card
+      experimental:
+        hidden_by_default: true
       header:
         show: true
         title: CO₂
-      graph_span: 72h
+      graph_span: 24h
       series:
         - entity: sensor.netatmo_home_indoor_co2
           name: Wohnzimmer
+          stroke_width: 2
           show:
             extremas: true
         - entity: sensor.netatmo_home_indoor_buro_co2
           name: Büro
+          stroke_width: 2
           show:
             extremas: true
+        - entity: sensor.netatmo_home_indoor_co2
+          name: Wohnzimmer
+          offset: -1d
+          stroke_width: 2
+          show:
+            hidden_by_default: true
+        - entity: sensor.netatmo_home_indoor_buro_co2
+          name: Büro
+          offset: -1d
+          stroke_width: 2
+          show:
+            hidden_by_default: true
 
     # Temperatur
     - type: custom:apexcharts-card
+      experimental:
+        hidden_by_default: true
       header:
         show: true
         title: Temperatur
-      graph_span: 72h
+      graph_span: 24h
       series:
         - entity: sensor.netatmo_home_indoor_temperature
           name: Wohnzimmer
+          stroke_width: 2
           show:
             extremas: true
         - entity: sensor.netatmo_home_indoor_buro_temperature
           name: Büro
+          stroke_width: 2
           show:
             extremas: true
         - entity: sensor.netatmo_home_indoor_aussen_temperature
           name: Aussen
+          stroke_width: 2
           show:
             extremas: true
+        - entity: sensor.netatmo_home_indoor_temperature
+          name: Wohnzimmer
+          offset: -1d
+          stroke_width: 2
+          show:
+            hidden_by_default: true
+        - entity: sensor.netatmo_home_indoor_buro_temperature
+          name: Büro
+          offset: -1d
+          stroke_width: 2
+          show:
+            hidden_by_default: true
+        - entity: sensor.netatmo_home_indoor_aussen_temperature
+          name: Aussen
+          offset: -1d
+          stroke_width: 2
+          show:
+            hidden_by_default: true
 
     # Feuchtigkeit
     - type: custom:apexcharts-card
+      experimental:
+        hidden_by_default: true
       header:
         show: true
         title: Feuchtigkeit
-      graph_span: 72h
+      graph_span: 24h
       series:
         - entity: sensor.netatmo_home_indoor_humidity
           name: Wohnzimmer
+          stroke_width: 2
           show:
             extremas: true
         - entity: sensor.netatmo_home_indoor_buro_humidity
           name: Büro
+          stroke_width: 2
           show:
             extremas: true
         - entity: sensor.netatmo_home_indoor_aussen_humidity
           name: Aussen
+          stroke_width: 2
           show:
             extremas: true
+        - entity: sensor.netatmo_home_indoor_humidity
+          name: Wohnzimmer
+          offset: -1d
+          stroke_width: 2
+          show:
+            hidden_by_default: true
+        - entity: sensor.netatmo_home_indoor_buro_humidity
+          name: Büro
+          offset: -1d
+          stroke_width: 2
+          show:
+            hidden_by_default: true
+        - entity: sensor.netatmo_home_indoor_aussen_humidity
+          name: Aussen
+          offset: -1d
+          stroke_width: 2
+          show:
+            hidden_by_default: true
