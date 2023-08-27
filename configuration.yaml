@@ -59,6 +59,7 @@ recorder:
       - sensor.plant*_conductivity
       - switch.cellar_charger
       - switch.ebike
+      - sensor.shelly_powermeter_*
     domains:
       - person
 

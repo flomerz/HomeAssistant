@@ -1,0 +1,83 @@
+- type: vertical-stack
+  cards:
+  - type: custom:apexcharts-card
+    header:
+      show: true
+      title: Watt
+    update_interval: 1m
+    graph_span: 7d
+    experimental:
+      brush: true
+    brush:
+      selection_span: 8h
+    series:
+      - entity: sensor.shelly_powermeter_phase_a_active_power
+        name: A
+        stroke_width: 2
+        group_by:
+          func: avg
+          duration: 1min
+      - entity: sensor.shelly_powermeter_phase_b_active_power
+        name: B (Fitnesszimmer)
+        stroke_width: 2
+        group_by:
+          func: avg
+          duration: 1min
+      - entity: sensor.shelly_powermeter_phase_c_active_power
+        name: C (Küche)
+        stroke_width: 2
+        group_by:
+          func: avg
+          duration: 1min
+      - entity: sensor.shelly_powermeter_active_power
+        name: Total
+        stroke_width: 2
+        show:
+          in_brush: true
+          in_chart: false
+        group_by:
+          func: avg
+          duration: 1min
+
+  - type: custom:apexcharts-card
+    header:
+      show: true
+      title: Wattstunden
+    update_interval: 1m
+    graph_span: 7d
+    experimental:
+      brush: true
+    brush:
+      selection_span: 8h
+    series:
+      - entity: sensor.shelly_powermeter_phase_a_active_power
+        name: A
+        unit: Wh
+        stroke_width: 2
+        group_by:
+          func: avg
+          duration: 1h
+      - entity: sensor.shelly_powermeter_phase_b_active_power
+        name: B (Fitnesszimmer)
+        unit: Wh
+        stroke_width: 2
+        group_by:
+          func: avg
+          duration: 1h
+      - entity: sensor.shelly_powermeter_phase_c_active_power
+        name: C (Küche)
+        unit: Wh
+        stroke_width: 2
+        group_by:
+          func: avg
+          duration: 1h
+      - entity: sensor.shelly_powermeter_active_power
+        name: Total
+        unit: Wh
+        stroke_width: 2
+        show:
+          in_brush: true
+          in_chart: false
+        group_by:
+          func: avg
+          duration: 1h

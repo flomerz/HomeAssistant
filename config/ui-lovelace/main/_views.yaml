@@ -24,6 +24,12 @@ views:
     cards: !include climate.yaml
 
   - badges: []
+    title: Power
+    path: power
+    icon: mdi:home-lightning-bolt
+    cards: !include power.yaml
+
+  - badges: []
     title: Pflanzen
     path: plants
     icon: mdi:flower
