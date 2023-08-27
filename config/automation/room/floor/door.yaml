@@ -16,3 +16,19 @@
       entity_id: light.light_door
     - service: light.turn_on
       entity_id: light.floor
+
+
+- alias: Door Close
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.sensor_door_contact
+      to: 'off'
+      for:
+        minutes: 10
+  conditions:
+    - condition: state
+      entity_id: group.people
+      state: 'not_home'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.state_home

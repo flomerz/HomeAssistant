@@ -20,13 +20,13 @@
       data:
         cycle: false
 
-- alias: switch_livingroom_toggle
-  trigger:
-    - platform: state
-      entity_id: sensor.switch_livingroom_action
-      to: 'toggle'
-  action:
-    - service: script.vacuum_room_kitchen
+# - alias: switch_livingroom_toggle
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.switch_livingroom_action
+#       to: 'toggle'
+#   action:
+#     - service: script.vacuum_room_kitchen
 
 - alias: switch_livingroom_arrow_left_click
   trigger:
