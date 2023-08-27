@@ -105,43 +105,43 @@ mqtt:
   switch: !include_dir_merge_list config/entity/mqtt/switch
   light: !include_dir_merge_list config/entity/mqtt/light
 
-shelly:
-  discovery: false
-  version: false #add version sensor
-  sensors:
-    - switch
-  devices:
-    - id: "E098068CC7E3"
-      name: Lichtschalter Schlafzimmer
-      entity_id: bedroom
-      light_switch: false
-    - id: "E098068CC71C"
-      name: Licht Küchenzeile
-      entity_id: kitchen
-      light_switch: true
-    - id: "E098068DA426"
-      name: Licht WC
-      entity_id: wc
-      light_switch: true
-    - id: "8CAAB505EDCA"
-      name: Licht Badzimmer
-      entity_id: bathroom
-      light_switch: true
-    - id: "8CAAB505F04A"
-      name: Lichtschalter Büro
-      entity_id: workroom
-      light_switch: false
-    - id: "E098068DA79E"
-      name: Licht Fitnesszimmer
-      entity_id: fitnessroom
-      light_switch: true
-    - id: "483FDAA1A6D9"
-      name: Licht Esstisch
-      entity_id: diningtable
-      light_switch: true
-    - id: "F3C4C0"
-      name: Ventilator
-      entity_id: fan
+# shelly:
+#   discovery: false
+#   version: false #add version sensor
+#   sensors:
+#     - switch
+#   devices:
+#     - id: "E098068CC7E3"
+#       name: Lichtschalter Schlafzimmer
+#       entity_id: bedroom
+#       light_switch: false
+#     - id: "E098068CC71C"
+#       name: Licht Küchenzeile
+#       entity_id: kitchen
+#       light_switch: true
+#     - id: "E098068DA426"
+#       name: Licht WC
+#       entity_id: wc
+#       light_switch: true
+#     - id: "8CAAB505EDCA"
+#       name: Licht Badzimmer
+#       entity_id: bathroom
+#       light_switch: true
+#     - id: "8CAAB505F04A"
+#       name: Lichtschalter Büro
+#       entity_id: workroom
+#       light_switch: false
+#     - id: "E098068DA79E"
+#       name: Licht Fitnesszimmer
+#       entity_id: fitnessroom
+#       light_switch: true
+#     - id: "483FDAA1A6D9"
+#       name: Licht Esstisch
+#       entity_id: diningtable
+#       light_switch: true
+#     - id: "F3C4C0"
+#       name: Ventilator
+#       entity_id: fan
 
 netatmo:
   client_id: !secret netatmo_client_id
