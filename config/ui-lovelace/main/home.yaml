@@ -301,19 +301,19 @@
           name: "{{ (states.binary_sensor.motion_floor.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
           icon: 'mdi:floor-plan'
         - entity: binary_sensor.motion_livingroom_occupancy
-          name: "{{ (states.binary_sensor.motion_livingroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          name: "{{ (states.binary_sensor.motion_livingroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') + ' (' + (state_attr('binary_sensor.motion_livingroom_occupancy', 'illuminance') | string + 'lux)') }}"
           icon: 'mdi:sofa'
         - entity: binary_sensor.motion_kitchen
           name: "{{ (states.binary_sensor.motion_kitchen.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
           icon: 'mdi:pot-steam'
         - entity: binary_sensor.motion_workroom_occupancy
-          name: "{{ (states.binary_sensor.motion_workroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          name: "{{ (states.binary_sensor.motion_workroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') + ' (' + (state_attr('binary_sensor.motion_workroom_occupancy', 'illuminance') | string + 'lux)') }}"
           icon: 'mdi:desk'
         - entity: binary_sensor.motion_fitnessroom_occupancy
-          name: "{{ (states.binary_sensor.motion_fitnessroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          name: "{{ (states.binary_sensor.motion_fitnessroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') + ' (' + (state_attr('binary_sensor.motion_fitnessroom_occupancy', 'illuminance') | string + 'lux)') }}"
           icon: 'mdi:weight-lifter'
         - entity: binary_sensor.motion_bathroom_occupancy
-          name: "{{ (states.binary_sensor.motion_bathroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
+          name: "{{ (states.binary_sensor.motion_bathroom_occupancy.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') + ' (' + (state_attr('binary_sensor.motion_bathroom_occupancy', 'illuminance') | string + 'lux)') }}"
           icon: 'mdi:shower'
         - entity: binary_sensor.motion_wc
           name: "{{ (states.binary_sensor.motion_wc.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
