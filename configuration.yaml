@@ -41,7 +41,7 @@ http:
 
 recorder:
   db_url: sqlite:///usb/home-assistant.db
-  purge_keep_days: 7
+  purge_keep_days: 30
   commit_interval: 60
   include:
     entity_globs:
