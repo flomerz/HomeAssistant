@@ -3,7 +3,7 @@
   - type: custom:apexcharts-card
     header:
       show: true
-      title: Watt
+      title: Watt (Stunde)
     update_interval: 1m
     graph_span: 1d
     experimental:
@@ -42,12 +42,11 @@
   - type: custom:apexcharts-card
     header:
       show: true
-      title: Wattstunden
+      title: Wattstunden (Tag)
     update_interval: 1m
     graph_span: 7d
     span:
-      offset: +1h
-      end: hour
+      end: day
     stacked: true
     experimental:
       brush: true
@@ -89,11 +88,10 @@
   - type: custom:apexcharts-card
     header:
       show: true
-      title: Kilowattstunden
+      title: Kilowattstunden (Woche)
     update_interval: 1m
     graph_span: 7d
     span:
-      offset: +1d
       end: day
     stacked: true
     series:
@@ -105,6 +103,8 @@
         group_by:
           func: diff
           duration: 1d
+        show:
+          datalabels: true
       - entity: sensor.shelly_powermeter_phase_b_total_active_energy
         name: B (Fitnesszimmer)
         unit: kWh
@@ -113,6 +113,8 @@
         group_by:
           func: diff
           duration: 1d
+        show:
+          datalabels: true
       - entity: sensor.shelly_powermeter_phase_c_total_active_energy
         name: C (Küche)
         unit: kWh
@@ -121,18 +123,20 @@
         group_by:
           func: diff
           duration: 1d
+        show:
+          datalabels: true
   
   - type: custom:apexcharts-card
     header:
       show: true
-      title: Kosten
+      title: Kosten (Woche)
     update_interval: 1m
     graph_span: 7d
     span:
-      offset: +1d
       end: day
     yaxis:
       - decimals: 2
+        min: 0
     series:
       - entity: sensor.shelly_powermeter_phase_c_total_active_energy
         name: Total
@@ -143,3 +147,5 @@
         group_by:
           func: diff
           duration: 1d
+        show:
+          datalabels: true

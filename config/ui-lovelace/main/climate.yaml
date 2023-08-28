@@ -10,7 +10,7 @@
       experimental:
         brush: true
       brush:
-        selection_span: 8h
+        selection_span: 1d
       series:
         - entity: sensor.netatmo_home_indoor_co2
           name: Wohnzimmer
@@ -33,7 +33,7 @@
       experimental:
         brush: true
       brush:
-        selection_span: 8h
+        selection_span: 1d
       series:
         - entity: sensor.netatmo_home_indoor_temperature
           name: Wohnzimmer
@@ -61,7 +61,7 @@
       experimental:
         brush: true
       brush:
-        selection_span: 8h
+        selection_span: 1d
       series:
         - entity: sensor.netatmo_home_indoor_humidity
           name: Wohnzimmer
