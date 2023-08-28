@@ -25,7 +25,7 @@
       to: 'off'
       for:
         minutes: 10
-  conditions:
+  condition:
     - condition: state
       entity_id: group.people
       state: 'not_home'
