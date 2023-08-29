@@ -235,25 +235,25 @@
           group_by:
             func: avg
             duration: 5s
-            fill: 'null'
+            fill: zero
         - entity: sensor.shelly_powermeter_phase_b_active_power_dt
           name: B (Fitnesszimmer)
           stroke_width: 2
           group_by:
             func: avg
             duration: 5s
-            fill: 'null'
+            fill: zero
         - entity: sensor.shelly_powermeter_phase_c_active_power_dt
           name: C (Küche)
           stroke_width: 2
           group_by:
             func: avg
             duration: 5s
-            fill: 'null'
+            fill: zero
         - entity: sensor.shelly_powermeter_active_power_dt
           name: Total
           stroke_width: 2
           group_by:
             func: avg
             duration: 5s
-            fill: 'null'
+            fill: zero
