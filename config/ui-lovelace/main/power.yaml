@@ -126,6 +126,13 @@
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           unit: Wh
+          stroke_width: 1
+          group_by:
+            func: avg
+            duration: 1h
+        - entity: sensor.shelly_powermeter_active_power
+          name: Total
+          unit: Wh
           type: column
           show:
             in_brush: true
@@ -139,7 +146,7 @@
         show: true
         title: Watt
       update_interval: 1m
-      graph_span: 1d
+      graph_span: 12h
       experimental:
         brush: true
       brush:
@@ -150,19 +157,26 @@
           stroke_width: 2
           group_by:
             func: avg
-            duration: 1min
+            duration: 1m
         - entity: sensor.shelly_powermeter_phase_b_active_power
           name: B (Fitnesszimmer)
           stroke_width: 2
           group_by:
             func: avg
-            duration: 1min
+            duration: 1m
         - entity: sensor.shelly_powermeter_phase_c_active_power
           name: C (Küche)
           stroke_width: 2
           group_by:
             func: avg
-            duration: 1min
+            duration: 1m
+        - entity: sensor.shelly_powermeter_active_power
+          name: Total
+          unit: Wh
+          stroke_width: 2
+          group_by:
+            func: avg
+            duration: 1m
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           type: column
