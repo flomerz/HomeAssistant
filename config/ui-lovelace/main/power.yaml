@@ -9,10 +9,16 @@
       span:
         end: day
       stacked: true
+      apex_config:
+        yaxis:
+          min: 0
       experimental:
         brush: true
       brush:
         selection_span: 7d
+        apex_config:
+          yaxis:
+            min: 0
       series:
         - entity: sensor.shelly_powermeter_phase_a_total_active_energy
           name: A
@@ -22,6 +28,7 @@
           group_by:
             func: diff
             duration: 1d
+            fill: 'null'
           show:
             datalabels: true
         - entity: sensor.shelly_powermeter_phase_b_total_active_energy
@@ -32,6 +39,7 @@
           group_by:
             func: diff
             duration: 1d
+            fill: 'null'
           show:
             datalabels: true
         - entity: sensor.shelly_powermeter_phase_c_total_active_energy
@@ -42,6 +50,7 @@
           group_by:
             func: diff
             duration: 1d
+            fill: 'null'
           show:
             datalabels: true
         - entity: sensor.shelly_powermeter_total_active_energy
@@ -52,6 +61,7 @@
           group_by:
             func: diff
             duration: 1d
+            fill: 'null'
           show:
             in_brush: true
             in_chart: false
@@ -66,6 +76,8 @@
         end: day
       yaxis:
         - decimals: 2
+      apex_config:
+        yaxis:
           min: 0
       experimental:
         brush: true
@@ -84,6 +96,7 @@
           group_by:
             func: diff
             duration: 1d
+            fill: 'null'
           show:
             datalabels: true
             in_brush: true
@@ -97,10 +110,16 @@
       span:
         end: day
       stacked: true
+      apex_config:
+        yaxis:
+          min: 0
       experimental:
         brush: true
       brush:
         selection_span: 1d
+        apex_config:
+          yaxis:
+            min: 0
       series:
         - entity: sensor.shelly_powermeter_phase_a_active_power
           name: A
@@ -109,6 +128,7 @@
           group_by:
             func: avg
             duration: 1h
+            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_b_active_power
           name: B (Fitnesszimmer)
           unit: Wh
@@ -116,6 +136,7 @@
           group_by:
             func: avg
             duration: 1h
+            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_c_active_power
           name: C (Küche)
           unit: Wh
@@ -123,6 +144,7 @@
           group_by:
             func: avg
             duration: 1h
+            fill: 'null'
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           unit: Wh
@@ -130,6 +152,7 @@
           group_by:
             func: avg
             duration: 1h
+            fill: 'null'
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           unit: Wh
@@ -140,6 +163,7 @@
           group_by:
             func: avg
             duration: 2h
+            fill: 'null'
 
     - type: custom:apexcharts-card
       header:
@@ -147,10 +171,16 @@
         title: Watt
       update_interval: 1m
       graph_span: 12h
+      apex_config:
+        yaxis:
+          min: 0
       experimental:
         brush: true
       brush:
         selection_span: 1h
+        apex_config:
+          yaxis:
+            min: 0
       series:
         - entity: sensor.shelly_powermeter_phase_a_active_power
           name: A
@@ -158,18 +188,21 @@
           group_by:
             func: avg
             duration: 1m
+            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_b_active_power
           name: B (Fitnesszimmer)
           stroke_width: 2
           group_by:
             func: avg
             duration: 1m
+            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_c_active_power
           name: C (Küche)
           stroke_width: 2
           group_by:
             func: avg
             duration: 1m
+            fill: 'null'
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           unit: Wh
@@ -177,6 +210,7 @@
           group_by:
             func: avg
             duration: 1m
+            fill: 'null'
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           type: column
@@ -186,6 +220,7 @@
           group_by:
             func: avg
             duration: 15m
+            fill: 'null'
 
     - type: custom:apexcharts-card
       header:
@@ -200,21 +235,25 @@
           group_by:
             func: avg
             duration: 5s
+            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_b_active_power_dt
           name: B (Fitnesszimmer)
           stroke_width: 2
           group_by:
             func: avg
             duration: 5s
+            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_c_active_power_dt
           name: C (Küche)
           stroke_width: 2
           group_by:
             func: avg
             duration: 5s
+            fill: 'null'
         - entity: sensor.shelly_powermeter_active_power_dt
           name: Total
           stroke_width: 2
           group_by:
             func: avg
             duration: 5s
+            fill: 'null'
