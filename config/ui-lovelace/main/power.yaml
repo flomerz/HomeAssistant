@@ -93,7 +93,7 @@
         show: true
         title: Wattstunden
       update_interval: 1m
-      graph_span: 7d
+      graph_span: 3d
       span:
         end: day
       stacked: true
