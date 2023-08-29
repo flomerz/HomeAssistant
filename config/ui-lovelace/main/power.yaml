@@ -1,151 +1,206 @@
 - type: vertical-stack
   cards:
-  - type: custom:apexcharts-card
-    header:
-      show: true
-      title: Watt (Stunde)
-    update_interval: 1m
-    graph_span: 1d
-    experimental:
-      brush: true
-    brush:
-      selection_span: 1h
-    series:
-      - entity: sensor.shelly_powermeter_phase_a_active_power
-        name: A
-        stroke_width: 2
-        group_by:
-          func: avg
-          duration: 1min
-      - entity: sensor.shelly_powermeter_phase_b_active_power
-        name: B (Fitnesszimmer)
-        stroke_width: 2
-        group_by:
-          func: avg
-          duration: 1min
-      - entity: sensor.shelly_powermeter_phase_c_active_power
-        name: C (Küche)
-        stroke_width: 2
-        group_by:
-          func: avg
-          duration: 1min
-      - entity: sensor.shelly_powermeter_active_power
-        name: Total
-        type: column
-        show:
-          in_brush: true
-          in_chart: false
-        group_by:
-          func: avg
-          duration: 15m
+    - type: custom:apexcharts-card
+      header:
+        show: true
+        title: Kilowattstunden pro Tag
+      update_interval: 1m
+      graph_span: 30d
+      span:
+        end: day
+      stacked: true
+      experimental:
+        brush: true
+      brush:
+        selection_span: 7d
+      series:
+        - entity: sensor.shelly_powermeter_phase_a_total_active_energy
+          name: A
+          unit: kWh
+          type: column
+          float_precision: 2
+          group_by:
+            func: diff
+            duration: 1d
+          show:
+            datalabels: true
+        - entity: sensor.shelly_powermeter_phase_b_total_active_energy
+          name: B (Fitnesszimmer)
+          unit: kWh
+          type: column
+          float_precision: 2
+          group_by:
+            func: diff
+            duration: 1d
+          show:
+            datalabels: true
+        - entity: sensor.shelly_powermeter_phase_c_total_active_energy
+          name: C (Küche)
+          unit: kWh
+          type: column
+          float_precision: 2
+          group_by:
+            func: diff
+            duration: 1d
+          show:
+            datalabels: true
+        - entity: sensor.shelly_powermeter_total_active_energy
+          name: Total
+          unit: kWh
+          type: column
+          float_precision: 2
+          group_by:
+            func: diff
+            duration: 1d
+          show:
+            in_brush: true
+            in_chart: false
+    
+    - type: custom:apexcharts-card
+      header:
+        show: true
+        title: Kosten pro Tag
+      update_interval: 1m
+      graph_span: 30d
+      span:
+        end: day
+      yaxis:
+        - decimals: 2
+          min: 0
+      experimental:
+        brush: true
+      brush:
+        selection_span: 7d
+        apex_config:
+          yaxis:
+            min: 0
+      series:
+        - entity: sensor.shelly_powermeter_total_active_energy
+          name: Total
+          unit: CHF
+          type: column
+          float_precision: 2
+          transform: "return x * 0.25;"
+          group_by:
+            func: diff
+            duration: 1d
+          show:
+            datalabels: true
+            in_brush: true
 
-  - type: custom:apexcharts-card
-    header:
-      show: true
-      title: Wattstunden (Tag)
-    update_interval: 1m
-    graph_span: 7d
-    span:
-      end: day
-    stacked: true
-    experimental:
-      brush: true
-    brush:
-      selection_span: 1d
-    series:
-      - entity: sensor.shelly_powermeter_phase_a_active_power
-        name: A
-        unit: Wh
-        type: column
-        group_by:
-          func: avg
-          duration: 1h
-      - entity: sensor.shelly_powermeter_phase_b_active_power
-        name: B (Fitnesszimmer)
-        unit: Wh
-        type: column
-        group_by:
-          func: avg
-          duration: 1h
-      - entity: sensor.shelly_powermeter_phase_c_active_power
-        name: C (Küche)
-        unit: Wh
-        type: column
-        group_by:
-          func: avg
-          duration: 1h
-      - entity: sensor.shelly_powermeter_active_power
-        name: Total
-        unit: Wh
-        type: column
-        show:
-          in_brush: true
-          in_chart: false
-        group_by:
-          func: avg
-          duration: 2h
-  
-  - type: custom:apexcharts-card
-    header:
-      show: true
-      title: Kilowattstunden (Woche)
-    update_interval: 1m
-    graph_span: 7d
-    span:
-      end: day
-    stacked: true
-    series:
-      - entity: sensor.shelly_powermeter_phase_a_total_active_energy
-        name: A
-        unit: kWh
-        type: column
-        float_precision: 2
-        group_by:
-          func: diff
-          duration: 1d
-        show:
-          datalabels: true
-      - entity: sensor.shelly_powermeter_phase_b_total_active_energy
-        name: B (Fitnesszimmer)
-        unit: kWh
-        type: column
-        float_precision: 2
-        group_by:
-          func: diff
-          duration: 1d
-        show:
-          datalabels: true
-      - entity: sensor.shelly_powermeter_phase_c_total_active_energy
-        name: C (Küche)
-        unit: kWh
-        type: column
-        float_precision: 2
-        group_by:
-          func: diff
-          duration: 1d
-        show:
-          datalabels: true
-  
-  - type: custom:apexcharts-card
-    header:
-      show: true
-      title: Kosten (Woche)
-    update_interval: 1m
-    graph_span: 7d
-    span:
-      end: day
-    yaxis:
-      - decimals: 2
-        min: 0
-    series:
-      - entity: sensor.shelly_powermeter_phase_c_total_active_energy
-        name: Total
-        unit: CHF
-        type: column
-        float_precision: 2
-        transform: "return x * 0.25;"
-        group_by:
-          func: diff
-          duration: 1d
-        show:
-          datalabels: true
+    - type: custom:apexcharts-card
+      header:
+        show: true
+        title: Wattstunden
+      update_interval: 1m
+      graph_span: 7d
+      span:
+        end: day
+      stacked: true
+      experimental:
+        brush: true
+      brush:
+        selection_span: 1d
+      series:
+        - entity: sensor.shelly_powermeter_phase_a_active_power
+          name: A
+          unit: Wh
+          type: column
+          group_by:
+            func: avg
+            duration: 1h
+        - entity: sensor.shelly_powermeter_phase_b_active_power
+          name: B (Fitnesszimmer)
+          unit: Wh
+          type: column
+          group_by:
+            func: avg
+            duration: 1h
+        - entity: sensor.shelly_powermeter_phase_c_active_power
+          name: C (Küche)
+          unit: Wh
+          type: column
+          group_by:
+            func: avg
+            duration: 1h
+        - entity: sensor.shelly_powermeter_active_power
+          name: Total
+          unit: Wh
+          type: column
+          show:
+            in_brush: true
+            in_chart: false
+          group_by:
+            func: avg
+            duration: 2h
+
+    - type: custom:apexcharts-card
+      header:
+        show: true
+        title: Watt
+      update_interval: 1m
+      graph_span: 1d
+      experimental:
+        brush: true
+      brush:
+        selection_span: 1h
+      series:
+        - entity: sensor.shelly_powermeter_phase_a_active_power
+          name: A
+          stroke_width: 2
+          group_by:
+            func: avg
+            duration: 1min
+        - entity: sensor.shelly_powermeter_phase_b_active_power
+          name: B (Fitnesszimmer)
+          stroke_width: 2
+          group_by:
+            func: avg
+            duration: 1min
+        - entity: sensor.shelly_powermeter_phase_c_active_power
+          name: C (Küche)
+          stroke_width: 2
+          group_by:
+            func: avg
+            duration: 1min
+        - entity: sensor.shelly_powermeter_active_power
+          name: Total
+          type: column
+          show:
+            in_brush: true
+            in_chart: false
+          group_by:
+            func: avg
+            duration: 15m
+
+    - type: custom:apexcharts-card
+      header:
+        show: true
+        title: Watt Änderung
+      update_interval: 5s
+      graph_span: 3m
+      series:
+        - entity: sensor.shelly_powermeter_phase_a_active_power_dt
+          name: A
+          stroke_width: 2
+          group_by:
+            func: avg
+            duration: 5s
+        - entity: sensor.shelly_powermeter_phase_b_active_power_dt
+          name: B (Fitnesszimmer)
+          stroke_width: 2
+          group_by:
+            func: avg
+            duration: 5s
+        - entity: sensor.shelly_powermeter_phase_c_active_power_dt
+          name: C (Küche)
+          stroke_width: 2
+          group_by:
+            func: avg
+            duration: 5s
+        - entity: sensor.shelly_powermeter_active_power_dt
+          name: Total
+          stroke_width: 2
+          group_by:
+            func: avg
+            duration: 5s
