@@ -9,6 +9,8 @@
       span:
         end: day
       stacked: true
+      show:
+        last_updated: true
       apex_config:
         yaxis:
           min: 0
@@ -71,6 +73,8 @@
       span:
         end: day
       stacked: true
+      show:
+        last_updated: true
       apex_config:
         yaxis:
           min: 0
@@ -137,6 +141,8 @@
       span:
         end: day
       stacked: true
+      show:
+        last_updated: true
       apex_config:
         yaxis:
           min: 0
@@ -190,6 +196,8 @@
         title: Watt
       update_interval: 1m
       graph_span: 12h
+      show:
+        last_updated: true
       apex_config:
         yaxis:
           min: 0
@@ -248,6 +256,8 @@
       update_interval: 15s
       graph_span: 5m
       stacked: true
+      show:
+        last_updated: true
       series:
         - entity: sensor.shelly_powermeter_phase_a_active_power_dt
           name: A
