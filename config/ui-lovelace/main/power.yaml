@@ -25,39 +25,39 @@
           unit: kWh
           type: column
           float_precision: 2
+          fill_raw: zero
           group_by:
             func: diff
             duration: 1d
-            fill: 'null'
-          show:
-            datalabels: total
         - entity: sensor.shelly_powermeter_phase_b_total_active_energy
           name: B (Fitnesszimmer)
           unit: kWh
           type: column
           float_precision: 2
+          fill_raw: zero
           group_by:
             func: diff
             duration: 1d
-            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_c_total_active_energy
           name: C (Küche)
           unit: kWh
           type: column
           float_precision: 2
+          fill_raw: zero
           group_by:
             func: diff
             duration: 1d
-            fill: 'null'
+          show:
+            datalabels: total
         - entity: sensor.shelly_powermeter_total_active_energy
           name: Total
           unit: kWh
           type: column
           float_precision: 2
+          fill_raw: zero
           group_by:
             func: diff
             duration: 1d
-            fill: 'null'
           show:
             in_brush: true
             in_chart: false
@@ -88,42 +88,42 @@
           type: column
           float_precision: 2
           transform: "return x * 0.25;"
+          fill_raw: zero
           group_by:
             func: diff
             duration: 1d
-            fill: 'null'
-          show:
-            datalabels: total
         - entity: sensor.shelly_powermeter_phase_b_total_active_energy
           name: B (Fitnesszimmer)
           unit: CHF
           type: column
           float_precision: 2
           transform: "return x * 0.25;"
+          fill_raw: zero
           group_by:
             func: diff
             duration: 1d
-            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_c_total_active_energy
           name: C (Küche)
           unit: CHF
           type: column
           float_precision: 2
           transform: "return x * 0.25;"
+          fill_raw: zero
           group_by:
             func: diff
             duration: 1d
-            fill: 'null'
+          show:
+            datalabels: total
         - entity: sensor.shelly_powermeter_total_active_energy
           name: Total
           unit: CHF
           type: column
           float_precision: 2
           transform: "return x * 0.25;"
+          fill_raw: zero
           group_by:
             func: diff
             duration: 1d
-            fill: 'null'
           show:
             in_brush: true
             in_chart: false
@@ -152,26 +152,26 @@
           name: A
           unit: Wh
           type: column
+          fill_raw: zero
           group_by:
             func: avg
             duration: 1h
-            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_b_active_power
           name: B (Fitnesszimmer)
           unit: Wh
           type: column
+          fill_raw: zero
           group_by:
             func: avg
             duration: 1h
-            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_c_active_power
           name: C (Küche)
           unit: Wh
           type: column
+          fill_raw: zero
           group_by:
             func: avg
             duration: 1h
-            fill: 'null'
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           unit: Wh
@@ -179,10 +179,10 @@
           show:
             in_brush: true
             in_chart: false
+          fill_raw: zero
           group_by:
             func: avg
             duration: 2h
-            fill: 'null'
 
     - type: custom:apexcharts-card
       header:
@@ -204,69 +204,69 @@
         - entity: sensor.shelly_powermeter_phase_a_active_power
           name: A
           stroke_width: 2
+          fill_raw: zero
           group_by:
             func: avg
             duration: 1m
-            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_b_active_power
           name: B (Fitnesszimmer)
           stroke_width: 2
+          fill_raw: zero
           group_by:
             func: avg
             duration: 1m
-            fill: 'null'
         - entity: sensor.shelly_powermeter_phase_c_active_power
           name: C (Küche)
           stroke_width: 2
+          fill_raw: zero
           group_by:
             func: avg
             duration: 1m
-            fill: 'null'
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           unit: Wh
           stroke_width: 2
+          fill_raw: zero
           group_by:
             func: avg
             duration: 1m
-            fill: 'null'
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           type: column
           show:
             in_brush: true
             in_chart: false
+          fill_raw: zero
           group_by:
             func: avg
             duration: 15m
-            fill: 'null'
 
     - type: custom:apexcharts-card
       header:
         show: true
-        title: Watt Änderung
-      update_interval: 5s
-      graph_span: 3m
+        title: Watt (Relativ)
+      update_interval: 15s
+      graph_span: 5m
       stacked: true
       series:
         - entity: sensor.shelly_powermeter_phase_a_active_power_dt
           name: A
           type: column
+          fill_raw: zero
           group_by:
             func: avg
-            duration: 5s
-            fill: 'null'
+            duration: 15s
         - entity: sensor.shelly_powermeter_phase_b_active_power_dt
           name: B (Fitnesszimmer)
           type: column
+          fill_raw: zero
           group_by:
             func: avg
-            duration: 5s
-            fill: 'null'
+            duration: 15s
         - entity: sensor.shelly_powermeter_phase_c_active_power_dt
           name: C (Küche)
           type: column
+          fill_raw: zero
           group_by:
             func: avg
-            duration: 5s
-            fill: 'null'
+            duration: 15s
