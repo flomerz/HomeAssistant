@@ -21,45 +21,27 @@
         apex_config:
           yaxis:
             min: 0
+      all_series_config:
+        unit: kWh
+        type: column
+        float_precision: 2
+        fill_raw: zero
+        group_by:
+          func: diff
+          duration: 1d
+          fill: zero
       series:
         - entity: sensor.shelly_powermeter_phase_a_total_active_energy
           name: A
-          unit: kWh
-          type: column
-          float_precision: 2
-          fill_raw: zero
-          group_by:
-            func: diff
-            duration: 1d
         - entity: sensor.shelly_powermeter_phase_b_total_active_energy
           name: B (Fitnesszimmer)
-          unit: kWh
-          type: column
-          float_precision: 2
-          fill_raw: zero
-          group_by:
-            func: diff
-            duration: 1d
         - entity: sensor.shelly_powermeter_phase_c_total_active_energy
           name: C (Küche)
-          unit: kWh
-          type: column
-          float_precision: 2
-          fill_raw: zero
-          group_by:
-            func: diff
-            duration: 1d
           show:
             datalabels: total
         - entity: sensor.shelly_powermeter_total_active_energy
           name: Total
-          unit: kWh
           type: column
-          float_precision: 2
-          fill_raw: zero
-          group_by:
-            func: diff
-            duration: 1d
           show:
             in_brush: true
             in_chart: false
@@ -85,49 +67,27 @@
         apex_config:
           yaxis:
             min: 0
+      all_series_config:
+        unit: CHF
+        type: column
+        float_precision: 2
+        transform: "return x * 0.25;"
+        fill_raw: zero
+        group_by:
+          func: diff
+          duration: 1d
+          fill: zero
       series:
         - entity: sensor.shelly_powermeter_phase_a_total_active_energy
           name: A
-          unit: CHF
-          type: column
-          float_precision: 2
-          transform: "return x * 0.25;"
-          fill_raw: zero
-          group_by:
-            func: diff
-            duration: 1d
         - entity: sensor.shelly_powermeter_phase_b_total_active_energy
           name: B (Fitnesszimmer)
-          unit: CHF
-          type: column
-          float_precision: 2
-          transform: "return x * 0.25;"
-          fill_raw: zero
-          group_by:
-            func: diff
-            duration: 1d
         - entity: sensor.shelly_powermeter_phase_c_total_active_energy
           name: C (Küche)
-          unit: CHF
-          type: column
-          float_precision: 2
-          transform: "return x * 0.25;"
-          fill_raw: zero
-          group_by:
-            func: diff
-            duration: 1d
           show:
             datalabels: total
         - entity: sensor.shelly_powermeter_total_active_energy
           name: Total
-          unit: CHF
-          type: column
-          float_precision: 2
-          transform: "return x * 0.25;"
-          fill_raw: zero
-          group_by:
-            func: diff
-            duration: 1d
           show:
             in_brush: true
             in_chart: false
@@ -140,7 +100,6 @@
       graph_span: 3d
       span:
         end: day
-      stacked: true
       show:
         last_updated: true
       apex_config:
@@ -153,47 +112,32 @@
         apex_config:
           yaxis:
             min: 0
+      all_series_config:
+        unit: Wh
+        stroke_width: 2
+        extend_to: false
+        fill_raw: zero
+        group_by:
+          func: avg
+          duration: 1h
+          fill: zero
       series:
         - entity: sensor.shelly_powermeter_phase_a_active_power
           name: A
-          unit: Wh
-          type: column
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 1h
         - entity: sensor.shelly_powermeter_phase_b_active_power
           name: B (Fitnesszimmer)
-          unit: Wh
-          type: column
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 1h
         - entity: sensor.shelly_powermeter_phase_c_active_power
           name: C (Küche)
-          unit: Wh
-          type: column
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 1h
         - entity: sensor.shelly_powermeter_active_power
           name: Total
-          unit: Wh
           type: column
           show:
             in_brush: true
-            in_chart: false
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 2h
 
     - type: custom:apexcharts-card
       header:
         show: true
-        title: Watt
+        title: Wattminuten
       update_interval: 1m
       graph_span: 12h
       show:
@@ -208,75 +152,56 @@
         apex_config:
           yaxis:
             min: 0
+      all_series_config:
+        unit: Wm
+        stroke_width: 2
+        extend_to: false
+        fill_raw: zero
+        group_by:
+          func: avg
+          duration: 1m
+          fill: zero
       series:
         - entity: sensor.shelly_powermeter_phase_a_active_power
           name: A
-          stroke_width: 2
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 1m
         - entity: sensor.shelly_powermeter_phase_b_active_power
           name: B (Fitnesszimmer)
-          stroke_width: 2
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 1m
         - entity: sensor.shelly_powermeter_phase_c_active_power
           name: C (Küche)
-          stroke_width: 2
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 1m
-        - entity: sensor.shelly_powermeter_active_power
-          name: Total
-          unit: Wh
-          stroke_width: 2
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 1m
         - entity: sensor.shelly_powermeter_active_power
           name: Total
           type: column
-          show:
-            in_brush: true
-            in_chart: false
-          fill_raw: zero
+        - entity: sensor.shelly_powermeter_active_power
+          name: Total
+          type: column
           group_by:
             func: avg
             duration: 15m
+            fill: zero
+          show:
+            in_brush: true
+            in_chart: false
 
     - type: custom:apexcharts-card
       header:
         show: true
-        title: Watt (Relativ)
+        title: Wattminuten (Relativ)
       update_interval: 15s
       graph_span: 5m
       stacked: true
       show:
         last_updated: true
+      all_series_config:
+        type: column
+        fill_raw: zero
+        group_by:
+          func: avg
+          duration: 15s
+          fill: zero
       series:
         - entity: sensor.shelly_powermeter_phase_a_active_power_dt
           name: A
-          type: column
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 15s
         - entity: sensor.shelly_powermeter_phase_b_active_power_dt
           name: B (Fitnesszimmer)
-          type: column
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 15s
         - entity: sensor.shelly_powermeter_phase_c_active_power_dt
           name: C (Küche)
-          type: column
-          fill_raw: zero
-          group_by:
-            func: avg
-            duration: 15s
