@@ -153,7 +153,7 @@
           yaxis:
             min: 0
       all_series_config:
-        unit: W/min
+        unit: Wmin
         stroke_width: 2
         extend_to: false
         fill_raw: zero
@@ -185,13 +185,14 @@
     - type: custom:apexcharts-card
       header:
         show: true
-        title: Wattminuten (Relativ)
+        title: Watt (Relativ)
       update_interval: 15s
       graph_span: 5m
       stacked: true
       show:
         last_updated: true
       all_series_config:
+        unit: W
         type: column
         fill_raw: zero
         group_by:
