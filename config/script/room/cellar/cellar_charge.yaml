@@ -5,7 +5,7 @@ cellar_charge:
     - service: input_number.set_value
       entity_id: input_number.cellar_charger_hours
       data:
-        value: 3
+        value: 10
     - service: input_select.select_option
       data:
         entity_id: input_select.ebike_charging_limit
