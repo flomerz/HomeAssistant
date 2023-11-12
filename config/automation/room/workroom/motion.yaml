@@ -18,7 +18,7 @@
       entity_id: binary_sensor.motion_workroom_occupancy
       to: 'off'
       for:
-        minutes: 5
+        minutes: 15
   condition:
     - condition: or
       conditions:
@@ -29,6 +29,6 @@
           entity_id: binary_sensor.motion_workroom_occupancy
           state: 'off'
           for:
-            minutes: 90
+            minutes: 60
   action:
     - service: script.workroom_off
