@@ -21,6 +21,10 @@
     - platform: state
       entity_id: input_boolean.state_sleep
       to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.state_home
+      state: 'on'
   action:
     # google
     - service: media_player.volume_set
@@ -35,3 +39,5 @@
       data:
         entity_id: input_select.mode_livingroom_light
         option: 'Chill'
+    - service: switch.turn_on
+      entity_id: switch.livingroom_tv_relay

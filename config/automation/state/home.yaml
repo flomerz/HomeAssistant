@@ -50,3 +50,12 @@
       state: 'on'
   action:
     - service: script.vacuum_point_kitchen
+
+- alias: state_home_on_tv
+  trigger:
+    - platform: state
+      entity_id: input_boolean.state_home
+      to: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.livingroom_tv_relay

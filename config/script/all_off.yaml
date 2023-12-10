@@ -1,8 +1,6 @@
 all_off:
   sequence:
     # entities
-    - service: light.turn_off
-      entity_id: all
     - service: switch.turn_off
       entity_id: switch.espresso
     - service: input_select.select_option
@@ -14,5 +12,12 @@ all_off:
       entity_id: input_boolean.state_workroom
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_fitnessroom
+    # tv
+    - service: switch.turn_off
+      entity_id: switch.livingroom_tv_relay
     # music
-    - service: script.music_turn_off
+    - service: script.turn_on
+      entity_id: script.music_turn_off
+    # lights
+    - service: light.turn_off
+      entity_id: all
