@@ -218,14 +218,6 @@ plant:
     min_conductivity: 500
     min_temperature: 15
 
-tts:
-  - platform: google_translate
-    service_name: google_say
-    base_url: !secret internal_url
-    cache: true
-    cache_dir: /tmp/tts
-    time_memory: 57600
-
 notify:
   # - name: flo
   #   platform: pushbullet
