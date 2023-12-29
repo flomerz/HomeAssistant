@@ -41,5 +41,3 @@
       data:
         entity_id: input_select.mode_livingroom_light
         option: 'Chill'
-    - service: switch.turn_on
-      entity_id: switch.livingroom_tv_relay

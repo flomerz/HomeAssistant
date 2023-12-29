@@ -13,6 +13,8 @@
         entity_id: input_select.state_livingroom_light
         state: 'Aus'
   action:
+    - service: switch.turn_on
+      entity_id: switch.livingroom_tv_relay
     - service: script.livingroom_light
       data_template:
         mode: "{{ states('input_select.mode_livingroom_light') }}"
