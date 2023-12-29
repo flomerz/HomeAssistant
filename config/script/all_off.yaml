@@ -1,4 +1,5 @@
 all_off:
+  mode: restart
   sequence:
     # entities
     - service: switch.turn_off
@@ -19,5 +20,22 @@ all_off:
     - service: script.turn_on
       entity_id: script.music_turn_off
     # lights
+    - service: script.all_lights_off
+
+
+all_lights_off:
+  mode: restart
+  fields:
+    exclude_entity_ids:
+      description: entity_ids to exclude
+  sequence:
     - service: light.turn_off
-      entity_id: all
+      target:
+        entity_id: >
+          {{
+            states.light
+              | selectattr('state', 'eq', 'on')
+              | rejectattr('entity_id', 'in', exclude_entity_ids)
+              | map(attribute='entity_id')
+              | join(', ')
+          }}

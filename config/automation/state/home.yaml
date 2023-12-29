@@ -6,6 +6,10 @@
   action:
     - service: script.turn_on
       entity_id: script.all_off
+    - service: media_player.turn_off
+      entity_id: media_player.wohnzimmer_tv
+    - service: media_player.turn_off
+      entity_id: media_player.schlafzimmer_tv
 
 - alias: state_home_off_states
   trigger:
