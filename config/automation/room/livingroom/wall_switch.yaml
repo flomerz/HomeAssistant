@@ -1,7 +1,7 @@
 # - alias: livingroom_wall_switch_click_1
 #   trigger:
 #     - platform: event
-#       event_type: shelly_switch_click
+#       event_type: shelly.click
 #       event_data:
 #         entity_id: binary_sensor.shelly_diningtable_switch
 #         click_cnt: 1
@@ -26,7 +26,7 @@
 # - alias: livingroom_wall_switch_click_2
 #   trigger:
 #     - platform: event
-#       event_type: shelly_switch_click
+#       event_type: shelly.click
 #       event_data:
 #         entity_id: binary_sensor.shelly_diningtable_switch
 #         click_cnt: 2

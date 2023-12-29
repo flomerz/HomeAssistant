@@ -1,22 +1,7 @@
 - alias: workroom_switch_1
   trigger:
-    - platform: event
-      event_type: shelly_switch_click
-      event_data:
-        entity_id: binary_sensor.shelly_workroom_switch
-        click_cnt: 1
+    - platform: state
+      entity_id: binary_sensor.shelly_workroom_switch
   action:
     - service: light.toggle
       entity_id: light.light_workroom
-
-
-- alias: workroom_switch_2
-  trigger:
-    - platform: event
-      event_type: shelly_switch_click
-      event_data:
-        entity_id: binary_sensor.shelly_workroom_switch
-        click_cnt: 2
-  action:
-    - service: input_boolean.toggle
-      entity_id: input_boolean.state_workroom
