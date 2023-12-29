@@ -1,6 +1,7 @@
 - platform: rest
   name: ebike_report
   resource: !secret ebike_report_url
+  timeout: 60
   scan_interval: 10
   json_attributes:
     - power
