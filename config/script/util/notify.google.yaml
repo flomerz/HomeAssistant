@@ -33,7 +33,7 @@ notify_google_say:
         - condition: template
           value_template: "{{ not is_state('media_player.schlafzimmer_assistent', 'playing') }}"
     # notify
-    - service: tts.google_say
+    - service: tts.speak
       entity_id: media_player.home_group
       data_template:
         language: '{{ language }}'
