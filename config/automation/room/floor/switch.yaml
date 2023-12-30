@@ -22,4 +22,4 @@
       entity_id: sensor.switch_door_action
       to: 'single_both'
   action:
-    - service: script.vacuum_point_kitchen
+    - service: script.tesla_climate

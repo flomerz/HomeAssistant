@@ -1,0 +1,11 @@
+tesla_climate:
+  mode: restart
+  sequence:
+    - service: climate.turn_on
+      target:
+        entity_id: climate.teshla_hvac_climate_system
+    - service: script.notify_google
+      data:
+        language: ru
+        message: 'teshla klima'
+        message_say: 'teshla klima'
