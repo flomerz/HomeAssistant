@@ -8,7 +8,7 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
     - delay:
-        hours: 1
+        hours: 2
     # tv off
     - service: media_player.turn_off
       entity_id: media_player.shield
@@ -28,3 +28,18 @@
     - delay:
         hours: 1
     - service: script.music_turn_off
+
+- alias: switch_bedroom_both
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: sensor.switch_bedroom_action
+      to: 'single_both'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.state_sleep
+    - delay:
+        hours: 4
+    # tv off
+    - service: media_player.turn_off
+      entity_id: media_player.shield

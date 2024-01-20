@@ -13,11 +13,21 @@
         entity_id: input_select.state_livingroom_light
         state: 'Aus'
   action:
-    - service: switch.turn_on
-      entity_id: switch.livingroom_tv_relay
     - service: script.livingroom_light
       data_template:
         mode: "{{ states('input_select.mode_livingroom_light') }}"
+
+- alias: Livingroom Motion ON -> TV
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_livingroom_tuya_occupancy
+      to: 'on'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/awake.yaml
+  action:
+    - service: switch.turn_on
+      entity_id: switch.livingroom_tv_relay
 
 - alias: Livingroom Motion OFF
   trigger:
