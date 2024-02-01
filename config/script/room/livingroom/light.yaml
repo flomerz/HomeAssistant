@@ -10,3 +10,18 @@ livingroom_light:
       data_template:
         entity_id: input_select.state_livingroom_light
         option: '{{ mode }}'
+
+livingroom_light_up:
+  sequence:
+    - service: input_select.select_next
+      entity_id: input_select.state_livingroom_light
+      data:
+        cycle: false
+
+
+livingroom_light_down:
+  sequence:
+    - service: input_select.select_previous
+      entity_id: input_select.state_livingroom_light
+      data:
+        cycle: false

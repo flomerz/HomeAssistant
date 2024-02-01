@@ -7,8 +7,9 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
+    - service: script.all_off
     - delay:
-        hours: 2
+        hours: 1
     # tv off
     - service: media_player.turn_off
       entity_id: media_player.shield
@@ -38,8 +39,6 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
-    - delay:
-        hours: 4
     # tv off
     - service: media_player.turn_off
       entity_id: media_player.shield
