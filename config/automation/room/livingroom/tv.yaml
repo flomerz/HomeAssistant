@@ -14,7 +14,7 @@
   trigger:
     - platform: state
       entity_id: media_player.wohnzimmer_tv
-      to: 'off'
+      from: 'on'
   action:
     # scene chill
     - service: script.livingroom_light

@@ -16,6 +16,48 @@ ir_receiver_vol_down:
       data:
         payload: "{'type': 'sony', 'data': '25612', 'nbits': '15'}"
 
+ir_receiver_vol_up_long:
+  variables:
+    wait: 300
+  sequence:
+    - service: script.ir_receiver_vol_up
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_up
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_up
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_up
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_up
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_up
+
+ir_receiver_vol_down_long:
+  variables:
+    wait: 300
+  sequence:
+    - service: script.ir_receiver_vol_down
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_down
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_down
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_down
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_down
+    - delay:
+        milliseconds: "{{ wait }}"
+    - service: script.ir_receiver_vol_down
+
 ir_receiver_hdmi:
   sequence:
     - service: script.ir_send
