@@ -17,3 +17,6 @@ playlist_florian:
 playlist_louisa:
   name: Playlist Louisa
   initial: PLoN1kBAAhLpxXSEfTwobEixoR8LvosB7l
+
+sleep_assistant_prompt:
+  name: Sleep Assistant Prompt

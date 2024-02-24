@@ -36,6 +36,13 @@
       grow: true
 
 
+####################  Media  ####################
+- type: entities
+  title: Media
+  entities:
+    - entity: input_text.sleep_assistant_prompt
+
+
 ####################  Wartung  ####################
 - type: entities
   title: Wartung

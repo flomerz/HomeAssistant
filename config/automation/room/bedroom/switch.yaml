@@ -5,14 +5,18 @@
       entity_id: sensor.switch_bedroom_action
       to: 'single_left'
   action:
+    # sleep on
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
+    # all off
     - service: script.all_off
-    - delay:
-        hours: 1
     # tv off
     - service: media_player.turn_off
       entity_id: media_player.shield
+    # sleep media
+    - service: notify.google_assistant
+      data_template:
+        message: "{{ states('input_text.sleep_assistant_prompt') }}"
 
 - alias: switch_bedroom_right
   mode: restart
@@ -21,13 +25,18 @@
       entity_id: sensor.switch_bedroom_action
       to: 'single_right'
   action:
+    # sleep off
     - service: input_boolean.turn_off
       entity_id: input_boolean.state_sleep
+    # espresso on
     - service: switch.turn_on
       entity_id: switch.espresso
+    # radio
     - service: script.music_radio_srf4
+    # wait 1h
     - delay:
         hours: 1
+    # media off
     - service: script.music_turn_off
 
 - alias: switch_bedroom_both
@@ -37,8 +46,14 @@
       entity_id: sensor.switch_bedroom_action
       to: 'single_both'
   action:
+    # sleep on
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
+    # all off
+    - service: script.all_off
+    # wait 2h
+    - delay:
+        hours: 2
     # tv off
     - service: media_player.turn_off
       entity_id: media_player.shield
