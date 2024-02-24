@@ -28,8 +28,8 @@
       value_template: >
         {% set x = states('sensor.netatmo_home_indoor_buro_co2') | int %}
 
-        {% set x_1 = 400 %}
-        {% set x_2 = 2000 %}
+        {% set x_1 = 500 %}
+        {% set x_2 = 1500 %}
         {% set y_1 = 120 %}
         {% set y_2 = 360 %}
 

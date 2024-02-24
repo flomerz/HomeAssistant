@@ -2,18 +2,19 @@
   trigger:
     - platform: time_pattern
       minutes: /1
-    - platform: state
-      entity_id: light.workroom_desk_ambilight
-      to: 'on'
   condition:
     - condition: state
       entity_id: light.workroom_desk_ambilight
       state: 'on'
+    - condition: template
+      value_template: >
+        {{ state_attr('light.workroom_desk_ambilight', 'hs_color')[0] != states('sensor.workroom_light_desk_ambilight') | int }}
   action:
     - service: light.turn_on
       entity_id: light.workroom_desk_ambilight
       data_template:
+        brightness: 255
         transition: 2
         hs_color: 
-          - "{{ states('sensor.workroom_light_desk_ambilight') }}"
+          - "{{ states('sensor.workroom_light_desk_ambilight') | int }}"
           - 100

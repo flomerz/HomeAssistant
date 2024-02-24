@@ -13,12 +13,6 @@
         - entity: input_boolean.state_sleep
           name: "{{ (states.input_boolean.state_sleep.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
           icon: 'mdi:sleep'
-        - entity: input_boolean.state_workroom
-          name: "{{ (states.input_boolean.state_workroom.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
-          icon: 'mdi:desk'
-        - entity: input_boolean.state_fitnessroom
-          name: "{{ (states.input_boolean.state_fitnessroom.last_changed | as_local | relative_time).replace(' months', 'M').replace(' month', 'M').replace(' days', 'd').replace(' day', 'd').replace(' hours', 'h').replace(' hour', 'h').replace(' minutes', 'm').replace(' minute', 'm').replace(' seconds', 's').replace(' second', 's') }}"
-          icon: 'mdi:weight-lifter'
 
     - type: section
 
@@ -145,7 +139,8 @@
     - type: custom:config-template-card
       entities:
         - light.light_workroom
-        - light.workroom_salt_light
+        - light.workroom_desk
+        - light.workroom_desk_ambilight
         - sensor.netatmo_home_indoor_buro_temperature
         - sensor.netatmo_home_indoor_buro_co2
       variables:
@@ -163,8 +158,11 @@
         secondary_info: last-changed
         show_state: false
         entities:
-          - entity: light.workroom_salt_light
-            name: Salz
+          - entity: light.workroom_desk_ambilight
+            name: Ambilight
+            toggle: true
+          - entity: light.workroom_desk
+            name: Tisch
             toggle: true
           - entity: light.light_workroom
             name: Licht
