@@ -1,0 +1,19 @@
+- alias: workroom_light_desk_ambilight
+  trigger:
+    - platform: time_pattern
+      minutes: /1
+    - platform: state
+      entity_id: light.workroom_desk_ambilight
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.workroom_desk_ambilight
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.workroom_desk_ambilight
+      data_template:
+        transition: 2
+        hs_color: 
+          - "{{ states('sensor.workroom_light_desk_ambilight') }}"
+          - 100

@@ -1,4 +1,4 @@
-- alias: workroom_switch_1
+- alias: workroom_switch_toggle
   trigger:
     - platform: state
       entity_id: binary_sensor.shelly_workroom_switch
