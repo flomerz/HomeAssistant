@@ -9,9 +9,7 @@
       toggle: true
       entities:
         - entity: input_datetime.sunrise_time
-          name: Zeit
-        - entity: input_boolean.sunrise_weekend
-          name: Wochenende
+          name: Zeitpunkt
 
 
 ####################  Assistent Volume  ####################

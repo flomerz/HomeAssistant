@@ -1,7 +1,3 @@
 sunrise_enabled:
   name: "Morning Sunrise"
   icon: mdi:weather-sunset
-
-sunrise_weekend:
-  name: "Weekend Sunrise"
-  icon: mdi:calendar-blank
