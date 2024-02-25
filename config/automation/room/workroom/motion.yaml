@@ -12,6 +12,19 @@
     - service: light.turn_on
       entity_id: light.light_workroom
     - service: light.turn_on
+      entity_id: light.workroom_desk
+
+
+- alias: workroom_motion_on_ambilight
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_workroom_occupancy
+      to: 'on'
+  condition:
+    - condition: and
+      conditions: !include ../../../condition/awake.yaml
+  action:
+    - service: light.turn_on
       entity_id: light.workroom_desk_ambilight
   
 
@@ -25,7 +38,7 @@
   action:
     - service: light.turn_off
       entity_id: light.light_workroom
-    - service: light.turn_on
+    - service: light.turn_off
       entity_id: light.workroom_desk
     - service: light.turn_off
       entity_id: light.workroom_desk_ambilight
