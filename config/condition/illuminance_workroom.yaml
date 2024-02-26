@@ -4,4 +4,7 @@
       conditions: !include night.yaml
     - condition: numeric_state
       entity_id: sensor.motion_workroom_illuminance_lux
-      below: 30
+      below: 40
+    - condition: numeric_state
+      entity_id: sensor.motion_workroom_tuya_illuminance
+      below: 1500
