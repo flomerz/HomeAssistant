@@ -20,7 +20,8 @@ all_off:
     - service: script.turn_on
       entity_id: script.music_turn_off
     # lights
-    - service: script.all_lights_off
+    - service: script.turn_on
+      entity_id: script.all_lights_off
 
 
 all_lights_off:
