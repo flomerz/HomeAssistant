@@ -1,7 +1,7 @@
 - alias: workroom_motion_on
   trigger:
     - platform: state
-      entity_id: binary_sensor.motion_workroom_occupancy
+      entity_id: binary_sensor.motion_workroom_tuya_occupancy
       to: 'on'
   condition:
     - condition: and
@@ -11,11 +11,9 @@
   action:
     - service: light.turn_on
       entity_id: light.light_workroom
-    - service: light.turn_on
-      entity_id: light.workroom_desk
+    
 
-
-- alias: workroom_motion_on_ambilight
+- alias: workroom_desk_motion_on
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_workroom_occupancy
@@ -26,6 +24,10 @@
   action:
     - service: light.turn_on
       entity_id: light.workroom_desk_ambilight
+    - condition: and
+      conditions: !include ../../../condition/illuminance_workroom.yaml
+    - service: light.turn_on
+      entity_id: light.workroom_desk
   
 
 - alias: workroom_motion_off
@@ -34,7 +36,23 @@
       entity_id: binary_sensor.motion_workroom_occupancy
       to: 'off'
       for:
-        minutes: 15
+        minutes: 5
+    - platform: state
+      entity_id: binary_sensor.motion_workroom_tuya_occupancy
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: binary_sensor.motion_workroom_occupancy
+      state: 'off'
+      for:
+        minutes: 5
+    - condition: state
+      entity_id: binary_sensor.motion_workroom_tuya_occupancy
+      state: 'off'
+      for:
+        minutes: 5
   action:
     - service: light.turn_off
       entity_id: light.light_workroom
@@ -42,3 +60,4 @@
       entity_id: light.workroom_desk
     - service: light.turn_off
       entity_id: light.workroom_desk_ambilight
+    

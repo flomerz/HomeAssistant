@@ -3,6 +3,11 @@
     - platform: numeric_state
       entity_id: sensor.motion_workroom_illuminance_lux
       above: 100
+    - platform: numeric_state
+      entity_id: sensor.motion_workroom_tuya_illuminance
+      above: 2000
   action:
     - service: light.turn_off
       entity_id: light.light_workroom
+    - service: light.turn_off
+      entity_id: light.workroom_desk
