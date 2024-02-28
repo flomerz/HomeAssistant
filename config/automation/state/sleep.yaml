@@ -4,8 +4,6 @@
       entity_id: input_boolean.state_sleep
       to: 'on'
   action:
-    - service: script.turn_on
-      entity_id: script.all_off
     # google volume
     - service: media_player.volume_set
       entity_id: media_player.schlafzimmer_assistent
@@ -15,6 +13,9 @@
       entity_id: media_player.wohnzimmer_assistent
       data_template:
         volume_level: "{{ states('input_number.wohnzimmer_assistent_volume_sleep') }}"
+    # all off
+    - service: script.turn_on
+      entity_id: script.all_off
 
 
 - alias: Sleep OFF

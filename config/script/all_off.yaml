@@ -30,14 +30,16 @@ all_lights_off:
     exclude_entity_ids:
       description: entity_ids to exclude
   sequence:
-    - service: light.turn_off
-      continue_on_error: true
-      target:
-        entity_id: >
-          {{
-            states.light
-              | selectattr('state', 'eq', 'on')
-              | rejectattr('entity_id', 'in', exclude_entity_ids)
-              | map(attribute='entity_id')
-              | join(', ')
-          }}
+    - repeat:
+      for_each: >
+        {{
+          states.light
+            | selectattr('state', 'eq', 'on')
+            | rejectattr('entity_id', 'in', exclude_entity_ids)
+            | map(attribute='entity_id')
+            | list
+        }}
+      sequence:
+        - service: light.turn_off
+          continue_on_error: true
+          entity_id: "{{ repeat.item }}"
