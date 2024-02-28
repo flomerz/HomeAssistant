@@ -5,7 +5,7 @@
         show: true
         title: Kilowattstunden pro Tag
       update_interval: 1m
-      graph_span: 30d
+      graph_span: 7d
       span:
         end: day
       stacked: true
@@ -14,13 +14,6 @@
       apex_config:
         yaxis:
           min: 0
-      experimental:
-        brush: true
-      brush:
-        selection_span: 7d
-        apex_config:
-          yaxis:
-            min: 0
       all_series_config:
         unit: kWh
         type: column
@@ -46,58 +39,13 @@
             in_brush: true
             in_chart: false
     
-    - type: custom:apexcharts-card
-      header:
-        show: true
-        title: Kosten pro Tag
-      update_interval: 1m
-      graph_span: 30d
-      span:
-        end: day
-      stacked: true
-      show:
-        last_updated: true
-      apex_config:
-        yaxis:
-          min: 0
-      experimental:
-        brush: true
-      brush:
-        selection_span: 7d
-        apex_config:
-          yaxis:
-            min: 0
-      all_series_config:
-        unit: CHF
-        type: column
-        float_precision: 2
-        transform: "return x * 0.25;"
-        fill_raw: zero
-        group_by:
-          func: diff
-          duration: 1d
-          fill: zero
-      series:
-        - entity: sensor.shelly_powermeter_phase_a_total_active_energy
-          name: A
-        - entity: sensor.shelly_powermeter_phase_b_total_active_energy
-          name: B (Fitnesszimmer)
-        - entity: sensor.shelly_powermeter_phase_c_total_active_energy
-          name: C (Küche)
-          show:
-            datalabels: total
-        - entity: sensor.shelly_powermeter_total_active_energy
-          name: Total
-          show:
-            in_brush: true
-            in_chart: false
 
     - type: custom:apexcharts-card
       header:
         show: true
         title: Wattstunden
       update_interval: 1m
-      graph_span: 3d
+      graph_span: 1d
       span:
         end: day
       show:
@@ -105,13 +53,6 @@
       apex_config:
         yaxis:
           min: 0
-      experimental:
-        brush: true
-      brush:
-        selection_span: 1d
-        apex_config:
-          yaxis:
-            min: 0
       all_series_config:
         unit: Wh
         stroke_width: 2
@@ -134,53 +75,6 @@
           show:
             in_brush: true
 
-    - type: custom:apexcharts-card
-      header:
-        show: true
-        title: Wattminuten
-      update_interval: 1m
-      graph_span: 12h
-      show:
-        last_updated: true
-      apex_config:
-        yaxis:
-          min: 0
-      experimental:
-        brush: true
-      brush:
-        selection_span: 1h
-        apex_config:
-          yaxis:
-            min: 0
-      all_series_config:
-        unit: Wmin
-        stroke_width: 2
-        extend_to: false
-        fill_raw: zero
-        group_by:
-          func: avg
-          duration: 1m
-          fill: zero
-      series:
-        - entity: sensor.shelly_powermeter_phase_a_active_power
-          name: A
-        - entity: sensor.shelly_powermeter_phase_b_active_power
-          name: B (Fitnesszimmer)
-        - entity: sensor.shelly_powermeter_phase_c_active_power
-          name: C (Küche)
-        - entity: sensor.shelly_powermeter_active_power
-          name: Total
-          type: column
-        - entity: sensor.shelly_powermeter_active_power
-          name: Total
-          type: column
-          group_by:
-            func: avg
-            duration: 15m
-            fill: zero
-          show:
-            in_brush: true
-            in_chart: false
 
     - type: custom:apexcharts-card
       header:
