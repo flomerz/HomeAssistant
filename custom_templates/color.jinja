@@ -1,43 +1,43 @@
 {% macro hsv_to_rgb(h, s=100, v=100) %}
-  {%- set h = h / 360 %}
-  {%- set s = s / 100 %}
-  {%- set v = v / 100 %}
+  {% set h = h / 360 %}
+  {% set s = s / 100 %}
+  {% set v = v / 100 %}
   
-  {%- set i = (h * 6)|int %}
-  {%- set f = h * 6 - i %}
-  {%- set p = v * (1 - s) %}
-  {%- set q = v * (1 - f * s) %}
-  {%- set t = v * (1 - (1 - f) * s) %}
+  {% set i = (h * 6)|int %}
+  {% set f = h * 6 - i %}
+  {% set p = v * (1 - s) %}
+  {% set q = v * (1 - f * s) %}
+  {% set t = v * (1 - (1 - f) * s) %}
   
-  {%- if i % 6 == 0 %}
+  {% if i % 6 == 0 %}
     {% set r = v %}
     {% set g = t %}
     {% set b = p %}
-  {%- elif i % 6 == 1 %}
+  {% elif i % 6 == 1 %}
     {% set r = q %}
     {% set g = v %}
     {% set b = p %}
-  {%- elif i % 6 == 2 %}
+  {% elif i % 6 == 2 %}
     {% set r = p %}
     {% set g = v %}
     {% set b = t %}
-  {%- elif i % 6 == 3 %}
+  {% elif i % 6 == 3 %}
     {% set r = p %}
     {% set g = q %}
     {% set b = v %}
-  {%- elif i % 6 == 4 %}
+  {% elif i % 6 == 4 %}
     {% set r = t %}
     {% set g = p %}
     {% set b = v %}
-  {%- elif i % 6 == 5 %}
+  {% elif i % 6 == 5 %}
     {% set r = v %}
     {% set g = p %}
     {% set b = q %}
-  {%- endif %}
+  {% endif %}
 
-  {%- set r = (255 * r) | round(0) %}
-  {%- set g = (255 * g) | round(0) %}
-  {%- set b = (255 * b) | round(0) %}
+  {% set r = (255 * r) | round(0) %}
+  {% set g = (255 * g) | round(0) %}
+  {% set b = (255 * b) | round(0) %}
   
   {{ [r,g,b] }}
 {% endmacro %}

@@ -1,29 +1,29 @@
-- alias: workroom_light_desk_ambilight
-  id: workroom_light_desk_ambilight
+- alias: livingroom_co2
+  id: livingroom_co2
   trigger:
     - platform: time_pattern
       minutes: /1
     - platform: state
-      entity_id: light.workroom_desk_ambilight
+      entity_id: light.livingroom_co2
       to: 'on'
   condition:
     - condition: state
-      entity_id: light.workroom_desk_ambilight
+      entity_id: light.livingroom_co2
       state: 'on'
     - condition: template
       value_template: >
         {% from 'color.jinja' import hsv_to_rgb %}
-        {% set sensor_h = states('sensor.workroom_light_desk_ambilight') | int %}
+        {% set sensor_h = states('sensor.livingroom_co2_color_hsv') | int %}
         {% set sensor_rgb = hsv_to_rgb(sensor_h) | from_json %}
-        {% set light_rgb = state_attr('light.workroom_desk_ambilight', 'rgb_color') | list %}
+        {% set light_rgb = state_attr('light.livingroom_co2', 'rgb_color') | list %}
         {{ sensor_rgb != light_rgb }}
   action:
     - service: light.turn_on
-      entity_id: light.workroom_desk_ambilight
+      entity_id: light.livingroom_co2
       data_template:
-        brightness: 255
+        brightness: 1
         transition: 2
         rgb_color: >
           {% from 'color.jinja' import hsv_to_rgb %}
-          {% set h = states('sensor.workroom_light_desk_ambilight') | int %}
+          {% set h = states('sensor.livingroom_co2_color_hsv') | int %}
           {{ hsv_to_rgb(h) }}

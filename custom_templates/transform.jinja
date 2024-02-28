@@ -1,0 +1,12 @@
+{% macro linear(x, x_space, y_space) %}  
+    {% set x_1, x_2 = x_space %}
+    {% set y_1, y_2 = y_space %}
+    
+    {% set dt = (y_2 - y_1) / (x_2 - x_1) %}
+    {% set b = y_1 - dt * x_1 %}
+
+    {% set y = x * dt + b %}
+    {% set y = min(max(y,y_1),y_2) %}
+
+    {{ y }}
+{% endmacro %}

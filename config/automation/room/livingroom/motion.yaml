@@ -1,4 +1,4 @@
-- alias: Livingroom Motion ON
+- alias: Livingroom Motion ON and no TV
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_livingroom_tuya_occupancy
@@ -17,7 +17,8 @@
       data_template:
         mode: "{{ states('input_select.mode_livingroom_light') }}"
 
-- alias: Livingroom Motion ON -> TV
+
+- alias: Livingroom Motion ON
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_livingroom_tuya_occupancy
@@ -28,6 +29,7 @@
   action:
     - service: switch.turn_on
       entity_id: switch.livingroom_tv_relay
+
 
 - alias: Livingroom Motion OFF
   trigger:

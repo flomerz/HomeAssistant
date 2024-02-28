@@ -17,6 +17,8 @@
       entity_id: light.christmas_light
     - service: light.turn_off
       entity_id: light.wohnzimmer_tv_ambilight
+    - service: light.turn_off
+      entity_id: light.livingroom_co2
 
 
 - alias: Light Film
@@ -57,6 +59,8 @@
       data:
         brightness_pct: 50
         effect: 'FOLLOW_VIDEO: NATURAL'
+    - service: light.turn_on
+      entity_id: light.livingroom_co2
 
 
 - alias: Light Beamer
@@ -87,6 +91,8 @@
       data:
         brightness_pct: 100
         effect: 'FOLLOW_VIDEO: STANDARD'
+    - service: light.turn_on
+      entity_id: light.livingroom_co2
 
 
 - alias: Light Beamer Bright
@@ -117,6 +123,8 @@
       data:
         brightness_pct: 100
         effect: 'FOLLOW_VIDEO: VIVID'
+    - service: light.turn_on
+      entity_id: light.livingroom_co2
 
 
 - alias: Light Chill
@@ -154,6 +162,8 @@
         brightness_pct: 15
         rgb_color: [255, 0, 255]
         effect: 'Mode: manual'
+    - service: light.turn_on
+      entity_id: light.livingroom_co2
 
 
 - alias: Light Ambient
@@ -187,6 +197,8 @@
         brightness_pct: 15
         rgb_color: [255, 0, 255]
         effect: 'Mode: manual'
+    - service: light.turn_on
+      entity_id: light.livingroom_co2
 
 
 - alias: Light Hell
@@ -220,6 +232,8 @@
         brightness_pct: 100
         rgb_color: [255, 255, 255]
         effect: 'Mode: manual'
+    - service: light.turn_on
+      entity_id: light.livingroom_co2
 
 # - alias: Dimmer
 #   trigger:

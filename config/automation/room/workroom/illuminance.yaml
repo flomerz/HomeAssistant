@@ -2,7 +2,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.motion_workroom_illuminance_lux
-      above: 200
+      above: 300
     - platform: numeric_state
       entity_id: sensor.motion_workroom_tuya_illuminance
       above: 2000

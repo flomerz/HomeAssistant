@@ -26,17 +26,6 @@
   sensors:
     workroom_light_desk_ambilight:
       value_template: >
+        {% from 'transform.jinja' import linear %}
         {% set x = states('sensor.netatmo_home_indoor_buro_co2') | int %}
-
-        {% set x_1 = 500 %}
-        {% set x_2 = 1500 %}
-        {% set y_1 = 120 %}
-        {% set y_2 = 360 %}
-
-        {% set dt = (y_2 - y_1) / (x_2 - x_1) %}
-        {% set b = y_1 - dt * x_1 %}
-        {% set y = x * dt + b %}
-
-        {% set y = min(max(y,y_1),y_2) | int %}
-
-        {{ y }}
+        {{ linear(x, [500, 1500], [120, 360]) | from_json | round(0) }}
