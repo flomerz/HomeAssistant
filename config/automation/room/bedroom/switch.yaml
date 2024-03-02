@@ -8,8 +8,6 @@
     # sleep on
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
-    # all off
-    - service: script.all_off
     # tv off
     - service: media_player.turn_off
       entity_id: media_player.shield
@@ -49,8 +47,6 @@
     # sleep on
     - service: input_boolean.turn_on
       entity_id: input_boolean.state_sleep
-    # all off
-    - service: script.all_off
     # wait 2h
     - delay:
         hours: 2
