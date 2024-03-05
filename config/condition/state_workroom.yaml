@@ -1,5 +1,0 @@
-- condition: and
-  conditions: !include awake.yaml
-- condition: state
-  entity_id: input_boolean.state_workroom
-  state: 'on'
