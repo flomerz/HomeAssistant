@@ -1,5 +1,5 @@
-- alias: 'network new device'
-  id: 'network new device'
+- alias: network new device
+  id: network new device
   trigger:
     platform: event
     event_type: device_tracker_new_device
