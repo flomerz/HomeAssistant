@@ -19,14 +19,10 @@ import homeassistant.components.input_select as input_select
 import homeassistant.components.input_boolean as input_boolean
 import homeassistant.components.media_player as media_player
 
-from pytube import YouTube
-from pytube import request
-from pytube import extract
-################### Temp FIX remove me! ###############################
-################### Temp FIX remove me! ###############################
-#from pytube.cipher import Cipher
-################### Temp FIX remove me! ###############################
-################### Temp FIX remove me! ###############################
+from pytube import YouTube # to generate cipher
+from pytube import request # to generate cipher
+from pytube import extract # to generate cipher
+
 import ytmusicapi
 # use this to work with local version
 # and make sure that the local package is also only loading local files
@@ -73,21 +69,21 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 		async_add_entities([yTubeMusicComponent(hass, config, "_yaml")], update_before_add=True)
 
 
-async def async_setup_entry(hass, config, async_add_devices):
+async def async_setup_entry(hass, config, async_add_entities):
 	# Run setup via Storage
 	_LOGGER.debug("Config via Storage/UI")
 	if(len(config.data) > 0):
-		async_add_devices([yTubeMusicComponent(hass, config, "")], update_before_add=True)
+		async_add_entities([yTubeMusicComponent(hass, config, "")], update_before_add=True)
 
 
 class yTubeMusicComponent(MediaPlayerEntity):
 	def __init__(self, hass, config, name_add):
 		self.hass = hass
-		self._unique_id = config.entry_id
+		self._attr_unique_id = config.entry_id
 		self._debug_log_concat = ""
 		self._debug_as_error = config.data.get(CONF_DEBUG_AS_ERROR, DEFAULT_DEBUG_AS_ERROR)
 		self._org_name = config.data.get(CONF_NAME, DOMAIN + name_add)
-		self._name = self._org_name
+		self._attr_name = self._org_name
 		self._init_extra_sensor = config.data.get(CONF_INIT_EXTRA_SENSOR, DEFAULT_INIT_EXTRA_SENSOR)
 
 		# confgurations can be either the full entity_id or just the name
@@ -172,6 +168,8 @@ class yTubeMusicComponent(MediaPlayerEntity):
 		self._playContinuous = True
 		self._signatureTimestamp = 0
 		self._x_to_idle = None  # Some Mediaplayer don't transition to 'idle' but to 'off' on track end. This re-routes off to idle
+		self._ignore_paused_on_media_change = False	# RobinR1, OwnTone compatibility
+		self._ignore_next_remote_pause_state = False	# RobinR1, OwnTone compatibility: Some Mediaplayers temporarely switches to 'paused' during media changes (next/prev/seek)
 		self._search = {"query": "", "filter": None, "limit": 20}
 		self.reset_attributs()
 
@@ -304,11 +302,11 @@ class yTubeMusicComponent(MediaPlayerEntity):
 		self._attributes['_media_type'] = None
 		self._attributes['_media_id'] = None
 
-		self.hass.data[DOMAIN][self._unique_id]['lyrics'] = ""
-		self.hass.data[DOMAIN][self._unique_id]['search'] = ""
-		self.hass.data[DOMAIN][self._unique_id]['tracks'] = ""
-		self.hass.data[DOMAIN][self._unique_id]['playlists'] = ""
-		self.hass.data[DOMAIN][self._unique_id]['total_tracks'] = ""
+		self.hass.data[DOMAIN][self._attr_unique_id]['lyrics'] = ""
+		self.hass.data[DOMAIN][self._attr_unique_id]['search'] = ""
+		self.hass.data[DOMAIN][self._attr_unique_id]['tracks'] = ""
+		self.hass.data[DOMAIN][self._attr_unique_id]['playlists'] = ""
+		self.hass.data[DOMAIN][self._attr_unique_id]['total_tracks'] = ""
 
 
 	async def async_update(self):
@@ -371,18 +369,26 @@ class yTubeMusicComponent(MediaPlayerEntity):
 		self.log_me('debug', "[E] async_check_api")
 		return True
 
+	@property
+	def device_info(self):
+		return {
+			'identifiers': {(DOMAIN, self._attr_unique_id)},
+			'name': self._attr_name,
+			'manufacturer': "Google Inc.",
+			'model': DOMAIN
+		}
 
 	@property
 	def name(self):
 		# Return the name of the player.
-		return self._name
+		return self._attr_name
 
 	@property
 	def icon(self):
 		return 'mdi:music-circle'
 
 	@property
-	def supported_features(self):
+	def supported_features(self) -> media_player.MediaPlayerEntityFeature:
 		# Flag media player features that are supported.
 		return SUPPORT_YTUBEMUSIC_PLAYER
 
@@ -414,7 +420,7 @@ class yTubeMusicComponent(MediaPlayerEntity):
 	@property
 	def media_content_type(self):
 		# Content type of current playing media.
-		return MEDIA_TYPE_MUSIC
+		return MediaType.MUSIC
 
 	@property
 	def media_title(self):
@@ -471,14 +477,14 @@ class yTubeMusicComponent(MediaPlayerEntity):
 	def repeat(self):
 		# Return current repeat mode.
 		if(self._playContinuous):
-			return REPEAT_MODE_ALL
-		return REPEAT_MODE_OFF
+			return RepeatMode.ALL
+		return RepeatMode.OFF
 
 	async def async_set_repeat(self, repeat: str):
 		self.log_me('debug', "[S] set_repeat: " + repeat)
 		# Set repeat mode.
 		data = {ATTR_ENTITY_ID: self._select_playContinuous}
-		if repeat != REPEAT_MODE_OFF:
+		if repeat != RepeatMode.OFF:
 			self._playContinuous = True
 			if(self._select_playContinuous != ""):
 				await self.hass.services.async_call(DOMAIN_IB, IB_ON, data)
@@ -535,11 +541,11 @@ class yTubeMusicComponent(MediaPlayerEntity):
 				self.log_me('debug', "[E] (fail) TURNON")
 				return
 			if(_source.state == "Playlist"):
-				self._attributes['_media_type'] = MEDIA_TYPE_PLAYLIST
+				self._attributes['_media_type'] = MediaType.PLAYLIST
 			else:
 				self._attributes['_media_type'] = CHANNEL
 		else:
-			self._attributes['_media_type'] = MEDIA_TYPE_PLAYLIST
+			self._attributes['_media_type'] = MediaType.PLAYLIST
 
 		# store id and start play_media
 		self._attributes['_media_id'] = self._playlists[idx]['playlistId']
@@ -621,7 +627,7 @@ class yTubeMusicComponent(MediaPlayerEntity):
 		# Fire the off action.
 		self.reset_attributs()
 		if(self._like_in_name):
-			self._name = self._org_name
+			self._attr_name = self._org_name
 		self.async_schedule_update_ha_state()
 		if(self._remote_player == ""):
 			if(not(await self.async_update_remote_player())):
@@ -699,13 +705,12 @@ class yTubeMusicComponent(MediaPlayerEntity):
 	async def async_get_cipher(self, videoId):
 		self.log_debug_later("[S] async_get_cipher")
 		embed_url = "https://www.youtube.com/embed/" + videoId
+		# this is why we need pytube as include 
 		embed_html = await self.hass.async_add_executor_job(request.get, embed_url)
 		js_url = extract.js_url(embed_html)
 		self._js = await self.hass.async_add_executor_job(request.get, js_url)
-# Temp FIX remove me!
 		self._cipher = pytube.cipher.Cipher(js=self._js)
-#		self._cipher = Cipher(js=self._js)
-		# 2do some sort of check if tis worked
+		# this is why we need pytube as include 
 		self.log_me('debug', "[E] async_get_cipher")
 
 	async def async_sync_player(self, entity_id=None, old_state=None, new_state=None):
@@ -773,11 +778,24 @@ class yTubeMusicComponent(MediaPlayerEntity):
 			# chromecast quite frequently change from playing to idle twice, so we need some kind of time guard
 			if(old_state.state == STATE_PLAYING and new_state.state == STATE_IDLE and (datetime.datetime.now() - self._last_auto_advance).total_seconds() > 10):
 				self._allow_next = False
+				# add track to history
+				try:
+					response = await self.hass.async_add_executor_job(lambda: self._api.get_song(self._attributes['videoId'], self._signatureTimestamp))
+					await self.hass.async_add_executor_job(lambda: self._api.add_history_item(response))
+				except:
+					self.log_me('debug', "adding "+self._attributes['videoId']+" to history failed")
+
 				await self.async_get_track()
 			# turn this player off when the remote_player was shut down
 			elif((old_state.state == STATE_PLAYING or old_state.state == STATE_IDLE or old_state.state == STATE_PAUSED) and new_state.state == STATE_OFF):
 				if(self._x_to_idle == STATE_OFF or self._x_to_idle == STATE_OFF_1X):  # workaround for MPD (changes to OFF at the end of a track)
 					self._allow_next = False
+					# add track to history
+					try:
+						response = await self.hass.async_add_executor_job(lambda: self._api.get_song(self._attributes['videoId'], self._signatureTimestamp))
+						await self.hass.async_add_executor_job(lambda: self._api.add_history_item(response))
+					except:
+						self.log_me('debug', "adding "+self._attributes['videoId']+" to history failed")
 					await self.async_get_track()
 					if(self._x_to_idle == STATE_OFF_1X):
 						self._x_to_idle = None
@@ -789,11 +807,23 @@ class yTubeMusicComponent(MediaPlayerEntity):
 			elif(old_state.state == STATE_PLAYING and new_state.state == STATE_PAUSED and  # noqa: W504
 								(datetime.datetime.now() - self._last_auto_advance).total_seconds() > 10 and  # noqa: W504
 								self._x_to_idle == STATE_PAUSED):
+				# add track to history
+				try:
+					response = await self.hass.async_add_executor_job(lambda: self._api.get_song(self._attributes['videoId'], self._signatureTimestamp))
+					await self.hass.async_add_executor_job(lambda: self._api.add_history_item(response))
+				except:
+					self.log_me('debug', "adding "+self._attributes['videoId']+" to history failed")
 				self._allow_next = False
 				await self.async_get_track()
-			# set this player in to pause state when the remote player does
+			# set this player in to pause state when the remote player does, or ignore when assumed it is a temporary state (as some players do while seeking/skipping track)
 			elif(old_state.state == STATE_PLAYING and new_state.state == STATE_PAUSED):
-				return await self.async_media_pause()
+				self.log_me('debug', "Remote Player changed from PLAYING to PAUSED.")
+				if(self._ignore_paused_on_media_change and self._ignore_next_remote_pause_state):	# RobinR1, OwnTone compatibility
+					self.log_me('debug', "Ignoring state change")					# RobinR1, OwnTone compatibility
+					self._ignore_next_remote_pause_state = False					# RobinR1, OwnTone compatibility
+					return										# RobinR1, OwnTone compatibility
+				else:											# RobinR1, OwnTone compatibility
+					return await self.async_media_pause()
 			# resume playback when the player does
 			elif(old_state.state == STATE_PAUSED and new_state.state == STATE_PLAYING and self._state == STATE_PAUSED):
 				return await self.async_media_play()
@@ -968,7 +998,7 @@ class yTubeMusicComponent(MediaPlayerEntity):
 			# seek, if possible
 			new_player = self.hass.states.get(self._remote_player)
 			if (all(a in old_player.attributes for a in ('media_position', 'media_position_updated_at', 'media_duration')) and 'supported_features' in new_player.attributes):
-				if(new_player.attributes['supported_features'] | SUPPORT_SEEK):
+				if(new_player.attributes['supported_features'] | MediaPlayerEntityFeature.SEEK):
 					now = datetime.datetime.now(datetime.timezone.utc)
 					delay = now - old_player.attributes['media_position_updated_at']
 					pos = delay.total_seconds() + old_player.attributes['media_position']
@@ -1080,6 +1110,7 @@ class yTubeMusicComponent(MediaPlayerEntity):
 			return
 
 		self._playlist_to_index = {}
+		playlists_to_extra = {}
 		try:
 			try:
 				self._playlists = await self.hass.async_add_executor_job(lambda: self._api.get_library_playlists(limit=self._trackLimit))
@@ -1111,13 +1142,14 @@ class yTubeMusicComponent(MediaPlayerEntity):
 							self.log_me('debug', "- Failed to get_playlist, no playlist ID")
 						self.exc()
 						self._playlists[idx]['count'] = 25
+				playlists_to_extra[playlist['title']] = playlist['playlistId']
 
 			if(len(self._playlists) == 0):
 				self._playlist_to_index["No playlists found"] = 0
 
 			# sort with case-ignore
 			playlists = sorted(list(self._playlist_to_index.keys()), key=str.casefold)
-			await self.async_update_extra_sensor('playlists', playlists)  # update extra sensor
+			await self.async_update_extra_sensor('playlists', playlists_to_extra)  # update extra sensor
 
 			data = {"options": list(playlists), "entity_id": self._select_playlist}
 			await self.hass.services.async_call(input_select.DOMAIN, input_select.SERVICE_SET_OPTIONS, data)
@@ -1137,16 +1169,23 @@ class yTubeMusicComponent(MediaPlayerEntity):
 			info = self.extract_info(track)
 			track_attributes.append(info['track_artist'] + " - " + info['track_name'])
 		await self.async_update_extra_sensor('tracks', track_attributes)  # update extra sensor
-
+		
+		# fire event to let media card know to update
+		event_data = {
+    		"device_id": self._attr_unique_id,
+			"entity_id" : DOMAIN_MP+"."+self._attr_name,
+    		"type": "reload_playlist",
+		}
+		self.hass.bus.async_fire(DOMAIN+"_event", event_data)
 		self.log_me('debug', "[E] _tracks_to_attribute")
 
 	async def async_update_extra_sensor(self, attribute, value):
 		# update extra sensor
 		self.log_debug_later("[S] async_update_extra_sensor")
 		if(self._init_extra_sensor):
-			self.hass.data[DOMAIN][self._unique_id][attribute] = value
+			self.hass.data[DOMAIN][self._attr_unique_id][attribute] = value
 			try:
-				await self.hass.data[DOMAIN][self._unique_id]['extra_sensor'].async_update()
+				await self.hass.data[DOMAIN][self._attr_unique_id]['extra_sensor'].async_update()
 			except:
 				self.log_me('debug', "Update failed")
 				pass
@@ -1247,11 +1286,11 @@ class yTubeMusicComponent(MediaPlayerEntity):
 		if('likeStatus' in _track):
 			self._attributes['likeStatus'] = _track['likeStatus']
 			if(self._like_in_name):
-				self._name = self._org_name + " - " + str(_track['likeStatus'])
+				self._attr_name = self._org_name + " - " + str(_track['likeStatus'])
 		else:
 			self._attributes['likeStatus'] = ""
 			if(self._like_in_name):
-				self._name = self._org_name
+				self._attr_name = self._org_name
 		# this will quickly update the information although the thumbnail might not super great, we'll update that later
 		info = self.extract_info(_track)
 		self._track_album_name = info['track_album_name']
@@ -1299,7 +1338,7 @@ class yTubeMusicComponent(MediaPlayerEntity):
 		self._last_auto_advance = datetime.datetime.now()  # avoid auto_advance
 		data = {
 			ATTR_MEDIA_CONTENT_ID: _url,
-			ATTR_MEDIA_CONTENT_TYPE: MEDIA_TYPE_MUSIC,
+			ATTR_MEDIA_CONTENT_TYPE: MediaType.MUSIC,
 			ATTR_ENTITY_ID: self._remote_player,
 			"extra": {
 				"metadata": {
@@ -1342,7 +1381,7 @@ class yTubeMusicComponent(MediaPlayerEntity):
 		self.log_me('debug', "[E] async_get_track")
 
 
-	async def async_get_url(self, videoId=None, retry=True):
+	async def async_get_url(self, videoId=None, retry=60):
 		self.log_me('debug', "[S] async_get_url")
 		if(videoId is None):
 			self.log_me('debug', "videoId was None")
@@ -1376,27 +1415,42 @@ class yTubeMusicComponent(MediaPlayerEntity):
 				streamId = 0
 				found_quality = -1
 				quality_mapper = {'AUDIO_QUALITY_LOW': 1, 'AUDIO_QUALITY_MEDIUM': 2, 'AUDIO_QUALITY_HIGH': 3}
-				# try to find best audio only stream
+				# try to find valid audio streams
+				valid_streams = []
 				for i, stream in enumerate(streamingData):
-					# self.log_me('debug', 'found stream')
-					# self.log_me('debug',stream)
+					#self.log_me('debug', 'found stream')
+					#self.log_me('error',stream)
 					if('audioQuality' in stream):
-						# self.log_me('debug', '- found stream with audioQuality ' + stream['audioQuality'] + ' (' + str(i) + ')')
+						# self.log_me('error', '- found stream with audioQuality ' + stream['audioQuality'] + ' (' + str(i) + ')')
 						# store only stream with better quality, accept 0 once
-						if(quality_mapper.get(stream['audioQuality'], 0) > found_quality):
-							found_quality = quality_mapper.get(stream['audioQuality'], 0)
-							streamId = i
+						stream['audioQuality'] = quality_mapper.get(stream['audioQuality'], 0)
+						valid_streams.append(stream)
 					elif(found_quality == -1):  # only search for mimetype if we didn't find a quality stream before
 						if('mimeType' in stream):
 							if(stream['mimeType'].startswith('audio/mp4')):
 								self.log_me('debug', '- found audio/mp4 audiostream (' + str(i) + ')')
-								streamId = i
+								stream['audioQuality'] = quality_mapper.get(stream['audioQuality'], 0)
+								valid_streams.append(stream)
 							elif(stream['mimeType'].startswith('audio')):
 								self.log_me('debug', '- found audio audiostream (' + str(i) + ')')
-								streamId = i
+								stream['audioQuality'] = quality_mapper.get(stream['audioQuality'], 0)
+								valid_streams.append(stream)
+				
+				# try to find best audio only stream, but accept lower quality if we have to
+				valid_streams.sort(key=lambda x: x['bitrate'], reverse=True)
+				if(retry<20):
+					streamId = min(3,len(valid_streams))
+				elif(retry<30):
+					streamId = min(2,len(valid_streams))
+				elif(retry<40):
+					streamId = min(1,len(valid_streams))
+				else:
+					streamId = 0
+				
+				self.log_me('debug', 'Using stream '+str(streamId)+"/"+str(len(valid_streams)))
 				# self.log_me('debug', '- using stream ' + str(streamId))
-				if(streamingData[streamId].get('url') is None):
-					sigCipher_ch = streamingData[streamId]['signatureCipher']
+				if(valid_streams[streamId].get('url') is None):
+					sigCipher_ch = valid_streams[streamId]['signatureCipher']
 					sigCipher_ex = sigCipher_ch.split('&')
 					res = dict({'s': '', 'url': ''})
 					for sig in sigCipher_ex:
@@ -1407,24 +1461,24 @@ class yTubeMusicComponent(MediaPlayerEntity):
 					# in case it's down the player might not load and thus we won't have a javascript loaded
 					# so if that happens: we try with this url, might work better (at least the file should be online)
 					# the only trouble i could see is that this video is private and thus also won't load the player ..
-					if(self._js == ""):
+					if(self._js == "" or retry<60):
+						self.log_me('debug', "- reloading cipher from current video")
 						await self.async_get_cipher(videoId)
 					signature = self._cipher.get_signature(ciphered_signature=res['s'])
 					_url = res['url'] + "&sig=" + signature
 					self.log_me('debug', "- self decoded URL via cipher")
-
 					r = await self.hass.async_add_executor_job(requests.head, _url)
 					if(r.status_code == 403):
-						self.log_me('debug', "- decoded url return 403 status code")
-						if(retry):
+						self.log_me('error', "- decoded url return 403 status code, attempt "+str(retry)+"/60")
+						if(retry>0):
 							self.log_me('debug', "- updating signature Timestamp and try again")
 							self._signatureTimestamp = await self.hass.async_add_executor_job(self._api.get_signatureTimestamp)
-							return await self.async_get_url(videoId, False)
+							return await self.async_get_url(videoId, retry-1)
 						else:
 							self.log_me('debug', "- giving up, maybe pyTube can help")
 							_url = ""
 				else:
-					_url = streamingData[streamId]['url']
+					_url = valid_streams[streamId]['url']
 					self.log_me('debug', "- found URL in api data")
 
 		except Exception:
@@ -1475,20 +1529,26 @@ class yTubeMusicComponent(MediaPlayerEntity):
 		try:
 			crash_extra = ''
 			self._attributes['current_playlist_title'] = ""
-			if(media_type == MEDIA_TYPE_PLAYLIST):
+			if(media_type == MediaType.PLAYLIST):
 				crash_extra = 'get_playlist(playlistId=' + str(media_id) + ')'
-				playlist_info = await self.hass.async_add_executor_job(lambda: self._api.get_playlist(media_id, limit=self._trackLimit))
-				self._tracks = playlist_info['tracks'][:self._trackLimit]  # limit function doesn't really work ... seems like
-				self._attributes['current_playlist_title'] = str(playlist_info['title'])
-			elif(media_type == MEDIA_TYPE_ALBUM):
+				if(media_id == ALL_LIB_TRACKS):
+					self._tracks = await self.hass.async_add_executor_job(lambda: self._api.get_library_songs(limit=self._trackLimit))
+					self._attributes['current_playlist_title'] = ALL_LIB_TRACKS_TITLE
+				else:
+					playlist_info = await self.hass.async_add_executor_job(lambda: self._api.get_playlist(media_id, limit=self._trackLimit))
+					self._tracks = playlist_info['tracks'][:self._trackLimit]  # limit function doesn't really work ... seems like
+					self._attributes['current_playlist_title'] = str(playlist_info['title'])
+			elif(media_type == MediaType.ALBUM):
 				crash_extra = 'get_album(browseId=' + str(media_id) + ')'
 				if media_id[:7] == "OLAK5uy": #Sharing over Android app sends 'bad' album id. Checking and converting.
 					media_id = await self.hass.async_add_executor_job(self._api.get_album_browse_id, media_id)
 				self._tracks = await self.hass.async_add_executor_job(self._api.get_album, media_id)  # no limit needed
+				thumbnail = find_thumbnail(self._tracks)
 				self._tracks = self._tracks['tracks'][:self._trackLimit]  # limit function doesn't really work ... seems like
 				for i in range(0, len(self._tracks)):
 					self._tracks[i].update({'album': {'id': media_id}})
-			elif(media_type == MEDIA_TYPE_TRACK):
+					self._tracks[i].update({'thumbnails': [{'url': thumbnail}]})
+			elif(media_type == MediaType.TRACK):
 				crash_extra = 'get_song(videoId=' + str(media_id) + ',signatureTimestamp=' + str(self._signatureTimestamp) + ')'
 				self._tracks = [await self.hass.async_add_executor_job(lambda: self._api.get_song(media_id, self._signatureTimestamp))]  # no limit needed
 				self._tracks[0] = self._tracks[0]['videoDetails']
@@ -1626,12 +1686,14 @@ class yTubeMusicComponent(MediaPlayerEntity):
 		if self._playing:
 			self._next_track_no = max(self._next_track_no - 2, -1)
 			self._allow_next = False
+			self._ignore_next_remote_pause_state = True	# RobinR1, OwnTone compatibility
 			await self.async_get_track()
 
 	async def async_media_next_track(self, **kwargs):
 		# Send next track command.
 		if self._playing:
 			self._allow_next = False
+			self._ignore_next_remote_pause_state = True	# RobinR1, OwnTone compatibility
 			await self.async_get_track()
 
 	async def async_media_stop(self, **kwargs):
@@ -1655,6 +1717,7 @@ class yTubeMusicComponent(MediaPlayerEntity):
 	async def async_media_seek(self, position):
 		# Seek the media to a specific location.
 		self.log_me('debug', "seek: " + str(position))
+		self._ignore_next_remote_pause_state = True			# RobinR1, OwnTone compatibility
 		data = {ATTR_ENTITY_ID: self._remote_player, 'seek_position': position}
 		await self.hass.services.async_call(DOMAIN_MP, 'media_seek', data)
 
@@ -1767,32 +1830,64 @@ class yTubeMusicComponent(MediaPlayerEntity):
 			await self.async_get_track()
 			if('pos' in self._interrupt_data):
 				player = self.hass.states.get(self._remote_player)
-				if(player.attributes['supported_features'] | SUPPORT_SEEK):
+				if(player.attributes['supported_features'] | MediaPlayerEntityFeature.SEEK):
 					data = {'seek_position': self._interrupt_data['pos'], ATTR_ENTITY_ID: self._remote_player}
 					await self.hass.services.async_call(DOMAIN_MP, media_player.SERVICE_MEDIA_SEEK, data)
 				self._interrupt_data['pos'] = None
 		elif(command == SERVICE_CALL_RELOAD_DROPDOWNS):
 			await self.async_update_selects()
-		elif(command == SERVICE_CALL_OFF_IS_IDLE):  # needed for the MPD but for nobody else
+		elif(command == SERVICE_CALL_OFF_IS_IDLE):  # needed for the MPD and OwnTone server but for nobody else
 			self._x_to_idle = STATE_OFF
 			self.log_me('debug', "Setting x_is_idle to State Off")
 		elif(command == SERVICE_CALL_PAUSED_IS_IDLE):  # needed for the Sonos but for nobody else
 			self._x_to_idle = STATE_PAUSED
 			self.log_me('debug', "Setting x_is_idle to State Paused")
+		elif(command == SERVICE_CALL_IGNORE_PAUSED_ON_MEDIA_CHANGE):		# RobinR1, OwnTone compatibility
+			self._ignore_paused_on_media_change = True			# RobinR1, OwnTone compatibility
+			self.log_me('debug', "Setting to ignore remote player Paused state on Next/Prev track and Seek")
+		elif(command == SERVICE_CALL_DO_NOT_IGNORE_PAUSED_ON_MEDIA_CHANGE):	# RobinR1, OwnTone compatibility
+			self._ignore_paused_on_media_change = False			# RobinR1, OwnTone compatibility
+			self.log_me('debug', "Setting to NOT ignore remote player Paused state on Next/Prev track and Seek")
+		elif(command == SERVICE_CALL_IDLE_IS_IDLE): # reset idle detection to default behaviour
+			self._x_to_idle = None
+			self.log_me('debug', "Resetting x_is_idle")
 		elif(command == SERIVCE_CALL_DEBUG_AS_ERROR):
 			self._debug_as_error = True
 			self.log_me('debug', "Posting debug messages as error until restart")
 		elif(command == SERVICE_CALL_LIKE_IN_NAME):
 			self._like_in_name = True
-			self._name = self._org_name + " - " + str(self._attributes['likeStatus'])
+			self._attr_name = self._org_name + " - " + str(self._attributes['likeStatus'])
 			self.log_me('debug', "Showing like status in name until restart")
 		elif(command == SERVICE_CALL_GOTO_TRACK):
-			self.log_me('debug', "Going to Track " + str(all_params[0]) + ".")
-			self._next_track_no = min(max(int(all_params[0]) - 1 - 1, -1), len(self._tracks) - 1)
+			self.log_me('debug', "Going to Track " + str(parameters[0]) + ".")
+			self._next_track_no = min(max(int(parameters[0]) - 1 - 1, -1), len(self._tracks) - 1)
 			prev_shuffle = self._shuffle  # store current shuffle setting
 			self._shuffle = False  # set false, otherwise async_get_track will override next_track
 			await self.async_get_track()
 			self._shuffle = prev_shuffle  # restore
+		elif(command == SERVICE_CALL_APPEND_TRACK):
+			self.log_me('debug', "Adding track " + str(parameters[0]) + " at position " + str(parameters[1]))
+			if(len(parameters)==2 and parameters[1].isnumeric()):
+				add_track = await self.hass.async_add_executor_job(lambda: self._api.get_song(parameters[0], self._signatureTimestamp))  # no limit needed
+			else:
+				self.log_me('debug', str(parameters[1]) + " is not numeric, or not exactly 2 parameters given")
+			# how to check
+			# I don't know why, but the format of get_song is very differnt, so we fix at least author and thumbnail to make it lookalike
+			add_track['videoDetails']['artists'] = [{'name': add_track['videoDetails']['author'], 'id': ''}]
+			add_track['videoDetails']['thumbnails'] = add_track['videoDetails']['thumbnail']['thumbnails']
+			self._tracks.insert(int(parameters[1]),add_track['videoDetails'])
+
+			await self._tracks_to_attribute()
+		elif(command == SERVICE_CALL_MOVE_TRACK):
+			self.log_me('debug', "Moving track " + str(parameters[0]) + " to position " + str(parameters[1]))
+			if(parameters[0].isnumeric() and (parameters[1].isnumeric() or parameters[1]=="-1")):
+				add_track = self._tracks[int(parameters[0])]
+				self._tracks.remove(add_track)
+				if(parameters[1].isnumeric()):
+					self._tracks.insert(int(parameters[1]),add_track)
+				await self._tracks_to_attribute()
+			else:
+				self.log_me('debug', str(parameters[0]) + " or " + str(parameters[1]) + " is not numeric, not moving tracks")
 		else:
 			self.log_me('error', "Command " + str(command) + " not implimented")
 		self.log_me('debug', "[E] async_call_method")
@@ -1844,7 +1939,7 @@ class yTubeMusicComponent(MediaPlayerEntity):
 			else:
 				self.log_me('error', "no song_id given, but also currently not playing, so I don't know what to add/remove")
 		if(song_id != "" and playlist_id == ""):
-			if(self._attributes['_media_type'] in [MEDIA_TYPE_PLAYLIST, CHANNEL]):
+			if(self._attributes['_media_type'] in [MediaType.PLAYLIST, CHANNEL]):
 				playlist_id = self._attributes['_media_id']
 			else:
 				self.log_me('error', "No playlist Id provided and the current playmode isn't 'playlist' nor 'channel', so I don't know where to add/remove the track")
@@ -1939,11 +2034,13 @@ class yTubeMusicComponent(MediaPlayerEntity):
 							self.log_me('debug', "rate thumb up")
 							arg = 'LIKE'
 				await self.hass.async_add_executor_job(self._api.rate_song, song_id, arg)
-				self._attributes['likeStatus'] = arg
-				if(self._like_in_name):
-					self._name = self._org_name + " - " + arg
-				self.async_schedule_update_ha_state()
-				self._tracks[self._next_track_no]['likeStatus'] = arg
+				# only change arguments if the track that we're rating is the current one
+				if(song_id == self._attributes['videoId']):
+					self._attributes['likeStatus'] = arg
+					if(self._like_in_name):
+						self._attr_name = self._org_name + " - " + arg
+					self.async_schedule_update_ha_state()
+					self._tracks[self._next_track_no]['likeStatus'] = arg
 			except:
 				self.exc()
 		self.log_me('debug', "[E] async_rate_track")

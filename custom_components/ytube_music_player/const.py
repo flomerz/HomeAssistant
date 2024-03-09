@@ -1,5 +1,7 @@
 from homeassistant.components.sensor import PLATFORM_SCHEMA, ENTITY_ID_FORMAT
 import homeassistant.helpers.config_validation as cv
+from homeassistant.components.media_player import MediaPlayerState, MediaPlayerEntityFeature
+from homeassistant.components.media_player.const import MediaClass, MediaType, RepeatMode
 import voluptuous as vol
 import logging
 import datetime
@@ -23,30 +25,6 @@ from homeassistant.const import (
 	ATTR_COMMAND,
 )
 
-from homeassistant.components.media_player.const import (
-    MEDIA_CLASS_ALBUM,
-    MEDIA_CLASS_ARTIST,
-    MEDIA_CLASS_CHANNEL,
-    MEDIA_CLASS_DIRECTORY,
-    MEDIA_CLASS_EPISODE,
-    MEDIA_CLASS_MOVIE,
-    MEDIA_CLASS_MUSIC,
-    MEDIA_CLASS_PLAYLIST,
-    MEDIA_CLASS_SEASON,
-    MEDIA_CLASS_TRACK,
-    MEDIA_CLASS_TV_SHOW,
-    MEDIA_TYPE_ALBUM,
-    MEDIA_TYPE_ARTIST,
-    MEDIA_TYPE_CHANNEL,
-    MEDIA_TYPE_EPISODE,
-    MEDIA_TYPE_MOVIE,
-    MEDIA_TYPE_PLAYLIST,
-    MEDIA_TYPE_SEASON,
-    MEDIA_TYPE_TRACK,
-    MEDIA_TYPE_TVSHOW,
-)
-
-
 from homeassistant.components.media_player import (
 	MediaPlayerEntity,
 	PLATFORM_SCHEMA,
@@ -69,28 +47,6 @@ from homeassistant.components.input_boolean import (
 	DOMAIN as DOMAIN_IB,
 )
 
-from homeassistant.components.media_player.const import (
-	SUPPORT_STOP,
-	SUPPORT_PLAY,
-	SUPPORT_PAUSE,
-	SUPPORT_PLAY_MEDIA,
-	SUPPORT_PREVIOUS_TRACK,
-	SUPPORT_NEXT_TRACK,
-	SUPPORT_VOLUME_MUTE,
- 	SUPPORT_VOLUME_SET,
-	SUPPORT_VOLUME_STEP,
-	SUPPORT_TURN_ON,
-	SUPPORT_TURN_OFF,
-	SUPPORT_SHUFFLE_SET,
-	SUPPORT_BROWSE_MEDIA,
-	SUPPORT_REPEAT_SET,
-	SUPPORT_SELECT_SOURCE,
-	SUPPORT_SEEK,
-	MEDIA_TYPE_MUSIC,
-	REPEAT_MODE_ALL,
-    REPEAT_MODE_OFF,
-)
-
 import homeassistant.components.input_select as input_select
 import homeassistant.components.input_boolean as input_boolean
 
@@ -99,22 +55,22 @@ PLATFORMS = {"media_player", "sensor"}
 DOMAIN = "ytube_music_player"
 
 SUPPORT_YTUBEMUSIC_PLAYER = (
-	SUPPORT_TURN_ON
-	| SUPPORT_TURN_OFF
-	| SUPPORT_PLAY
-	| SUPPORT_PLAY_MEDIA
-	| SUPPORT_PAUSE
-	| SUPPORT_STOP
-	| SUPPORT_VOLUME_SET
-	| SUPPORT_VOLUME_STEP
-	| SUPPORT_VOLUME_MUTE
-	| SUPPORT_PREVIOUS_TRACK
-	| SUPPORT_NEXT_TRACK
-	| SUPPORT_SHUFFLE_SET
-	| SUPPORT_REPEAT_SET
-	| SUPPORT_BROWSE_MEDIA
-	| SUPPORT_SELECT_SOURCE
-	| SUPPORT_SEEK
+	MediaPlayerEntityFeature.TURN_ON
+	| MediaPlayerEntityFeature.TURN_OFF
+	| MediaPlayerEntityFeature.PLAY
+	| MediaPlayerEntityFeature.PLAY_MEDIA
+	| MediaPlayerEntityFeature.PAUSE
+	| MediaPlayerEntityFeature.STOP
+	| MediaPlayerEntityFeature.VOLUME_SET
+	| MediaPlayerEntityFeature.VOLUME_STEP
+	| MediaPlayerEntityFeature.VOLUME_MUTE
+	| MediaPlayerEntityFeature.PREVIOUS_TRACK
+	| MediaPlayerEntityFeature.NEXT_TRACK
+	| MediaPlayerEntityFeature.SHUFFLE_SET
+	| MediaPlayerEntityFeature.REPEAT_SET
+	| MediaPlayerEntityFeature.BROWSE_MEDIA
+	| MediaPlayerEntityFeature.SELECT_SOURCE
+	| MediaPlayerEntityFeature.SEEK
 )
 
 SERVICE_SEARCH = "search"
@@ -141,9 +97,14 @@ SERVICE_CALL_INTERRUPT_RESUME = "interrupt_resume"
 SERVICE_CALL_RELOAD_DROPDOWNS = "reload_dropdowns"
 SERVICE_CALL_OFF_IS_IDLE = "off_is_idle"
 SERVICE_CALL_PAUSED_IS_IDLE = "paused_is_idle"
+SERVICE_CALL_IGNORE_PAUSED_ON_MEDIA_CHANGE = "ignore_paused_on_media_change"
+SERVICE_CALL_DO_NOT_IGNORE_PAUSED_ON_MEDIA_CHANGE = "do_not_ignore_paused_on_media_change"
+SERVICE_CALL_IDLE_IS_IDLE = "idle_is_idle"
 SERIVCE_CALL_DEBUG_AS_ERROR = "debug_as_error"
 SERVICE_CALL_LIKE_IN_NAME = "like_in_name"
 SERVICE_CALL_GOTO_TRACK = "goto_track"
+SERVICE_CALL_MOVE_TRACK = "move_track_within_queue"
+SERVICE_CALL_APPEND_TRACK = "append_track_to_queue"
 
 
 CONF_RECEIVERS = 'speakers'	 # list of speakers (media_players)
@@ -151,6 +112,7 @@ CONF_HEADER_PATH = 'header_path'
 CONF_SHUFFLE = 'shuffle'
 CONF_SHUFFLE_MODE = 'shuffle_mode'
 CONF_COOKIE = 'cookie'
+CONF_CODE = 'code'
 CONF_BRAND_ID = 'brand_id'
 CONF_ADVANCE_CONFIG = 'advance_config'
 CONF_LIKE_IN_NAME = 'like_in_name'
@@ -169,12 +131,12 @@ CONF_SELECT_SPEAKERS = 'select_speakers'
 CONF_SELECT_PLAYMODE = 'select_playmode'
 CONF_SELECT_PLAYCONTINUOUS = 'select_playcontinuous'
 
-DEFAULT_SELECT_PLAYCONTINUOUS = input_boolean.DOMAIN + "." + DOMAIN + '_playcontinuous'
-DEFAULT_SELECT_SOURCE = input_select.DOMAIN + "." + DOMAIN + '_source'
-DEFAULT_SELECT_PLAYLIST = input_select.DOMAIN + "." + DOMAIN + '_playlist'
-DEFAULT_SELECT_PLAYMODE = input_select.DOMAIN + "." + DOMAIN + '_playmode'
-DEFAULT_SELECT_SPEAKERS = input_select.DOMAIN + "." + DOMAIN + '_speakers'
-DEFAULT_HEADER_FILENAME = 'ytube_header.json'
+DEFAULT_SELECT_PLAYCONTINUOUS = "" #input_boolean.DOMAIN + "." + DOMAIN + '_playcontinuous' # cleared defaults to avoid further issues with multiple instances
+DEFAULT_SELECT_SOURCE = "" #input_select.DOMAIN + "." + DOMAIN + '_source'	 # cleared defaults to avoid further issues with multiple instances
+DEFAULT_SELECT_PLAYLIST = "" #input_select.DOMAIN + "." + DOMAIN + '_playlist' # cleared defaults to avoid further issues with multiple instances
+DEFAULT_SELECT_PLAYMODE = "" #input_select.DOMAIN + "." + DOMAIN + '_playmode' # cleared defaults to avoid further issues with multiple instances
+DEFAULT_SELECT_SPEAKERS = "" #input_select.DOMAIN + "." + DOMAIN + '_speakers' # cleared defaults to avoid further issues with multiple instances
+DEFAULT_HEADER_FILENAME = 'header_'
 DEFAULT_LIKE_IN_NAME = False
 DEFAULT_DEBUG_AS_ERROR = False
 DEFAULT_INIT_EXTRA_SENSOR = False
@@ -204,11 +166,17 @@ SEARCH_TYPE = "search_type"
 LIB_PLAYLIST = 'library_playlists'
 LIB_PLAYLIST_TITLE = "Library Playlists"
 
+HOME_TITLE = "Home"
+HOME_CAT = "home"
+HOME_CAT_2 = "home2"
+
 LIB_ALBUM = 'library_albums'
 LIB_ALBUM_TITLE = "Library Albums"
 
 LIB_TRACKS = 'library_tracks'
 LIB_TRACKS_TITLE = "Library Songs"
+ALL_LIB_TRACKS = 'all_library_tracks'
+ALL_LIB_TRACKS_TITLE = 'All library tracks'
 
 HISTORY = 'history'
 HISTORY_TITLE = "Last played songs"
@@ -281,7 +249,7 @@ async def async_try_login(hass, path, brand_id):
 			_LOGGER.debug("- using brand ID: "+brand_id)
 			api = await hass.async_add_executor_job(YTMusic,path,brand_id)
 		else:
-			_LOGGER.debug("- login without brand ID")
+			_LOGGER.debug("- login without brand ID and credential at path "+path)
 			api = await hass.async_add_executor_job(YTMusic,path)
 	except KeyError as err:
 		_LOGGER.debug("- Key exception")
@@ -368,4 +336,21 @@ def ensure_config(user_input):
 	return out
 
 
+def find_thumbnail(item):
+	item_thumbnail = ""
+	try:
+		thumbnail_list = ""
+		if 'thumbnails' in item:
+			if 'thumbnail' in item['thumbnails']:
+				thumbnail_list = item['thumbnails']['thumbnail']
+			else:
+				thumbnail_list = item['thumbnails']
+		elif 'thumbnail' in item:
+			thumbnail_list = item['thumbnail']
 
+		if isinstance(thumbnail_list, list):
+			if 'url' in thumbnail_list[-1]:
+				item_thumbnail = thumbnail_list[-1]['url']
+	except:
+		pass
+	return item_thumbnail
