@@ -1,4 +1,5 @@
 - alias: state_home_off
+  id: state_home_off
   trigger:
     - platform: state
       entity_id: input_boolean.state_home
@@ -14,6 +15,7 @@
       entity_id: media_player.schlafzimmer_tv
 
 - alias: state_home_on
+  id: state_home_on
   trigger:
     - platform: state
       entity_id: input_boolean.state_home

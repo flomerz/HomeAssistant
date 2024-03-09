@@ -1,4 +1,5 @@
 - alias: motion_on_kitchen
+  id: motion_on_kitchen
   trigger:
     platform: state
     entity_id: binary_sensor.motion_kitchen
@@ -9,6 +10,7 @@
     entity_id: light.kitchen
 
 - alias: motion_off_kitchen
+  id: motion_off_kitchen
   trigger:
     platform: state
     entity_id: binary_sensor.motion_kitchen
@@ -20,6 +22,7 @@
     entity_id: light.kitchen
 
 - alias: motion_off_long_kitchen
+  id: motion_off_long_kitchen
   trigger:
     platform: state
     entity_id: binary_sensor.motion_kitchen
@@ -33,6 +36,7 @@
       entity_id: light.shelly_kitchen
 
 - alias: motion_off_disable_kitchen
+  id: motion_off_disable_kitchen
   trigger:
     - platform: state
       entity_id: binary_sensor.shelly_kitchen_switch
@@ -49,6 +53,7 @@
       entity_id: light.shelly_kitchen
 
 - alias: motion_reset_kitchen
+  id: motion_reset_kitchen
   trigger:
     - platform: state
       entity_id: light.shelly_kitchen

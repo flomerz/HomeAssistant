@@ -1,4 +1,5 @@
 - alias: workroom_illuminance_high
+  id: workroom_illuminance_high
   trigger:
     - platform: numeric_state
       entity_id: sensor.motion_workroom_illuminance_lux

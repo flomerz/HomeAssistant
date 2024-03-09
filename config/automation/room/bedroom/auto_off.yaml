@@ -1,4 +1,5 @@
 - alias: bedroom_light_autooff
+  id: bedroom_light_autooff
   trigger:
     - platform: state
       entity_id: light.light_bedroom

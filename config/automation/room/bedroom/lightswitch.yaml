@@ -1,4 +1,5 @@
 - alias: shelly_bedroom_switch_off
+  id: shelly_bedroom_switch_off
   trigger:
     - platform: state
       entity_id: binary_sensor.shelly_bedroom_switch
@@ -13,6 +14,7 @@
       entity_id: light.light_bedroom
 
 - alias: shelly_bedroom_switch_on_before_sunset
+  id: shelly_bedroom_switch_on_before_sunset
   trigger:
     - platform: state
       entity_id: binary_sensor.shelly_bedroom_switch
@@ -34,6 +36,7 @@
         brightness: 255
 
 - alias: shelly_bedroom_switch_on_after_sunset
+  id: shelly_bedroom_switch_on_after_sunset
   trigger:
     - platform: state
       entity_id: binary_sensor.shelly_bedroom_switch

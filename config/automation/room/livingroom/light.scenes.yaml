@@ -1,4 +1,5 @@
 - alias: Light Aus
+  id: light aus
   trigger:
     - platform: state
       entity_id: input_select.state_livingroom_light
@@ -22,6 +23,7 @@
 
 
 - alias: Light Film
+  id: light film
   trigger:
     - platform: state
       entity_id: input_select.state_livingroom_light
@@ -64,6 +66,7 @@
 
 
 - alias: Light Beamer
+  id: light beamer
   trigger:
     - platform: state
       entity_id: input_select.state_livingroom_light
@@ -96,6 +99,7 @@
 
 
 - alias: Light Beamer Bright
+  id: light beamer bright
   trigger:
     - platform: state
       entity_id: input_select.state_livingroom_light
@@ -128,6 +132,7 @@
 
 
 - alias: Light Chill
+  id: light chill
   trigger:
     - platform: state
       entity_id: input_select.state_livingroom_light
@@ -167,6 +172,7 @@
 
 
 - alias: Light Ambient
+  id: light ambient
   trigger:
     - platform: state
       entity_id: input_select.state_livingroom_light
@@ -202,6 +208,7 @@
 
 
 - alias: Light Hell
+  id: light hell
   trigger:
     - platform: state
       entity_id: input_select.state_livingroom_light

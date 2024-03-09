@@ -1,4 +1,5 @@
 - alias: workroom_motion_on
+  id: workroom_motion_on
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_workroom_tuya_occupancy
@@ -14,6 +15,7 @@
     
 
 - alias: workroom_desk_motion_on
+  id: workroom_desk_motion_on
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_workroom_occupancy
@@ -31,6 +33,7 @@
   
 
 - alias: workroom_motion_off
+  id: workroom_motion_off
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_workroom_occupancy

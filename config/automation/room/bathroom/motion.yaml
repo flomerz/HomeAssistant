@@ -1,4 +1,5 @@
 - alias: motion_on_bathroom
+  id: motion_on_bathroom
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_bathroom_occupancy
@@ -16,6 +17,7 @@
     entity_id: light.bathroom_led
 
 - alias: motion_off_bathroom
+  id: motion_off_bathroom
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_bathroom_occupancy

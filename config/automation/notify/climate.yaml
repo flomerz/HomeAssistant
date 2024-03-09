@@ -1,4 +1,5 @@
 - alias: Notify Wohnzimmer CO2
+  id: notify wohnzimmer co2
   trigger:
     - platform: time_pattern
       minutes: 55
@@ -18,6 +19,7 @@
 
 
 - alias: Notify Wohnzimmer CO2 Max
+  id: notify wohnzimmer co2 max
   trigger:
     - platform: time_pattern
       minutes: 25
@@ -38,6 +40,7 @@
 
 
 - alias: Notify Wohnzimmer Feuchtigkeit
+  id: notify wohnzimmer feuchtigkeit
   trigger:
     - platform: time_pattern
       minutes: 56

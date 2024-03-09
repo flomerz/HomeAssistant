@@ -1,4 +1,5 @@
 - alias: fitnessroom_motion_off_long
+  id: fitnessroom_motion_off_long
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_fitnessroom_occupancy

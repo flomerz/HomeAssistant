@@ -1,4 +1,5 @@
 - alias: cellar_charger_button_toggle
+  id: cellar_charger_button_toggle
   trigger:
     - platform: state
       entity_id: binary_sensor.cellar_charger_button
@@ -9,6 +10,7 @@
 
 
 - alias: cellar_charger_stop
+  id: cellar_charger_stop
   trigger:
     - platform: state
       entity_id: script.cellar_charge
@@ -19,6 +21,7 @@
 
 
 - alias: cellar_charger_turn_off_time
+  id: cellar_charger_turn_off_time
   trigger:
     - platform: state
       entity_id: switch.cellar_charger
@@ -31,6 +34,7 @@
 
 
 - alias: ebike_charge_turn_off_power
+  id: ebike_charge_turn_off_power
   trigger:
     - platform: state
       entity_id: switch.ebike
@@ -59,6 +63,7 @@
 
 
 - alias: E-Bike Laden Zeitpunkt
+  id: e-bike laden zeitpunkt
   trigger:
     - platform: time
       at: input_datetime.ebike_charge

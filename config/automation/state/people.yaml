@@ -1,4 +1,5 @@
 - alias: people_not_home
+  id: people_not_home
   trigger:
     - platform: state
       entity_id: group.people

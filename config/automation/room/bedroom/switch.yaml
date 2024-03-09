@@ -1,4 +1,5 @@
 - alias: switch_bedroom_left
+  id: switch_bedroom_left
   mode: restart
   trigger:
     - platform: state
@@ -22,6 +23,7 @@
         message: "{{ states('input_text.sleep_assistant_prompt') }}"
 
 - alias: switch_bedroom_right
+  id: switch_bedroom_right
   mode: restart
   trigger:
     - platform: state
@@ -43,6 +45,7 @@
     - service: script.music_turn_off
 
 - alias: switch_bedroom_both
+  id: switch_bedroom_both
   mode: restart
   trigger:
     - platform: state

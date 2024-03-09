@@ -1,4 +1,5 @@
 - alias: workroom_light_temp
+  id: workroom_light_temp
   trigger:
     - platform: time_pattern
       minutes: /1

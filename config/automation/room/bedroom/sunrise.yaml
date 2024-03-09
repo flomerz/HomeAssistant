@@ -1,4 +1,5 @@
 - alias: Sunrise
+  id: sunrise
   trigger:
     - platform: time
       at: input_datetime.sunrise_time
@@ -15,6 +16,7 @@
     service: script.wakeup
 
 - alias: Sunrise Update Time
+  id: sunrise update time
   trigger:
     - platform: state
       entity_id: sensor.florian_handy_next_alarm
