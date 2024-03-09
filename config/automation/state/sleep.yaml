@@ -1,5 +1,5 @@
 - alias: Sleep ON
-  id: sleep on
+  id: sleep_on
   trigger:
     - platform: state
       entity_id: input_boolean.state_sleep
@@ -20,7 +20,7 @@
 
 
 - alias: Sleep OFF
-  id: sleep off
+  id: sleep_off
   trigger:
     - platform: state
       entity_id: input_boolean.state_sleep

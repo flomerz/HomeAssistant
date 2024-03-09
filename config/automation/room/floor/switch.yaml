@@ -1,5 +1,5 @@
 - alias: Floor Switch LEFT
-  id: floor switch left
+  id: floor_switch_left
   trigger:
     - platform: state
       entity_id: sensor.switch_door_action
@@ -9,7 +9,7 @@
       entity_id: input_boolean.state_home
 
 - alias: Floor Switch RIGHT
-  id: floor switch right
+  id: floor_switch_right
   trigger:
     - platform: state
       entity_id: sensor.switch_door_action
@@ -19,7 +19,7 @@
       entity_id: input_boolean.state_sleep
 
 - alias: Floor Switch Both
-  id: floor switch both
+  id: floor_switch_both
   trigger:
     - platform: state
       entity_id: sensor.switch_door_action

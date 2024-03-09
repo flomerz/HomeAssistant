@@ -63,7 +63,7 @@
 
 
 - alias: E-Bike Laden Zeitpunkt
-  id: ebike laden zeitpunkt
+  id: ebike_laden_zeitpunkt
   trigger:
     - platform: time
       at: input_datetime.ebike_charge

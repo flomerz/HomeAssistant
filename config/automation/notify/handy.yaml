@@ -1,5 +1,5 @@
 - alias: Notify Handy Charge 80 Florian
-  id: notify handy charge 80 florian
+  id: notify_handy_charge_80_florian
   trigger:
     - platform: numeric_state
       entity_id: sensor.florian_handy_battery_level
@@ -17,7 +17,7 @@
 
 
 - alias: Notify Handy Charge 30 Florian
-  id: notify handy charge 30 florian
+  id: notify_handy_charge_30_florian
   trigger:
     - platform: numeric_state
       entity_id: sensor.florian_handy_battery_level

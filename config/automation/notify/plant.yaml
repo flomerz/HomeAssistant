@@ -1,5 +1,5 @@
 - alias: Baum Notify
-  id: baum notify
+  id: baum_notify
   trigger:
     - platform: time_pattern
       minutes: 5
@@ -18,7 +18,7 @@
         message_say: 'de baum hät durscht'
 
 - alias: Busch Notify
-  id: busch notify
+  id: busch_notify
   trigger:
     - platform: time_pattern
       minutes: 6
@@ -37,7 +37,7 @@
         message_say: 'de busch hät durscht'
 
 - alias: Rosmarie Notify
-  id: rosmarie notify
+  id: rosmarie_notify
   trigger:
     - platform: time_pattern
       minutes: 7

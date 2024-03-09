@@ -1,5 +1,5 @@
 - alias: Floor Motion ON
-  id: floor motion on
+  id: floor_motion_on
   trigger:
     platform: state
     entity_id: binary_sensor.motion_floor
@@ -11,7 +11,7 @@
 
 
 - alias: Floor Motion OFF
-  id: floor motion off
+  id: floor_motion_off
   trigger:
     platform: state
     entity_id: binary_sensor.motion_floor
@@ -26,7 +26,7 @@
 
 
 - alias: Floor Motion ON (Sleep) -> WC
-  id: floor motion on sleep wc
+  id: floor_motion_on_sleep_wc
   trigger:
     platform: state
     entity_id: binary_sensor.motion_floor

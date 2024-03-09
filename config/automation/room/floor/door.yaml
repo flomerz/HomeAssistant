@@ -1,6 +1,6 @@
 
 - alias: Door Open
-  id: door open
+  id: door_open
   trigger:
     - platform: state
       entity_id: binary_sensor.sensor_door_contact
@@ -20,7 +20,7 @@
 
 
 - alias: Door Close
-  id: door close
+  id: door_close
   trigger:
     - platform: state
       entity_id: binary_sensor.sensor_door_contact

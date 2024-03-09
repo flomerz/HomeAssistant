@@ -1,5 +1,5 @@
 - alias: Livingroom Motion ON and no TV
-  id: livingroom motion on and no tv
+  id: livingroom_motion_on_and_no_tv
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_livingroom_tuya_occupancy
@@ -20,7 +20,7 @@
 
 
 - alias: Livingroom Motion ON
-  id: livingroom motion on
+  id: livingroom_motion_on
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_livingroom_tuya_occupancy
@@ -34,7 +34,7 @@
 
 
 - alias: Livingroom Motion OFF
-  id: livingroom motion off
+  id: livingroom_motion_off
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_livingroom_tuya_occupancy
@@ -56,7 +56,7 @@
 
 
 - alias: Livingroom Motion OFF Long
-  id: livingroom motion off long
+  id: livingroom_motion_off_long
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_livingroom_tuya_occupancy

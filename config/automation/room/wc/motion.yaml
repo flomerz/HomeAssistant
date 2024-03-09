@@ -1,5 +1,5 @@
 - alias: WC Motion ON
-  id: wc motion on
+  id: wc_motion_on
   trigger:
     platform: state
     entity_id: binary_sensor.motion_wc
@@ -11,7 +11,7 @@
 
 
 - alias: WC Motion OFF
-  id: wc motion off
+  id: wc_motion_off
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_wc
@@ -24,7 +24,7 @@
 
 
 - alias: WC Motion OFF
-  id: wc motion off
+  id: wc_motion_off
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_wc

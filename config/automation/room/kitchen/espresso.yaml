@@ -1,5 +1,5 @@
 - alias: Espresso OFF
-  id: espresso off
+  id: espresso_off
   trigger:
     - platform: state
       entity_id: switch.espresso
@@ -11,7 +11,7 @@
     entity_id: switch.espresso
 
 - alias: Espresso Heatup
-  id: espresso heatup
+  id: espresso_heatup
   trigger:
     - platform: numeric_state
       entity_id: sensor.temperature_espresso
