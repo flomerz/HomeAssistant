@@ -17,7 +17,10 @@
         seconds: 3
     - wait_template: "{{ is_state('script.all_off', 'off') }}"
     
-    # sleep media
+    # sleep media (twice - strange google bug)
+    - service: notify.google_assistant
+      data_template:
+        message: "{{ states('input_text.sleep_assistant_prompt') }}"
     - service: notify.google_assistant
       data_template:
         message: "{{ states('input_text.sleep_assistant_prompt') }}"
