@@ -23,8 +23,8 @@
     entity_id: light.wc
 
 
-- alias: WC Motion OFF
-  id: wc_motion_off
+- alias: WC Motion OFF Long
+  id: wc_motion_off_long
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_wc
