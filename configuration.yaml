@@ -87,17 +87,6 @@ media_source:
 
 sun:
 
-# device_tracker:
-#   - platform: ddwrt
-#     host: !secret ddwrt_ip
-#     username: !secret ddwrt_username
-#     password: !secret ddwrt_password
-#     wireless_only: false
-#     interval_seconds: 60
-#     consider_home: 00:05:00
-#     new_device_defaults:
-#       track_new_devices: false
-
 mobile_app:
 
 mqtt:
@@ -105,48 +94,6 @@ mqtt:
   binary_sensor: !include_dir_merge_list config/entity/mqtt/binary_sensor
   switch: !include_dir_merge_list config/entity/mqtt/switch
   light: !include_dir_merge_list config/entity/mqtt/light
-
-# shelly:
-#   discovery: false
-#   version: false #add version sensor
-#   sensors:
-#     - switch
-#   devices:
-#     - id: "E098068CC7E3"
-#       name: Lichtschalter Schlafzimmer
-#       entity_id: bedroom
-#       light_switch: false
-#     - id: "E098068CC71C"
-#       name: Licht Küchenzeile
-#       entity_id: kitchen
-#       light_switch: true
-#     - id: "E098068DA426"
-#       name: Licht WC
-#       entity_id: wc
-#       light_switch: true
-#     - id: "8CAAB505EDCA"
-#       name: Licht Badzimmer
-#       entity_id: bathroom
-#       light_switch: true
-#     - id: "8CAAB505F04A"
-#       name: Lichtschalter Büro
-#       entity_id: workroom
-#       light_switch: false
-#     - id: "E098068DA79E"
-#       name: Licht Fitnesszimmer
-#       entity_id: fitnessroom
-#       light_switch: true
-#     - id: "483FDAA1A6D9"
-#       name: Licht Esstisch
-#       entity_id: diningtable
-#       light_switch: true
-#     - id: "F3C4C0"
-#       name: Ventilator
-#       entity_id: fan
-
-netatmo:
-  client_id: !secret netatmo_client_id
-  client_secret: !secret netatmo_client_secret
 
 google_assistant:
   project_id: !secret google_project_id
@@ -233,37 +180,3 @@ notify:
     vapid_pub_key: !secret html5_push_pub
     vapid_prv_key: !secret html5_push_prv
     vapid_email: !secret html5_push_email
-
-webhook:
-
-zigbee2mqtt_networkmap:
-  #topic: your topic (optional, default zigbee2mqtt)
-panel_iframe:
-  networkmap:
-    title: 'ZigBee'
-    url: '/local/community/zigbee2mqtt_networkmap/map.html'
-    icon: 'mdi:graphql'
-
-# camera:
-#   - platform: xiaomi_cloud_map_extractor
-#     host: !secret xiaomi_vacuum_host
-#     token: !secret xiaomi_vacuum_token
-#     username: !secret xiaomi_cloud_username
-#     password: !secret xiaomi_cloud_password
-#     country: de
-#     auto_update: false
-#     # scan_interval:
-#     #   minutes: 10
-#     map_transformation:
-#       trim:
-#         left: 24
-#         right: 24
-#         top: 22
-#         bottom: 24
-#     draw: ['all']
-#     attributes:
-#       - calibration_points
-#       - rooms
-#     colors:
-#       color_path: [255,0,0]
-#       color_predicted_path: [0,255,0] 
