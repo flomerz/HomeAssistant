@@ -8,13 +8,14 @@ all_off:
       data:
         entity_id: input_select.state_livingroom_light
         option: Aus
-    # tv
-    - service: switch.turn_off
-      entity_id: switch.livingroom_tv_relay
     # music
     - service: script.music_turn_off
     # lights
     - service: script.all_lights_off
+      continue_on_error: true
+    # tv
+    - service: switch.turn_off
+      entity_id: switch.livingroom_tv_relay
 
 
 all_lights_off:

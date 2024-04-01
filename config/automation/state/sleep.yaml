@@ -15,8 +15,7 @@
       data_template:
         volume_level: "{{ states('input_number.wohnzimmer_assistent_volume_sleep') }}"
     # all off
-    - service: script.turn_on
-      entity_id: script.all_off
+    - service: script.all_off
 
 
 - alias: Sleep OFF
