@@ -16,14 +16,26 @@
       entity_id: input_boolean.state_sleep
 
     # all off
-    - service: script.all_off
+    - service: script.turn_on
+      entity_id: script.all_off
       continue_on_error: true
 
-    - wait_template: "{{ is_state('script.all_off', 'off') }}"
+    - delay:
+      seconds: 1
+
+    - wait_template: "{{ !is_state('script.all_off', 'on') }}"
     
-    - service: notify.google_assistant
-      data_template:
-        message: "{{ states('input_text.sleep_assistant_prompt') }}"
+    - repeat:
+        while:
+          - condition: template
+            value_template: "{{ is_state('media_player.schlafzimmer_assistent', 'off') }}"
+        sequence:
+          - service: notify.google_assistant
+            data_template:
+              message: "{{ states('input_text.sleep_assistant_prompt') }}"
+          - delay:
+            seconds: 5
+
 
 - alias: switch_bedroom_right
   id: switch_bedroom_right
