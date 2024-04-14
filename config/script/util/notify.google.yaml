@@ -18,7 +18,7 @@ notify_google_broadcast:
           value_template: "{{ is_state('media_player.wohnzimmer_assistent', 'playing') }}"
         - condition: template
           value_template: "{{ is_state('media_player.schlafzimmer_assistent', 'playing') }}"
-    - service: notify.google
+    - service: notify.google_assistant_sdk
       data_template:
         message: '{{ message }}'
 

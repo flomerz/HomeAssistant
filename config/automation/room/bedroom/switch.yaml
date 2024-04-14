@@ -21,20 +21,13 @@
       continue_on_error: true
 
     - delay:
-      seconds: 1
+        seconds: 1
 
-    - wait_template: "{{ !is_state('script.all_off', 'on') }}"
+    - wait_template: "{{ not is_state('script.all_off', 'on') }}"
     
-    - repeat:
-        while:
-          - condition: template
-            value_template: "{{ is_state('media_player.schlafzimmer_assistent', 'off') }}"
-        sequence:
-          - service: notify.google_assistant
-            data_template:
-              message: "{{ states('input_text.sleep_assistant_prompt') }}"
-          - delay:
-            seconds: 5
+    - service: google_assistant_sdk.send_text_command
+      data_template:
+        command: "{{ states('input_text.sleep_assistant_prompt') }}"
 
 
 - alias: switch_bedroom_right
