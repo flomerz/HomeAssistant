@@ -1,10 +1,10 @@
-- alias: switch_bedroom_left
-  id: switch_bedroom_left
+- alias: switch_bedroom_right
+  id: switch_bedroom_right
   mode: restart
   trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
-      to: 'single_left'
+      to: 'single_right'
   action:
     # tv off
     - service: media_player.turn_off
@@ -30,13 +30,13 @@
         command: "{{ states('input_text.sleep_assistant_prompt') }}"
 
 
-- alias: switch_bedroom_right
-  id: switch_bedroom_right
+- alias: switch_bedroom_left
+  id: switch_bedroom_left
   mode: restart
   trigger:
     - platform: state
       entity_id: sensor.switch_bedroom_action
-      to: 'single_right'
+      to: 'single_left'
   action:
     # sleep off
     - service: input_boolean.turn_off
