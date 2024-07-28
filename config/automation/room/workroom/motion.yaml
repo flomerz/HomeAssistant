@@ -25,7 +25,9 @@
       conditions: !include ../../../condition/awake.yaml
   action:
     - service: light.turn_on
-      entity_id: light.workroom_desk_ambilight
+      entity_id: light.workroom_bar_left_ambilight
+    - service: light.turn_on
+      entity_id: light.workroom_bar_right_ambilight
     - condition: and
       conditions: !include ../../../condition/illuminance_workroom.yaml
     - service: light.turn_on
@@ -62,5 +64,7 @@
     - service: light.turn_off
       entity_id: light.workroom_desk
     - service: light.turn_off
-      entity_id: light.workroom_desk_ambilight
+      entity_id: light.workroom_bar_left_ambilight
+    - service: light.turn_off
+      entity_id: light.workroom_bar_right_ambilight
     

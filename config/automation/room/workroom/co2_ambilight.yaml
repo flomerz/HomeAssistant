@@ -1,29 +1,38 @@
-- alias: workroom_light_desk_ambilight
-  id: workroom_light_desk_ambilight
+- alias: workroom_light_bar_ambilight
+  id: workroom_light_bar_ambilight
   trigger:
     - platform: time_pattern
       minutes: /1
     - platform: state
-      entity_id: light.workroom_desk_ambilight
+      entity_id: light.workroom_bar_left_ambilight
       to: 'on'
   condition:
     - condition: state
-      entity_id: light.workroom_desk_ambilight
+      entity_id: light.workroom_bar_left_ambilight
       state: 'on'
     - condition: template
       value_template: >
         {% from 'color.jinja' import hsv_to_rgb %}
-        {% set sensor_h = states('sensor.workroom_light_desk_ambilight') | int %}
+        {% set sensor_h = states('sensor.workroom_light_bar_ambilight') | int %}
         {% set sensor_rgb = hsv_to_rgb(sensor_h) | from_json %}
-        {% set light_rgb = state_attr('light.workroom_desk_ambilight', 'rgb_color') | list %}
+        {% set light_rgb = state_attr('light.workroom_bar_left_ambilight', 'rgb_color') | list %}
         {{ sensor_rgb != light_rgb }}
   action:
     - service: light.turn_on
-      entity_id: light.workroom_desk_ambilight
+      entity_id: light.workroom_bar_left_ambilight
       data_template:
         brightness: 255
         transition: 2
         rgb_color: >
           {% from 'color.jinja' import hsv_to_rgb %}
-          {% set h = states('sensor.workroom_light_desk_ambilight') | int %}
+          {% set h = states('sensor.workroom_light_bar_ambilight') | int %}
+          {{ hsv_to_rgb(h) }}
+    - service: light.turn_on
+      entity_id: light.workroom_bar_right_ambilight
+      data_template:
+        brightness: 255
+        transition: 2
+        rgb_color: >
+          {% from 'color.jinja' import hsv_to_rgb %}
+          {% set h = states('sensor.workroom_light_bar_ambilight') | int %}
           {{ hsv_to_rgb(h) }}

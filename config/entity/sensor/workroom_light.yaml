@@ -24,7 +24,7 @@
 
 - platform: template
   sensors:
-    workroom_light_desk_ambilight:
+    workroom_light_bar_ambilight:
       value_template: >
         {% from 'transform.jinja' import linear %}
         {% set x = states('sensor.netatmo_home_indoor_buro_co2') | int %}
