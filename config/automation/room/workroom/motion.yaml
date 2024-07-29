@@ -31,7 +31,9 @@
     - condition: and
       conditions: !include ../../../condition/illuminance_workroom.yaml
     - service: light.turn_on
-      entity_id: light.workroom_desk
+      entity_id: light.workroom_bar_left
+    - service: light.turn_on
+      entity_id: light.workroom_bar_right
   
 
 - alias: workroom_motion_off
@@ -62,7 +64,9 @@
     - service: light.turn_off
       entity_id: light.light_workroom
     - service: light.turn_off
-      entity_id: light.workroom_desk
+      entity_id: light.workroom_bar_left
+    - service: light.turn_off
+      entity_id: light.workroom_bar_right
     - service: light.turn_off
       entity_id: light.workroom_bar_left_ambilight
     - service: light.turn_off
