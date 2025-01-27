@@ -138,31 +138,15 @@
     # Büro
     - type: custom:fold-entity-row
       head:
-        type: custom:config-template-card
+        type: 'custom:multiple-entity-row'
+        entity: light.light_workroom
+        name: Büro
+        secondary_info: last-changed
+        show_state: false
         entities:
-          - light.light_workroom
-          - light.workroom_desk
-          - light.workroom_desk_ambilight
-          - sensor.netatmo_home_indoor_buro_temperature
-          - sensor.netatmo_home_indoor_buro_co2
-        variables:
-          getName: |
-              () => {
-                const name = 'Büro';
-                const temperature = states['sensor.netatmo_home_indoor_buro_temperature'].state + '°';
-                const co2 = states['sensor.netatmo_home_indoor_buro_co2'].state + 'ppm';
-                return name + ' (' + temperature + ', ' + co2 + ')';
-              }
-        card:
-          type: 'custom:multiple-entity-row'
-          entity: light.light_workroom
-          name: "${ getName() }"
-          secondary_info: last-changed
-          show_state: false
-          entities:
-            - entity: light.light_workroom
-              name: Licht
-              toggle: true
+          - entity: light.light_workroom
+            name: Licht
+            toggle: true
       entities:
         - entity: light.workroom_bar_left
           name: Bar (Links)

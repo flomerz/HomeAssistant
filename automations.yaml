@@ -1,0 +1,42 @@
+- id: '1723384184613'
+  alias: Handy Ladegerät ausschalten
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ (as_timestamp(now()) - as_timestamp(states.sensor.florian_handy_battery_level.last_changed))
+      > 1800 }}'
+  - type: battery_level
+    platform: device
+    device_id: c5cb7eb9c199bec91526cd68a36280a8
+    entity_id: 6a77874c004c2f38081d83b5bff9d18d
+    domain: sensor
+    above: 85
+  condition: []
+  action:
+  - type: turn_off
+    device_id: f00b5131f8b9c3da2cf918670d234311
+    entity_id: 07571475b85f8119040e8f819f4f7865
+    domain: switch
+  mode: single
+- id: '1723384249775'
+  alias: Handy Ladegerät einschalten
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: /15
+  condition:
+  - condition: template
+    value_template: '{{ (as_timestamp(now()) - as_timestamp(states.sensor.florian_handy_battery_level.last_changed))
+      < 1800 }}'
+  - type: is_battery_level
+    condition: device
+    device_id: c5cb7eb9c199bec91526cd68a36280a8
+    entity_id: 6a77874c004c2f38081d83b5bff9d18d
+    domain: sensor
+    below: 70
+  action:
+  - type: turn_on
+    device_id: f00b5131f8b9c3da2cf918670d234311
+    entity_id: 07571475b85f8119040e8f819f4f7865
+    domain: switch
+  mode: single
