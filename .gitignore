@@ -1,20 +1,16 @@
-core
-.HA_VERSION
-.Trash-1000/
-.uuid
-.storage
-deps/
-home-assistant.log*
+.*
+*.log*
 *.db
-*.db-journal
-home-assistant_v2.db*
-known_devices.yaml
+*.db*
+
 secrets.yaml
-google_assistant_service_account.json
-.ps4-games*.json
-html5_push_registrations.conf
-www/community/zigbee2mqtt_networkmap/settings.js
+
+deps/
 tts/
+
+custom_components/
+www/
+blueprints/
 
 
 ### Python ###

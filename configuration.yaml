@@ -1,22 +1,15 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
 homeassistant:
-  name: Home Assistant
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
-  elevation: !secret home_elevation
-  unit_system: metric
-  currency: CHF
-  country: CH
-  time_zone: Europe/Zurich
-  external_url: !secret external_url
-  internal_url: !secret internal_url
+  auth_providers:
+    - type: trusted_networks
+      allow_bypass_login: true
+      trusted_networks:
+        - 192.168.0.0/16
+    - type: homeassistant
 
-logger:
-  default: error
-  # logs:
-    # custom_components.dreame_vacuum: debug
-
-system_health:
-
+# Load frontend themes from the themes folder
 frontend:
   themes: !include_dir_merge_named themes
 
@@ -31,45 +24,10 @@ panel_custom:
     sidebar_icon: mdi:math-log
     module_url: any text
 
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 127.0.0.1
-    - ::1
-
-# updater:
-
-recorder:
-  db_url: sqlite:///usb/home-assistant.db
-  purge_keep_days: 30
-  commit_interval: 60
-  include:
-    entity_globs:
-      - input_boolean.state_*
-      - binary_sensor.motion_*
-      - binary_sensor.sensor_door_contact
-      - sensor.temperature_espresso
-      - sensor.netatmo_home_*_co2
-      - sensor.netatmo_home_*_temperature
-      - sensor.netatmo_home_*_humidity
-      - sensor.netatmo_home_indoor_pressure
-      - sensor.ebike_power
-      - sensor.ebike_temperature
-      - sensor.plant*_moisture
-      - sensor.plant*_conductivity
-      - switch.cellar_charger
-      - switch.ebike
-      - sensor.shelly_powermeter_*
-    domains:
-      - person
-
-history:
-
-# logbook:
-
-config:
-
 automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
 automation old: !include_dir_merge_list config/automation
 sensor: !include_dir_merge_list config/entity/sensor
 binary_sensor: !include_dir_merge_list config/entity/binary_sensor
@@ -81,96 +39,7 @@ input_text: !include_dir_merge_named config/entity/input/text
 input_datetime: !include_dir_merge_named config/entity/input/datetime
 input_select: !include_dir_merge_named config/entity/input/select
 group: !include_dir_merge_named config/group
-script: !include_dir_merge_named config/script
+script_old: !include_dir_merge_named config/script
 
-media_source:
 
-sun:
-
-mobile_app:
-
-mqtt:
-  sensor: !include_dir_merge_list config/entity/mqtt/sensor
-  binary_sensor: !include_dir_merge_list config/entity/mqtt/binary_sensor
-  switch: !include_dir_merge_list config/entity/mqtt/switch
-  light: !include_dir_merge_list config/entity/mqtt/light
-
-google_assistant:
-  project_id: !secret google_project_id
-  service_account: !include google_assistant_service_account.json
-  expose_by_default: false
-  entity_config:
-    # 1 Wohnzimmer
-    # 2 Küche
-    switch.espresso:
-      expose: true
-      room: '2 Küche'
-    # 3 Schlafzimmer
-    input_boolean.state_sleep:
-      expose: true
-      room: '3 Schlafzimmer'
-    # Scenes
-    script.vacuum_start:
-      expose: true
-      name: Staubi start
-      room: '0 Allgemein'
-    script.vacuum_stop:
-      expose: true
-      name: Staubi stop
-      room: '0 Allgemein'
-    script.vacuum_point_kitchen:
-      expose: true
-      name: Staubi putzen
-      room: '0 Allgemein'
-    script.vacuum_room_kitchen:
-      expose: true
-      name: Küche putzen
-      room: '0 Allgemein'
-
-plant:
-  plant1:
-    sensors:
-      moisture: sensor.plant1_moisture
-      battery: sensor.plant1_battery
-      temperature: sensor.plant1_temperature
-      conductivity: sensor.plant1_conductivity
-      brightness: sensor.plant1_light
-    min_moisture: 20
-    max_moisture: 60
-    min_battery: 17
-    min_conductivity: 500
-    min_temperature: 15
-  plant2:
-    sensors:
-      moisture: sensor.plant2_moisture
-      battery: sensor.plant2_battery
-      temperature: sensor.plant2_temperature
-      conductivity: sensor.plant2_conductivity
-      brightness: sensor.plant2_light
-    min_moisture: 20
-    max_moisture: 60
-    min_battery: 17
-    min_conductivity: 500
-    min_temperature: 15
-  plant3:
-    sensors:
-      moisture: sensor.plant3_moisture
-      battery: sensor.plant3_battery
-      temperature: sensor.plant3_temperature
-      conductivity: sensor.plant3_conductivity
-      brightness: sensor.plant3_light
-    min_moisture: 20
-    max_moisture: 60
-    min_battery: 17
-    min_conductivity: 500
-    min_temperature: 15
-
-notify:
-  # - name: flo
-  #   platform: pushbullet
-  #   api_key: !secret pushbullet_api_key
-  - platform: html5
-    name: browser
-    vapid_pub_key: !secret html5_push_pub
-    vapid_prv_key: !secret html5_push_prv
-    vapid_email: !secret html5_push_email
+mqtt: !include config/mqtt.yaml

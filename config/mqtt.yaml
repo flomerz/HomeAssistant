@@ -1,0 +1,73 @@
+binary_sensor:
+  - unique_id: homie_motion_floor
+    name: motion_floor
+    state_topic: "homie/floor-light/motion/state"
+    device_class: motion
+
+  - unique_id: homie_motion_kitchen
+    name: motion_kitchen
+    state_topic: "homie/kitchen-light/motion/state"
+    device_class: motion
+
+  - unique_id: homie_motion_wc
+    name: motion_wc
+    state_topic: "homie/wc-light/motion/state"
+    device_class: motion
+
+light:
+  - unique_id: homie_floor
+    name: floor
+    device:
+      identifiers: 
+        - homie_light_floor
+    state_topic: "homie/floor-light/switch/state"
+    command_topic: "homie/floor-light/switch/state/set"
+
+  - unique_id: homie_kitchen_ceiling
+    name: kitchen_ceiling
+    state_topic: "homie/kitchen-light/switch/state"
+    command_topic: "homie/kitchen-light/switch/state/set"
+
+  - unique_id: homie_wc_led
+    name: wc_led
+    state_topic: "homie/wc-light/switch/state"
+    command_topic: "homie/wc-light/switch/state/set"
+
+  - unique_id: homie_bathroom_led
+    name: bathroom_led
+    state_topic: "homie/bathroom-light/switch/state"
+    command_topic: "homie/bathroom-light/switch/state/set"
+
+  # - unique_id: homie_livingroom_front
+  #   name: livingroom_front
+  #   state_topic: "homie/livingroom-light-front/switch/state"
+  #   command_topic: "homie/livingroom-light-front/switch/state/set"
+
+  - unique_id: homie_livingroom_sofatable
+    name: livingroom_sofatable
+    state_topic: "homie/livingroom-light-back-small/switch/state"
+    command_topic: "homie/livingroom-light-back-small/switch/state/set"
+
+sensor:
+  - unique_id: homie_temperature_espresso
+    name: temperature_espresso
+    state_topic: "homie/espresso/sensor/temperature"
+    qos: 0
+    unit_of_measurement: "°C"
+
+  - unique_id: homie_humidity_espresso
+    name: humidity_espresso
+    state_topic: "homie/espresso/sensor/humidity"
+    qos: 0
+    unit_of_measurement: "%"
+
+switch:
+  - unique_id: homie_espresso
+    name: espresso
+    state_topic: "homie/espresso/switch/state"
+    command_topic: "homie/espresso/switch/state/set"
+
+  - unique_id: homie_humidifier
+    name: humidifier
+    state_topic: "homie/livingroom-steamer/switch/state"
+    command_topic: "homie/livingroom-steamer/switch/state/set"
