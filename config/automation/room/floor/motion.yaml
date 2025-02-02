@@ -37,4 +37,4 @@
     state: 'on'
   action:
     service: light.turn_on
-    entity_id: light.wc
+    entity_id: light.wc_led

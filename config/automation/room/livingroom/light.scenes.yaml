@@ -7,15 +7,13 @@
   action:
     # lights
     - service: light.turn_off
-      entity_id: light.livingroom_front
-    - service: light.turn_off
       entity_id: light.livingroom_sofatable
     - service: light.turn_off
       entity_id: light.livingroom_rgbww
     - service: light.turn_off
       entity_id: light.shelly_diningtable
-    - service: light.turn_off
-      entity_id: light.christmas_light
+    # - service: light.turn_off
+    #   entity_id: light.christmas_light
     - service: light.turn_off
       entity_id: light.wohnzimmer_tv_ambilight
     - service: light.turn_off
@@ -37,13 +35,11 @@
     - service: light.turn_off
       entity_id: light.shelly_kitchen
     - service: light.turn_off
-      entity_id: light.kitchen
+      entity_id: light.kitchen_ceiling
     - service: light.turn_off
       entity_id: light.floor
     - service: light.turn_off
       entity_id: light.light_door
-    - service: light.turn_off
-      entity_id: light.livingroom_front
     - service: light.turn_off
       entity_id: light.livingroom_sofatable
     - service: light.turn_on
@@ -54,13 +50,13 @@
         rgbww_color: [0, 0, 255, 0, 0]
     - service: light.turn_off
       entity_id: light.shelly_diningtable
-    - service: light.turn_off
-      entity_id: light.christmas_light
+    # - service: light.turn_off
+    #   entity_id: light.christmas_light
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
         brightness_pct: 50
-        effect: 'FOLLOW_VIDEO: NATURAL'
+        effect: 'FOLLOW_VIDEO: VIVID'
     - service: light.turn_on
       entity_id: light.livingroom_co2
 
@@ -78,8 +74,6 @@
         option: "{{ states('input_select.state_livingroom_light') }}"
     # lights
     - service: light.turn_off
-      entity_id: light.livingroom_front
-    - service: light.turn_off
       entity_id: light.livingroom_sofatable
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
@@ -87,13 +81,13 @@
         brightness_pct: 100
         effect: none
         rgbww_color: [191, 0, 255, 0, 0]
-    - service: light.turn_off
-      entity_id: light.christmas_light
+    # - service: light.turn_off
+    #   entity_id: light.christmas_light
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
         brightness_pct: 100
-        effect: 'FOLLOW_VIDEO: STANDARD'
+        effect: 'FOLLOW_VIDEO: VIVID'
     - service: light.turn_on
       entity_id: light.livingroom_co2
 
@@ -110,8 +104,6 @@
         entity_id: input_select.mode_livingroom_light
         option: "{{ states('input_select.state_livingroom_light') }}"
     # lights
-    - service: light.turn_off
-      entity_id: light.livingroom_front
     - service: light.turn_on
       entity_id: light.livingroom_sofatable
     - service: light.turn_on
@@ -120,8 +112,8 @@
         brightness_pct: 100
         effect: none
         rgbww_color: [0, 0, 0, 0, 150]
-    - service: light.turn_off
-      entity_id: light.christmas_light
+    # - service: light.turn_off
+    #   entity_id: light.christmas_light
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
@@ -144,8 +136,6 @@
         option: "{{ states('input_select.state_livingroom_light') }}"
     # lights
     - service: light.turn_on
-      entity_id: light.livingroom_front
-    - service: light.turn_on
       entity_id: light.livingroom_sofatable
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
@@ -159,8 +149,8 @@
         effect: rainbow
     - service: light.turn_on
       entity_id: light.shelly_diningtable
-    - service: light.turn_on
-      entity_id: light.christmas_light
+    # - service: light.turn_on
+    #   entity_id: light.christmas_light
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
@@ -184,8 +174,6 @@
         option: "{{ states('input_select.state_livingroom_light') }}"
     # lights
     - service: light.turn_on
-      entity_id: light.livingroom_front
-    - service: light.turn_on
       entity_id: light.livingroom_sofatable
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
@@ -195,8 +183,8 @@
         rgbww_color: [0, 0, 0, 0, 255]
     - service: light.turn_on
       entity_id: light.shelly_diningtable
-    - service: light.turn_on
-      entity_id: light.christmas_light
+    # - service: light.turn_on
+    #   entity_id: light.christmas_light
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:
@@ -220,8 +208,6 @@
         option: "{{ states('input_select.state_livingroom_light') }}"
     # lights
     - service: light.turn_on
-      entity_id: light.livingroom_front
-    - service: light.turn_on
       entity_id: light.livingroom_sofatable
     - service: light.turn_on
       entity_id: light.livingroom_rgbww
@@ -231,8 +217,8 @@
         rgbww_color: [255, 255, 255, 255, 255]
     - service: light.turn_on
       entity_id: light.shelly_diningtable
-    - service: light.turn_on
-      entity_id: light.christmas_light
+    # - service: light.turn_on
+    #   entity_id: light.christmas_light
     - service: light.turn_on
       entity_id: light.wohnzimmer_tv_ambilight
       data:

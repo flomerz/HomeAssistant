@@ -7,7 +7,7 @@
   condition: !include ../../../condition/illuminance_livingroom.yaml
   action:
     service: light.turn_on
-    entity_id: light.wc
+    entity_id: light.wc_led
 
 
 - alias: WC Motion OFF
@@ -20,7 +20,7 @@
         minutes: 5
   action:
     service: light.turn_off
-    entity_id: light.wc
+    entity_id: light.wc_led
 
 
 - alias: WC Motion OFF Long

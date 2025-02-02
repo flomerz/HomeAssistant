@@ -2,13 +2,13 @@
   id: workroom_illuminance_high
   trigger:
     - platform: numeric_state
-      entity_id: sensor.motion_workroom_illuminance_lux
+      entity_id: sensor.motion_office_illuminance
       above: 300
     - platform: numeric_state
-      entity_id: sensor.motion_workroom_tuya_illuminance
+      entity_id: sensor.motion_office_tuya_illuminance
       above: 2000
   action:
     - service: light.turn_off
-      entity_id: light.light_workroom
+      entity_id: light.light_office
     - service: light.turn_off
       entity_id: light.workroom_desk

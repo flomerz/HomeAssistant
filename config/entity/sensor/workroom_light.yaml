@@ -27,5 +27,5 @@
     workroom_light_bar_ambilight:
       value_template: >
         {% from 'transform.jinja' import linear %}
-        {% set x = states('sensor.netatmo_home_indoor_buro_co2') | int %}
+        {% set x = states('sensor.netatmo_home_indoor_office_co2') | int %}
         {{ linear(x, [500, 1500], [120, 360]) | from_json | round(0) }}

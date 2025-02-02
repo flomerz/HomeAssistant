@@ -14,15 +14,24 @@ frontend:
   themes: !include_dir_merge_named themes
 
 lovelace:
-  mode: yaml
-  resources: !include ui-lovelace-resources.yaml
-  dashboards: !include ui-lovelace-dashboards.yaml
+  mode: storage
+  dashboards:
+    lovelace-old:
+      mode: yaml
+      filename: config/ui-lovelace/main/_views.yaml
+      title: Übersicht
+    lovelace-settings:
+      mode: yaml
+      filename: config/ui-lovelace/settings/_views.yaml
+      title: Einstellungen
+      icon: mdi:cog
+
 
 panel_custom:
   - name: config/logs
     sidebar_title: Logs
     sidebar_icon: mdi:math-log
-    module_url: any text
+    module_url: logs
 
 automation: !include automations.yaml
 script: !include scripts.yaml
@@ -39,7 +48,7 @@ input_text: !include_dir_merge_named config/entity/input/text
 input_datetime: !include_dir_merge_named config/entity/input/datetime
 input_select: !include_dir_merge_named config/entity/input/select
 group: !include_dir_merge_named config/group
-script_old: !include_dir_merge_named config/script
+script old: !include_dir_merge_named config/script
 
 
 mqtt: !include config/mqtt.yaml

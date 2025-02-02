@@ -7,7 +7,7 @@
   condition: !include ../../../condition/light_livingroom.yaml
   action:
     service: light.turn_on
-    entity_id: light.kitchen
+    entity_id: light.kitchen_ceiling
 
 - alias: motion_off_kitchen
   id: motion_off_kitchen
@@ -19,7 +19,7 @@
       seconds: 60
   action:
     service: light.turn_off
-    entity_id: light.kitchen
+    entity_id: light.kitchen_ceiling
 
 - alias: motion_off_long_kitchen
   id: motion_off_long_kitchen
@@ -31,7 +31,7 @@
       minutes: 5
   action:
     - service: light.turn_off
-      entity_id: light.kitchen
+      entity_id: light.kitchen_ceiling
     - service: light.turn_off
       entity_id: light.shelly_kitchen
 
@@ -48,7 +48,7 @@
     - service: homeassistant.turn_off
       entity_id: automation.motion_off_kitchen
     - service: light.turn_on
-      entity_id: light.kitchen
+      entity_id: light.kitchen_ceiling
     - service: light.turn_on
       entity_id: light.shelly_kitchen
 

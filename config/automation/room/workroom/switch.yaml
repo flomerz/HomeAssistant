@@ -5,4 +5,4 @@
       entity_id: binary_sensor.shelly_workroom_switch
   action:
     - service: light.toggle
-      entity_id: light.light_workroom
+      entity_id: light.light_office

@@ -1,42 +1,76 @@
 - id: '1723384184613'
   alias: Handy Ladegerät ausschalten
   description: ''
-  trigger:
-  - platform: template
-    value_template: '{{ (as_timestamp(now()) - as_timestamp(states.sensor.florian_handy_battery_level.last_changed))
+  triggers:
+  - value_template: '{{ (as_timestamp(now()) - as_timestamp(states.sensor.florian_handy_battery_level.last_changed))
       > 1800 }}'
-  - type: battery_level
-    platform: device
-    device_id: c5cb7eb9c199bec91526cd68a36280a8
-    entity_id: 6a77874c004c2f38081d83b5bff9d18d
-    domain: sensor
-    above: 85
-  condition: []
-  action:
-  - type: turn_off
-    device_id: f00b5131f8b9c3da2cf918670d234311
-    entity_id: 07571475b85f8119040e8f819f4f7865
-    domain: switch
+    trigger: template
+  - trigger: numeric_state
+    entity_id:
+    - sensor.florian_handy_battery_level
+    above: 75
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.bedroom_charger
   mode: single
 - id: '1723384249775'
   alias: Handy Ladegerät einschalten
   description: ''
-  trigger:
-  - platform: time_pattern
-    minutes: /15
-  condition:
+  triggers:
+  - minutes: /15
+    trigger: time_pattern
+  conditions:
   - condition: template
     value_template: '{{ (as_timestamp(now()) - as_timestamp(states.sensor.florian_handy_battery_level.last_changed))
       < 1800 }}'
-  - type: is_battery_level
-    condition: device
-    device_id: c5cb7eb9c199bec91526cd68a36280a8
-    entity_id: 6a77874c004c2f38081d83b5bff9d18d
-    domain: sensor
-    below: 70
-  action:
-  - type: turn_on
-    device_id: f00b5131f8b9c3da2cf918670d234311
-    entity_id: 07571475b85f8119040e8f819f4f7865
-    domain: switch
+  - condition: numeric_state
+    entity_id: sensor.florian_handy_battery_level
+    below: 75
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.bedroom_charger
+  mode: single
+- id: '1738432234464'
+  alias: Kiosk ON
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.motion_livingroom_tuya_occupancy
+    to: 'on'
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.kiosk_screen
+  mode: single
+- id: '1738432355076'
+  alias: Kiosk OFF
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.motion_livingroom_tuya_occupancy
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.kiosk_screen
   mode: single

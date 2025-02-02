@@ -17,7 +17,7 @@
           stroke_width: 2
           show:
             in_brush: true
-        - entity: sensor.netatmo_home_indoor_buro_co2
+        - entity: sensor.netatmo_home_indoor_office_co2
           name: Büro
           stroke_width: 2
           show:
@@ -40,12 +40,12 @@
           stroke_width: 2
           show:
             in_brush: true
-        - entity: sensor.netatmo_home_indoor_buro_temperature
+        - entity: sensor.netatmo_home_indoor_office_temperature
           name: Büro
           stroke_width: 2
           show:
             in_brush: true
-        - entity: sensor.netatmo_home_indoor_aussen_temperature
+        - entity: sensor.netatmo_home_outdoor_temperature
           name: Aussen
           stroke_width: 2
           show:
@@ -68,12 +68,12 @@
           stroke_width: 2
           show:
             in_brush: true
-        - entity: sensor.netatmo_home_indoor_buro_humidity
+        - entity: sensor.netatmo_home_indoor_office_humidity
           name: Büro
           stroke_width: 2
           show:
             in_brush: true
-        - entity: sensor.netatmo_home_indoor_aussen_humidity
+        - entity: sensor.netatmo_home_outdoor_humidity
           name: Aussen
           stroke_width: 2
           show:

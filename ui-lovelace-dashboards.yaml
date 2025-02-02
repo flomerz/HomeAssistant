@@ -1,5 +1,0 @@
-lovelace-settings:
-  mode: yaml
-  filename: config/ui-lovelace/settings/_views.yaml
-  title: Einstellungen
-  icon: mdi:cog
