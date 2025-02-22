@@ -14,14 +14,13 @@ input_select:
       - Normal
       - Max
 
-
 automation:
   - alias: Light Aus
     id: light_aus
     triggers:
       - trigger: state
         entity_id: input_select.state_livingroom_light
-        to: 'Aus'
+        to: "Aus"
     actions:
       # lights
       - action: light.turn_off
@@ -40,7 +39,7 @@ automation:
     triggers:
       - trigger: state
         entity_id: input_select.state_livingroom_light
-        to: 'TV'
+        to: "TV"
     actions:
       - action: input_select.select_option
         data_template:
@@ -56,25 +55,25 @@ automation:
           effect: none
           rgbww_color: [255, 0, 0, 0, 100]
       - action: light.turn_off
-        entity_id: light.shelly_diningtable
+        entity_id: light.wohnzimmer_tv_ambilight
       - action: light.turn_on
         entity_id: light.wohnzimmer_tv_ambilight
         data:
           brightness_pct: 100
-          effect: 'FOLLOW_VIDEO: VIVID'
+          effect: "FOLLOW_VIDEO: VIVID"
       - action: light.turn_on
         entity_id: light.light_dining_table_led
         data:
           brightness_pct: 100
           effect: none
-          rgbww_color: [255, 100, 255]
+          rgb_color: [255, 120, 0]
 
   - alias: Light Normal
     id: light_normal
     triggers:
       - trigger: state
         entity_id: input_select.state_livingroom_light
-        to: 'Normal'
+        to: "Normal"
     actions:
       - action: input_select.select_option
         data_template:
@@ -88,28 +87,26 @@ automation:
         data:
           brightness_pct: 100
           effect: none
-          rgbww_color: [0, 0, 0, 0, 255]
-      - action: light.turn_on
-        entity_id: light.shelly_diningtable
+          rgbww_color: [255, 0, 0, 0, 200]
       - action: light.turn_on
         entity_id: light.wohnzimmer_tv_ambilight
         data:
-          brightness_pct: 15
-          rgb_color: [255, 0, 255]
-          effect: 'Mode: manual'
+          brightness_pct: 100
+          rgb_color: [255, 100, 0]
+          effect: "Mode: manual"
       - action: light.turn_on
         entity_id: light.light_dining_table_led
         data:
           brightness_pct: 100
           effect: none
-          rgbww_color: [255, 255, 255]
+          rgb_color: [255, 120, 0]
 
   - alias: Light Max
     id: light_max
     triggers:
       - trigger: state
         entity_id: input_select.state_livingroom_light
-        to: 'Max'
+        to: "Max"
     actions:
       - action: input_select.select_option
         data_template:
@@ -131,10 +128,10 @@ automation:
         data:
           brightness_pct: 100
           rgb_color: [255, 255, 255]
-          effect: 'Mode: manual'
+          effect: "Mode: manual"
       - action: light.turn_on
         entity_id: light.light_dining_table_led
         data:
           brightness_pct: 100
           effect: none
-          rgbww_color: [255, 255, 255]
+          rgb_color: [255, 255, 255]
