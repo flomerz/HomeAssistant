@@ -2,6 +2,14 @@ script:
   all_off:
     mode: restart
     sequence:
+      - action: script.music_turn_off
+      - action: script.turn_on
+        entity_id: script.all_devices_off
+        continue_on_error: true
+
+  all_devices_off:
+    mode: restart
+    sequence:
       # entities
       - action: switch.turn_off
         entity_id: switch.espresso
@@ -9,8 +17,6 @@ script:
         data:
           entity_id: input_select.state_livingroom_light
           option: Aus
-      # music
-      - action: script.music_turn_off
       # lights
       - action: script.turn_on
         entity_id: script.all_lights_off
@@ -19,7 +25,6 @@ script:
       # tv
       - action: switch.turn_off
         entity_id: switch.livingroom_tv_relay
-
 
   all_lights_off:
     mode: restart

@@ -28,7 +28,7 @@ automation:
       - action: input_select.select_option
         data:
           entity_id: input_select.mode_livingroom_light
-          option: "Chill"
+          option: "Normal"
 
   - alias: people_home
     id: people_home

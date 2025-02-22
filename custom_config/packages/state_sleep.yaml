@@ -7,7 +7,7 @@ automation:
     triggers:
       - trigger: state
         entity_id: input_boolean.state_sleep
-        to: 'on'
+        to: "on"
     actions:
       # google volume
       - action: media_player.volume_set
@@ -19,19 +19,18 @@ automation:
         data_template:
           volume_level: 0
       # all off
-      - action: script.all_off
-
+      - action: script.all_devices_off
 
   - alias: Sleep OFF
     id: sleep_off
     triggers:
       - trigger: state
         entity_id: input_boolean.state_sleep
-        to: 'off'
+        to: "off"
     conditions:
       - condition: state
         entity_id: input_boolean.state_home
-        state: 'on'
+        state: "on"
     actions:
       # google
       - action: media_player.volume_set
@@ -45,4 +44,4 @@ automation:
       - action: input_select.select_option
         data:
           entity_id: input_select.mode_livingroom_light
-          option: 'Normal'
+          option: "Normal"
