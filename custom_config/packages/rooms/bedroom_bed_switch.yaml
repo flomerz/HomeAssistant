@@ -1,0 +1,72 @@
+automation:
+  - alias: switch_bedroom_right
+    id: switch_bedroom_right
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id: sensor.switch_bedroom_action
+        to: 'single_right'
+    action:
+      # tv off
+      - service: media_player.turn_off
+        entity_id: media_player.schlafzimmer_tv_android
+
+      # sleep on
+      - service: input_boolean.turn_on
+        continue_on_error: true
+        entity_id: input_boolean.state_sleep
+
+      # all off
+      - service: script.turn_on
+        entity_id: script.all_off
+        continue_on_error: true
+
+      - delay:
+          seconds: 1
+
+      - wait_template: "{{ not is_state('script.all_off', 'on') }}"
+      
+      - service: google_assistant_sdk.send_text_command
+        data_template:
+          command: "{{ states('input_text.sleep_assistant_prompt') }}"
+
+
+  - alias: switch_bedroom_left
+    id: switch_bedroom_left
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id: sensor.switch_bedroom_action
+        to: 'single_left'
+    action:
+      # sleep off
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.state_sleep
+      # espresso on
+      - service: switch.turn_on
+        entity_id: switch.espresso
+      # radio
+      - service: script.music_radio_srf4
+      # wait 1h
+      - delay:
+          hours: 1
+      # media off
+      - service: script.music_turn_off
+
+  - alias: switch_bedroom_both
+    id: switch_bedroom_both
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id: sensor.switch_bedroom_action
+        to: 'single_both'
+    action:
+      # sleep on
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.state_sleep
+      # wait 2h
+      - delay:
+          hours: 2
+      # tv off
+      - service: media_player.turn_off
+        entity_id: media_player.schlafzimmer_tv_android

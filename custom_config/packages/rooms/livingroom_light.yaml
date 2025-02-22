@@ -1,0 +1,170 @@
+input_select:
+  state_livingroom_light:
+    name: Wohnzimmer Licht
+    options:
+      - Aus
+      - TV
+      - Normal
+      - Max
+
+  mode_livingroom_light:
+    name: Wohnzimmer Licht Mode
+    options:
+      - TV
+      - Normal
+      - Max
+
+
+automation:
+  - alias: Light Aus
+    id: light_aus
+    trigger:
+      - platform: state
+        entity_id: input_select.state_livingroom_light
+        to: 'Aus'
+    action:
+      # lights
+      - service: light.turn_off
+        entity_id: light.livingroom_sofatable
+      - service: light.turn_off
+        entity_id: light.livingroom_rgbww
+      - service: light.turn_off
+        entity_id: light.shelly_diningtable
+      - service: light.turn_off
+        entity_id: light.wohnzimmer_tv_ambilight
+      - service: light.turn_off
+        entity_id: light.light_dining_table_led
+
+  - alias: Light TV
+    id: light_tv
+    trigger:
+      - platform: state
+        entity_id: input_select.state_livingroom_light
+        to: 'TV'
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.mode_livingroom_light
+          option: "{{ states('input_select.state_livingroom_light') }}"
+      # lights
+      - service: light.turn_off
+        entity_id: light.livingroom_sofatable
+      - service: light.turn_on
+        entity_id: light.livingroom_rgbww
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 0, 0, 0, 100]
+      - service: light.turn_off
+        entity_id: light.shelly_diningtable
+      - service: light.turn_on
+        entity_id: light.wohnzimmer_tv_ambilight
+        data:
+          brightness_pct: 100
+          effect: 'FOLLOW_VIDEO: VIVID'
+      - service: light.turn_on
+        entity_id: light.light_dining_table_led
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 100, 255]
+
+  - alias: Light Normal
+    id: light_normal
+    trigger:
+      - platform: state
+        entity_id: input_select.state_livingroom_light
+        to: 'Normal'
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.mode_livingroom_light
+          option: "{{ states('input_select.state_livingroom_light') }}"
+      # lights
+      - service: light.turn_on
+        entity_id: light.livingroom_sofatable
+      - service: light.turn_on
+        entity_id: light.livingroom_rgbww
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [0, 0, 0, 0, 255]
+      - service: light.turn_on
+        entity_id: light.shelly_diningtable
+      - service: light.turn_on
+        entity_id: light.wohnzimmer_tv_ambilight
+        data:
+          brightness_pct: 15
+          rgb_color: [255, 0, 255]
+          effect: 'Mode: manual'
+      - service: light.turn_on
+        entity_id: light.light_dining_table_led
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 255, 255]
+
+  - alias: Light Max
+    id: light_max
+    trigger:
+      - platform: state
+        entity_id: input_select.state_livingroom_light
+        to: 'Max'
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.mode_livingroom_light
+          option: "{{ states('input_select.state_livingroom_light') }}"
+      # lights
+      - service: light.turn_on
+        entity_id: light.livingroom_sofatable
+      - service: light.turn_on
+        entity_id: light.livingroom_rgbww
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 255, 255, 255, 255]
+      - service: light.turn_on
+        entity_id: light.shelly_diningtable
+      - service: light.turn_on
+        entity_id: light.wohnzimmer_tv_ambilight
+        data:
+          brightness_pct: 100
+          rgb_color: [255, 255, 255]
+          effect: 'Mode: manual'
+      - service: light.turn_on
+        entity_id: light.light_dining_table_led
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 255, 255]
+
+
+script:
+  livingroom_light:
+    sequence:
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.mode_livingroom_light
+          option: '{{ mode }}'
+      - condition: state
+        entity_id: binary_sensor.condition_light
+        state: 'on'
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.state_livingroom_light
+          option: '{{ mode }}'
+
+  livingroom_light_up:
+    sequence:
+      - service: input_select.select_next
+        entity_id: input_select.state_livingroom_light
+        data:
+          cycle: false
+
+  livingroom_light_down:
+    sequence:
+      - service: input_select.select_previous
+        entity_id: input_select.state_livingroom_light
+        data:
+          cycle: false

@@ -1,0 +1,39 @@
+automation:
+  - alias: bathroom_light_off
+    id: bathroom_light_off
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.motion_bathroom_occupancy
+        to: 'off'
+        for:
+          minutes: 20
+    action:
+      service: light.turn_off
+      entity_id: light.group_bathroom
+  
+  - alias: bathroom_light_led_on
+    id: bathroom_light_led_on
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.motion_bathroom_occupancy
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: binary_sensor.condition_light
+        state: 'on'
+    action:
+      service: light.turn_on
+      entity_id: light.bathroom_led
+
+  - alias: bathroom_light_led_off
+    id: bathroom_light_led_off
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.motion_bathroom_occupancy
+        to: 'off'
+        for:
+          minutes: 5
+    action:
+      - service: light.turn_off
+        entity_id: light.bathroom_led
+

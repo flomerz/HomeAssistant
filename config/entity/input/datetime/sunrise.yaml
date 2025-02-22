@@ -1,4 +1,0 @@
-sunrise_time:
-  name: "Sunrise Time"
-  has_time: true
-  has_date: true

@@ -1,0 +1,73 @@
+automation:
+  - alias: bedroom_light_off
+    id: bedroom_light_off
+    trigger:
+      - platform: state
+        entity_id: light.light_bedroom
+        to: "on"
+        for:
+          minutes: 90
+    action:
+      - service: light.turn_off
+        entity_id: light.light_bedroom
+
+  - alias: shelly_bedroom_switch_off
+    id: shelly_bedroom_switch_off
+    trigger:
+      - platform: state
+        entity_id: "binary_sensor.shelly_bedroom_input"
+    condition:
+      - condition: state
+        entity_id: light.light_bedroom
+        state: "on"
+        for:
+          seconds: 1
+    action:
+      - service: light.turn_off
+        entity_id: light.light_bedroom
+
+  - alias: shelly_bedroom_switch_on_before_sunset
+    id: shelly_bedroom_switch_on_before_sunset
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.shelly_bedroom_input
+    condition:
+      - condition: state
+        entity_id: light.light_bedroom
+        state: "off"
+        for:
+          seconds: 1
+      - condition: sun
+        before: sunset
+      - condition: sun
+        after: sunrise
+    action:
+      - service: light.turn_on
+        entity_id: light.light_bedroom
+        data:
+          rgb_color: [255, 226, 145] #white
+          brightness: 255
+
+  - alias: shelly_bedroom_switch_on_after_sunset
+    id: shelly_bedroom_switch_on_after_sunset
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.shelly_bedroom_input
+    condition:
+      - condition: state
+        entity_id: light.light_bedroom
+        state: "off"
+        for:
+          seconds: 1
+      - condition: or
+        conditions:
+          - condition: sun
+            after: sunset
+          - condition: sun
+            before: sunrise
+    action:
+      - service: light.turn_on
+        entity_id: light.light_bedroom
+        data:
+          rgb_color: [255, 100, 1] #orange
+          brightness: 255

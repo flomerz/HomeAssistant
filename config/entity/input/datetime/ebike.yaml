@@ -1,4 +1,0 @@
-ebike_charge:
-  name: "E-Bike Laden Zeitpunkt"
-  has_time: true
-  has_date: true

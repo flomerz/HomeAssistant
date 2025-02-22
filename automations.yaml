@@ -74,3 +74,39 @@
     target:
       entity_id: light.kiosk_screen
   mode: single
+- id: '1739339209874'
+  alias: Luftbefeuchter nach Zeit ausschalten
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.humidifier
+    to: 'on'
+    for:
+      hours: 4
+      minutes: 0
+      seconds: 0
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.humidifier
+  mode: single
+- id: '1739637990508'
+  alias: Staubsauger starten wenn niemand mehr zu Hause ist
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_boolean.state_home
+    to: 'off'
+  conditions: []
+  actions:
+  - action: vacuum.start
+    metadata: {}
+    data: {}
+    target:
+      entity_id: vacuum.staubi
+  mode: single

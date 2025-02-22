@@ -1,7 +1,7 @@
-# Loads default set of integrations. Do not remove.
 default_config:
 
 homeassistant:
+  packages: !include_dir_named custom_config/packages
   auth_providers:
     - type: trusted_networks
       allow_bypass_login: true
@@ -9,22 +9,21 @@ homeassistant:
         - 192.168.0.0/16
     - type: homeassistant
 
-# Load frontend themes from the themes folder
 frontend:
   themes: !include_dir_merge_named themes
 
 lovelace:
   mode: storage
-  dashboards:
-    lovelace-old:
-      mode: yaml
-      filename: config/ui-lovelace/main/_views.yaml
-      title: Übersicht
-    lovelace-settings:
-      mode: yaml
-      filename: config/ui-lovelace/settings/_views.yaml
-      title: Einstellungen
-      icon: mdi:cog
+  # dashboards:
+  #   lovelace-old:
+  #     mode: yaml
+  #     filename: custom_config/ui-lovelace/main/_views.yaml
+  #     title: Übersicht
+  #   lovelace-settings:
+  #     mode: yaml
+  #     filename: custom_config/ui-lovelace/settings/_views.yaml
+  #     title: Einstellungen
+  #     icon: mdi:cog
 
 
 panel_custom:
@@ -33,22 +32,22 @@ panel_custom:
     sidebar_icon: mdi:math-log
     module_url: logs
 
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
+automation ui: !include automations.yaml
+script ui: !include scripts.yaml
+scene ui: !include scenes.yaml
 
-automation old: !include_dir_merge_list config/automation
-sensor: !include_dir_merge_list config/entity/sensor
-binary_sensor: !include_dir_merge_list config/entity/binary_sensor
-switch: !include_dir_merge_list config/entity/switch
-light: !include_dir_merge_list config/entity/light
-input_boolean: !include_dir_merge_named config/entity/input/boolean
-input_number: !include_dir_merge_named config/entity/input/number
-input_text: !include_dir_merge_named config/entity/input/text
-input_datetime: !include_dir_merge_named config/entity/input/datetime
-input_select: !include_dir_merge_named config/entity/input/select
-group: !include_dir_merge_named config/group
-script old: !include_dir_merge_named config/script
+automation: !include_dir_merge_list custom_config/automation
+sensor: !include_dir_merge_list custom_config/entity/sensor
+binary_sensor: !include_dir_merge_list custom_config/entity/binary_sensor
+switch: !include_dir_merge_list custom_config/entity/switch
+light: !include_dir_merge_list custom_config/entity/light
+input_boolean: !include_dir_merge_named custom_config/entity/input/boolean
+input_number: !include_dir_merge_named custom_config/entity/input/number
+input_text: !include_dir_merge_named custom_config/entity/input/text
+input_datetime: !include_dir_merge_named custom_config/entity/input/datetime
+input_select: !include_dir_merge_named custom_config/entity/input/select
+group: !include_dir_merge_named custom_config/group
+script: !include_dir_merge_named custom_config/script
 
 
-mqtt: !include config/mqtt.yaml
+mqtt: !include custom_config/mqtt.yaml

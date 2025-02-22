@@ -1,0 +1,46 @@
+sensor:
+  - platform: template
+    sensors:
+      workroom_light_temp:
+        value_template: >
+          {% set coldLightTemp = 250 %}
+          {% set warmLightTemp = 454 %}
+          {% set risingTime = as_datetime(state_attr('sun.sun', 'next_rising')).replace(year=1, month=1, day=1) %}
+          {% set settingTime = as_datetime(state_attr('sun.sun', 'next_setting')).replace(year=1, month=1, day=1) - timedelta(hours=1) %}
+          {% set duskTime = as_datetime(state_attr('sun.sun', 'next_dusk')).replace(year=1, month=1, day=1) %}
+          {% set nowTime = utcnow().replace(year=1, month=1, day=1) %}
+
+          {% if nowTime < risingTime or nowTime > duskTime %}
+              {% set lightTemp = warmLightTemp %}
+          {% elif nowTime < settingTime %}
+              {% set lightTemp = coldLightTemp %}
+          {% else %}
+              {% set coldWarmLightTempDiff = warmLightTemp - coldLightTemp %}
+              {% set settingToDuskTimeDiff = duskTime - settingTime %}
+              {% set timeToDusk = duskTime - nowTime%}
+              {% set timeToDuskRatio = 1 - (timeToDusk / settingToDuskTimeDiff) %}
+              {% set lightTemp = coldLightTemp + int(timeToDuskRatio * coldWarmLightTempDiff) %}
+          {% endif %}
+          {{ lightTemp }}
+
+
+automation:
+  - alias: workroom_light_temp
+    id: workroom_light_temp
+    trigger:
+      - platform: time_pattern
+        minutes: /1
+      - platform: state
+        entity_id: light.light_office
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: light.light_office
+        state: 'on'
+      - condition: template
+        value_template: "{{ state_attr('light.light_office', 'color_temp') | int != states('sensor.workroom_light_temp') | int}}"
+    action:
+      - service: light.turn_on
+        entity_id: light.light_office
+        data_template:
+          color_temp: "{{ states('sensor.workroom_light_temp') }}"

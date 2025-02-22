@@ -1,0 +1,30 @@
+template:
+  - binary_sensor:
+      - name: condition_awake
+        state: >
+          {{
+            is_state('input_boolean.state_home', 'on')
+            and
+            is_state('input_boolean.state_sleep', 'off')
+          }}
+
+  - binary_sensor:
+      - name: condition_night
+        state: "{{ is_state('sun.sun', 'below_horizon') }}"
+  
+  - binary_sensor:
+      - name: condition_illumninance
+        state: "{{ states('sensor.motion_livingroom_tuya_illuminance') | int < 2000 }}"
+
+  - binary_sensor:
+      - name: condition_light
+        state: >
+          {{
+            is_state('binary_sensor.condition_awake', 'on')
+            and
+            (
+              is_state('binary_sensor.condition_night', 'on')
+              or
+              is_state('binary_sensor.condition_illumninance', 'on')
+            )
+          }}

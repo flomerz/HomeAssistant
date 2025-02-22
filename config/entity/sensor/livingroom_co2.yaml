@@ -1,7 +1,0 @@
-- platform: template
-  sensors:
-    livingroom_co2_color_hsv:
-      value_template: >
-        {% from 'transform.jinja' import linear %}
-        {% set x = states('sensor.netatmo_home_indoor_co2') | int %}
-        {{ linear(x, [500, 1500], [120, 360]) | from_json | round(0) }}

@@ -1,0 +1,109 @@
+input_number:
+  cellar_charger_hours:
+    name: Cellar Charger Hours
+    mode: slider
+    min: 0
+    max: 10
+    step: 1
+
+input_datetime:
+  ebike_charge:
+    name: "E-Bike Laden Zeitpunkt"
+    has_time: true
+    has_date: true
+
+input_select:
+  ebike_charging_limit:
+    name: E-Bike charging limit
+    options:
+      - 70%
+      - 90%
+      - 100%
+
+template:
+  - binary_sensor:
+      - name: ebike_power_outside_range
+        device_class: battery
+        state: >
+          {% set
+            power_map = {
+              '70%': [140, 177],
+              '90%': [140, 200],
+              '100%': [1, 200]
+            }
+          %}
+          {% set selected_pct = states('input_select.ebike_charging_limit') %}
+          {% set power = power_map[selected_pct] if selected_pct in power_map else [1000, 0] %}
+          {% set current_power = states('sensor.ebike_power') %}
+          {% set current_power = current_power if current_power != 'unknown' else 0 %}
+          {{ int(current_power) <= power[0] or int(current_power) >= power[1] }}
+
+automation:
+  - alias: cellar_charger_button_toggle
+    id: cellar_charger_button_toggle
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.cellar_charger_button
+        to: 'on'
+    action:
+      - service: script.toggle
+        entity_id: script.cellar_charge
+
+  - alias: cellar_charger_stop
+    id: cellar_charger_stop
+    trigger:
+      - platform: state
+        entity_id: script.cellar_charge
+        to: 'off'
+    action:
+      - service: script.turn_on
+        entity_id: script.cellar_charge_stop
+
+  - alias: cellar_charger_turn_off_time
+    id: cellar_charger_turn_off_time
+    trigger:
+      - platform: state
+        entity_id: switch.cellar_charger
+        to: 'on'
+    action:
+      - delay:
+          hours: "{{ states('input_number.cellar_charger_hours') }}"
+      - service: switch.turn_off
+        entity_id: switch.cellar_charger
+
+  - alias: ebike_charge_turn_off_power
+    id: ebike_charge_turn_off_power
+    trigger:
+      - platform: state
+        entity_id: switch.ebike
+        to: 'on'
+        for:
+          minutes: 1
+      - platform: state
+        entity_id: binary_sensor.ebike_power_outside_range
+        to: 'on'
+        for:
+          minutes: 1
+    condition:
+      - condition: state
+        entity_id: switch.ebike
+        state: 'on'
+        for:
+          minutes: 1
+      - condition: state
+        entity_id: binary_sensor.ebike_power_outside_range
+        state: 'on'
+        for:
+          minutes: 1
+    action:
+      - service: switch.turn_off
+        entity_id: switch.ebike
+
+  - alias: E-Bike Laden Zeitpunkt
+    id: ebike_laden_zeitpunkt
+    trigger:
+      - platform: time
+        at: input_datetime.ebike_charge
+    action:
+      - service: switch.turn_on
+        entity_id: switch.ebike

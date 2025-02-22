@@ -1,0 +1,142 @@
+- type: vertical-stack
+  cards:
+    # - type: custom:mini-media-player
+    #   name: Youtube Music
+    #   entity: media_player.youtube_music
+    #   artwork: full-cover
+    #   toggle_power: true
+    #   volume_stateless: true
+    #   hide:
+    #     icon_state: false
+    #     power_state: false
+    #     volume_level: false
+    #     shuffle: false
+    #   shortcuts:
+    #     columns: 3
+    #     column_height: 100
+    #     buttons:
+    #       - name: Chill
+    #         type: script
+    #         id: script.youtube_music_shield_playlist
+    #         data:
+    #           playlist_entity_id: input_text.playlist_chill
+    #       - icon: mdi:playlist-plus
+    #         type: script
+    #         id: script.youtube_music_add_to_playlist_from_entity_id
+    #         data:
+    #           playlist_entity_id: input_text.playlist_chill
+    #       - icon: mdi:playlist-remove
+    #         type: script
+    #         id: script.youtube_music_remove_from_playlist_from_entity_id
+    #         data:
+    #           playlist_entity_id: input_text.playlist_chill
+    #       - name: Florian
+    #         type: script
+    #         id: script.youtube_music_shield_playlist
+    #         data:
+    #           playlist_entity_id: input_text.playlist_florian
+    #       - icon: mdi:playlist-plus
+    #         type: script
+    #         id: script.youtube_music_add_to_playlist_from_entity_id
+    #         data:
+    #           playlist_entity_id: input_text.playlist_florian
+    #       - icon: mdi:playlist-remove
+    #         type: script
+    #         id: script.youtube_music_remove_from_playlist_from_entity_id
+    #         data:
+    #           playlist_entity_id: input_text.playlist_florian
+    #       - name: Louisa
+    #         type: script
+    #         id: script.youtube_music_shield_playlist
+    #         data:
+    #           playlist_entity_id: input_text.playlist_louisa
+    #       - icon: mdi:playlist-plus
+    #         type: script
+    #         id: script.youtube_music_add_to_playlist_from_entity_id
+    #         data:
+    #           playlist_entity_id: input_text.playlist_louisa
+    #       - icon: mdi:playlist-remove
+    #         type: script
+    #         id: script.youtube_music_remove_from_playlist_from_entity_id
+    #         data:
+    #           playlist_entity_id: input_text.playlist_louisa
+    #       - name: Start Radio
+    #         icon: mdi:animation-play
+    #         type: service
+    #         id: ytube_music_player.start_radio
+    #         data:
+    #           entity_id: media_player.youtube_music
+
+
+    # - type: custom:mini-media-player
+    #   entity: media_player.home_group
+    #   name: Google Home
+    #   artwork: full-cover
+    #   toggle_power: false
+    #   volume_stateless: true
+    #   hide:
+    #     icon_state: false
+    #     power_state: false
+    #     volume_level: false
+    #   shortcuts:
+    #     column_height: 100
+    #     buttons:
+    #       - name: Radio SRF4
+    #         type: script
+    #         id: script.music_radio_srf4
+
+
+    - type: entities
+      title: Player
+      entities:
+        - entity: switch.livingroom_tv_relay
+          name: Wohnzimmer TV Strom
+          icon: mdi:power
+        - type: custom:mini-media-player
+          entity: media_player.wohnzimmer_tv
+          artwork: cover
+          toggle_power: true
+          volume_stateless: true
+          hide:
+            icon_state: false
+            power_state: false
+            volume_level: false
+        - type: custom:mini-media-player
+          entity: media_player.shield
+          artwork: cover
+          toggle_power: true
+          volume_stateless: true
+          hide:
+            icon_state: false
+            power_state: false
+            volume_level: false
+        - type: custom:mini-media-player
+          entity: media_player.wohnzimmer_assistant
+          name: Wohnzimmer Assistent
+          artwork: cover
+          toggle_power: true
+          volume_stateless: true
+          hide:
+            icon_state: false
+            power_state: false
+            volume_level: false
+        - type: custom:mini-media-player
+          entity: media_player.schlafzimmer_tv
+          name: Schlafzimmer TV
+          artwork: cover
+          toggle_power: true
+          volume_stateless: true
+          hide:
+            icon_state: false
+            power_state: false
+            volume_level: false
+        - type: custom:mini-media-player
+          entity: media_player.schlafzimmer_assistant
+          name: Schlafzimmer Assistent
+          artwork: cover
+          toggle_power: true
+          volume_stateless: true
+          hide:
+            icon_state: false
+            power_state: false
+            volume_level: false

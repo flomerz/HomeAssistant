@@ -1,0 +1,56 @@
+# - alias: Baum Notify
+#   id: baum_notify
+#   trigger:
+#     - platform: time_pattern
+#       minutes: 5
+#   condition:
+#     - condition: numeric_state
+#       entity_id: sensor.plant2_moisture
+#       below: 30
+#     - condition: state
+#       entity_id: input_boolean.state_sleep
+#       state: 'off'
+#   action:
+#     - service: script.notify_google
+#       data:
+#         language: it
+#         message: 'de baum hät durscht'
+#         message_say: 'de baum hät durscht'
+
+# - alias: Busch Notify
+#   id: busch_notify
+#   trigger:
+#     - platform: time_pattern
+#       minutes: 6
+#   condition:
+#     - condition: numeric_state
+#       entity_id: sensor.plant1_moisture
+#       below: 30
+#     - condition: state
+#       entity_id: input_boolean.state_sleep
+#       state: 'off'
+#   action:
+#     - service: script.notify_google
+#       data:
+#         language: it
+#         message: 'de busch hät durscht'
+#         message_say: 'de busch hät durscht'
+
+# - alias: Rosmarie Notify
+#   id: rosmarie_notify
+#   trigger:
+#     - platform: time_pattern
+#       minutes: 7
+#   condition:
+#     - condition: numeric_state
+#       entity_id: sensor.plant3_moisture
+#       below: 30
+#     - condition: state
+#       entity_id: input_boolean.state_sleep
+#       state: 'off'
+#   action:
+#     - service: script.notify_google
+#       data:
+#         language: it
+#         message: 'de rosmarie hät durscht'
+#         message_say: 'de rosmarie hät durscht'

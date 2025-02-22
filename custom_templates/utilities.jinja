@@ -1,0 +1,5 @@
+{% macro label_is_any_on(label) %}  
+    {% set entities = expand(label_entities(label)) %}
+    {% set entities_state_on = entities | selectattr('state', 'eq', 'on') | list %}
+    {{ entities_state_on | count > 0 }}
+{% endmacro %}

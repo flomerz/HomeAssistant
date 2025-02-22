@@ -1,6 +1,0 @@
-cellar_charger_hours:
-  name: Cellar Charger Hours
-  mode: slider
-  min: 0
-  max: 10
-  step: 1

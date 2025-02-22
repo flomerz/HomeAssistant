@@ -1,0 +1,61 @@
+- alias: Notify Wohnzimmer CO2
+  id: notify_wohnzimmer_co2
+  trigger:
+    - platform: time_pattern
+      minutes: 55
+  condition:
+    - condition: state
+      entity_id: binary_sensor.condition_awake
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.netatmo_home_indoor_co2
+      above: 1200
+      below: 1500
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'schlächti luft'
+        message_say: 'schlächti luft'
+
+
+- alias: Notify Wohnzimmer CO2 Max
+  id: notify_wohnzimmer_co2_max
+  trigger:
+    - platform: time_pattern
+      minutes: 25
+    - platform: time_pattern
+      minutes: 50
+  condition:
+    - condition: state
+      entity_id: binary_sensor.condition_awake
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.netatmo_home_indoor_co2
+      above: 1500
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'du muäsch dringend lüfte'
+        message_say: 'du muäsch dringend lüfte'
+
+
+- alias: Notify Wohnzimmer Feuchtigkeit
+  id: notify_wohnzimmer_feuchtigkeit
+  trigger:
+    - platform: time_pattern
+      minutes: 56
+  condition:
+    - condition: state
+      entity_id: binary_sensor.condition_awake
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.netatmo_home_indoor_humidity
+      below: 32
+  action:
+    - service: script.notify_google
+      data:
+        language: de
+        message: 'trochni luft'
+        message_say: 'trochni luft'
