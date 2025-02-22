@@ -1,38 +1,20 @@
-
 automation:
   - alias: Door Open
     id: door_open
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: binary_sensor.sensor_door_contact
-        to: 'on'
-    action:
-      - service: input_boolean.turn_on
+        to: "on"
+    actions:
+      - action: input_boolean.turn_on
         entity_id: input_boolean.state_home
-      - service: input_boolean.turn_off
+      - action: input_boolean.turn_off
         entity_id: input_boolean.state_sleep
       # light
       - condition: state
         entity_id: binary_sensor.condition_light
-        state: 'on'
-      - service: light.turn_on
+        state: "on"
+      - action: light.turn_on
         entity_id: light.light_door
-      - service: light.turn_on
+      - action: light.turn_on
         entity_id: light.floor
-
-
-  - alias: Door Close
-    id: door_close
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.sensor_door_contact
-        to: 'off'
-        for:
-          minutes: 10
-    condition:
-      - condition: state
-        entity_id: zone.home
-        state: '0'
-    action:
-      - service: input_boolean.turn_off
-        entity_id: input_boolean.state_home

@@ -18,57 +18,57 @@ template:
 automation:
   - alias: workroom_motion_on
     id: workroom_motion_on
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: binary_sensor.motion_office_tuya_occupancy
         to: 'on'
-    condition:
+    conditions:
       - condition: state
         entity_id: binary_sensor.office_condition_light
         state: 'on'
-    action:
-      - service: light.turn_on
+    actions:
+      - action: light.turn_on
         entity_id: light.light_office
       
 
   - alias: workroom_desk_motion_on
     id: workroom_desk_motion_on
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: binary_sensor.motion_office_occupancy
         to: 'on'
-    condition:
+    conditions:
       - condition: state
         entity_id: binary_sensor.condition_awake
         state: 'on'
-    action:
-      - service: light.turn_on
+    actions:
+      - action: light.turn_on
         entity_id: light.yeelight_lamp15_0x1e6af9d3_ambilight
-      - service: light.turn_on
+      - action: light.turn_on
         entity_id: light.yeelight_lamp15_0x1e64183a_ambilight
       - condition: state
         entity_id: binary_sensor.office_condition_light
         state: 'on'
-      - service: light.turn_on
+      - action: light.turn_on
         entity_id: light.yeelight_lamp15_0x1e6af9d3
-      - service: light.turn_on
+      - action: light.turn_on
         entity_id: light.yeelight_lamp15_0x1e64183a
 
 
   - alias: workroom_motion_off
     id: workroom_motion_off
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: binary_sensor.motion_office_occupancy
         to: 'off'
         for:
           minutes: 3
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.motion_office_tuya_occupancy
         to: 'off'
         for:
           minutes: 3
-    condition:
+    conditions:
       - condition: state
         entity_id: binary_sensor.motion_office_occupancy
         state: 'off'
@@ -79,30 +79,30 @@ automation:
         state: 'off'
         for:
           minutes: 3
-    action:
-      - service: light.turn_off
+    actions:
+      - action: light.turn_off
         entity_id: light.light_office
-      - service: light.turn_off
+      - action: light.turn_off
         entity_id: light.yeelight_lamp15_0x1e6af9d3
-      - service: light.turn_off
+      - action: light.turn_off
         entity_id: light.yeelight_lamp15_0x1e64183a
-      - service: light.turn_off
+      - action: light.turn_off
         entity_id: light.yeelight_lamp15_0x1e6af9d3_ambilight
-      - service: light.turn_off
+      - action: light.turn_off
         entity_id: light.yeelight_lamp15_0x1e64183a_ambilight
 
 
   - alias: workroom_illuminance_high
     id: workroom_illuminance_high
-    trigger:
-      - platform: numeric_state
+    triggers:
+      - trigger: numeric_state
         entity_id: sensor.motion_office_illuminance
         above: 300
-      - platform: numeric_state
+      - trigger: numeric_state
         entity_id: sensor.motion_office_tuya_illuminance
         above: 2000
-    action:
-      - service: light.turn_off
+    actions:
+      - action: light.turn_off
         entity_id: light.light_office
-      - service: light.turn_off
+      - action: light.turn_off
         entity_id: light.midesklamppro_80b8_mijia_desk_lamp_sw

@@ -4,45 +4,45 @@ input_boolean:
 automation:
   - alias: Sleep ON
     id: sleep_on
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: input_boolean.state_sleep
         to: 'on'
-    action:
+    actions:
       # google volume
-      - service: media_player.volume_set
+      - action: media_player.volume_set
         entity_id: media_player.schlafzimmer_assistant
         data_template:
           volume_level: 0.1
-      - service: media_player.volume_set
+      - action: media_player.volume_set
         entity_id: media_player.wohnzimmer_assistant
         data_template:
           volume_level: 0
       # all off
-      - service: script.all_off
+      - action: script.all_off
 
 
   - alias: Sleep OFF
     id: sleep_off
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: input_boolean.state_sleep
         to: 'off'
-    condition:
+    conditions:
       - condition: state
         entity_id: input_boolean.state_home
         state: 'on'
-    action:
+    actions:
       # google
-      - service: media_player.volume_set
+      - action: media_player.volume_set
         entity_id: media_player.schlafzimmer_assistant
         data_template:
           volume_level: 0.2
-      - service: media_player.volume_set
+      - action: media_player.volume_set
         entity_id: media_player.wohnzimmer_assistant
         data_template:
           volume_level: 0.2
-      - service: input_select.select_option
+      - action: input_select.select_option
         data:
           entity_id: input_select.mode_livingroom_light
           option: 'Normal'

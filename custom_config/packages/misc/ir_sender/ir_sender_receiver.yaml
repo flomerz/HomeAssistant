@@ -1,19 +1,19 @@
 script:
   ir_receiver_power:
     sequence:
-      - service: script.ir_send
+      - action: script.ir_send
         data:
           payload: "{'type': 'sony', 'data': '21516', 'nbits': '15'}"
 
   ir_receiver_vol_up:
     sequence:
-      - service: script.ir_send
+      - action: script.ir_send
         data:
           payload: "{'type': 'sony', 'data': '9228', 'nbits': '15'}"
 
   ir_receiver_vol_down:
     sequence:
-      - service: script.ir_send
+      - action: script.ir_send
         data:
           payload: "{'type': 'sony', 'data': '25612', 'nbits': '15'}"
 
@@ -21,58 +21,58 @@ script:
     variables:
       wait: 300
     sequence:
-      - service: script.ir_receiver_vol_up
+      - action: script.ir_receiver_vol_up
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_up
+      - action: script.ir_receiver_vol_up
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_up
+      - action: script.ir_receiver_vol_up
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_up
+      - action: script.ir_receiver_vol_up
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_up
+      - action: script.ir_receiver_vol_up
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_up
+      - action: script.ir_receiver_vol_up
 
   ir_receiver_vol_down_long:
     variables:
       wait: 300
     sequence:
-      - service: script.ir_receiver_vol_down
+      - action: script.ir_receiver_vol_down
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_down
+      - action: script.ir_receiver_vol_down
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_down
+      - action: script.ir_receiver_vol_down
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_down
+      - action: script.ir_receiver_vol_down
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_down
+      - action: script.ir_receiver_vol_down
       - delay:
           milliseconds: "{{ wait }}"
-      - service: script.ir_receiver_vol_down
+      - action: script.ir_receiver_vol_down
 
   ir_receiver_hdmi:
     sequence:
-      - service: script.ir_send
+      - action: script.ir_send
         data:
           payload: "{'type': 'sony', 'data': '24332', 'nbits': '15'}"
 
   ir_receiver_tv:
     sequence:
-      - service: script.ir_send
+      - action: script.ir_send
         data:
           payload: "{'type': 'sony', 'data': '426260', 'nbits': '20'}"
 
   ir_receiver_mc:
       sequence:
-        - service: script.ir_send
+        - action: script.ir_send
           data:
             payload: "{'type': 'sony', 'data': '24589', 'nbits': '15'}"

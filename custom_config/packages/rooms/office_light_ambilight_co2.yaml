@@ -10,13 +10,13 @@ sensor:
 automation:
   - alias: workroom_light_bar_ambilight
     id: workroom_light_bar_ambilight
-    trigger:
-      - platform: time_pattern
+    triggers:
+      - trigger: time_pattern
         minutes: /1
-      - platform: state
+      - trigger: state
         entity_id: light.yeelight_lamp15_0x1e6af9d3_ambilight
         to: 'on'
-    condition:
+    conditions:
       - condition: state
         entity_id: light.yeelight_lamp15_0x1e6af9d3_ambilight
         state: 'on'
@@ -27,8 +27,8 @@ automation:
           {% set sensor_rgb = hsv_to_rgb(sensor_h) | from_json %}
           {% set light_rgb = state_attr('light.yeelight_lamp15_0x1e6af9d3_ambilight', 'rgb_color') | list %}
           {{ sensor_rgb != light_rgb }}
-    action:
-      - service: light.turn_on
+    actions:
+      - action: light.turn_on
         entity_id: light.yeelight_lamp15_0x1e6af9d3_ambilight
         data_template:
           brightness: 255
@@ -37,7 +37,7 @@ automation:
             {% from 'color.jinja' import hsv_to_rgb %}
             {% set h = states('sensor.workroom_light_bar_ambilight') | int %}
             {{ hsv_to_rgb(h) }}
-      - service: light.turn_on
+      - action: light.turn_on
         entity_id: light.yeelight_lamp15_0x1e64183a_ambilight
         data_template:
           brightness: 255

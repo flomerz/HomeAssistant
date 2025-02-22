@@ -3,21 +3,21 @@ script:
     mode: restart
     sequence:
       # entities
-      - service: switch.turn_off
+      - action: switch.turn_off
         entity_id: switch.espresso
-      - service: input_select.select_option
+      - action: input_select.select_option
         data:
           entity_id: input_select.state_livingroom_light
           option: Aus
       # music
-      - service: script.music_turn_off
+      - action: script.music_turn_off
       # lights
-      - service: script.turn_on
+      - action: script.turn_on
         entity_id: script.all_lights_off
         continue_on_error: true
       - wait_template: "{{ not is_state('script.all_lights_off', 'on') }}"
       # tv
-      - service: switch.turn_off
+      - action: switch.turn_off
         entity_id: switch.livingroom_tv_relay
 
 
@@ -41,7 +41,7 @@ script:
       - repeat:
           for_each: "{{ light_entities }}"
           sequence:
-            - service: light.turn_off
+            - action: light.turn_off
               continue_on_error: true
               data_template:
                 entity_id: "{{ repeat.item }}"

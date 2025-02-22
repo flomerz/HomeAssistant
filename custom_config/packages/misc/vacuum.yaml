@@ -1,0 +1,16 @@
+automation:
+  - alias: Staubi Stop
+    id: staubi_stop
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id:
+          - sensor.staubi_error
+        to: water_tank
+    conditions: []
+    actions:
+      - action: vacuum.stop
+        metadata: {}
+        data: {}
+        target:
+          entity_id: vacuum.staubi

@@ -1,5 +1,0 @@
-# vacuum_start:
-#   mode: restart
-#   sequence:
-#     - service: vacuum.start
-#       entity_id: vacuum.staubi

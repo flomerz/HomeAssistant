@@ -27,20 +27,20 @@ sensor:
 automation:
   - alias: workroom_light_temp
     id: workroom_light_temp
-    trigger:
-      - platform: time_pattern
+    triggers:
+      - trigger: time_pattern
         minutes: /1
-      - platform: state
+      - trigger: state
         entity_id: light.light_office
         to: 'on'
-    condition:
+    conditions:
       - condition: state
         entity_id: light.light_office
         state: 'on'
       - condition: template
         value_template: "{{ state_attr('light.light_office', 'color_temp') | int != states('sensor.workroom_light_temp') | int}}"
-    action:
-      - service: light.turn_on
+    actions:
+      - action: light.turn_on
         entity_id: light.light_office
         data_template:
           color_temp: "{{ states('sensor.workroom_light_temp') }}"

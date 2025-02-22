@@ -1,41 +1,59 @@
 automation:
   - alias: Espresso OFF
     id: espresso_off
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: switch.espresso
-        to: 'on'
+        to: "on"
         for:
           minutes: 30
-    action:
-      service: switch.turn_off
-      entity_id: switch.espresso
+    actions:
+      - action: switch.turn_off
+        entity_id: switch.espresso
 
   - alias: Espresso Heatup
     id: espresso_heatup
-    trigger:
-      - platform: numeric_state
+    triggers:
+      - trigger: numeric_state
         entity_id: sensor.temperature_espresso
         above: 60
-      - platform: state
+      - trigger: state
         entity_id: switch.espresso
-        to: 'on'
+        to: "on"
         for:
           minutes: 10
-    condition:
+    conditions:
       - condition: numeric_state
         entity_id: sensor.temperature_espresso
         above: 60
       - condition: state
         entity_id: switch.espresso
-        state: 'on'
+        state: "on"
         for:
           minutes: 10
-    action:
-      - service: switch.turn_off
+    actions:
+      - action: switch.turn_off
         entity_id: switch.espresso
-      - service: script.notify_google
+      - action: script.notify_google
         data:
           language: it
-          message: 'espresso isch fertig'
-          message_say: 'espresso isch fertig'
+          message: "espresso isch fertig"
+          message_say: "espresso isch fertig"
+
+script:
+  entkalken:
+    mode: restart
+    sequence:
+      - repeat:
+          while:
+            - condition: template
+              value_template: "true"
+          sequence:
+            - action: switch.turn_on
+              entity_id: switch.espresso
+            - delay:
+                minutes: 1
+            - action: switch.turn_off
+              entity_id: switch.espresso
+            - delay:
+                minutes: 1

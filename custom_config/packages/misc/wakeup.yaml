@@ -1,0 +1,136 @@
+input_datetime:
+  sunrise_time:
+    name: "Sunrise Time"
+    has_time: true
+    has_date: true
+
+automation:
+  - alias: Schlafzimmer Sunrise
+    id: bedroom_sunrise
+    triggers:
+      - trigger: time
+        at: input_datetime.sunrise_time
+    conditions:
+      - condition: template
+        value_template: >
+          {% set device = states.person.florian %}
+          {% set isHome = not( device.state == 'not_home' and (now() - device.last_changed).total_seconds() > 10*60*60 ) %}
+          {{ isHome }}
+    actions:
+      action: script.wakeup
+
+  - alias: Sunrise Update Time
+    id: sunrise_update_time
+    triggers:
+      - trigger: state
+        entity_id: sensor.florian_handy_next_alarm
+    conditions:
+      - condition: template
+        value_template: "{{ states('sensor.florian_handy_next_alarm') != 'unavailable' }}"
+    actions:
+      - action: input_datetime.set_datetime
+        entity_id: input_datetime.sunrise_time
+        data_template:
+          datetime: >
+            {{ (states('sensor.florian_handy_next_alarm') | as_datetime | as_local) - timedelta(minutes=30) }}
+
+script:
+  wakeup:
+    sequence:
+      - action: automation.turn_off
+        entity_id: automation.bedroom_light_off
+
+      # async
+      - action: script.turn_on
+        entity_id:
+          - script.wakeup_espresso
+          - script.bedroom_light_wakeup
+
+      - delay:
+          minutes: 30
+
+      - action: script.turn_on
+        entity_id: script.music_radio_srf4
+
+      - action: input_boolean.turn_off
+        entity_id: input_boolean.state_sleep
+
+      - delay:
+          minutes: 90
+
+      - action: light.turn_off
+        entity_id: light.light_bedroom
+
+      - action: automation.turn_on
+        entity_id: automation.bedroom_light_off
+
+      - action: script.music_turn_off
+
+  wakeup_espresso:
+    sequence:
+      - delay:
+          minutes: 15
+      - action: switch.turn_on
+        entity_id: switch.espresso
+
+  bedroom_light_wakeup:
+    sequence:
+      - action: light.turn_off
+        entity_id: light.light_bedroom
+
+      - action: light.turn_on
+        entity_id: light.light_bedroom
+
+      - action: light.turn_on
+        entity_id: light.light_bedroom
+        data:
+          rgb_color: [255, 100, 1]
+          brightness: 1
+
+      - delay:
+          seconds: 10
+
+      - action: light.turn_on
+        entity_id: light.light_bedroom
+        data:
+          brightness: 100
+          transition: 1190
+
+      - delay:
+          seconds: 1200
+
+      - action: light.turn_on
+        entity_id: light.light_bedroom
+        data:
+          brightness: 255
+          transition: 290
+
+      - delay:
+          seconds: 300
+
+      - action: light.turn_on
+        entity_id: light.light_bedroom
+        data:
+          rgb_color: [255, 226, 145]
+          brightness: 255
+          transition: 290
+
+      - delay:
+          seconds: 300
+
+      # keep on (1h auto off)
+      - action: light.turn_off
+        entity_id: light.light_bedroom
+
+      - action: light.turn_on
+        entity_id: light.light_bedroom
+
+      - delay:
+          seconds: 300
+
+      - action: light.turn_on
+        entity_id: light.light_bedroom
+        data:
+          rgb_color: [255, 100, 1] #orange
+          brightness: 255
+          transition: 300

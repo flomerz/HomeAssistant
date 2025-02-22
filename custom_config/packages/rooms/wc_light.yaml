@@ -1,40 +1,38 @@
 automation:
   - alias: WC Motion ON
     id: wc_motion_on
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_wc
-      to: 'on'
-    condition:
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_wc
+        to: "on"
+    conditions:
       - condition: state
         entity_id: binary_sensor.condition_illumninance
-        state: 'on'
-    action:
-      service: light.turn_on
-      entity_id: light.wc_led
-
+        state: "on"
+    actions:
+      - action: light.turn_on
+        entity_id: light.wc_led
 
   - alias: WC Motion OFF
     id: wc_motion_off
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: binary_sensor.motion_wc
-        to: 'off'
+        to: "off"
         for:
           minutes: 5
-    action:
-      service: light.turn_off
-      entity_id: light.wc_led
-
+    actions:
+      - action: light.turn_off
+        entity_id: light.wc_led
 
   - alias: WC Motion OFF Long
     id: wc_motion_off_long
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: binary_sensor.motion_wc
-        to: 'off'
+        to: "off"
         for:
           minutes: 5
-    action:
-      service: light.turn_off
-      entity_id: light.shelly_wc
+    actions:
+      - action: light.turn_off
+        entity_id: light.shelly_wc

@@ -2,10 +2,10 @@ script:
   tesla_climate:
     mode: restart
     sequence:
-      - service: climate.turn_on
+      - action: climate.turn_on
         target:
           entity_id: climate.teshla_klima
-      - service: script.notify_google
+      - action: script.notify_google
         data:
           language: de
           message: 'teshla wird vorklimatisiert'

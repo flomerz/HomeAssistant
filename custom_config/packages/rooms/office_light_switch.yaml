@@ -1,9 +1,9 @@
 automation:
   - alias: workroom_switch_toggle
     id: workroom_switch_toggle
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: binary_sensor.shelly_office_input
-    action:
-      - service: light.toggle
+    actions:
+      - action: light.toggle
         entity_id: light.light_office

@@ -1,170 +1,103 @@
-input_select:
-  state_livingroom_light:
-    name: Wohnzimmer Licht
-    options:
-      - Aus
-      - TV
-      - Normal
-      - Max
-
-  mode_livingroom_light:
-    name: Wohnzimmer Licht Mode
-    options:
-      - TV
-      - Normal
-      - Max
-
-
 automation:
-  - alias: Light Aus
-    id: light_aus
-    trigger:
-      - platform: state
-        entity_id: input_select.state_livingroom_light
-        to: 'Aus'
-    action:
-      # lights
-      - service: light.turn_off
-        entity_id: light.livingroom_sofatable
-      - service: light.turn_off
-        entity_id: light.livingroom_rgbww
-      - service: light.turn_off
-        entity_id: light.shelly_diningtable
-      - service: light.turn_off
-        entity_id: light.wohnzimmer_tv_ambilight
-      - service: light.turn_off
-        entity_id: light.light_dining_table_led
-
-  - alias: Light TV
-    id: light_tv
-    trigger:
-      - platform: state
-        entity_id: input_select.state_livingroom_light
-        to: 'TV'
-    action:
-      - service: input_select.select_option
+  - alias: Livingroom Motion ON and no TV
+    id: livingroom_motion_on_and_no_tv
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_livingroom_tuya_occupancy
+        to: 'on'
+    conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: media_player.wohnzimmer_tv
+          state: 'off'
+        - condition: state
+          entity_id: input_select.state_livingroom_light
+          state: 'Aus'
+    actions:
+      - action: script.livingroom_light
         data_template:
-          entity_id: input_select.mode_livingroom_light
-          option: "{{ states('input_select.state_livingroom_light') }}"
-      # lights
-      - service: light.turn_off
-        entity_id: light.livingroom_sofatable
-      - service: light.turn_on
-        entity_id: light.livingroom_rgbww
-        data:
-          brightness_pct: 100
-          effect: none
-          rgbww_color: [255, 0, 0, 0, 100]
-      - service: light.turn_off
-        entity_id: light.shelly_diningtable
-      - service: light.turn_on
-        entity_id: light.wohnzimmer_tv_ambilight
-        data:
-          brightness_pct: 100
-          effect: 'FOLLOW_VIDEO: VIVID'
-      - service: light.turn_on
-        entity_id: light.light_dining_table_led
-        data:
-          brightness_pct: 100
-          effect: none
-          rgbww_color: [255, 100, 255]
+          mode: "{{ states('input_select.mode_livingroom_light') }}"
 
-  - alias: Light Normal
-    id: light_normal
-    trigger:
-      - platform: state
-        entity_id: input_select.state_livingroom_light
-        to: 'Normal'
-    action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: input_select.mode_livingroom_light
-          option: "{{ states('input_select.state_livingroom_light') }}"
-      # lights
-      - service: light.turn_on
-        entity_id: light.livingroom_sofatable
-      - service: light.turn_on
-        entity_id: light.livingroom_rgbww
-        data:
-          brightness_pct: 100
-          effect: none
-          rgbww_color: [0, 0, 0, 0, 255]
-      - service: light.turn_on
-        entity_id: light.shelly_diningtable
-      - service: light.turn_on
-        entity_id: light.wohnzimmer_tv_ambilight
-        data:
-          brightness_pct: 15
-          rgb_color: [255, 0, 255]
-          effect: 'Mode: manual'
-      - service: light.turn_on
-        entity_id: light.light_dining_table_led
-        data:
-          brightness_pct: 100
-          effect: none
-          rgbww_color: [255, 255, 255]
 
-  - alias: Light Max
-    id: light_max
-    trigger:
-      - platform: state
-        entity_id: input_select.state_livingroom_light
-        to: 'Max'
-    action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: input_select.mode_livingroom_light
-          option: "{{ states('input_select.state_livingroom_light') }}"
-      # lights
-      - service: light.turn_on
-        entity_id: light.livingroom_sofatable
-      - service: light.turn_on
-        entity_id: light.livingroom_rgbww
-        data:
-          brightness_pct: 100
-          effect: none
-          rgbww_color: [255, 255, 255, 255, 255]
-      - service: light.turn_on
-        entity_id: light.shelly_diningtable
-      - service: light.turn_on
-        entity_id: light.wohnzimmer_tv_ambilight
-        data:
-          brightness_pct: 100
-          rgb_color: [255, 255, 255]
-          effect: 'Mode: manual'
-      - service: light.turn_on
-        entity_id: light.light_dining_table_led
-        data:
-          brightness_pct: 100
-          effect: none
-          rgbww_color: [255, 255, 255]
+  - alias: Livingroom Motion ON
+    id: livingroom_motion_on
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_livingroom_tuya_occupancy
+        to: 'on'
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.condition_awake
+        state: 'on'
+    actions:
+      - action: switch.turn_on
+        entity_id: switch.livingroom_tv_relay
 
+
+  - alias: Livingroom Motion OFF
+    id: livingroom_motion_off
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_livingroom_tuya_occupancy
+        to: 'off'
+        for:
+          minutes: 15
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.motion_livingroom_tuya_occupancy
+        state: 'off'
+      - condition: state
+        entity_id: media_player.wohnzimmer_tv
+        state: 'off'
+    actions:
+      - action: input_select.select_option
+        data:
+          entity_id: input_select.state_livingroom_light
+          option: Aus
+
+
+  - alias: Livingroom Motion OFF Long
+    id: livingroom_motion_off_long
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_livingroom_tuya_occupancy
+        to: 'off'
+        for:
+          minutes: 60
+    actions:
+      - action: homeassistant.turn_on
+        entity_id: automation.livingroom_motion_off
+      - action: input_select.select_option
+        data:
+          entity_id: input_select.state_livingroom_light
+          option: Aus
 
 script:
   livingroom_light:
     sequence:
-      - service: input_select.select_option
+      - action: input_select.select_option
         data_template:
           entity_id: input_select.mode_livingroom_light
           option: '{{ mode }}'
       - condition: state
         entity_id: binary_sensor.condition_light
         state: 'on'
-      - service: input_select.select_option
+      - action: input_select.select_option
         data_template:
           entity_id: input_select.state_livingroom_light
           option: '{{ mode }}'
 
   livingroom_light_up:
     sequence:
-      - service: input_select.select_next
+      - action: input_select.select_next
         entity_id: input_select.state_livingroom_light
         data:
           cycle: false
 
   livingroom_light_down:
     sequence:
-      - service: input_select.select_previous
+      - action: input_select.select_previous
         entity_id: input_select.state_livingroom_light
         data:
           cycle: false

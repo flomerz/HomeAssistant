@@ -1,7 +1,7 @@
 script:
   ir_send:
     sequence:
-      - service: mqtt.publish
+      - action: mqtt.publish
         data_template:
           topic: "homie/livingroom-ir-sender/ir/send/set"
           payload: "{{ payload }}"

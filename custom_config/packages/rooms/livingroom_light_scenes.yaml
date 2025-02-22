@@ -1,0 +1,140 @@
+input_select:
+  state_livingroom_light:
+    name: Wohnzimmer Licht
+    options:
+      - Aus
+      - TV
+      - Normal
+      - Max
+
+  mode_livingroom_light:
+    name: Wohnzimmer Licht Mode
+    options:
+      - TV
+      - Normal
+      - Max
+
+
+automation:
+  - alias: Light Aus
+    id: light_aus
+    triggers:
+      - trigger: state
+        entity_id: input_select.state_livingroom_light
+        to: 'Aus'
+    actions:
+      # lights
+      - action: light.turn_off
+        entity_id: light.livingroom_sofatable
+      - action: light.turn_off
+        entity_id: light.livingroom_rgbww
+      - action: light.turn_off
+        entity_id: light.shelly_diningtable
+      - action: light.turn_off
+        entity_id: light.wohnzimmer_tv_ambilight
+      - action: light.turn_off
+        entity_id: light.light_dining_table_led
+
+  - alias: Light TV
+    id: light_tv
+    triggers:
+      - trigger: state
+        entity_id: input_select.state_livingroom_light
+        to: 'TV'
+    actions:
+      - action: input_select.select_option
+        data_template:
+          entity_id: input_select.mode_livingroom_light
+          option: "{{ states('input_select.state_livingroom_light') }}"
+      # lights
+      - action: light.turn_off
+        entity_id: light.livingroom_sofatable
+      - action: light.turn_on
+        entity_id: light.livingroom_rgbww
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 0, 0, 0, 100]
+      - action: light.turn_off
+        entity_id: light.shelly_diningtable
+      - action: light.turn_on
+        entity_id: light.wohnzimmer_tv_ambilight
+        data:
+          brightness_pct: 100
+          effect: 'FOLLOW_VIDEO: VIVID'
+      - action: light.turn_on
+        entity_id: light.light_dining_table_led
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 100, 255]
+
+  - alias: Light Normal
+    id: light_normal
+    triggers:
+      - trigger: state
+        entity_id: input_select.state_livingroom_light
+        to: 'Normal'
+    actions:
+      - action: input_select.select_option
+        data_template:
+          entity_id: input_select.mode_livingroom_light
+          option: "{{ states('input_select.state_livingroom_light') }}"
+      # lights
+      - action: light.turn_on
+        entity_id: light.livingroom_sofatable
+      - action: light.turn_on
+        entity_id: light.livingroom_rgbww
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [0, 0, 0, 0, 255]
+      - action: light.turn_on
+        entity_id: light.shelly_diningtable
+      - action: light.turn_on
+        entity_id: light.wohnzimmer_tv_ambilight
+        data:
+          brightness_pct: 15
+          rgb_color: [255, 0, 255]
+          effect: 'Mode: manual'
+      - action: light.turn_on
+        entity_id: light.light_dining_table_led
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 255, 255]
+
+  - alias: Light Max
+    id: light_max
+    triggers:
+      - trigger: state
+        entity_id: input_select.state_livingroom_light
+        to: 'Max'
+    actions:
+      - action: input_select.select_option
+        data_template:
+          entity_id: input_select.mode_livingroom_light
+          option: "{{ states('input_select.state_livingroom_light') }}"
+      # lights
+      - action: light.turn_on
+        entity_id: light.livingroom_sofatable
+      - action: light.turn_on
+        entity_id: light.livingroom_rgbww
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 255, 255, 255, 255]
+      - action: light.turn_on
+        entity_id: light.shelly_diningtable
+      - action: light.turn_on
+        entity_id: light.wohnzimmer_tv_ambilight
+        data:
+          brightness_pct: 100
+          rgb_color: [255, 255, 255]
+          effect: 'Mode: manual'
+      - action: light.turn_on
+        entity_id: light.light_dining_table_led
+        data:
+          brightness_pct: 100
+          effect: none
+          rgbww_color: [255, 255, 255]

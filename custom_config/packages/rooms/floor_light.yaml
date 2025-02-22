@@ -1,44 +1,42 @@
 automation:
   - alias: Floor Motion ON
     id: floor_motion_on
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_floor
-      to: 'on'
-    condition:
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_floor
+        to: "on"
+    conditions:
       - condition: state
         entity_id: binary_sensor.condition_light
-        state: 'on'
-    action:
-      service: light.turn_on
-      entity_id: light.floor
-
+        state: "on"
+    actions:
+      - action: light.turn_on
+        entity_id: light.floor
 
   - alias: Floor Motion OFF
     id: floor_motion_off
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_floor
-      to: 'off'
-      for:
-        minutes: 1
-    action:
-      - service: light.turn_off
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_floor
+        to: "off"
+        for:
+          minutes: 1
+    actions:
+      - action: light.turn_off
         entity_id: light.floor
-      - service: light.turn_off
+      - action: light.turn_off
         entity_id: light.light_door
-
 
   - alias: Floor Motion ON (Sleep) -> WC
     id: floor_motion_on_sleep_wc
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_floor
-      to: 'on'
-    condition:
-      condition: state
-      entity_id: input_boolean.state_sleep
-      state: 'on'
-    action:
-      service: light.turn_on
-      entity_id: light.wc_led
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_floor
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: input_boolean.state_sleep
+        state: "on"
+    actions:
+      - action: light.turn_on
+        entity_id: light.wc_led

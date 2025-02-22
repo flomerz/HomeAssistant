@@ -1,40 +1,40 @@
 automation:
   - alias: motion_on_kitchen
     id: motion_on_kitchen
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_kitchen
-      to: 'on'
-    condition:
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_kitchen
+        to: "on"
+    conditions:
       - condition: state
         entity_id: binary_sensor.condition_light
-        state: 'on'
-    action:
-      service: light.turn_on
-      entity_id: light.kitchen_ceiling
+        state: "on"
+    actions:
+      - action: light.turn_on
+        entity_id: light.kitchen_ceiling
 
   - alias: motion_off_kitchen
     id: motion_off_kitchen
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_kitchen
-      to: 'off'
-      for:
-        minutes: 2
-    action:
-      service: light.turn_off
-      entity_id: light.kitchen_ceiling
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_kitchen
+        to: "off"
+        for:
+          minutes: 2
+    actions:
+      - action: light.turn_off
+        entity_id: light.kitchen_ceiling
 
   - alias: motion_off_long_kitchen
     id: motion_off_long_kitchen
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_kitchen
-      to: 'off'
-      for:
-        minutes: 5
-    action:
-      - service: light.turn_off
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.motion_kitchen
+        to: "off"
+        for:
+          minutes: 5
+    actions:
+      - action: light.turn_off
         entity_id: light.kitchen_ceiling
-      - service: light.turn_off
+      - action: light.turn_off
         entity_id: light.shelly_kitchen

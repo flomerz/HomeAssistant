@@ -9,45 +9,20 @@ homeassistant:
         - 192.168.0.0/16
     - type: homeassistant
 
+automation ui: !include automations.yaml
+script ui: !include scripts.yaml
+scene ui: !include scenes.yaml
+
+mqtt: !include custom_config/mqtt.yaml
+
 frontend:
   themes: !include_dir_merge_named themes
 
 lovelace:
   mode: storage
-  # dashboards:
-  #   lovelace-old:
-  #     mode: yaml
-  #     filename: custom_config/ui-lovelace/main/_views.yaml
-  #     title: Übersicht
-  #   lovelace-settings:
-  #     mode: yaml
-  #     filename: custom_config/ui-lovelace/settings/_views.yaml
-  #     title: Einstellungen
-  #     icon: mdi:cog
-
 
 panel_custom:
   - name: config/logs
     sidebar_title: Logs
     sidebar_icon: mdi:math-log
     module_url: logs
-
-automation ui: !include automations.yaml
-script ui: !include scripts.yaml
-scene ui: !include scenes.yaml
-
-automation: !include_dir_merge_list custom_config/automation
-sensor: !include_dir_merge_list custom_config/entity/sensor
-binary_sensor: !include_dir_merge_list custom_config/entity/binary_sensor
-switch: !include_dir_merge_list custom_config/entity/switch
-light: !include_dir_merge_list custom_config/entity/light
-input_boolean: !include_dir_merge_named custom_config/entity/input/boolean
-input_number: !include_dir_merge_named custom_config/entity/input/number
-input_text: !include_dir_merge_named custom_config/entity/input/text
-input_datetime: !include_dir_merge_named custom_config/entity/input/datetime
-input_select: !include_dir_merge_named custom_config/entity/input/select
-group: !include_dir_merge_named custom_config/group
-script: !include_dir_merge_named custom_config/script
-
-
-mqtt: !include custom_config/mqtt.yaml

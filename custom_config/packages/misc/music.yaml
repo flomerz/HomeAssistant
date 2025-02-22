@@ -1,0 +1,111 @@
+input_text:
+  radio_srf4:
+    name: Radio SRF4
+    initial: http://stream.srg-ssr.ch/m/drs4news/aacp_96
+
+  playlist_chill:
+    name: Playlist Chill
+    initial: PLkHV95tFzKkPwUaUldzX3vRjUEPqfveEm
+
+  playlist_sleep:
+    name: Playlist Sleep
+    initial: PLkHV95tFzKkNcuCOdREG_PncHKLFOjpNI
+
+  playlist_florian:
+    name: Playlist Florian
+    initial: PLmC7UgTxNNfsoLI8YbXXW12OwWF9r1JAc
+
+  playlist_louisa:
+    name: Playlist Louisa
+    initial: PLoN1kBAAhLpxXSEfTwobEixoR8LvosB7l
+
+  sleep_assistant_prompt:
+    name: Sleep Assistant Prompt
+
+script:
+  music_turn_off:
+    sequence:
+      - action: media_player.turn_off
+        entity_id: media_player.wohnzimmer_assistant
+      - action: media_player.turn_off
+        entity_id: media_player.schlafzimmer_assistant
+      - action: media_player.turn_off
+        entity_id: media_player.home_group
+
+  ########## Radio ##########
+  music_radio_srf4:
+    sequence:
+      - action: media_player.turn_on
+        entity_id:
+          - media_player.schlafzimmer_assistant
+          - media_player.wohnzimmer_assistant
+      - delay:
+          seconds: 10
+      - action: media_player.play_media
+        entity_id: media_player.home_group
+        data_template:
+          media_content_id: "{{ states('input_text.radio_srf4') }}"
+          media_content_type: music
+
+  # ########## Playlist ##########
+  # youtube_music_shield_playlist_chill:
+  #   sequence:
+  #     - action: script.youtube_music_shield_playlist
+  #       data:
+  #         playlist_entity_id: input_text.playlist_chill
+
+  # youtube_music_playlist_sleep:
+  #   sequence:
+  #     - action: media_player.select_source
+  #       entity_id: media_player.youtube_music
+  #       data:
+  #         source: schlafzimmer_assistant
+  #     - action: media_player.play_media
+  #       entity_id: media_player.youtube_music
+  #       data_template:
+  #         media_content_id: "{{ states('input_text.playlist_sleep') }}"
+  #         media_content_type: playlist
+
+  # ########## Youtube - Play ##########
+  # youtube_music_shield_playlist:
+  #   sequence:
+  #     - action: script.youtube_music_shield_play
+  #       data_template:
+  #         media_content_id: "{{ states(playlist_entity_id) }}"
+  #         media_content_type: playlist
+
+  # youtube_music_shield_play:
+  #   sequence:
+  #     - action: script.turn_on
+  #       entity_id: script.receiver_on
+  #     - action: media_player.turn_off
+  #       entity_id: media_player.shield_cast
+  #     - action: media_player.select_source
+  #       entity_id: media_player.youtube_music
+  #       data:
+  #         source: shield_cast
+  #     - action: media_player.shuffle_set
+  #       entity_id: media_player.youtube_music
+  #       data:
+  #         shuffle: true
+  #     - action: media_player.play_media
+  #       entity_id: media_player.youtube_music
+  #       data_template:
+  #         media_content_id: "{{ media_content_id }}"
+  #         media_content_type: "{{ media_content_type }}"
+
+  # ########## Youtube - Add to playlist ##########
+  # youtube_music_add_to_playlist_from_entity_id:
+  #   sequence:
+  #     - action: ytube_music_player.add_to_playlist
+  #       data_template:
+  #         entity_id: media_player.youtube_music
+  #         playlist_id: "{{ states(playlist_entity_id) }}"
+
+  # ########## Youtube - Remove from playlist ##########
+  # youtube_music_remove_from_playlist_from_entity_id:
+  #   sequence:
+  #     - action: ytube_music_player.remove_from_playlist
+  #       data_template:
+  #         entity_id: media_player.youtube_music
+  #         playlist_id: "{{ states(playlist_entity_id) }}"

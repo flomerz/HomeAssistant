@@ -4,42 +4,52 @@ input_boolean:
 automation:
   - alias: state_home_off
     id: state_home_off
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: input_boolean.state_home
-        to: 'off'
-    action:
-      - service: input_boolean.turn_off
+        to: "off"
+    actions:
+      - action: input_boolean.turn_off
         entity_id: input_boolean.state_sleep
-      - service: script.turn_on
+      - action: script.turn_on
         entity_id: script.all_off
-      - service: media_player.turn_off
+      - action: media_player.turn_off
         entity_id: media_player.wohnzimmer_tv
-      - service: media_player.turn_off
+      - action: media_player.turn_off
         entity_id: media_player.schlafzimmer_tv_android
 
   - alias: state_home_on
     id: state_home_on
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: input_boolean.state_home
-        to: 'on'
-    action:
-      - service: input_select.select_option
+        to: "on"
+    actions:
+      - action: input_select.select_option
         data:
           entity_id: input_select.mode_livingroom_light
-          option: 'Chill'
+          option: "Chill"
+
+  - alias: people_home
+    id: people_home
+    triggers:
+      - trigger: numeric_state
+        entity_id: zone.home
+        above: 0
+    actions:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.state_home
 
   - alias: people_not_home
     id: people_not_home
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id: zone.home
-        to: '0'
-    condition:
+        to: "0"
+    conditions:
       - condition: state
         entity_id: input_boolean.state_sleep
-        state: 'off'
-    action:
-      - service: input_boolean.turn_off
+        state: "off"
+    actions:
+      - action: input_boolean.turn_off
         entity_id: input_boolean.state_home
