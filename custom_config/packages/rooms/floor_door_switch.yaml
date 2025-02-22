@@ -1,29 +1,84 @@
 automation:
-  - alias: Floor Switch LEFT
-    id: floor_switch_left
+  ########## 1 ##########
+  - alias: floor_switch_home_on
+    id: floor_switch_home_on
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
-        to: 'single_left'
+        to: "1_single"
+    actions:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.state_home
+
+  - alias: floor_switch_home_off
+    id: floor_switch_home_off
+    triggers:
+      - trigger: state
+        entity_id: sensor.switch_door_action
+        to: "1_double"
     actions:
       - action: input_boolean.turn_off
         entity_id: input_boolean.state_home
 
-  - alias: Floor Switch RIGHT
-    id: floor_switch_right
+    ########## 2 ##########
+  - alias: floor_switch_sleep_on
+    id: floor_switch_sleep_on
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
-        to: 'single_right'
+        to: "2_single"
     actions:
       - action: input_boolean.turn_on
         entity_id: input_boolean.state_sleep
 
-  - alias: Floor Switch Both
-    id: floor_switch_both
+  - alias: floor_switch_sleep_off
+    id: floor_switch_sleep_off
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
-        to: 'single_both'
+        to: "2_double"
+    actions:
+      - action: input_boolean.turn_off
+        entity_id: input_boolean.state_sleep
+
+    ########## 3 ##########
+  - alias: floor_switch_door_light_on
+    id: floor_switch_door_light_on
+    triggers:
+      - trigger: state
+        entity_id: sensor.switch_door_action
+        to: "3_single"
+    actions:
+      - action: light.turn_on
+        entity_id: light.light_door
+
+  - alias: floor_switch_door_light_off
+    id: floor_switch_door_light_off
+    triggers:
+      - trigger: state
+        entity_id: sensor.switch_door_action
+        to: "3_double"
+    actions:
+      - action: light.turn_off
+        entity_id: light.light_door
+
+    ########## 4 ##########
+  - alias: floor_switch_tesla_climate_on
+    id: floor_switch_tesla_climate_on
+    triggers:
+      - trigger: state
+        entity_id: sensor.switch_door_action
+        to: "4_single"
     actions:
       - action: script.tesla_climate
+
+  - alias: floor_switch_tesla_climate_off
+    id: floor_switch_tesla_climate_off
+    triggers:
+      - trigger: state
+        entity_id: sensor.switch_door_action
+        to: "4_double"
+    actions:
+      - action: climate.turn_off
+        target:
+          entity_id: climate.teshla_klima
