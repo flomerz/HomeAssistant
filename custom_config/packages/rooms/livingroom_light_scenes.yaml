@@ -24,15 +24,9 @@ automation:
     actions:
       # lights
       - action: light.turn_off
-        entity_id: light.livingroom_sofatable
+        entity_id: light.group_livingroom
       - action: light.turn_off
-        entity_id: light.livingroom_rgbww
-      - action: light.turn_off
-        entity_id: light.shelly_diningtable
-      - action: light.turn_off
-        entity_id: light.wohnzimmer_tv_ambilight
-      - action: light.turn_off
-        entity_id: light.light_dining_table_led
+        entity_id: light.group_dining_table_lamp
 
   - alias: Light TV
     id: light_tv

@@ -3,7 +3,7 @@ automation:
     id: floor_motion_on
     triggers:
       - trigger: state
-        entity_id: binary_sensor.motion_floor
+        entity_id: binary_sensor.group_floor_motion
         to: "on"
     conditions:
       - condition: state
@@ -17,7 +17,7 @@ automation:
     id: floor_motion_off
     triggers:
       - trigger: state
-        entity_id: binary_sensor.motion_floor
+        entity_id: binary_sensor.group_floor_motion
         to: "off"
         for:
           minutes: 1
@@ -31,7 +31,7 @@ automation:
     id: floor_motion_on_sleep_wc
     triggers:
       - trigger: state
-        entity_id: binary_sensor.motion_floor
+        entity_id: binary_sensor.group_floor_motion
         to: "on"
     conditions:
       - condition: state

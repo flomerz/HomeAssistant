@@ -31,6 +31,7 @@ script:
     fields:
       exclude_entity_ids:
         description: entity_ids to exclude
+        default: []
     sequence:
       - variables:
           light_entities: >

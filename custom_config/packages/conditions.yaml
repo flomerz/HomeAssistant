@@ -1,7 +1,7 @@
 template:
   - binary_sensor:
       - name: condition_awake
-        state: >
+        state: >-
           {{
             is_state('input_boolean.state_home', 'on')
             and
@@ -14,11 +14,16 @@ template:
   
   - binary_sensor:
       - name: condition_illumninance
-        state: "{{ states('sensor.motion_livingroom_tuya_illuminance') | int < 2000 }}"
+        state: >-
+          {{ 
+            states('sensor.motion_livingroom_tuya_illuminance') | int < 2000
+            or
+            is_state('light.group_livingroom', 'on')
+          }}
 
   - binary_sensor:
       - name: condition_light
-        state: >
+        state: >-
           {{
             is_state('binary_sensor.condition_awake', 'on')
             and
