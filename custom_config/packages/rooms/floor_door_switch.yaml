@@ -15,7 +15,7 @@ automation:
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
-        to: "1_double"
+        to: "1_hold"
     actions:
       - action: input_boolean.turn_off
         entity_id: input_boolean.state_home
@@ -36,7 +36,7 @@ automation:
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
-        to: "2_double"
+        to: "2_hold"
     actions:
       - action: input_boolean.turn_off
         entity_id: input_boolean.state_sleep
@@ -57,7 +57,7 @@ automation:
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
-        to: "3_double"
+        to: "3_hold"
     actions:
       - action: light.turn_off
         entity_id: light.light_door
@@ -77,7 +77,7 @@ automation:
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
-        to: "4_double"
+        to: "4_hold"
     actions:
       - action: climate.turn_off
         target:
