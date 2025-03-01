@@ -14,32 +14,16 @@ input_select:
       - Normal
       - Max
 
-automation:
-  - alias: Light Aus
-    id: light_aus
-    triggers:
-      - trigger: state
-        entity_id: input_select.state_livingroom_light
-        to: "Aus"
-    actions:
-      # lights
+script:
+  livingroom_light_scene_aus:
+    sequence:
       - action: light.turn_off
         entity_id: light.group_livingroom
       - action: light.turn_off
         entity_id: light.group_dining_table_lamp
 
-  - alias: Light TV
-    id: light_tv
-    triggers:
-      - trigger: state
-        entity_id: input_select.state_livingroom_light
-        to: "TV"
-    actions:
-      - action: input_select.select_option
-        data_template:
-          entity_id: input_select.mode_livingroom_light
-          option: "{{ states('input_select.state_livingroom_light') }}"
-      # lights
+  livingroom_light_scene_tv:
+    sequence:
       - action: light.turn_off
         entity_id: light.livingroom_sofatable
       - action: light.turn_on
@@ -62,18 +46,8 @@ automation:
           effect: none
           rgb_color: [255, 120, 0]
 
-  - alias: Light Normal
-    id: light_normal
-    triggers:
-      - trigger: state
-        entity_id: input_select.state_livingroom_light
-        to: "Normal"
-    actions:
-      - action: input_select.select_option
-        data_template:
-          entity_id: input_select.mode_livingroom_light
-          option: "{{ states('input_select.state_livingroom_light') }}"
-      # lights
+  livingroom_light_scene_normal:
+    sequence:
       - action: light.turn_on
         entity_id: light.livingroom_sofatable
       - action: light.turn_on
@@ -95,18 +69,8 @@ automation:
           effect: none
           rgb_color: [255, 120, 0]
 
-  - alias: Light Max
-    id: light_max
-    triggers:
-      - trigger: state
-        entity_id: input_select.state_livingroom_light
-        to: "Max"
-    actions:
-      - action: input_select.select_option
-        data_template:
-          entity_id: input_select.mode_livingroom_light
-          option: "{{ states('input_select.state_livingroom_light') }}"
-      # lights
+  livingroom_light_scene_max:
+    sequence:
       - action: light.turn_on
         entity_id: light.livingroom_sofatable
       - action: light.turn_on
@@ -129,3 +93,39 @@ automation:
           brightness_pct: 100
           effect: none
           rgb_color: [255, 255, 255]
+
+  livingroom_light_scene:
+    fields:
+      light_mode:
+        name: Light Mode
+        required: true
+        selector:
+          state:
+            entity_id: input_select.state_livingroom_light
+    sequence:
+      - action: input_select.select_option
+        data:
+          entity_id: input_select.state_livingroom_light
+          option: "{{ light_mode }}"
+      - action: >-
+          {{ "script.livingroom_light_scene_" + states('input_select.state_livingroom_light') | lower }}
+
+automation:
+  - alias: livingroom_light_scene
+    id: livingroom_light_scene
+    triggers:
+      - trigger: state
+        entity_id: input_select.state_livingroom_light
+    actions:
+      - if:
+          not:
+            condition: state
+            entity_id: input_select.state_livingroom_light
+            state: "Aus"
+        then:
+          - action: input_select.select_option
+            data_template:
+              entity_id: input_select.mode_livingroom_light
+              option: "{{ states('input_select.state_livingroom_light') }}"
+      - action: >-
+          {{ "script.livingroom_light_scene_" + states('input_select.state_livingroom_light') | lower }}
