@@ -15,7 +15,9 @@ template:
   - binary_sensor:
       - name: condition_illumninance
         state: >-
-          {{ 
+          {{
+            states('sensor.motion_livingroom_illuminance') | int < 20
+            or
             states('sensor.motion_livingroom_tuya_illuminance') | int < 2000
             or
             is_state('light.group_livingroom', 'on')
