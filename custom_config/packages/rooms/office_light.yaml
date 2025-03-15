@@ -105,4 +105,6 @@ automation:
       - action: light.turn_off
         entity_id: light.light_office
       - action: light.turn_off
+        entity_id: light.office_tuya
+      - action: light.turn_off
         entity_id: light.midesklamppro_80b8_mijia_desk_lamp_sw

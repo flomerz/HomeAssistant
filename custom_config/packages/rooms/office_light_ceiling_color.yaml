@@ -23,7 +23,6 @@ sensor:
           {% endif %}
           {{ lightTemp }}
 
-
 automation:
   - alias: workroom_light_temp
     id: workroom_light_temp
@@ -31,16 +30,16 @@ automation:
       - trigger: time_pattern
         minutes: /1
       - trigger: state
-        entity_id: light.light_office
-        to: 'on'
+        entity_id: light.group_office_ceiling
+        to: "on"
     conditions:
       - condition: state
-        entity_id: light.light_office
-        state: 'on'
+        entity_id: light.group_office_ceiling
+        state: "on"
       - condition: template
-        value_template: "{{ state_attr('light.light_office', 'color_temp') | int != states('sensor.workroom_light_temp') | int}}"
+        value_template: "{{ state_attr('light.group_office_ceiling', 'color_temp') | int != states('sensor.workroom_light_temp') | int}}"
     actions:
       - action: light.turn_on
-        entity_id: light.light_office
+        entity_id: light.group_office_ceiling
         data_template:
           color_temp: "{{ states('sensor.workroom_light_temp') }}"

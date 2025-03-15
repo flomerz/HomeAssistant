@@ -6,4 +6,4 @@ automation:
         entity_id: binary_sensor.shelly_office_input
     actions:
       - action: light.toggle
-        entity_id: light.light_office
+        entity_id: light.group_office_ceiling
