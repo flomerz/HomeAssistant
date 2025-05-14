@@ -34,7 +34,7 @@ template:
           %}
           {% set selected_pct = states('input_select.ebike_charging_limit') %}
           {% set power = power_map[selected_pct] if selected_pct in power_map else [1000, 0] %}
-          {% set current_power = states('sensor.ebike_power') %}
+          {% set current_power = states('sensor.ebike_leistung') %}
           {% set current_power = current_power if current_power != 'unknown' else 0 %}
           {{ int(current_power) <= power[0] or int(current_power) >= power[1] }}
 
