@@ -14,83 +14,67 @@ template:
             )
           }}
 
-
 automation:
   - alias: workroom_motion_on
     id: workroom_motion_on
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_office_tuya_occupancy
-        to: 'on'
+        to: "on"
     conditions:
       - condition: state
         entity_id: binary_sensor.office_condition_light
-        state: 'on'
+        state: "on"
     actions:
       - action: light.turn_on
-        entity_id: light.light_office
-      
+        entity_id: light.group_office_ceiling
 
   - alias: workroom_desk_motion_on
     id: workroom_desk_motion_on
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_office_occupancy
-        to: 'on'
+        to: "on"
     conditions:
       - condition: state
         entity_id: binary_sensor.condition_awake
-        state: 'on'
+        state: "on"
     actions:
       - action: light.turn_on
-        entity_id: light.yeelight_lamp15_0x1e6af9d3_ambilight
-      - action: light.turn_on
-        entity_id: light.yeelight_lamp15_0x1e64183a_ambilight
+        entity_id: light.group_office_desk_monitor_ambilight
       - condition: state
         entity_id: binary_sensor.office_condition_light
-        state: 'on'
+        state: "on"
       - action: light.turn_on
-        entity_id: light.yeelight_lamp15_0x1e6af9d3
-      - action: light.turn_on
-        entity_id: light.yeelight_lamp15_0x1e64183a
-
+        entity_id: light.group_office_desk_monitor
 
   - alias: workroom_motion_off
     id: workroom_motion_off
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_office_occupancy
-        to: 'off'
+        to: "off"
         for:
           minutes: 3
       - trigger: state
         entity_id: binary_sensor.motion_office_tuya_occupancy
-        to: 'off'
+        to: "off"
         for:
           minutes: 3
     conditions:
       - condition: state
         entity_id: binary_sensor.motion_office_occupancy
-        state: 'off'
+        state: "off"
         for:
           minutes: 3
       - condition: state
         entity_id: binary_sensor.motion_office_tuya_occupancy
-        state: 'off'
+        state: "off"
         for:
           minutes: 3
     actions:
       - action: light.turn_off
-        entity_id: light.light_office
-      - action: light.turn_off
-        entity_id: light.yeelight_lamp15_0x1e6af9d3
-      - action: light.turn_off
-        entity_id: light.yeelight_lamp15_0x1e64183a
-      - action: light.turn_off
-        entity_id: light.yeelight_lamp15_0x1e6af9d3_ambilight
-      - action: light.turn_off
-        entity_id: light.yeelight_lamp15_0x1e64183a_ambilight
-
+        entity_id: light.group_office
 
   - alias: workroom_illuminance_high
     id: workroom_illuminance_high
@@ -98,13 +82,32 @@ automation:
       - trigger: numeric_state
         entity_id: sensor.motion_office_illuminance
         above: 300
-      - trigger: numeric_state
-        entity_id: sensor.motion_office_tuya_illuminance
-        above: 2000
     actions:
       - action: light.turn_off
-        entity_id: light.light_office
-      - action: light.turn_off
+        entity_id: light.group_office_ceiling
+
+  - alias: wardrobe_open
+    id: wardrobe_open
+    triggers:
+      - trigger: state
+        entity_id:
+          - binary_sensor.motion_wardrobe_occupancy
+        to: "on"
+    action:
+      - action: light.turn_on
         entity_id: light.office_tuya
-      - action: light.turn_off
-        entity_id: light.midesklamppro_80b8_mijia_desk_lamp_sw
+        data:
+          brightness_pct: 100
+
+  - alias: wardrobe_close
+    id: wardrobe_close
+    triggers:
+      - trigger: state
+        entity_id:
+          - binary_sensor.motion_wardrobe_occupancy
+        to: "off"
+    action:
+      - action: light.turn_on
+        entity_id: light.office_tuya
+        data:
+          brightness: 1
