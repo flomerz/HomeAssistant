@@ -7,6 +7,31 @@ automation:
         entity_id: sensor.switch_bedroom_action
         to: "single_right"
     actions:
+      - action: script.manual_sleep
+
+  - alias: switch_bedroom_wakeup
+    id: switch_bedroom_wakeup
+    mode: restart
+    triggers:
+      - trigger: state
+        entity_id: sensor.switch_bedroom_action
+        to: "single_left"
+    actions:
+      - action: script.manual_wakeup
+
+  - alias: switch_bedroom_sleep_light
+    id: switch_bedroom_sleep_light
+    mode: restart
+    triggers:
+      - trigger: state
+        entity_id: sensor.switch_bedroom_action
+        to: "single_both"
+    actions:
+      - action: script.manual_sleep_light_only
+
+script:
+  manual_sleep:
+    sequence:
       # tv off
       - action: media_player.turn_off
         entity_id: media_player.schlafzimmer_tv_android
@@ -26,20 +51,18 @@ automation:
 
       - wait_template: "{{ not is_state('script.all_off', 'on') }}"
 
+      - action: script.sleep_radio
+
+  sleep_radio:
+    sequence:
       - action: media_player.play_media
         entity_id: media_player.schlafzimmer_assistant
         data_template:
           media_content_id: "{{ states('sensor.sleep_podcast') }}"
           media_content_type: rss
 
-  - alias: switch_bedroom_wakeup
-    id: switch_bedroom_wakeup
-    mode: restart
-    triggers:
-      - trigger: state
-        entity_id: sensor.switch_bedroom_action
-        to: "single_left"
-    actions:
+  manual_wakeup:
+    sequence:
       # sleep off
       - action: input_boolean.turn_off
         entity_id: input_boolean.state_sleep
@@ -54,14 +77,8 @@ automation:
       # media off
       - action: script.music_turn_off
 
-  - alias: switch_bedroom_sleep_light
-    id: switch_bedroom_sleep_light
-    mode: restart
-    triggers:
-      - trigger: state
-        entity_id: sensor.switch_bedroom_action
-        to: "single_both"
-    actions:
+  manual_sleep_light_only:
+    sequence:
       # sleep on
       - action: input_boolean.turn_on
         entity_id: input_boolean.state_sleep
