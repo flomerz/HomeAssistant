@@ -55,23 +55,23 @@ automation:
         entity_id: binary_sensor.motion_office_occupancy
         to: "off"
         for:
-          minutes: 3
+          minutes: 15
       - trigger: state
         entity_id: binary_sensor.motion_office_tuya_occupancy
         to: "off"
         for:
-          minutes: 3
+          minutes: 15
     conditions:
       - condition: state
         entity_id: binary_sensor.motion_office_occupancy
         state: "off"
         for:
-          minutes: 3
+          minutes: 15
       - condition: state
         entity_id: binary_sensor.motion_office_tuya_occupancy
         state: "off"
         for:
-          minutes: 3
+          minutes: 15
     actions:
       - action: light.turn_off
         entity_id: light.group_office
@@ -81,7 +81,7 @@ automation:
     triggers:
       - trigger: numeric_state
         entity_id: sensor.motion_office_illuminance
-        above: 300
+        above: 400
     actions:
       - action: light.turn_off
         entity_id: light.group_office_ceiling
