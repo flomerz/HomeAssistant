@@ -29,6 +29,10 @@ automation:
         data:
           entity_id: input_select.mode_livingroom_light
           option: "Normal"
+      - action: switch.turn_on
+        entity_id: switch.shelly_bedroom
+      - action: switch.turn_on
+        entity_id: switch.shelly_office
 
   - alias: people_home
     id: people_home

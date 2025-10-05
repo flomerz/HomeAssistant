@@ -13,7 +13,7 @@ automation:
       - action: media_player.volume_set
         entity_id: media_player.schlafzimmer_assistant
         data_template:
-          volume_level: 0.1
+          volume_level: 0.08
       - action: media_player.volume_set
         entity_id: media_player.wohnzimmer_assistant
         data_template:
@@ -40,8 +40,12 @@ automation:
       - action: media_player.volume_set
         entity_id: media_player.wohnzimmer_assistant
         data_template:
-          volume_level: 0.2
+          volume_level: 0.4
       - action: input_select.select_option
         data:
           entity_id: input_select.mode_livingroom_light
           option: "Normal"
+      - action: switch.turn_on
+        entity_id: switch.shelly_bedroom
+      - action: switch.turn_on
+        entity_id: switch.shelly_office
