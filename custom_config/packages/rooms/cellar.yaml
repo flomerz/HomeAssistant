@@ -115,7 +115,7 @@ script:
       - action: input_number.set_value
         entity_id: input_number.cellar_charger_hours
         data:
-          value: 10
+          value: 12
       - action: input_select.select_option
         data:
           entity_id: input_select.ebike_charging_limit
@@ -124,11 +124,6 @@ script:
       # turn on led
       - action: switch.turn_on
         entity_id: switch.cellar_charger_led
-
-      # wait
-      - delay:
-          hours: 1
-      - wait_template: "{{ now().hour >= 22 or now().hour < 7 }}"
 
       # turn on chargers
       - action: switch.turn_on
