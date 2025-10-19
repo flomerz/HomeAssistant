@@ -1,6 +1,7 @@
 automation:
   - alias: motion_on_kitchen
     id: motion_on_kitchen
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_kitchen
@@ -15,6 +16,7 @@ automation:
 
   - alias: motion_off_kitchen
     id: motion_off_kitchen
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_kitchen
@@ -27,6 +29,7 @@ automation:
 
   - alias: motion_off_long_kitchen
     id: motion_off_long_kitchen
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_kitchen

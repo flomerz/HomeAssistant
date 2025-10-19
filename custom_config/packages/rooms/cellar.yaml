@@ -41,6 +41,7 @@ template:
 automation:
   - alias: cellar_charger_button_toggle
     id: cellar_charger_button_toggle
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.cellar_charger_button
@@ -51,6 +52,7 @@ automation:
 
   - alias: cellar_charger_stop
     id: cellar_charger_stop
+    mode: restart
     triggers:
       - trigger: state
         entity_id: script.cellar_charge
@@ -61,6 +63,7 @@ automation:
 
   - alias: cellar_charger_turn_off_time
     id: cellar_charger_turn_off_time
+    mode: restart
     triggers:
       - trigger: state
         entity_id: switch.cellar_charger
@@ -73,6 +76,7 @@ automation:
 
   - alias: ebike_charge_turn_off_power
     id: ebike_charge_turn_off_power
+    mode: restart
     triggers:
       - trigger: state
         entity_id: switch.ebike
@@ -101,6 +105,7 @@ automation:
 
   - alias: E-Bike Laden Zeitpunkt
     id: ebike_laden_zeitpunkt
+    mode: restart
     triggers:
       - trigger: time
         at: input_datetime.ebike_charge

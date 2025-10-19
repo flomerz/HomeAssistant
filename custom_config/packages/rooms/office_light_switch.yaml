@@ -1,6 +1,7 @@
 automation:
   - alias: workroom_switch_toggle
     id: workroom_switch_toggle
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.shelly_office_input

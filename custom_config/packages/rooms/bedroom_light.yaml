@@ -1,6 +1,7 @@
 automation:
   - alias: bedroom_light_off
     id: bedroom_light_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: light.light_bedroom
@@ -13,6 +14,7 @@ automation:
 
   - alias: shelly_bedroom_switch_off
     id: shelly_bedroom_switch_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: "binary_sensor.shelly_bedroom_input"
@@ -28,6 +30,7 @@ automation:
 
   - alias: shelly_bedroom_switch_on_before_sunset
     id: shelly_bedroom_switch_on_before_sunset
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.shelly_bedroom_input
@@ -50,6 +53,7 @@ automation:
 
   - alias: shelly_bedroom_switch_on_after_sunset
     id: shelly_bedroom_switch_on_after_sunset
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.shelly_bedroom_input

@@ -1,7 +1,7 @@
 automation:
   - alias: Staubi Stop
     id: staubi_stop
-    mode: single
+    mode: restart
     triggers:
       - trigger: state
         entity_id:

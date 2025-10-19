@@ -26,6 +26,7 @@ sensor:
 automation:
   - alias: workroom_light_temp
     id: workroom_light_temp
+    mode: restart
     triggers:
       - trigger: time_pattern
         minutes: /1

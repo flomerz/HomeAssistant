@@ -4,6 +4,7 @@ input_boolean:
 automation:
   - alias: state_home_off
     id: state_home_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: input_boolean.state_home
@@ -20,6 +21,7 @@ automation:
 
   - alias: state_home_on
     id: state_home_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: input_boolean.state_home
@@ -36,6 +38,7 @@ automation:
 
   - alias: people_home
     id: people_home
+    mode: restart
     triggers:
       - trigger: numeric_state
         entity_id: zone.home
@@ -46,6 +49,7 @@ automation:
 
   - alias: people_not_home
     id: people_not_home
+    mode: restart
     triggers:
       - trigger: state
         entity_id: zone.home

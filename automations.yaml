@@ -1,112 +1,114 @@
-- id: '1723384184613'
+- id: "1723384184613"
   alias: Handy Ladegerät ausschalten
-  description: ''
+  description: ""
   triggers:
-  - value_template: '{{ (as_timestamp(now()) - as_timestamp(states.sensor.florian_handy_battery_level.last_changed))
-      > 1800 }}'
-    trigger: template
-  - trigger: numeric_state
-    entity_id:
-    - sensor.florian_handy_battery_level
-    above: 75
-  conditions: []
-  actions:
-  - action: switch.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id: switch.bedroom_charger
-  mode: single
-- id: '1723384249775'
-  alias: Handy Ladegerät einschalten
-  description: ''
-  triggers:
-  - minutes: /15
-    trigger: time_pattern
-  conditions:
-  - condition: template
-    value_template: '{{ (as_timestamp(now()) - as_timestamp(states.sensor.florian_handy_battery_level.last_changed))
-      < 1800 }}'
-  - condition: numeric_state
-    entity_id: sensor.florian_handy_battery_level
-    below: 75
-  actions:
-  - action: switch.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: switch.bedroom_charger
-  mode: single
-- id: '1738432234464'
-  alias: Kiosk ON
-  description: ''
-  triggers:
-  - trigger: state
-    entity_id:
-    - binary_sensor.motion_livingroom_tuya_occupancy
-    to: 'on'
-  conditions: []
-  actions:
-  - action: light.turn_on
-    metadata: {}
-    data: {}
-    target:
+    - value_template:
+        "{{ (as_timestamp(now()) - as_timestamp(states.sensor.florian_handy_battery_level.last_changed))
+        > 1800 }}"
+      trigger: template
+    - trigger: numeric_state
       entity_id:
-      - light.kiosk_screen
-  mode: single
-- id: '1738432355076'
+        - sensor.florian_handy_battery_level
+      above: 75
+  conditions: []
+  actions:
+    - action: switch.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.bedroom_charger
+  mode: restart
+- id: "1723384249775"
+  alias: Handy Ladegerät einschalten
+  description: ""
+  triggers:
+    - minutes: /15
+      trigger: time_pattern
+  conditions:
+    - condition: template
+      value_template:
+        "{{ (as_timestamp(now()) - as_timestamp(states.sensor.florian_handy_battery_level.last_changed))
+        < 1800 }}"
+    - condition: numeric_state
+      entity_id: sensor.florian_handy_battery_level
+      below: 75
+  actions:
+    - action: switch.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.bedroom_charger
+  mode: restart
+- id: "1738432234464"
+  alias: Kiosk ON
+  description: ""
+  triggers:
+    - trigger: state
+      entity_id:
+        - binary_sensor.motion_livingroom_tuya_occupancy
+      to: "on"
+  conditions: []
+  actions:
+    - action: light.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+          - light.kiosk_screen
+  mode: restart
+- id: "1738432355076"
   alias: Kiosk OFF
-  description: ''
+  description: ""
   triggers:
-  - trigger: state
-    entity_id:
-    - binary_sensor.motion_livingroom_tuya_occupancy
-    to: 'off'
-    for:
-      hours: 0
-      minutes: 15
-      seconds: 0
+    - trigger: state
+      entity_id:
+        - binary_sensor.motion_livingroom_tuya_occupancy
+      to: "off"
+      for:
+        hours: 0
+        minutes: 15
+        seconds: 0
   conditions: []
   actions:
-  - action: light.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id: light.kiosk_screen
-  mode: single
-- id: '1739339209874'
+    - action: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.kiosk_screen
+  mode: restart
+- id: "1739339209874"
   alias: Luftbefeuchter nach Zeit ausschalten
-  description: ''
+  description: ""
   triggers:
-  - trigger: state
-    entity_id:
-    - switch.humidifier
-    to: 'on'
-    for:
-      hours: 6
-      minutes: 0
-      seconds: 0
+    - trigger: state
+      entity_id:
+        - switch.humidifier
+      to: "on"
+      for:
+        hours: 6
+        minutes: 0
+        seconds: 0
   conditions: []
   actions:
-  - action: switch.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id: switch.humidifier
-  mode: single
-- id: '1739637990508'
+    - action: switch.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.humidifier
+  mode: restart
+- id: "1739637990508"
   alias: Staubsauger starten wenn niemand mehr zu Hause ist
-  description: ''
+  description: ""
   triggers:
-  - trigger: state
-    entity_id:
-    - input_boolean.state_home
-    to: 'off'
+    - trigger: state
+      entity_id:
+        - input_boolean.state_home
+      to: "off"
   conditions: []
   actions:
-  - action: vacuum.start
-    metadata: {}
-    data: {}
-    target:
-      entity_id: vacuum.staubi
-  mode: single
+    - action: vacuum.start
+      metadata: {}
+      data: {}
+      target:
+        entity_id: vacuum.staubi
+  mode: restart

@@ -1,6 +1,7 @@
 automation:
   - alias: WC Motion ON
     id: wc_motion_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_wc
@@ -15,6 +16,7 @@ automation:
 
   - alias: WC Motion OFF
     id: wc_motion_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_wc
@@ -27,6 +29,7 @@ automation:
 
   - alias: WC Motion OFF Long
     id: wc_motion_off_long
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_wc

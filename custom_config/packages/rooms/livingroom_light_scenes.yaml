@@ -99,9 +99,6 @@ script:
       light_mode:
         name: Light Mode
         required: true
-        selector:
-          state:
-            entity_id: input_select.state_livingroom_light
     sequence:
       - action: input_select.select_option
         data:
@@ -113,6 +110,7 @@ script:
 automation:
   - alias: livingroom_light_scene
     id: livingroom_light_scene
+    mode: restart
     triggers:
       - trigger: state
         entity_id: input_select.state_livingroom_light

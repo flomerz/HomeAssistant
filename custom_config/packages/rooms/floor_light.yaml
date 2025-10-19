@@ -1,6 +1,7 @@
 automation:
   - alias: Floor Motion ON
     id: floor_motion_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.group_floor_motion
@@ -15,6 +16,7 @@ automation:
 
   - alias: Floor Motion OFF
     id: floor_motion_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.group_floor_motion
@@ -29,6 +31,7 @@ automation:
 
   - alias: Floor Motion ON (Sleep) -> WC
     id: floor_motion_on_sleep_wc
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.group_floor_motion

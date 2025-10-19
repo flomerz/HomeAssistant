@@ -2,6 +2,7 @@ automation:
   ########## 1 ##########
   - alias: floor_switch_home_on
     id: floor_switch_home_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
@@ -12,6 +13,7 @@ automation:
 
   - alias: floor_switch_home_off
     id: floor_switch_home_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
@@ -23,6 +25,7 @@ automation:
     ########## 2 ##########
   - alias: floor_switch_sleep_on
     id: floor_switch_sleep_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
@@ -33,6 +36,7 @@ automation:
 
   - alias: floor_switch_sleep_off
     id: floor_switch_sleep_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
@@ -44,6 +48,7 @@ automation:
     ########## 3 ##########
   - alias: floor_switch_door_light_on
     id: floor_switch_door_light_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
@@ -54,6 +59,7 @@ automation:
 
   - alias: floor_switch_door_light_off
     id: floor_switch_door_light_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
@@ -65,6 +71,7 @@ automation:
     ########## 4 ##########
   - alias: floor_switch_tesla_climate_on
     id: floor_switch_tesla_climate_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action
@@ -74,6 +81,7 @@ automation:
 
   - alias: floor_switch_tesla_climate_off
     id: floor_switch_tesla_climate_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: sensor.switch_door_action

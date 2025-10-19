@@ -1,6 +1,7 @@
 automation:
   - alias: Door Open
     id: door_open
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.sensor_door_contact

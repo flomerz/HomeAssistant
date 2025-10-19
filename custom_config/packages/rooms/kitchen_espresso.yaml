@@ -1,6 +1,7 @@
 automation:
   - alias: Espresso OFF
     id: espresso_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: switch.espresso
@@ -13,6 +14,7 @@ automation:
 
   - alias: Espresso Heatup
     id: espresso_heatup
+    mode: restart
     triggers:
       - trigger: numeric_state
         entity_id: sensor.temperature_espresso

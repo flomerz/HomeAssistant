@@ -1,6 +1,7 @@
 automation:
   - alias: wohnzimmer_tv_on
     id: wohnzimmer_tv_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: media_player.wohnzimmer_tv
@@ -13,6 +14,7 @@ automation:
 
   - alias: wohnzimmer_tv_off
     id: wohnzimmer_tv_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: media_player.wohnzimmer_tv

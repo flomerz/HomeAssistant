@@ -7,6 +7,7 @@ input_datetime:
 automation:
   - alias: Schlafzimmer Sunrise
     id: bedroom_sunrise
+    mode: restart
     triggers:
       - trigger: time
         at: input_datetime.sunrise_time
@@ -21,6 +22,7 @@ automation:
 
   - alias: Sunrise Update Time
     id: sunrise_update_time
+    mode: restart
     triggers:
       - trigger: state
         entity_id: sensor.florian_handy_next_alarm

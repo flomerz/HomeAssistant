@@ -17,6 +17,7 @@ template:
 automation:
   - alias: workroom_motion_on
     id: workroom_motion_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_office_tuya_occupancy
@@ -31,6 +32,7 @@ automation:
 
   - alias: workroom_desk_motion_on
     id: workroom_desk_motion_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_office_occupancy
@@ -50,6 +52,7 @@ automation:
 
   - alias: workroom_motion_off
     id: workroom_motion_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_office_occupancy
@@ -78,6 +81,7 @@ automation:
 
   - alias: workroom_illuminance_high
     id: workroom_illuminance_high
+    mode: restart
     triggers:
       - trigger: numeric_state
         entity_id: sensor.motion_office_illuminance
@@ -88,6 +92,7 @@ automation:
 
   - alias: wardrobe_open
     id: wardrobe_open
+    mode: restart
     triggers:
       - trigger: state
         entity_id:
@@ -101,6 +106,7 @@ automation:
 
   - alias: wardrobe_close
     id: wardrobe_close
+    mode: restart
     triggers:
       - trigger: state
         entity_id:

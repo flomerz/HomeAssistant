@@ -1,6 +1,7 @@
 automation:
   - alias: Livingroom Motion ON and no TV
     id: livingroom_motion_on_and_no_tv
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_livingroom_tuya_occupancy
@@ -22,6 +23,7 @@ automation:
 
   - alias: Livingroom Motion ON
     id: livingroom_motion_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_livingroom_tuya_occupancy
@@ -37,6 +39,7 @@ automation:
 
   - alias: Livingroom Motion OFF
     id: livingroom_motion_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_livingroom_tuya_occupancy
@@ -59,6 +62,7 @@ automation:
 
   - alias: Livingroom Motion OFF Long
     id: livingroom_motion_off_long
+    mode: restart
     triggers:
       - trigger: state
         entity_id: binary_sensor.motion_livingroom_tuya_occupancy

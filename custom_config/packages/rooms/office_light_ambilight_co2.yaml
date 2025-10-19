@@ -10,6 +10,7 @@ sensor:
 automation:
   - alias: workroom_light_bar_ambilight
     id: workroom_light_bar_ambilight
+    mode: restart
     triggers:
       - trigger: time_pattern
         minutes: /1

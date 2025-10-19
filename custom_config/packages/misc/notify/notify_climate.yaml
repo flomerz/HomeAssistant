@@ -1,6 +1,7 @@
 automation:
   - alias: Notify Wohnzimmer CO2
     id: notify_wohnzimmer_co2
+    mode: restart
     triggers:
       - trigger: time_pattern
         minutes: 55
@@ -21,6 +22,7 @@ automation:
 
   - alias: Notify Wohnzimmer CO2 Max
     id: notify_wohnzimmer_co2_max
+    mode: restart
     triggers:
       - trigger: time_pattern
         minutes: 25
@@ -42,6 +44,7 @@ automation:
 
   - alias: Notify Wohnzimmer Feuchtigkeit
     id: notify_wohnzimmer_feuchtigkeit
+    mode: restart
     triggers:
       - trigger: time_pattern
         minutes: 56

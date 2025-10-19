@@ -4,6 +4,7 @@ input_boolean:
 automation:
   - alias: Sleep ON
     id: sleep_on
+    mode: restart
     triggers:
       - trigger: state
         entity_id: input_boolean.state_sleep
@@ -23,6 +24,7 @@ automation:
 
   - alias: Sleep OFF
     id: sleep_off
+    mode: restart
     triggers:
       - trigger: state
         entity_id: input_boolean.state_sleep
