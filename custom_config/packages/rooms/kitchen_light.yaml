@@ -22,7 +22,7 @@ automation:
         entity_id: binary_sensor.motion_kitchen
         to: "off"
         for:
-          minutes: 2
+          minutes: 3
     actions:
       - action: light.turn_off
         entity_id: light.kitchen_ceiling

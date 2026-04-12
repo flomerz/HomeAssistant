@@ -7,7 +7,7 @@ automation:
         entity_id: switch.espresso
         to: "on"
         for:
-          minutes: 30
+          minutes: 60
     actions:
       - action: switch.turn_off
         entity_id: switch.espresso
@@ -16,23 +16,33 @@ automation:
     id: espresso_heatup
     mode: restart
     triggers:
-      - trigger: numeric_state
-        entity_id: sensor.temperature_espresso
-        above: 60
       - trigger: state
         entity_id: switch.espresso
         to: "on"
         for:
-          minutes: 10
-    conditions:
-      - condition: numeric_state
+          minutes: 5
+      - trigger: state
+        entity_id: binary_sensor.motion_kitchen
+        to: "off"
+        for:
+          minutes: 3
+      - trigger: numeric_state
         entity_id: sensor.temperature_espresso
-        above: 60
+        above: 75
+    conditions:
       - condition: state
         entity_id: switch.espresso
         state: "on"
         for:
-          minutes: 10
+          minutes: 5
+      - condition: state
+        entity_id: binary_sensor.motion_kitchen
+        state: "off"
+        for:
+          minutes: 3
+      - condition: numeric_state
+        entity_id: sensor.temperature_espresso
+        above: 75
     actions:
       - action: switch.turn_off
         entity_id: switch.espresso
