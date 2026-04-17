@@ -52,6 +52,21 @@ automation:
           message: "espresso isch fertig"
           message_say: "espresso isch fertig"
 
+  - alias: Espresso Weekend
+    id: espresso_weekend
+    mode: restart
+    triggers:
+      - trigger: time
+        at: "07:30:00"
+    conditions:
+      - condition: time
+        weekday:
+          - "sat"
+          - "sun"
+    actions:
+      - action: switch.turn_on
+        entity_id: switch.espresso
+
 script:
   entkalken:
     mode: restart
