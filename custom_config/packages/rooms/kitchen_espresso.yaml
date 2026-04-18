@@ -7,7 +7,7 @@ automation:
         entity_id: switch.espresso
         to: "on"
         for:
-          minutes: 60
+          minutes: 30
     actions:
       - action: switch.turn_off
         entity_id: switch.espresso
@@ -28,7 +28,7 @@ automation:
           minutes: 3
       - trigger: numeric_state
         entity_id: sensor.temperature_espresso
-        above: 75
+        above: 70
     conditions:
       - condition: state
         entity_id: switch.espresso
@@ -42,7 +42,7 @@ automation:
           minutes: 3
       - condition: numeric_state
         entity_id: sensor.temperature_espresso
-        above: 75
+        above: 70
     actions:
       - action: switch.turn_off
         entity_id: switch.espresso
@@ -57,7 +57,7 @@ automation:
     mode: restart
     triggers:
       - trigger: time
-        at: "07:30:00"
+        at: "07:00:00"
     conditions:
       - condition: time
         weekday:
