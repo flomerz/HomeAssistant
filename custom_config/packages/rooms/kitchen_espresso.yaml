@@ -1,70 +1,105 @@
-automation:
-  - alias: Espresso OFF
-    id: espresso_off
-    mode: restart
-    triggers:
-      - trigger: state
-        entity_id: switch.espresso
-        to: "on"
-        for:
-          minutes: 30
-    actions:
-      - action: switch.turn_off
+input_boolean:
+  espresso_standby:
+    name: "Espresso Standby"
+    icon: mdi:coffee
+
+automation espresso_autooff:
+  alias: "Espresso Auto OFF"
+  mode: restart
+  triggers:
+    - trigger: state
+      entity_id: switch.espresso
+      to: "on"
+      for:
+        minutes: 30
+  actions:
+    - action: input_boolean.turn_off
+      entity_id: input_boolean.espresso_standby
+    - action: switch.turn_off
+      entity_id: switch.espresso
+
+automation espresso_weekend:
+  alias: "Espresso Weekend"
+  mode: restart
+  triggers:
+    - trigger: time
+      at: "07:00:00"
+  conditions:
+    - condition: time
+      weekday:
+        - sat
+        - sun
+  actions:
+    - action: input_boolean.turn_on
+      entity_id: input_boolean.espresso_standby
+
+automation espresso_standby_autooff:
+  alias: "Espresso Standby Auto OFF"
+  mode: restart
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.espresso_standby
+      to: "on"
+      for:
+        hours: 5
+  actions:
+    - action: input_boolean.turn_off
+      entity_id: input_boolean.espresso_standby
+
+automation espresso_standby_enable:
+  alias: "Espresso - Standby enable"
+  mode: restart
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.espresso_standby
+      to: "on"
+  actions:
+    - action: switch.turn_on
+      target:
         entity_id: switch.espresso
 
-  - alias: Espresso Heatup
-    id: espresso_heatup
-    mode: restart
-    triggers:
-      - trigger: state
+automation espresso_standby_disable:
+  alias: "Espresso - Standby disable"
+  mode: restart
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.espresso_standby
+      to: "off"
+  actions:
+    - action: switch.turn_off
+      target:
         entity_id: switch.espresso
-        to: "on"
-        for:
-          minutes: 5
-      - trigger: state
-        entity_id: binary_sensor.motion_kitchen
-        to: "off"
-        for:
-          minutes: 3
-      - trigger: numeric_state
-        entity_id: sensor.temperature_espresso
-        above: 70
-    conditions:
-      - condition: state
-        entity_id: switch.espresso
-        state: "on"
-        for:
-          minutes: 5
-      - condition: state
-        entity_id: binary_sensor.motion_kitchen
-        state: "off"
-        for:
-          minutes: 3
-      - condition: numeric_state
-        entity_id: sensor.temperature_espresso
-        above: 70
-    actions:
-      - action: switch.turn_off
-        entity_id: switch.espresso
-      - action: script.notify_google
-        data:
-          language: it
-          message: "espresso isch fertig"
-          message_say: "espresso isch fertig"
 
-  - alias: Espresso Weekend
-    id: espresso_weekend
-    mode: restart
-    triggers:
-      - trigger: time
-        at: "07:00:00"
-    conditions:
-      - condition: time
-        weekday:
-          - "sat"
-          - "sun"
-    actions:
-      - action: switch.turn_on
+automation espresso_standby_cold:
+  alias: "Espresso - Standby cold"
+  mode: restart
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.temperature_espresso
+      below: 65
+  conditions:
+    - condition: state
+      entity_id: input_boolean.espresso_standby
+      state: "on"
+  actions:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.espresso
+
+automation espresso_standby_hot:
+  alias: "Espresso - Standby hot"
+  mode: restart
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.temperature_espresso
+      above: 65
+  conditions:
+    - condition: state
+      entity_id: input_boolean.espresso_standby
+      state: "on"
+  actions:
+    - action: switch.turn_off
+      target:
         entity_id: switch.espresso
 
 script:

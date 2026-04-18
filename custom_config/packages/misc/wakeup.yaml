@@ -72,8 +72,8 @@ script:
     sequence:
       - delay:
           minutes: 15
-      - action: switch.turn_on
-        entity_id: switch.espresso
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.espresso_standby
 
   bedroom_light_wakeup:
     sequence:

@@ -67,8 +67,8 @@ script:
       - action: input_boolean.turn_off
         entity_id: input_boolean.state_sleep
       # espresso on
-      - action: switch.turn_on
-        entity_id: switch.espresso
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.espresso_standby
       # radio
       - action: script.music_radio_srf4
       # wait 1h
