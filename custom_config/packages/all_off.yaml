@@ -13,6 +13,8 @@ script:
       # entities
       - action: input_boolean.turn_off
         entity_id: input_boolean.espresso_standby
+      - action: input_boolean.turn_off
+        entity_id: switch.espresso
       - action: switch.turn_off
         entity_id: switch.shelly_bedroom
       - action: switch.turn_off
